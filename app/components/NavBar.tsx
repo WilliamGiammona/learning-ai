@@ -1,7 +1,30 @@
+"use client";
+
 // components/Navbar.tsx
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,12 +42,76 @@ export default function Navbar() {
             >
               Home
             </Link>
-            <Link
-              href="/fast-ai"
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
-            >
-              Fast-ai
-            </Link>
+
+            {/* Fast-ai Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              >
+                Fast-ai
+                <svg
+                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                    isDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Dropdown Menu */}
+              {isDropdownOpen && (
+                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                  <div className="py-1">
+                    <Link
+                      href="/fast-ai/course-part1"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Practical Deep Learning
+                    </Link>
+                    <Link
+                      href="/fast-ai/course-part2"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Deep Learning Foundations
+                    </Link>
+                    <Link
+                      href="/fast-ai/nlp"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      Natural Language Processing
+                    </Link>
+                    <Link
+                      href="/fast-ai/ethics"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      AI Ethics
+                    </Link>
+                    <div className="border-t border-gray-100"></div>
+                    <Link
+                      href="/fast-ai"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      View All Courses
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link
               href="/courses"
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
