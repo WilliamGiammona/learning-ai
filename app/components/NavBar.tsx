@@ -72,11 +72,11 @@ export default function Navbar() {
                 <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
                   <div className="py-1">
                     <Link
-                      href="/fast-ai/course-part1"
+                      href="/fast-ai/matrix-multiplication"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Practical Deep Learning
+                      Matrix Multiplication
                     </Link>
                     <Link
                       href="/fast-ai/course-part2"
