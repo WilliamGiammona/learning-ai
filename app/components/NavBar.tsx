@@ -42,99 +42,11 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* Foundations Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-200"
-                style={{ cursor: "pointer" }}
-              >
-                Foundations
-                <svg
-                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                    isDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              {/* Dropdown Menu */}
-              {isDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
-                  <div className="py-1">
-                    <Link
-                      href="/foundations/course-part1"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Practical Deep Learning
-                    </Link>
-                    <Link
-                      href="/foundations/multiplication"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Matrix Multiplication
-                    </Link>
-                    <Link
-                      href="/foundations/nlp"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Natural Language Processing
-                    </Link>
-                    <Link
-                      href="/foundations/ethics"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      AI Ethics
-                    </Link>
-                    <div className="border-t border-gray-100"></div>
-                    <Link
-                      href="/foundations"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      View All Courses
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
             <Link
-              href="/courses"
+              href="/foundations"
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
-              Courses
-            </Link>
-            <Link
-              href="/playground"
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
-            >
-              Playground
-            </Link>
-            <Link
-              href="/resources"
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
-            >
-              Resources
-            </Link>
-            <Link
-              href="/about"
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
-            >
-              About
+              Foundations
             </Link>
           </div>
 
