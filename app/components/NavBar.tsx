@@ -27,6 +27,20 @@ export default function Navbar() {
             >
               Foundations
             </Link>
+
+            <Link
+              href="/structure"
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              Structure
+            </Link>
+
+            <Link
+              href="/math"
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              Math
+            </Link>
           </div>
 
           {/* Mobile menu button */}
