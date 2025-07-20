@@ -2,7 +2,7 @@
 export default function FoundationsPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
-      <section>
+      <section id="#iterators">
         <h1 className="text-3xl font-bold mb-6">Iterating Over Data</h1>
         <p className="mb-4">
           Iterators let you stream things one bit at a time without storing
@@ -34,7 +34,7 @@ rows = list(chunks(pixels, 28))   # 28 rows of 28 pixels each`}</code>
           pixels 28-55 (second row), and so on.
         </p>
       </section>
-      <section className="mt-12">
+      <section id="Matrices" className="mt-12">
         <h1 className="text-3xl font-bold mb-6">Matrix From Scratch</h1>
         <p className="mb-4">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae
