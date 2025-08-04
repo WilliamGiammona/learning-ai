@@ -62,7 +62,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsMathDropdownOpen(!isMathDropdownOpen)}
-                className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                className="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
                 aria-expanded={isMathDropdownOpen}
                 aria-haspopup="true"
               >
@@ -88,15 +88,8 @@ export default function Navbar() {
               {isMathDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50">
                   <Link
-                    href="/math"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
-                    onClick={() => setIsMathDropdownOpen(false)}
-                  >
-                    Math Overview
-                  </Link>
-                  <Link
                     href="/math/large-deviations-theory"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 cursor-pointer"
                     onClick={() => setIsMathDropdownOpen(false)}
                   >
                     Large Deviations Theory
@@ -163,13 +156,6 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Structure
-            </Link>
-            <Link
-              href="/math"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Math Overview
             </Link>
             <Link
               href="/math/large-deviations-theory"
