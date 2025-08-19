@@ -37,10 +37,11 @@ const Robotics = () => {
         </p>
         <h3 className="text-xl font-semibold">Imitation Learning in Sim</h3>
         <p>
-          This tutorial will explain how to train a neural network to control a
-          robot in simulation with imitation learning.
+          I'm most excited for this tutorial, which will explain how to train a
+          neural network to control a robot in simulation with imitation
+          learning.
           <br />
-          This is the website I will be using:{" "}
+          The direct sublink is here:{" "}
           <a
             href="https://huggingface.co/docs/lerobot/il_sim"
             target="_blank"
