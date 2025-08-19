@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const Robotics = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">
@@ -25,20 +25,34 @@ const page = () => {
           get started with simulating robotic movements and interactions in a
           virtual environment.
           <br />
-          This is the website I will be using:
-          https://huggingface.co/docs/lerobot/getting_started_real_world_robot
+          This is the website I will be using:{" "}
+          <a
+            href="https://huggingface.co/docs/lerobot/getting_started_real_world_robot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline"
+          >
+            https://huggingface.co/docs/lerobot/getting_started_real_world_robot
+          </a>
         </p>
         <h3 className="text-xl font-semibold">Imitation Learning in Sim</h3>
         <p>
           This tutorial will explain how to train a neural network to control a
           robot in simulation with imitation learning.
           <br />
-          This is the website I will be using:
-          https://huggingface.co/docs/lerobot/il_sim
+          This is the website I will be using:{" "}
+          <a
+            href="https://huggingface.co/docs/lerobot/il_sim"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline"
+          >
+            https://huggingface.co/docs/lerobot/il_sim
+          </a>
         </p>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Robotics;
