@@ -23,7 +23,7 @@ const Robotics = () => {
           commands. It is designed to work seamlessly with MuJoCo and can be
           easily configured using MJCF or URDF files. I will be using LeRobot to
           get started with simulating robotic movements and interactions in a
-          virtual environment.
+          virtual environment. I will be using the SO-101 robot model.
           <br />
           This is the website I will be using:{" "}
           <a
