@@ -24,6 +24,9 @@ const page = () => {
           easily configured using MJCF or URDF files. I will using LeRobot to
           get started with simulating robotic movements and interactions in a
           virtual environment.
+          <br />
+          This is the website I will be using:
+          https://huggingface.co/docs/lerobot/getting_started_real_world_robot
         </p>
       </div>
     </div>
