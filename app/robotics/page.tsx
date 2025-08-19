@@ -21,7 +21,7 @@ const page = () => {
         <p>
           LeRobot is a simulated robot that can be controlled using high-level
           commands. It is designed to work seamlessly with MuJoCo and can be
-          easily configured using MJCF or URDF files. I will using LeRobot to
+          easily configured using MJCF or URDF files. I will be using LeRobot to
           get started with simulating robotic movements and interactions in a
           virtual environment.
           <br />
