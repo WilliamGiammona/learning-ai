@@ -28,6 +28,14 @@ const page = () => {
           This is the website I will be using:
           https://huggingface.co/docs/lerobot/getting_started_real_world_robot
         </p>
+        <h3 className="text-xl font-semibold">Imitation Learning in Sim</h3>
+        <p>
+          This tutorial will explain how to train a neural network to control a
+          robot in simulation with imitation learning.
+          <br />
+          This is the website I will be using:
+          https://huggingface.co/docs/lerobot/il_sim
+        </p>
       </div>
     </div>
   );
