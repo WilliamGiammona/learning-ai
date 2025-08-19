@@ -12,8 +12,8 @@ const page = () => {
           <p className="text-lg text-blue-800">
             Large deviations theory is a branch of probability theory that deals
             with finding the probabilities of rare events. The notes will be
-            based on the book "Large Deviations and Applications" by Amir Dembo
-            and Ofer Zeitouni.
+            based on the book &quot;Large Deviations and Applications&quot; by
+            Amir Dembo and Ofer Zeitouni.
           </p>
         </div>
 
