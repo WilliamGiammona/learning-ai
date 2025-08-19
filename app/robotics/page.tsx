@@ -8,7 +8,7 @@ const page = () => {
       </h1>
 
       <div className="space-y-4 text-gray-700 leading-relaxed">
-        <h3 className="text-xl font-semibold">Overview</h3>
+        <h3 className="text-xl font-semibold">MuJoCo</h3>
         <p>
           MuJoCo is a program that simulates the laws of physics. To tell it
           what my environment/robot should look like, I must write it a text
