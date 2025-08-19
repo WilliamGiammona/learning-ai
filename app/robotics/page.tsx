@@ -17,7 +17,14 @@ const page = () => {
           acceptable. MuJoCo comes with a built in viewer window to see your
           robot moving around.
         </p>
-        <p></p>
+        <h3 className="text-xl font-semibold">LeRobot</h3>
+        <p>
+          LeRobot is a simulated robot that can be controlled using high-level
+          commands. It is designed to work seamlessly with MuJoCo and can be
+          easily configured using MJCF or URDF files. I will using LeRobot to
+          get started with simulating robotic movements and interactions in a
+          virtual environment.
+        </p>
       </div>
     </div>
   );
