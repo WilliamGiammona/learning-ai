@@ -55,6 +55,15 @@ const Robotics = () => {
         {/* Dashed line separator */}
         <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
         <h3 className="text-xl font-semibold">The Controller</h3>
+        <p>
+          Any controller should work fine for LeRobot simulation, but it&apos;s
+          recommended to use one that supports XInput controller programming
+          interface for the best compatibility. The Logitech F710 is a popular
+          choice and specifically recommended in the LeRobot documentation. I
+          decided to use an Xbox controller since it&apos;s XInput compatible
+          and has a wireless bluetooth connection.
+        </p>
+        <div className="flex flex-col items-center my-6"></div>
         <div className="flex flex-col items-center my-6">
           <Image
             src="/images/xbox_controller.png"
