@@ -135,7 +135,8 @@ const Robotics = () => {
                 robot position
               </li>
               <li>
-                <strong>Share button: </strong> Used for recording/screenshots
+                <strong>Share button (↗): </strong> Used for
+                recording/screenshots
               </li>
             </ul>
           </div>
