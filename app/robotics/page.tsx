@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Robotics = () => {
   return (
@@ -250,7 +252,87 @@ const Robotics = () => {
 
             <section id="setup">
               <h3 className="text-xl font-semibold">SetUp</h3>
-              <p>Setup instructions and configuration details will go here.</p>
+              <p className="mb-4">
+                To use gym_hil with LeRobot, you need to create a configuration
+                file. Here&apos;s an example configuration for gamepad control
+                with a Panda robot arm:
+              </p>
+
+              <SyntaxHighlighter
+                language="json"
+                style={tomorrow}
+                className="rounded-lg mb-4"
+              >
+                {`{
+  "type": "hil",
+  "wrapper": {
+    "gripper_penalty": -0.02,
+    "display_cameras": false,
+    "add_joint_velocity_to_observation": true,
+    "add_ee_pose_to_observation": true,
+    "crop_params_dict": {
+      "observation.images.front": [0, 0, 128, 128],
+      "observation.images.wrist": [0, 0, 128, 128]
+    },
+    "resize_size": [128, 128],
+    "control_time_s": 15.0,
+    "use_gripper": true,
+    "fixed_reset_joint_positions": [
+      0.0,
+      0.195,
+      0.0,
+      -2.43,
+      0.0,
+      2.62,
+      0.785
+    ],
+    "reset_time_s": 2.0,
+    "control_mode": "gamepad"
+  },
+  "name": "heptapod_sim",
+  "mode": "record",
+  "repo_id": "WilliamGiammona/il_gym",
+  "dataset_root": null,
+  "task": "PandaPickCubeGamepad-v0",
+  "num_episodes": 30,
+  "episode": 0,
+  "pretrained_policy_name_or_path": null,
+  "device": "mps",
+  "push_to_hub": false,
+  "fps": 20,
+  "features": {
+    "observation.images.front": {
+      "type": "VISUAL",
+      "shape": [3, 128, 128]
+    },
+    "observation.images.wrist": {
+      "type": "VISUAL",
+      "shape": [3, 128, 128]
+    },
+    "observation.state": {
+      "type": "STATE",
+      "shape": [18]
+    },
+    "action": {
+      "type": "ACTION",
+      "shape": [4]
+    }
+  },
+  "features_map": {
+    "observation.images.front": "observation.images.front",
+    "observation.images.wrist": "observation.images.wrist",
+    "observation.state": "observation.state",
+    "action": "action"
+  },
+  "reward_classifier_pretrained_path": null
+}`}
+              </SyntaxHighlighter>
+
+              <p className="text-sm text-gray-600">
+                Key settings: gamepad control mode, MPS device for M4 Mac, 30
+                episodes at 20 FPS, and image processing parameters for the
+                robot&apos;s cameras.
+              </p>
             </section>
           </div>
         </main>
