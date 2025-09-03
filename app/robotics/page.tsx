@@ -127,12 +127,15 @@ const Robotics = () => {
             <h5 className="font-semibold text-gray-800">Other Buttons:</h5>
             <ul className="list-disc list-inside ml-4 space-y-1">
               <li>
-                <strong>Start/Menu button:</strong> Pause/resume or change
-                control modes
+                <strong> Menu button (≡): </strong> Pause/resume simulation or
+                access control settings
               </li>
               <li>
-                <strong>View/Back button:</strong> Reset position or switch
-                camera views
+                <strong>View button (⧉): </strong> Switch camera views or reset
+                robot position
+              </li>
+              <li>
+                <strong>Share button: </strong> Used for recording/screenshots
               </li>
             </ul>
           </div>
