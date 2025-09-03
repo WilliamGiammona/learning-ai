@@ -156,6 +156,12 @@ const Robotics = () => {
             see its specific function.
           </p>
         </div>
+
+        {/* Second dashed line separator */}
+        <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+
+        <h3 className="text-xl font-semibold">SetUp</h3>
+        <p>Setup instructions and configuration details will go here.</p>
       </div>
     </div>
   );
