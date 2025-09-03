@@ -51,6 +51,11 @@ const Robotics = () => {
             https://huggingface.co/docs/lerobot/il_sim
           </a>
         </p>
+        {/* Dashed line separator */}
+        <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+
+        <h3 className="text-xl font-semibold">The Controller</h3>
+        <p>Content about the controller will go here.</p>
       </div>
     </div>
   );
