@@ -53,18 +53,96 @@ const Robotics = () => {
           </a>
         </p>
         {/* Dashed line separator */}
-<div className="border-t-2 border-dashed border-gray-400 my-8"></div>
-<h3 className="text-xl font-semibold">The Controller</h3>
-<div className="flex flex-col items-center my-6">
-  <Image 
-    src="/images/xbox_controller.png" 
-    alt="Xbox Controller" 
-    width={300}
-    height={300}
-    className="mb-4"
-  />
-</div>
-<p>Content about the controller will go here.</p>
+        <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+        <h3 className="text-xl font-semibold">The Controller</h3>
+        <div className="flex flex-col items-center my-6">
+          <Image
+            src="/images/xbox_controller.png"
+            alt="Xbox Controller"
+            width={500}
+            height={500}
+            className="mb-4"
+          />
+        </div>
+        <div className="space-y-4">
+          <h4 className="text-lg font-semibold">
+            Xbox Controller Button Mapping for LeRobot:
+          </h4>
+
+          <div>
+            <h5 className="font-semibold text-gray-800">Analog Sticks:</h5>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li>
+                <strong>Left stick:</strong> Robot arm positioning (X/Y
+                movement)
+              </li>
+              <li>
+                <strong>Right stick:</strong> Robot arm rotation/orientation
+                control
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold text-gray-800">
+              Face Buttons (A, B, X, Y):
+            </h5>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li>
+                <strong>A, B, X, Y buttons:</strong> Fine adjustments for wrist
+                pitch and roll control
+              </li>
+              <li>
+                These provide precise micro-movements for the robot's end
+                effector
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold text-gray-800">Triggers & Bumpers:</h5>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li>
+                <strong>Left/Right Triggers (LT/RT):</strong> Gripper control
+                (open/close)
+              </li>
+              <li>
+                <strong>Left/Right Bumpers (LB/RB):</strong> Speed modifiers or
+                mode switching
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold text-gray-800">D-Pad:</h5>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li>
+                <strong>D-Pad (Arrow buttons):</strong> Additional fine control
+                for positioning adjustments
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold text-gray-800">Other Buttons:</h5>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li>
+                <strong>Start/Menu button:</strong> Pause/resume or change
+                control modes
+              </li>
+              <li>
+                <strong>View/Back button:</strong> Reset position or switch
+                camera views
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-sm text-gray-600 italic mt-4">
+            Note: The exact mapping can vary depending on how LeRobot is
+            configured. When you run the simulation, you can test each button to
+            see its specific function.
+          </p>
+        </div>
       </div>
     </div>
   );
