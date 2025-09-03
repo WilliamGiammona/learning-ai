@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Robotics = () => {
   return (
@@ -52,10 +53,18 @@ const Robotics = () => {
           </a>
         </p>
         {/* Dashed line separator */}
-        <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
-
-        <h3 className="text-xl font-semibold">The Controller</h3>
-        <p>Content about the controller will go here.</p>
+<div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+<h3 className="text-xl font-semibold">The Controller</h3>
+<div className="flex flex-col items-center my-6">
+  <Image 
+    src="/images/xbox_controller.png" 
+    alt="Xbox Controller" 
+    width={300}
+    height={300}
+    className="mb-4"
+  />
+</div>
+<p>Content about the controller will go here.</p>
       </div>
     </div>
   );
