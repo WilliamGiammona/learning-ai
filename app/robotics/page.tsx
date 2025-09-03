@@ -253,9 +253,32 @@ const Robotics = () => {
             <section id="setup">
               <h3 className="text-xl font-semibold">SetUp</h3>
               <p className="mb-4">
-                To use gym_hil with LeRobot, you need to create a configuration
-                file. Here&apos;s an example configuration for gamepad control
-                with a Panda robot arm:
+                To use gym_hil with LeRobot, follow the installation tutorial
+                here:
+                <br />
+                <a
+                  href="https://huggingface.co/docs/lerobot/getting_started_real_world_robot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  https://huggingface.co/docs/lerobot/getting_started_real_world_robot
+                </a>{" "}
+                <br />
+                and here:{" "}
+                <a
+                  href="https://huggingface.co/docs/lerobot/il_sim"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  https://huggingface.co/docs/lerobot/il_sim
+                </a>
+                <br />
+                Until you get to the area about creating a configuration file.
+                <br />
+                Here&apos;s an example configuration for gamepad control with a
+                Panda robot arm:
               </p>
 
               <SyntaxHighlighter
