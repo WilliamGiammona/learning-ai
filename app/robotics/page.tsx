@@ -500,9 +500,27 @@ const Robotics = () => {
                     <strong>"name"</strong> - Used for identification purposes,
                     put whatever name you want here.
                   </li>
-                  <h3 className="text-xl font-bold my-5">Name</h3>
+                  <h3 className="text-xl font-bold my-5">Mode</h3>
                   <li>
-                    <strong>"mode"</strong> -
+                    <strong>"mode"</strong> - Determines what action the system
+                    will take when you run the configuration. Options include:
+                    <br />
+                    record - Specifies that the system should collect and save
+                    demonstration data during your sessions.
+                    <br />
+                    "replay": Plays back previously recorded demonstrations
+                    without collecting new data
+                    <br />
+                    "evaluate": Tests a trained policy's performance rather than
+                    recording human demonstrations
+                    <br />
+                    "train": Uses recorded data to train a neural network
+                    (though this might be handled separately)
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Repo_id</h3>
+                  <li>
+                    <strong>"repo_id"</strong> - Specifies where your dataset
+                    will be stored.
                   </li>
                 </ul>
               </div>
