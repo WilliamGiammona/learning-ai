@@ -315,9 +315,9 @@ const Robotics = () => {
     "reset_time_s": 2.0,
     "control_mode": "gamepad"
   },
-  "name": "heptapod_sim",
+  "name": "example_name",
   "mode": "record",
-  "repo_id": "WilliamGiammona/il_gym",
+  "repo_id": "example_repo",
   "dataset_root": null,
   "task": "PandaPickCubeGamepad-v0",
   "num_episodes": 30,
@@ -470,7 +470,39 @@ const Robotics = () => {
                         network learns when and how to use the gripper based on
                         your demonstrations
                       </li>
+                      <li>
+                        <strong>"fixed_reset_joint_positions"</strong> - Defines
+                        the exact joint angles (in radians) that the robot arm
+                        will move to at the start of each new episode. For a
+                        7-DOF (degrees of freedom) robot like the Panda arm,
+                        each number corresponds to one joint's rotation angle.
+                        After each session ends, the robot automatically moves
+                        to these exact joint positions, ensuring every
+                        demonstration starts from the same consistent pose.
+                      </li>
+                      <li>
+                        <strong>"reset_time"</strong> - A pause between episodes
+                        where the robot moves to its reset position and stays
+                        there before the next recording begins. This gives the
+                        simulation time to settle after the robot moves to its
+                        starting position
+                      </li>
+                      <li>
+                        <strong>"control_mode"</strong> - specifies that you'll
+                        control the robot with. The options include gamepad
+                        (controller), keyboard, and mouse (Gamepad is
+                        recommended).
+                      </li>
                     </ul>
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Name</h3>
+                  <li>
+                    <strong>"name"</strong> - Used for identification purposes,
+                    put whatever name you want here.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Name</h3>
+                  <li>
+                    <strong>"mode"</strong> -
                   </li>
                 </ul>
               </div>
