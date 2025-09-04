@@ -495,6 +495,115 @@ const Robotics = () => {
                       </li>
                     </ul>
                   </li>
+                  <h3 className="text-xl font-bold my-5">Wrapper</h3>
+                  <li>
+                    The <strong>"wrapper"</strong> object is a software layer
+                    that sits between LeRobot and the underlying simulation
+                    environment (like MuJoCo). It adds custom behavior, rewards,
+                    penalties, standardizes different formats, and does things
+                    like image cropping, resizing, adding sensor information,
+                    etc before the data goes to the neural network.
+                    <br />
+                    Inside the wrapper, some of the parameters include:
+                    <ul>
+                      <li>
+                        <strong>"gripper_penalty"</strong> - applies a small
+                        negative reward every time the gripper is activated
+                        during the simulation. Without this penalty, the robot
+                        might constantly open and close the gripper throughout
+                        the episode, since there's no cost to using it. This
+                        creates noisy, inefficient behavior where the robot
+                        grips randomly rather than purposefully.
+                      </li>
+                      <li>
+                        <strong>"display_cameras"</strong> - allows the visual
+                        camera feeds (multiple camera angles should show up) to
+                        appear on screen during data collection. To save
+                        computational power you can set this to false
+                        (You&apos;ll still see the main simulation window, just
+                        not multiple ones)
+                      </li>
+                      <li>
+                        <strong>"add_joint_velocity_to_observation"</strong> -
+                        Joint velocity is how fast each robot joint is moving at
+                        any given moment. Setting this to true means that
+                        includes the robot's joint velocities in the observation
+                        data will get fed to the neural network
+                      </li>
+                      <li>
+                        <strong>"add_ee_pose_to_observation"</strong> - The
+                        end-effector&apos;s (The end-effector is the part of the
+                        robot that does the work, usually the gripper or hand
+                        that actually interacts with objects.) pose (the pose is
+                        both the robot&apos;s X,Y,Z position in space and its
+                        orientation [how its rotated/tilted]). If set to true,
+                        it will include this in the observation data sent to the
+                        neural network.
+                      </li>
+                      <li>
+                        <strong>"crop_params_dict"</strong> - Defines how to
+                        crop specific rectangular sections from the robot's
+                        camera images before processing them. As an example:
+                        <br />
+                        "observation.images.front": [0, 0, 128, 128] This means:
+                        starting at pixel (0,0) - the top-left corner - cut out
+                        a 128×128 pixel square from the front camera image.
+                        <br />
+                        Cropping images is a tradeoff between maximizing compute
+                        efficiency vs accidentally deleting useful information.
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"control_time_s"</strong> - Control time is how
+                        long you have to complete the task during each recording
+                        session. The _s is for seconds, so once the amount of
+                        seconds you specify passes, the episode automatically
+                        ends and the system moves to the reset phase.
+                      </li>
+                      <li>
+                        <strong>"use_gripper""</strong> - Allows gripper
+                        functionality in the simulation, allowing you to control
+                        the robot's gripper (hand/claw) to grab and release
+                        objects with whatever controller you decide to use. The
+                        gripper's state (open/closed, grip strength) gets
+                        recorded as part of your demonstration data The neural
+                        network learns when and how to use the gripper based on
+                        your demonstrations
+                      </li>
+                      <li>
+                        <strong>"fixed_reset_joint_positions"</strong> - Defines
+                        the exact joint angles (in radians) that the robot arm
+                        will move to at the start of each new episode. For a
+                        7-DOF (degrees of freedom) robot like the Panda arm,
+                        each number corresponds to one joint's rotation angle.
+                        After each session ends, the robot automatically moves
+                        to these exact joint positions, ensuring every
+                        demonstration starts from the same consistent pose.
+                      </li>
+                      <li>
+                        <strong>"reset_time"</strong> - A pause between episodes
+                        where the robot moves to its reset position and stays
+                        there before the next recording begins. This gives the
+                        simulation time to settle after the robot moves to its
+                        starting position
+                      </li>
+                      <li>
+                        <strong>"control_mode"</strong> - specifies that you'll
+                        control the robot with. The options include gamepad
+                        (controller), keyboard, and mouse (Gamepad is
+                        recommended).
+                      </li>
+                    </ul>
+                  </li>
                   <h3 className="text-xl font-bold my-5">Name</h3>
                   <li>
                     <strong>"name"</strong> - Used for identification purposes,
@@ -521,6 +630,174 @@ const Robotics = () => {
                   <li>
                     <strong>"repo_id"</strong> - Specifies where your dataset
                     will be stored.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Dataset_Root</h3>
+                  <li>
+                    <strong>"dataset_root"</strong> - Specifies the local file
+                    system path where your recorded dataset will be stored on
+                    your computer. The dataset_root provides the local storage
+                    location, while repo_id typically handles remote repository
+                    naming. Data might be stored locally first, then uploaded to
+                    the remote repository specified by repo_id.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Task</h3>
+                  <li>
+                    <strong>"task"</strong> - Specifies which simulation
+                    environment and robotic task the system should load and run.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Num_Episodes</h3>
+                  <li>
+                    <strong>"num_episodes"</strong> - Specifies how many
+                    demonstration episodes the system will record during your
+                    data collection session.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Episode</h3>
+                  <li>
+                    <strong>"episode"</strong> - Specifies which episode number
+                    the system should start recording from.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">
+                    Pretrained_Policy_Name_Or_Path
+                  </h3>
+                  <li>
+                    <strong>"pretrained_policy_name_or_path"</strong> -
+                    Specifies whether to load an existing trained neural network
+                    model
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Device</h3>
+                  <li>
+                    <strong>"device"</strong> - Specifies which computational
+                    hardware the system should use for processing tasks like
+                    image manipulation, data handling, and neural network
+                    operations. They include:
+                    <br />
+                    "cpu": Uses the computer's main processor (slower but
+                    universally compatible)
+                    <br />
+                    "cuda": Uses NVIDIA GPU acceleration (requires NVIDIA
+                    graphics card with CUDA support)
+                    <br />
+                    "mps": Metal Performance Shaders for Apple Silicon and newer
+                    Intel Macs
+                    <br />
+                    "auto": Automatically detects and uses the best available
+                    hardware
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Push_To_Hub</h3>
+                  <li>
+                    <strong>"push_to_hub"</strong> - Determines whether your
+                    recorded dataset will be automatically uploaded to a remote
+                    repository (like Hugging Face Hub) after data collection.
+                  </li>
+                  <h3 className="text-xl font-bold my-5">FPS</h3>
+                  <li>
+                    <strong>"fps"</strong> - Frames Per Second, it determines
+                    how frequently the system captures data during your
+                    demonstrations. Higher fps = more data, but computationally
+                    more expensive.
+                  </li>
+
+                  <h3 className="text-xl font-bold my-5">Features</h3>
+                  <li>
+                    The <strong>"feature" </strong> object defines the structure
+                    and types of data that will be recorded and stored in your
+                    dataset during demonstrations.
+                    <br />
+                    Inside the feature object, some of the parameters include:
+                    <ul>
+                      <li>
+                        <strong>"observation.images.front"</strong> - Defines
+                        the front camera's image data that will be recorded as
+                        part of the robot's visual observations. It can be of
+                        type visual meaning its image/camera data or numerical
+                        sensor data. The shape defines the color chanels and
+                        then the pixel dimensions of the image.
+                      </li>
+                      <li>
+                        <strong>"observation.images.wrist"</strong> - Defines
+                        the wrist-mounted camera's image data that will be
+                        recorded as part of the robot's visual observations.
+                      </li>
+                      <li>
+                        <strong>"add_joint_velocity_to_observation"</strong> -
+                        Joint velocity is how fast each robot joint is moving at
+                        any given moment. Setting this to true means that
+                        includes the robot's joint velocities in the observation
+                        data will get fed to the neural network
+                      </li>
+                      <li>
+                        <strong>"add_ee_pose_to_observation"</strong> - The
+                        end-effector&apos;s (The end-effector is the part of the
+                        robot that does the work, usually the gripper or hand
+                        that actually interacts with objects.) pose (the pose is
+                        both the robot&apos;s X,Y,Z position in space and its
+                        orientation [how its rotated/tilted]). If set to true,
+                        it will include this in the observation data sent to the
+                        neural network.
+                      </li>
+                      <li>
+                        <strong>"crop_params_dict"</strong> - Defines how to
+                        crop specific rectangular sections from the robot's
+                        camera images before processing them. As an example:
+                        <br />
+                        "observation.images.front": [0, 0, 128, 128] This means:
+                        starting at pixel (0,0) - the top-left corner - cut out
+                        a 128×128 pixel square from the front camera image.
+                        <br />
+                        Cropping images is a tradeoff between maximizing compute
+                        efficiency vs accidentally deleting useful information.
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"control_time_s"</strong> - Control time is how
+                        long you have to complete the task during each recording
+                        session. The _s is for seconds, so once the amount of
+                        seconds you specify passes, the episode automatically
+                        ends and the system moves to the reset phase.
+                      </li>
+                      <li>
+                        <strong>"use_gripper""</strong> - Allows gripper
+                        functionality in the simulation, allowing you to control
+                        the robot's gripper (hand/claw) to grab and release
+                        objects with whatever controller you decide to use. The
+                        gripper's state (open/closed, grip strength) gets
+                        recorded as part of your demonstration data The neural
+                        network learns when and how to use the gripper based on
+                        your demonstrations
+                      </li>
+                      <li>
+                        <strong>"fixed_reset_joint_positions"</strong> - Defines
+                        the exact joint angles (in radians) that the robot arm
+                        will move to at the start of each new episode. For a
+                        7-DOF (degrees of freedom) robot like the Panda arm,
+                        each number corresponds to one joint's rotation angle.
+                        After each session ends, the robot automatically moves
+                        to these exact joint positions, ensuring every
+                        demonstration starts from the same consistent pose.
+                      </li>
+                      <li>
+                        <strong>"reset_time"</strong> - A pause between episodes
+                        where the robot moves to its reset position and stays
+                        there before the next recording begins. This gives the
+                        simulation time to settle after the robot moves to its
+                        starting position
+                      </li>
+                      <li>
+                        <strong>"control_mode"</strong> - specifies that you'll
+                        control the robot with. The options include gamepad
+                        (controller), keyboard, and mouse (Gamepad is
+                        recommended).
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
