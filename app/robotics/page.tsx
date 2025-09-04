@@ -415,20 +415,51 @@ const Robotics = () => {
                         not multiple ones)
                       </li>
                       <li>
-                        <strong>"use_gripper": true</strong> - Enables gripper
-                        control for picking/placing objects
+                        <strong>"add_joint_velocity_to_observation"</strong> -
+                        Joint velocity is how fast each robot joint is moving at
+                        any given moment. Setting this to true means that
+                        includes the robot's joint velocities in the observation
+                        data will get fed to the neural network
                       </li>
                       <li>
-                        <strong>"display_cameras": false</strong> - Hides camera
-                        feeds during recording to improve performance
+                        <strong>"add_ee_pose_to_observation"</strong> - The
+                        end-effector&apos;s (The end-effector is the part of the
+                        robot that does the work, usually the gripper or hand
+                        that actually interacts with objects.) pose (the pose is
+                        both the robot&apos;s X,Y,Z position in space and its
+                        orientation [how its rotated/tilted]). If set to true,
+                        it will include this in the observation data sent to the
+                        neural network.
                       </li>
                       <li>
-                        <strong>"reset_time_s": 2.0</strong> - Time given to
-                        reset the environment between episodes
+                        <strong>"crop_params_dict"</strong> - Defines how to
+                        crop specific rectangular sections from the robot's
+                        camera images before processing them. As an example:
+                        <br />
+                        "observation.images.front": [0, 0, 128, 128] This means:
+                        starting at pixel (0,0) - the top-left corner - cut out
+                        a 128×128 pixel square from the front camera image.
+                        <br />
+                        Cropping images is a tradeoff between maximizing compute
+                        efficiency vs accidentally deleting useful information.
                       </li>
                       <li>
-                        <strong>"resize_size": [128, 128]</strong> - Resizes
-                        camera images to 128x128 pixels for processing
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
+                      </li>
+                      <li>
+                        <strong>"control_time_s"</strong> -
+                      </li>
+                      <li>
+                        <strong>"resize_size"</strong> - Specifies the final
+                        dimensions that all camera images will be resized to
+                        after cropping.
                       </li>
                     </ul>
                   </li>
