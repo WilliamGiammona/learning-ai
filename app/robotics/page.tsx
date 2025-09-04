@@ -454,12 +454,21 @@ const Robotics = () => {
                         after cropping.
                       </li>
                       <li>
-                        <strong>"control_time_s"</strong> -
+                        <strong>"control_time_s"</strong> - Control time is how
+                        long you have to complete the task during each recording
+                        session. The _s is for seconds, so once the amount of
+                        seconds you specify passes, the episode automatically
+                        ends and the system moves to the reset phase.
                       </li>
                       <li>
-                        <strong>"resize_size"</strong> - Specifies the final
-                        dimensions that all camera images will be resized to
-                        after cropping.
+                        <strong>"use_gripper""</strong> - Allows gripper
+                        functionality in the simulation, allowing you to control
+                        the robot's gripper (hand/claw) to grab and release
+                        objects with whatever controller you decide to use. The
+                        gripper's state (open/closed, grip strength) gets
+                        recorded as part of your demonstration data The neural
+                        network learns when and how to use the gripper based on
+                        your demonstrations
                       </li>
                     </ul>
                   </li>
