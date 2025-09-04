@@ -729,76 +729,50 @@ const Robotics = () => {
                         gripper state, force/torque reading, etc.
                       </li>
                       <li>
-                        <strong>"add_ee_pose_to_observation"</strong> - The
-                        end-effector&apos;s (The end-effector is the part of the
-                        robot that does the work, usually the gripper or hand
-                        that actually interacts with objects.) pose (the pose is
-                        both the robot&apos;s X,Y,Z position in space and its
-                        orientation [how its rotated/tilted]). If set to true,
-                        it will include this in the observation data sent to the
-                        neural network.
+                        <strong>"action"</strong> - Defines the control commands
+                        that will be recorded when you operate the robot with
+                        your gamepad. Type action indicates this is control
+                        command data rather than sensor readings.
+                      </li>
+                    </ul>
+                  </li>
+
+                  <h3 className="text-xl font-bold my-5">Features_Map</h3>
+                  <li>
+                    The <strong>"features_map" </strong> object defines the
+                    structure and types of data that will be recorded and stored
+                    in your dataset during demonstrations.
+                    <br />
+                    Inside the feature object, some of the parameters include:
+                    <ul>
+                      <li>
+                        <strong>"observation.images.front"</strong> - Defines
+                        the front camera's image data that will be recorded as
+                        part of the robot's visual observations. It can be of
+                        type visual meaning its image/camera data or state which
+                        is numerical sensor data. The shape defines the color
+                        chanels and then the pixel dimensions of the image.
                       </li>
                       <li>
-                        <strong>"crop_params_dict"</strong> - Defines how to
-                        crop specific rectangular sections from the robot's
-                        camera images before processing them. As an example:
-                        <br />
-                        "observation.images.front": [0, 0, 128, 128] This means:
-                        starting at pixel (0,0) - the top-left corner - cut out
-                        a 128×128 pixel square from the front camera image.
-                        <br />
-                        Cropping images is a tradeoff between maximizing compute
-                        efficiency vs accidentally deleting useful information.
+                        <strong>"observation.images.wrist"</strong> - Defines
+                        the wrist-mounted camera's image data that will be
+                        recorded as part of the robot's visual observations.
+                        type and shape are the same as the front images.
                       </li>
                       <li>
-                        <strong>"resize_size"</strong> - Specifies the final
-                        dimensions that all camera images will be resized to
-                        after cropping.
+                        <strong>"observation.state"</strong> - Defines the
+                        numerical sensor data that will be recorded as part of
+                        the robot's non-visual observations. It's type state
+                        indicates its numerical sensor data.The shape an array
+                        of 18 numerical values representing different sensor
+                        readings including joint velocities, joint positions,
+                        gripper state, force/torque reading, etc.
                       </li>
                       <li>
-                        <strong>"resize_size"</strong> - Specifies the final
-                        dimensions that all camera images will be resized to
-                        after cropping.
-                      </li>
-                      <li>
-                        <strong>"control_time_s"</strong> - Control time is how
-                        long you have to complete the task during each recording
-                        session. The _s is for seconds, so once the amount of
-                        seconds you specify passes, the episode automatically
-                        ends and the system moves to the reset phase.
-                      </li>
-                      <li>
-                        <strong>"use_gripper""</strong> - Allows gripper
-                        functionality in the simulation, allowing you to control
-                        the robot's gripper (hand/claw) to grab and release
-                        objects with whatever controller you decide to use. The
-                        gripper's state (open/closed, grip strength) gets
-                        recorded as part of your demonstration data The neural
-                        network learns when and how to use the gripper based on
-                        your demonstrations
-                      </li>
-                      <li>
-                        <strong>"fixed_reset_joint_positions"</strong> - Defines
-                        the exact joint angles (in radians) that the robot arm
-                        will move to at the start of each new episode. For a
-                        7-DOF (degrees of freedom) robot like the Panda arm,
-                        each number corresponds to one joint's rotation angle.
-                        After each session ends, the robot automatically moves
-                        to these exact joint positions, ensuring every
-                        demonstration starts from the same consistent pose.
-                      </li>
-                      <li>
-                        <strong>"reset_time"</strong> - A pause between episodes
-                        where the robot moves to its reset position and stays
-                        there before the next recording begins. This gives the
-                        simulation time to settle after the robot moves to its
-                        starting position
-                      </li>
-                      <li>
-                        <strong>"control_mode"</strong> - specifies that you'll
-                        control the robot with. The options include gamepad
-                        (controller), keyboard, and mouse (Gamepad is
-                        recommended).
+                        <strong>"action"</strong> - Defines the control commands
+                        that will be recorded when you operate the robot with
+                        your gamepad. Type action indicates this is control
+                        command data rather than sensor readings.
                       </li>
                     </ul>
                   </li>
