@@ -277,8 +277,11 @@ const Robotics = () => {
                 <br />
                 Until you get to the area about creating a configuration file.
                 <br />
-                Here&apos;s an example configuration for gamepad control with a
-                Panda robot arm:
+                Since this is a custom config file, the name doesn't really
+                matter. Here is an example name: env_config_gym_hil_il.json for
+                gym hill environment configuration imitation learning. Below is
+                an example of the code inside the config file for a gamepad
+                control with a Panda robot arm:
               </p>
 
               <SyntaxHighlighter
@@ -350,12 +353,19 @@ const Robotics = () => {
   "reward_classifier_pretrained_path": null
 }`}
               </SyntaxHighlighter>
-
-              <p className="text-sm text-gray-600">
-                Key settings: gamepad control mode, MPS device for M4 Mac, 30
-                episodes at 20 FPS, and image processing parameters for the
-                robot&apos;s cameras.
-              </p>
+              <div className="mt-6">
+                <h4 className="text-lg font-semibold mb-3">
+                  Configuration Parameters Explained:
+                </h4>
+                <ul className="space-y-2">
+                  <li>
+                    <strong>"type": "hil"</strong> - Specifies Human-in-the-Loop
+                    training where you control the robot with a gamepad and the
+                    system records your demonstrations for the neural network to
+                    learn from
+                  </li>
+                </ul>
+              </div>
             </section>
           </div>
         </main>
