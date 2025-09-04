@@ -739,42 +739,9 @@ const Robotics = () => {
 
                   <h3 className="text-xl font-bold my-5">Features_Map</h3>
                   <li>
-                    The <strong>"features_map" </strong> object defines the
-                    structure and types of data that will be recorded and stored
-                    in your dataset during demonstrations.
-                    <br />
-                    Inside the feature object, some of the parameters include:
-                    <ul>
-                      <li>
-                        <strong>"observation.images.front"</strong> - Defines
-                        the front camera's image data that will be recorded as
-                        part of the robot's visual observations. It can be of
-                        type visual meaning its image/camera data or state which
-                        is numerical sensor data. The shape defines the color
-                        chanels and then the pixel dimensions of the image.
-                      </li>
-                      <li>
-                        <strong>"observation.images.wrist"</strong> - Defines
-                        the wrist-mounted camera's image data that will be
-                        recorded as part of the robot's visual observations.
-                        type and shape are the same as the front images.
-                      </li>
-                      <li>
-                        <strong>"observation.state"</strong> - Defines the
-                        numerical sensor data that will be recorded as part of
-                        the robot's non-visual observations. It's type state
-                        indicates its numerical sensor data.The shape an array
-                        of 18 numerical values representing different sensor
-                        readings including joint velocities, joint positions,
-                        gripper state, force/torque reading, etc.
-                      </li>
-                      <li>
-                        <strong>"action"</strong> - Defines the control commands
-                        that will be recorded when you operate the robot with
-                        your gamepad. Type action indicates this is control
-                        command data rather than sensor readings.
-                      </li>
-                    </ul>
+                    The <strong>"features_map" </strong> object creates explicit
+                    mappings between the data fields defined in the "features"
+                    section and their corresponding names in the actual dataset.
                   </li>
                 </ul>
               </div>
