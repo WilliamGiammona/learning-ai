@@ -354,15 +354,83 @@ const Robotics = () => {
 }`}
               </SyntaxHighlighter>
               <div className="mt-6">
-                <h4 className="text-lg font-semibold mb-3">
+                <h4 className="text-2xl font-semibold mb-10 underline">
                   Configuration Parameters Explained:
                 </h4>
                 <ul className="space-y-2">
+                  <h3 className="text-xl font-bold my-5">Type</h3>
                   <li>
-                    <strong>"type": "hil"</strong> - Specifies Human-in-the-Loop
+                    <strong>"hil"</strong> - Specifies Human-in-the-Loop
                     training where you control the robot with a gamepad and the
                     system records your demonstrations for the neural network to
-                    learn from
+                    learn from.
+                    <br />
+                    <strong>Some additional types include:</strong>
+                    <ul>
+                      <li>
+                        {" "}
+                        <strong>"sim"</strong> - Pure simulation without human
+                        input.
+                      </li>
+                      <li>
+                        <strong>"real"</strong> - This mode connects LeRobot to
+                        actual physical robot hardware instead of simulation.
+                        You would use this when working with a real robotic arm
+                        like the SO-101.
+                      </li>
+                      <li>
+                        <strong>"offline"</strong> - Trains on pre-recorded
+                        datasets that's already been collected without recording
+                        new data (no interaction with the robot to collect
+                        data).
+                      </li>
+                    </ul>
+                  </li>
+                  <h3 className="text-xl font-bold my-5">Wrapper</h3>
+                  <li>
+                    The <strong>"wrapper"</strong> object is a software layer
+                    that sits between LeRobot and the underlying simulation
+                    environment (like MuJoCo). It adds custom behavior, rewards,
+                    penalties, standardizes different formats, and does things
+                    like image cropping, resizing, adding sensor information,
+                    etc before the data goes to the neural network.
+                    <br />
+                    Inside the wrapper, some of the parameters include:
+                    <ul>
+                      <li>
+                        <strong>"gripper_penalty"</strong> - applies a small
+                        negative reward every time the gripper is activated
+                        during the simulation. Without this penalty, the robot
+                        might constantly open and close the gripper throughout
+                        the episode, since there's no cost to using it. This
+                        creates noisy, inefficient behavior where the robot
+                        grips randomly rather than purposefully.
+                      </li>
+                      <li>
+                        <strong>"display_cameras"</strong> - allows the visual
+                        camera feeds (multiple camera angles should show up) to
+                        appear on screen during data collection. To save
+                        computational power you can set this to false
+                        (You&apos;ll still see the main simulation window, just
+                        not multiple ones)
+                      </li>
+                      <li>
+                        <strong>"use_gripper": true</strong> - Enables gripper
+                        control for picking/placing objects
+                      </li>
+                      <li>
+                        <strong>"display_cameras": false</strong> - Hides camera
+                        feeds during recording to improve performance
+                      </li>
+                      <li>
+                        <strong>"reset_time_s": 2.0</strong> - Time given to
+                        reset the environment between episodes
+                      </li>
+                      <li>
+                        <strong>"resize_size": [128, 128]</strong> - Resizes
+                        camera images to 128x128 pixels for processing
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
