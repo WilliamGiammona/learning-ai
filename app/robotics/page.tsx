@@ -743,6 +743,16 @@ const Robotics = () => {
                     mappings between the data fields defined in the "features"
                     section and their corresponding names in the actual dataset.
                   </li>
+
+                  <h3 className="text-xl font-bold my-5">
+                    Reward_Classifier_Pretrained_Path
+                  </h3>
+                  <li>
+                    <strong>"reward_classifier_pretrained_path" </strong>{" "}
+                    Specifies whether to use a pre-trained reward classification
+                    model to automatically evaluate the quality or success of
+                    demonstrations.
+                  </li>
                 </ul>
               </div>
             </section>
