@@ -709,21 +709,24 @@ const Robotics = () => {
                         <strong>"observation.images.front"</strong> - Defines
                         the front camera's image data that will be recorded as
                         part of the robot's visual observations. It can be of
-                        type visual meaning its image/camera data or numerical
-                        sensor data. The shape defines the color chanels and
-                        then the pixel dimensions of the image.
+                        type visual meaning its image/camera data or state which
+                        is numerical sensor data. The shape defines the color
+                        chanels and then the pixel dimensions of the image.
                       </li>
                       <li>
                         <strong>"observation.images.wrist"</strong> - Defines
                         the wrist-mounted camera's image data that will be
                         recorded as part of the robot's visual observations.
+                        type and shape are the same as the front images.
                       </li>
                       <li>
-                        <strong>"add_joint_velocity_to_observation"</strong> -
-                        Joint velocity is how fast each robot joint is moving at
-                        any given moment. Setting this to true means that
-                        includes the robot's joint velocities in the observation
-                        data will get fed to the neural network
+                        <strong>"observation.state"</strong> - Defines the
+                        numerical sensor data that will be recorded as part of
+                        the robot's non-visual observations. It's type state
+                        indicates its numerical sensor data.The shape an array
+                        of 18 numerical values representing different sensor
+                        readings including joint velocities, joint positions,
+                        gripper state, force/torque reading, etc.
                       </li>
                       <li>
                         <strong>"add_ee_pose_to_observation"</strong> - The
