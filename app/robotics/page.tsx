@@ -629,8 +629,8 @@ const Robotics = () => {
                     the system will take when you run the configuration. Options
                     include:
                     <br />
-                    record - Specifies that the system should collect and save
-                    demonstration data during your sessions.
+                    &quot;record&quot; - Specifies that the system should
+                    collect and save demonstration data during your sessions.
                     <br />
                     &quot;replay&quot;: Plays back previously recorded
                     demonstrations without collecting new data
