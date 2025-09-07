@@ -360,10 +360,10 @@ const Robotics = () => {
                 <ul className="space-y-2">
                   <h3 className="text-xl font-bold my-5">Type</h3>
                   <li>
-                    <strong>"hil"</strong> - Specifies Human-in-the-Loop
-                    training where you control the robot with a gamepad and the
-                    system records your demonstrations for the neural network to
-                    learn from.
+                    <strong>&quot;hil&quot;</strong> - Specifies
+                    Human-in-the-Loop training where you control the robot with
+                    a gamepad and the system records your demonstrations for the
+                    neural network to learn from.
                     <br />
                     <strong>Some additional types include:</strong>
                     <ul>
@@ -532,9 +532,11 @@ const Robotics = () => {
                         not multiple ones)
                       </li>
                       <li>
-                        <strong>"add_joint_velocity_to_observation"</strong> -
-                        Joint velocity is how fast each robot joint is moving at
-                        any given moment. Setting this to true means that
+                        <strong>
+                          &quot;add_joint_velocity_to_observation&quot;
+                        </strong>{" "}
+                        - Joint velocity is how fast each robot joint is moving
+                        at any given moment. Setting this to true means that
                         includes the robot&apos;s joint velocities in the
                         observation data will get fed to the neural network
                       </li>
