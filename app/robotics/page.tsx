@@ -187,8 +187,8 @@ const Robotics = () => {
                       wrist pitch and roll control
                     </li>
                     <li>
-                      These provide precise micro-movements for the robot's end
-                      effector
+                      These provide precise micro-movements for the robot&apos;s
+                      end effector
                     </li>
                   </ul>
                 </div>
@@ -277,7 +277,7 @@ const Robotics = () => {
                 <br />
                 Until you get to the area about creating a configuration file.
                 <br />
-                Since this is a custom config file, the name doesn't really
+                Since this is a custom config file, the name doesn&apos;t really
                 matter. Here is an example name: env_config_gym_hil_il.json for
                 gym hill environment configuration imitation learning. Below is
                 an example of the code inside the config file for a gamepad
@@ -380,9 +380,9 @@ const Robotics = () => {
                       </li>
                       <li>
                         <strong>"offline"</strong> - Trains on pre-recorded
-                        datasets that's already been collected without recording
-                        new data (no interaction with the robot to collect
-                        data).
+                        datasets that&apos;s already been collected without
+                        recording new data (no interaction with the robot to
+                        collect data).
                       </li>
                     </ul>
                   </li>
@@ -402,8 +402,8 @@ const Robotics = () => {
                         negative reward every time the gripper is activated
                         during the simulation. Without this penalty, the robot
                         might constantly open and close the gripper throughout
-                        the episode, since there's no cost to using it. This
-                        creates noisy, inefficient behavior where the robot
+                        the episode, since there&apos;s no cost to using it.
+                        This creates noisy, inefficient behavior where the robot
                         grips randomly rather than purposefully.
                       </li>
                       <li>
@@ -418,8 +418,8 @@ const Robotics = () => {
                         <strong>"add_joint_velocity_to_observation"</strong> -
                         Joint velocity is how fast each robot joint is moving at
                         any given moment. Setting this to true means that
-                        includes the robot's joint velocities in the observation
-                        data will get fed to the neural network
+                        includes the robot&apos;s joint velocities in the
+                        observation data will get fed to the neural network
                       </li>
                       <li>
                         <strong>"add_ee_pose_to_observation"</strong> - The
@@ -433,7 +433,7 @@ const Robotics = () => {
                       </li>
                       <li>
                         <strong>"crop_params_dict"</strong> - Defines how to
-                        crop specific rectangular sections from the robot's
+                        crop specific rectangular sections from the robot&apos;s
                         camera images before processing them. As an example:
                         <br />
                         "observation.images.front": [0, 0, 128, 128] This means:
@@ -461,11 +461,11 @@ const Robotics = () => {
                         ends and the system moves to the reset phase.
                       </li>
                       <li>
-                        <strong>"use_gripper""</strong> - Allows gripper
+                        <strong>"use_gripper"</strong> - Allows gripper
                         functionality in the simulation, allowing you to control
-                        the robot's gripper (hand/claw) to grab and release
+                        the robot&apos;s gripper (hand/claw) to grab and release
                         objects with whatever controller you decide to use. The
-                        gripper's state (open/closed, grip strength) gets
+                        gripper&apos;s state (open/closed, grip strength) gets
                         recorded as part of your demonstration data The neural
                         network learns when and how to use the gripper based on
                         your demonstrations
@@ -475,9 +475,9 @@ const Robotics = () => {
                         the exact joint angles (in radians) that the robot arm
                         will move to at the start of each new episode. For a
                         7-DOF (degrees of freedom) robot like the Panda arm,
-                        each number corresponds to one joint's rotation angle.
-                        After each session ends, the robot automatically moves
-                        to these exact joint positions, ensuring every
+                        each number corresponds to one joint&apos;s rotation
+                        angle. After each session ends, the robot automatically
+                        moves to these exact joint positions, ensuring every
                         demonstration starts from the same consistent pose.
                       </li>
                       <li>
@@ -488,9 +488,9 @@ const Robotics = () => {
                         starting position
                       </li>
                       <li>
-                        <strong>"control_mode"</strong> - specifies that you'll
-                        control the robot with. The options include gamepad
-                        (controller), keyboard, and mouse (Gamepad is
+                        <strong>"control_mode"</strong> - specifies that
+                        you&apos;ll control the robot with. The options include
+                        gamepad (controller), keyboard, and mouse (Gamepad is
                         recommended).
                       </li>
                     </ul>
@@ -511,8 +511,8 @@ const Robotics = () => {
                         negative reward every time the gripper is activated
                         during the simulation. Without this penalty, the robot
                         might constantly open and close the gripper throughout
-                        the episode, since there's no cost to using it. This
-                        creates noisy, inefficient behavior where the robot
+                        the episode, since there&apos;s no cost to using it.
+                        This creates noisy, inefficient behavior where the robot
                         grips randomly rather than purposefully.
                       </li>
                       <li>
@@ -527,8 +527,8 @@ const Robotics = () => {
                         <strong>"add_joint_velocity_to_observation"</strong> -
                         Joint velocity is how fast each robot joint is moving at
                         any given moment. Setting this to true means that
-                        includes the robot's joint velocities in the observation
-                        data will get fed to the neural network
+                        includes the robot&apos;s joint velocities in the
+                        observation data will get fed to the neural network
                       </li>
                       <li>
                         <strong>"add_ee_pose_to_observation"</strong> - The
@@ -542,7 +542,7 @@ const Robotics = () => {
                       </li>
                       <li>
                         <strong>"crop_params_dict"</strong> - Defines how to
-                        crop specific rectangular sections from the robot's
+                        crop specific rectangular sections from the robot&apos;s
                         camera images before processing them. As an example:
                         <br />
                         "observation.images.front": [0, 0, 128, 128] This means:
@@ -570,11 +570,11 @@ const Robotics = () => {
                         ends and the system moves to the reset phase.
                       </li>
                       <li>
-                        <strong>"use_gripper""</strong> - Allows gripper
+                        <strong>"use_gripper"</strong> - Allows gripper
                         functionality in the simulation, allowing you to control
-                        the robot's gripper (hand/claw) to grab and release
+                        the robot&apos;s gripper (hand/claw) to grab and release
                         objects with whatever controller you decide to use. The
-                        gripper's state (open/closed, grip strength) gets
+                        gripper&apos;s state (open/closed, grip strength) gets
                         recorded as part of your demonstration data The neural
                         network learns when and how to use the gripper based on
                         your demonstrations
@@ -584,9 +584,9 @@ const Robotics = () => {
                         the exact joint angles (in radians) that the robot arm
                         will move to at the start of each new episode. For a
                         7-DOF (degrees of freedom) robot like the Panda arm,
-                        each number corresponds to one joint's rotation angle.
-                        After each session ends, the robot automatically moves
-                        to these exact joint positions, ensuring every
+                        each number corresponds to one joint&apos;s rotation
+                        angle. After each session ends, the robot automatically
+                        moves to these exact joint positions, ensuring every
                         demonstration starts from the same consistent pose.
                       </li>
                       <li>
@@ -597,9 +597,9 @@ const Robotics = () => {
                         starting position
                       </li>
                       <li>
-                        <strong>"control_mode"</strong> - specifies that you'll
-                        control the robot with. The options include gamepad
-                        (controller), keyboard, and mouse (Gamepad is
+                        <strong>"control_mode"</strong> - specifies that
+                        you&apos;ll control the robot with. The options include
+                        gamepad (controller), keyboard, and mouse (Gamepad is
                         recommended).
                       </li>
                     </ul>
@@ -620,8 +620,8 @@ const Robotics = () => {
                     "replay": Plays back previously recorded demonstrations
                     without collecting new data
                     <br />
-                    "evaluate": Tests a trained policy's performance rather than
-                    recording human demonstrations
+                    "evaluate": Tests a trained policy&apos;s performance rather
+                    than recording human demonstrations
                     <br />
                     "train": Uses recorded data to train a neural network
                     (though this might be handled separately)
@@ -671,7 +671,7 @@ const Robotics = () => {
                     image manipulation, data handling, and neural network
                     operations. They include:
                     <br />
-                    "cpu": Uses the computer's main processor (slower but
+                    "cpu": Uses the computer&apos;s main processor (slower but
                     universally compatible)
                     <br />
                     "cuda": Uses NVIDIA GPU acceleration (requires NVIDIA
@@ -707,26 +707,28 @@ const Robotics = () => {
                     <ul>
                       <li>
                         <strong>"observation.images.front"</strong> - Defines
-                        the front camera's image data that will be recorded as
-                        part of the robot's visual observations. It can be of
-                        type visual meaning its image/camera data or state which
-                        is numerical sensor data. The shape defines the color
-                        chanels and then the pixel dimensions of the image.
+                        the front camera&apos;s image data that will be recorded
+                        as part of the robot&apos;s visual observations. It can
+                        be of type visual meaning its image/camera data or state
+                        which is numerical sensor data. The shape defines the
+                        color chanels and then the pixel dimensions of the
+                        image.
                       </li>
                       <li>
                         <strong>"observation.images.wrist"</strong> - Defines
-                        the wrist-mounted camera's image data that will be
-                        recorded as part of the robot's visual observations.
-                        type and shape are the same as the front images.
+                        the wrist-mounted camera&apos;s image data that will be
+                        recorded as part of the robot&apos;s visual
+                        observations. type and shape are the same as the front
+                        images.
                       </li>
                       <li>
                         <strong>"observation.state"</strong> - Defines the
                         numerical sensor data that will be recorded as part of
-                        the robot's non-visual observations. It's type state
-                        indicates its numerical sensor data.The shape an array
-                        of 18 numerical values representing different sensor
-                        readings including joint velocities, joint positions,
-                        gripper state, force/torque reading, etc.
+                        the robot&apos;s non-visual observations. It&apos;s type
+                        state indicates its numerical sensor data.The shape an
+                        array of 18 numerical values representing different
+                        sensor readings including joint velocities, joint
+                        positions, gripper state, force/torque reading, etc.
                       </li>
                       <li>
                         <strong>"action"</strong> - Defines the control commands
