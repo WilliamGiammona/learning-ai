@@ -318,7 +318,7 @@ const Robotics = () => {
   "name": "example_name",
   "mode": "record",
   "repo_id": "example_repo",
-  "dataset_root": null,
+  "dataset_root": dataset,
   "task": "PandaPickCubeGamepad-v0",
   "num_episodes": 30,
   "episode": 0,
@@ -644,7 +644,9 @@ const Robotics = () => {
                   <h3 className="text-xl font-bold my-5">Repo_id</h3>
                   <li>
                     <strong>&quot;repo_id&quot;</strong> - Specifies where your
-                    dataset will be stored.
+                    dataset will be stored. Whatever name you give this, it will
+                    make a folder in your root directory with this name and all
+                    the data will be stored there.
                   </li>
                   <h3 className="text-xl font-bold my-5">Dataset_Root</h3>
                   <li>
