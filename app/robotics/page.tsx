@@ -620,8 +620,8 @@ const Robotics = () => {
                   </li>
                   <h3 className="text-xl font-bold my-5">Name</h3>
                   <li>
-                    <strong>"name"</strong> - Used for identification purposes,
-                    put whatever name you want here.
+                    <strong>&quot;name&quot;</strong> - Used for identification
+                    purposes, put whatever name you want here.
                   </li>
                   <h3 className="text-xl font-bold my-5">Mode</h3>
                   <li>
