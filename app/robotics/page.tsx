@@ -780,6 +780,110 @@ const Robotics = () => {
                 </ul>
               </div>
             </section>
+
+            {/* Third dashed line separator */}
+            <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+
+            <section id="act-policy">
+              <h3 className="text-xl font-semibold">ACT Policy</h3>
+              <p className="mb-4">
+                ACT (Action-Chunking Transformer) Policy is a reinforcement
+                learning approach that enables efficient robot control by
+                predicting sequences of actions rather than issuing one command
+                at a time. This makes the robot’s movements smoother and more
+                coordinated, especially in long-horizon tasks.
+              </p>
+
+              <h4 className="text-lg font-semibold">How It Works</h4>
+              <p className="mb-4">
+                Instead of learning a direct mapping from observation to a
+                single action, the ACT Policy learns to output a chunk of
+                actions that unfold over several timesteps. This reduces
+                decision latency and allows better temporal abstraction in
+                control.
+              </p>
+
+              <h4 className="text-lg font-semibold">Advantages</h4>
+              <ul className="list-disc list-inside ml-4 space-y-2">
+                <li>
+                  <strong>Efficiency:</strong> Fewer forward passes are needed
+                  because multiple actions are predicted at once.
+                </li>
+                <li>
+                  <strong>Smoother Behavior:</strong> Produces more natural,
+                  coordinated robotic movements.
+                </li>
+                <li>
+                  <strong>Scalability:</strong> Can handle longer-horizon tasks
+                  compared to step-by-step controllers.
+                </li>
+              </ul>
+
+              <h4 className="text-lg font-semibold mt-6">Resources</h4>
+              <p>
+                Learn more about ACT Policy in LeRobot here:{" "}
+                <a
+                  href="https://huggingface.co/docs/lerobot/act"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  https://huggingface.co/docs/lerobot/act
+                </a>
+              </p>
+            </section>
+
+            {/* Third dashed line separator */}
+            <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+
+            <section id="act-policy">
+              <h3 className="text-xl font-semibold">ACT Policy</h3>
+              <p className="mb-4">
+                ACT (Action-Chunking Transformer) Policy is a reinforcement
+                learning approach that enables efficient robot control by
+                predicting sequences of actions rather than issuing one command
+                at a time. This makes the robot&apos;s movements smoother and
+                more coordinated, especially in long-horizon tasks.
+              </p>
+
+              <h4 className="text-lg font-semibold">How It Works</h4>
+              <p className="mb-4">
+                Instead of learning a direct mapping from observation to a
+                single action, the ACT Policy learns to output a chunk of
+                actions that unfold over several timesteps. This reduces
+                decision latency and allows better temporal abstraction in
+                control.
+              </p>
+
+              <h4 className="text-lg font-semibold">Advantages</h4>
+              <ul className="list-disc list-inside ml-4 space-y-2">
+                <li>
+                  <strong>Efficiency:</strong> Fewer forward passes are needed
+                  because multiple actions are predicted at once.
+                </li>
+                <li>
+                  <strong>Smoother Behavior:</strong> Produces more natural,
+                  coordinated robotic movements.
+                </li>
+                <li>
+                  <strong>Scalability:</strong> Can handle longer-horizon tasks
+                  compared to step-by-step controllers.
+                </li>
+              </ul>
+
+              <h4 className="text-lg font-semibold mt-6">Resources</h4>
+              <p>
+                Learn more about ACT Policy in LeRobot here:{" "}
+                <a
+                  href="https://huggingface.co/docs/lerobot/act"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  https://huggingface.co/docs/lerobot/act
+                </a>
+              </p>
+            </section>
           </div>
         </main>
       </div>
