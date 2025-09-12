@@ -883,6 +883,15 @@ const Robotics = () => {
                   https://huggingface.co/docs/lerobot/act
                 </a>
               </p>
+
+              <div>
+                <p>
+                  Your simulation already has an ACT policy predownloaded. The
+                  filepath is src/lerobot/policies/act/ You also have a training
+                  script ready, whose filepath is src/lerobot/scripts/train.py
+                  The config file can be found at src/lerobot/configs/
+                </p>
+              </div>
             </section>
           </div>
         </main>
