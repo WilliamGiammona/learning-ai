@@ -40,6 +40,22 @@ const Robotics = () => {
                   SetUp
                 </a>
               </li>
+              <li>
+                <a
+                  href="#troubleshooting"
+                  className="text-blue-600 hover:text-blue-800 underline block"
+                >
+                  Troubleshooting
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#training"
+                  className="text-blue-600 hover:text-blue-800 underline block"
+                >
+                  Training the Robot
+                </a>
+              </li>
             </ul>
           </nav>
         </aside>
@@ -74,6 +90,22 @@ const Robotics = () => {
                   SetUp
                 </a>
               </li>
+              <li>
+                <a
+                  href="#troubleshooting"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  Troubleshooting
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#training"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  Training the Robot
+                </a>
+              </li>
             </ul>
           </nav>
 
@@ -83,22 +115,17 @@ const Robotics = () => {
 
               <h4 className="text-lg font-semibold">MuJoCo</h4>
               <p className="mb-4">
-                MuJoCo is a program that simulates the laws of physics. To tell
-                it what my environment/robot should look like, I must write it a
-                text file (XML). Writing XML files to specify environments is a
-                type of format called MJCF. A popular robotics format called
-                URDF is also acceptable. MuJoCo comes with a built in viewer
-                window to see your robot moving around.
+                MuJoCo is a program that simulates the laws of physics for robot
+                simulations.
               </p>
 
               <h4 className="text-lg font-semibold">LeRobot</h4>
               <p className="mb-4">
                 LeRobot is a simulated robot that can be controlled using
                 high-level commands. It is designed to work seamlessly with
-                MuJoCo and can be easily configured using MJCF or URDF files. I
-                will be using LeRobot to get started with simulating robotic
-                movements and interactions in a virtual environment. I will be
-                using the SO-101 robot model.
+                MuJoCo. I will be using LeRobot to get started with simulating
+                robotic movements and interactions in a virtual environment. I
+                will be using the SO-101 robot model.
                 <br />
                 This is the website I will be using:{" "}
                 <a
@@ -353,6 +380,7 @@ const Robotics = () => {
   "reward_classifier_pretrained_path": null
 }`}
               </SyntaxHighlighter>
+
               <div className="mt-6">
                 <h4 className="text-2xl font-semibold mb-10 underline">
                   Configuration Parameters Explained:
@@ -502,122 +530,7 @@ const Robotics = () => {
                       </li>
                     </ul>
                   </li>
-                  <h3 className="text-xl font-bold my-5">Wrapper</h3>
-                  <li>
-                    The <strong>&quot;wrapper&quot;</strong> object is a
-                    software layer that sits between LeRobot and the underlying
-                    simulation environment (like MuJoCo). It adds custom
-                    behavior, rewards, penalties, standardizes different
-                    formats, and does things like image cropping, resizing,
-                    adding sensor information, etc before the data goes to the
-                    neural network.
-                    <br />
-                    Inside the wrapper, some of the parameters include:
-                    <ul>
-                      <li>
-                        <strong>&quot;gripper_penalty&quot;</strong> - applies a
-                        small negative reward every time the gripper is
-                        activated during the simulation. Without this penalty,
-                        the robot might constantly open and close the gripper
-                        throughout the episode, since there&apos;s no cost to
-                        using it. This creates noisy, inefficient behavior where
-                        the robot grips randomly rather than purposefully.
-                      </li>
-                      <li>
-                        <strong>&quot;display_cameras&quot;</strong> - allows
-                        the visual camera feeds (multiple camera angles should
-                        show up) to appear on screen during data collection. To
-                        save computational power you can set this to false
-                        (You&apos;ll still see the main simulation window, just
-                        not multiple ones)
-                      </li>
-                      <li>
-                        <strong>
-                          &quot;add_joint_velocity_to_observation&quot;
-                        </strong>{" "}
-                        - Joint velocity is how fast each robot joint is moving
-                        at any given moment. Setting this to true means that
-                        includes the robot&apos;s joint velocities in the
-                        observation data will get fed to the neural network
-                      </li>
-                      <li>
-                        <strong>&quot;add_ee_pose_to_observation&quot;</strong>{" "}
-                        - The end-effector&apos;s (The end-effector is the part
-                        of the robot that does the work, usually the gripper or
-                        hand that actually interacts with objects.) pose (the
-                        pose is both the robot&apos;s X,Y,Z position in space
-                        and its orientation [how its rotated/tilted]). If set to
-                        true, it will include this in the observation data sent
-                        to the neural network.
-                      </li>
-                      <li>
-                        <strong>&quot;crop_params_dict&quot;</strong> - Defines
-                        how to crop specific rectangular sections from the
-                        robot&apos;s camera images before processing them. As an
-                        example:
-                        <br />
-                        &quot;observation.images.front&quot;: [0, 0, 128, 128]
-                        This means: starting at pixel (0,0) - the top-left
-                        corner - cut out a 128×128 pixel square from the front
-                        camera image.
-                        <br />
-                        Cropping images is a tradeoff between maximizing compute
-                        efficiency vs accidentally deleting useful information.
-                      </li>
-                      <li>
-                        <strong>&quot;resize_size&quot;</strong> - Specifies the
-                        final dimensions that all camera images will be resized
-                        to after cropping.
-                      </li>
-                      <li>
-                        <strong>&quot;resize_size&quot;</strong> - Specifies the
-                        final dimensions that all camera images will be resized
-                        to after cropping.
-                      </li>
-                      <li>
-                        <strong>&quot;control_time_s&quot;</strong> - Control
-                        time is how long you have to complete the task during
-                        each recording session. The _s is for seconds, so once
-                        the amount of seconds you specify passes, the episode
-                        automatically ends and the system moves to the reset
-                        phase.
-                      </li>
-                      <li>
-                        <strong>&quot;use_gripper&quot;</strong> - Allows
-                        gripper functionality in the simulation, allowing you to
-                        control the robot&apos;s gripper (hand/claw) to grab and
-                        release objects with whatever controller you decide to
-                        use. The gripper&apos;s state (open/closed, grip
-                        strength) gets recorded as part of your demonstration
-                        data The neural network learns when and how to use the
-                        gripper based on your demonstrations
-                      </li>
-                      <li>
-                        <strong>&quot;fixed_reset_joint_positions&quot;</strong>{" "}
-                        - Defines the exact joint angles (in radians) that the
-                        robot arm will move to at the start of each new episode.
-                        For a 7-DOF (degrees of freedom) robot like the Panda
-                        arm, each number corresponds to one joint&apos;s
-                        rotation angle. After each session ends, the robot
-                        automatically moves to these exact joint positions,
-                        ensuring every demonstration starts from the same
-                        consistent pose.
-                      </li>
-                      <li>
-                        <strong>&quot;reset_time&quot;</strong> - A pause
-                        between episodes where the robot moves to its reset
-                        position and stays there before the next recording
-                        begins. This gives the simulation time to settle after
-                        the robot moves to its starting position
-                      </li>
-                      <li>
-                        <strong>&quot;control_mode&quot;</strong> - specifies
-                        that you&apos;ll control the robot with. The options
-                        include gamepad (controller), keyboard, and mouse
-                        (Gamepad is recommended).
-                      </li>
-                    </ul>
-                  </li>
+
                   <h3 className="text-xl font-bold my-5">Name</h3>
                   <li>
                     <strong>&quot;name&quot;</strong> - Used for identification
@@ -781,61 +694,87 @@ const Robotics = () => {
               </div>
             </section>
 
-            {/* Third dashed line separator */}
-            <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+            {/* NEW: Troubleshooting section inserted here */}
+            <div className="border-t-2 border-dashed border-gray-400 my-8" />
 
-            <section id="act-policy">
-              <h3 className="text-xl font-semibold">ACT Policy</h3>
-              <p className="mb-4">
-                ACT (Action-Chunking Transformer) Policy is a reinforcement
-                learning approach that enables efficient robot control by
-                predicting sequences of actions rather than issuing one command
-                at a time. This makes the robot’s movements smoother and more
-                coordinated, especially in long-horizon tasks.
-              </p>
-
-              <h4 className="text-lg font-semibold">How It Works</h4>
-              <p className="mb-4">
-                Instead of learning a direct mapping from observation to a
-                single action, the ACT Policy learns to output a chunk of
-                actions that unfold over several timesteps. This reduces
-                decision latency and allows better temporal abstraction in
-                control.
-              </p>
-
-              <h4 className="text-lg font-semibold">Advantages</h4>
-              <ul className="list-disc list-inside ml-4 space-y-2">
-                <li>
-                  <strong>Efficiency:</strong> Fewer forward passes are needed
-                  because multiple actions are predicted at once.
-                </li>
-                <li>
-                  <strong>Smoother Behavior:</strong> Produces more natural,
-                  coordinated robotic movements.
-                </li>
-                <li>
-                  <strong>Scalability:</strong> Can handle longer-horizon tasks
-                  compared to step-by-step controllers.
-                </li>
-              </ul>
-
-              <h4 className="text-lg font-semibold mt-6">Resources</h4>
-              <p>
-                Learn more about ACT Policy in LeRobot here:{" "}
-                <a
-                  href="https://huggingface.co/docs/lerobot/act"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 underline"
-                >
-                  https://huggingface.co/docs/lerobot/act
-                </a>
-              </p>
+            <section id="troubleshooting" aria-label="Troubleshooting">
+              <div className="rounded-xl border border-amber-300 bg-amber-50 p-5">
+                <h3 className="text-xl font-semibold mb-2">
+                  Troubleshooting (Quick Fixes)
+                </h3>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>
+                    <strong>Laggy / low FPS:</strong> Lower{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">fps</code>{" "}
+                    in the config (e.g., 20 → 10), set{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      display_cameras
+                    </code>{" "}
+                    to{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      false
+                    </code>
+                    , and reduce{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      resize_size
+                    </code>{" "}
+                    (e.g., 128×128 → 96×96). On Apple Silicon, use{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      "mps"
+                    </code>{" "}
+                    for{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      device
+                    </code>
+                    .
+                  </li>
+                  <li>
+                    <strong>Gamepad not detected:</strong> Switch{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      control_mode
+                    </code>{" "}
+                    to{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      "keyboard"
+                    </code>{" "}
+                    and use:
+                    <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
+                      <li>
+                        <strong>Spacebar:</strong> press once to start/confirm
+                        control.
+                      </li>
+                      <li>
+                        <strong>Arrows:</strong> move in X/Y.
+                      </li>
+                      <li>
+                        <strong>Left/Right Shift:</strong> move along Z.
+                      </li>
+                      <li>
+                        <strong>Left/Right Ctrl:</strong> gripper close/open.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Camera feeds slow things down:</strong> keep{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      display_cameras
+                    </code>{" "}
+                    off and only use the main viewer.
+                  </li>
+                  <li>
+                    <strong>Reset hiccups:</strong> increase{" "}
+                    <code className="px-1 py-0.5 rounded bg-gray-100">
+                      reset_time_s
+                    </code>{" "}
+                    slightly (e.g., 2 → 3) so the arm fully settles before the
+                    next episode.
+                  </li>
+                </ul>
+              </div>
             </section>
 
             {/* Third dashed line separator */}
             <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
-
             <section id="act-policy">
               <h3 className="text-xl font-semibold">ACT Policy</h3>
               <p className="mb-4">
@@ -885,11 +824,227 @@ const Robotics = () => {
               </p>
 
               <div>
+                <h3>Filepaths</h3>
                 <p>
                   Your simulation already has an ACT policy predownloaded. The
                   filepath is src/lerobot/policies/act/ You also have a training
                   script ready, whose filepath is src/lerobot/scripts/train.py
                   The config file can be found at src/lerobot/configs/
+                </p>
+                <p>
+                  The goal is to pick up the black cube as many times as you've
+                  set in your config file.
+                </p>
+              </div>
+            </section>
+            {/* Separator */}
+            <div className="border-t-2 border-dashed border-gray-400 my-8"></div>
+
+            <section id="training" aria-label="Training the Robot">
+              <h3 className="text-xl font-semibold">Training the Robot</h3>
+              <p className="mb-4">
+                Use your config to record demonstrations and then evaluate or
+                train a policy. The config decides where sessions are saved,
+                while the CLI command controls whether you record or evaluate.
+              </p>
+
+              {/* Step 1: Where sessions are saved */}
+              <div className="space-y-3">
+                <h4 className="text-lg font-semibold">
+                  1) Where recordings are saved
+                </h4>
+                <SyntaxHighlighter
+                  language="json"
+                  style={tomorrow}
+                  className="rounded-lg mb-2"
+                >
+                  {`{
+  "dataset_root": "dataset",
+  "repo_id": "my_panda_recordings",
+  "mode": "record"
+}`}
+                </SyntaxHighlighter>
+                <p className="text-gray-700">
+                  <code>dataset_root</code> sets the base folder and{" "}
+                  <code>repo_id </code>
+                  adds the subfolder. Together they create
+                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                    ./dataset/my_panda_recordings/
+                  </code>
+                  . If <code>repo_id</code> is missing or ignored, LeRobot
+                  defaults to
+                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                    ./dataset/data/
+                  </code>
+                  . The recordings will be in this data directory.
+                </p>
+
+                <h5 className="font-semibold mt-3">Example folder layout:</h5>
+                <SyntaxHighlighter
+                  language="bash"
+                  style={tomorrow}
+                  className="rounded-lg"
+                >
+                  {`dataset/
+└── my_panda_recordings/
+    ├── data/
+    ├── images/
+    ├── meta/
+    └── videos/`}
+                </SyntaxHighlighter>
+              </div>
+
+              {/* Step 2: Record teleoperation */}
+              <div className="space-y-3 mt-6">
+                <h4 className="text-lg font-semibold">
+                  2) Run teleoperation (record mode)
+                </h4>
+                <p className="text-gray-700">
+                  After completing your config, run the command (specified
+                  below) in your terminal. This launches a new MuJoCo simulation
+                  window showing the robot arm in its environment with a cube on
+                  the table.
+                  <br />
+                  <br />
+                  Your job is to control the arm (via keyboard or gamepad,
+                  depending on
+                  <code>control_mode</code>) and demonstrate the task —
+                  typically picking up the cube and placing it back down. Each
+                  attempt is one “episode.” The system saves every episode
+                  automatically.
+                  <br />
+                  <br />
+                  Recordings are written to
+                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                    ./dataset/my_panda_recordings/
+                  </code>
+                  , split into folders like <code>data/</code>,{" "}
+                  <code>images/</code>,<code>meta/</code>, and{" "}
+                  <code>videos/</code>.
+                </p>
+
+                <h5 className="font-semibold mt-2">macOS</h5>
+                <SyntaxHighlighter
+                  language="bash"
+                  style={tomorrow}
+                  className="rounded-lg"
+                >
+                  {`# Record keyboard/gamepad demos
+mjpython -m lerobot.scripts.rl.gym_manipulator --config_path path/to/env_config_gym_hil_il.json`}
+                </SyntaxHighlighter>
+
+                <h5 className="font-semibold mt-2">Linux</h5>
+                <SyntaxHighlighter
+                  language="bash"
+                  style={tomorrow}
+                  className="rounded-lg"
+                >
+                  {`# Record keyboard/gamepad demos
+python -m lerobot.scripts.rl.gym_manipulator --config_path path/to/env_config_gym_hil_il.json`}
+                </SyntaxHighlighter>
+
+                <div className="rounded-lg border border-gray-200 p-4 bg-gray-50">
+                  <h5 className="font-semibold mb-2">Quick checks</h5>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>
+                      A MuJoCo window pops up with the robot arm and cube.
+                    </li>
+                    <li>
+                      Your inputs (keyboard/gamepad) move the robot in real
+                      time.
+                    </li>
+                    <li>
+                      After each episode, new files appear under
+                      <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                        dataset/my_panda_recordings/
+                      </code>
+                      .
+                    </li>
+                    <li>
+                      Images and videos log the run; <code>meta/</code> and
+                      <code>data/</code> store structured episode info.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* Step 3: Train the ACT policy */}
+              <div className="space-y-3 mt-6">
+                <h4 className="text-lg font-semibold">
+                  3) Train the ACT policy
+                </h4>
+                <p className="text-gray-700">
+                  After collecting demonstrations, you can train an ACT
+                  (Action-Chunking Transformer) policy on them. Run this command
+                  from your project root:
+                </p>
+
+                <SyntaxHighlighter
+                  language="bash"
+                  style={tomorrow}
+                  className="rounded-lg"
+                >
+                  {`lerobot-train \\
+  --dataset.repo_id=${`HF_USER`}/il_gym \\
+  --policy.type=act \\
+  --output_dir=outputs/train/il_sim_test \\
+  --job_name=il_sim_test \\
+  --policy.device=cuda \\
+  --wandb.enable=true`}
+                </SyntaxHighlighter>
+                <h5 className="font-semibold mt-3">What each flag does</h5>
+                <ul className="list-disc list-inside space-y-1 text-gray-700">
+                  <li>
+                    <code>--dataset.repo_id=${`HF_USER`}/il_gym</code> — uses a
+                    dataset on the Hugging Face Hub (namespaced as{" "}
+                    <code>username/repo</code>). Make sure your recordings are
+                    pushed there. If you’re training from local files instead,
+                    use <code>--dataset.root</code> and
+                    <code>--dataset.repo_id</code> (e.g., <code>dataset</code> +{" "}
+                    <code>data</code>).
+                  </li>
+                  <li>
+                    <code>--policy.type=act</code> — selects the Action-Chunking
+                    Transformer policy and its defaults. It auto-adapts to the
+                    numbers of states, actions, and cameras saved in your
+                    dataset.
+                  </li>
+                  <li>
+                    <code>--policy.device=cuda</code> — train on an NVIDIA GPU.
+                    On Apple Silicon use
+                    <code>--policy.device=mps</code>; for CPU fallback use{" "}
+                    <code>cpu</code>.
+                  </li>
+                  <li>
+                    <code>--output_dir=outputs/train/il_sim_test</code> &{" "}
+                    <code>--job_name=il_sim_test</code> — set where
+                    logs/checkpoints go and how the run is labeled. Checkpoints
+                    land in
+                    <code>outputs/train/il_sim_test/checkpoints/</code>.
+                  </li>
+                  <li>
+                    <code>--wandb.enable=true</code> — logs metrics to Weights
+                    &amp; Biases. Run
+                    <code>wandb login</code> first; set to <code>false</code> to
+                    keep logs local only.
+                  </li>
+                </ul>
+
+                <p className="text-sm text-gray-600 mt-3">
+                  By default training runs for ~100k steps. You can
+                  shorten/extend with <code>--steps=&lt;N&gt;</code>.
+                </p>
+
+                <p className="text-gray-700">
+                  This command uses your saved recordings in
+                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                    ./dataset/
+                  </code>
+                  and starts training the ACT policy. The
+                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
+                    --policy.device=mps
+                  </code>
+                  flag runs it on Apple Silicon; adjust if you&apos;re on Linux
+                  or CUDA.
                 </p>
               </div>
             </section>
