@@ -1028,24 +1028,6 @@ python -m lerobot.scripts.rl.gym_manipulator --config_path path/to/env_config_gy
                     keep logs local only.
                   </li>
                 </ul>
-
-                <p className="text-sm text-gray-600 mt-3">
-                  By default training runs for ~100k steps. You can
-                  shorten/extend with <code>--steps=&lt;N&gt;</code>.
-                </p>
-
-                <p className="text-gray-700">
-                  This command uses your saved recordings in
-                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
-                    ./dataset/
-                  </code>
-                  and starts training the ACT policy. The
-                  <code className="ml-1 px-1 py-0.5 rounded bg-gray-100">
-                    --policy.device=mps
-                  </code>
-                  flag runs it on Apple Silicon; adjust if you&apos;re on Linux
-                  or CUDA.
-                </p>
               </div>
             </section>
           </div>
