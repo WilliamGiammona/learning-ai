@@ -720,7 +720,7 @@ const Robotics = () => {
                     </code>{" "}
                     (e.g., 128×128 → 96×96). On Apple Silicon, use{" "}
                     <code className="px-1 py-0.5 rounded bg-gray-100">
-                      "mps"
+                      &quot;mps&quot;
                     </code>{" "}
                     for{" "}
                     <code className="px-1 py-0.5 rounded bg-gray-100">
