@@ -94,6 +94,13 @@ export default function Navbar() {
                   >
                     Large Deviations Theory
                   </Link>
+                  <Link
+                    href="/math/classical-mechanics"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 cursor-pointer"
+                    onClick={() => setIsMathDropdownOpen(false)}
+                  >
+                    Classical Mechanics
+                  </Link>
                 </div>
               )}
             </div>
@@ -163,6 +170,13 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Large Deviations Theory
+            </Link>
+            <Link
+              href="/math/classical-mechanics"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 ml-4"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Classical Mechanics
             </Link>
             <Link
               href="/robotics"
