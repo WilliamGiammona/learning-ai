@@ -245,13 +245,8 @@ const page = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Action:</strong> Placeholder definition.
-                </li>
-                <li>
-                  <strong>Lagrangian:</strong> Placeholder definition.
-                </li>
-                <li>
-                  <strong>Constraint:</strong> Placeholder definition.
+                  <strong>Mechanics:</strong> The study of motion and the forces
+                  that cause it.
                 </li>
               </ul>
             </section>
