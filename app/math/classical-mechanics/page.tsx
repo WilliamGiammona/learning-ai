@@ -17,6 +17,48 @@ const page = () => {
                   Overview
                 </a>
               </li>
+
+              {/* Chapter 1 */}
+              <li>
+                <a href="#chapter-1" className="text-blue-700 hover:underline">
+                  Chapter 1: Survey of the Elementary Principles
+                </a>
+                <ol className="ml-4 mt-1 space-y-1 list-decimal">
+                  <li>
+                    <a href="#c1-sec-1" className="hover:underline">
+                      Mechanics of a Particle
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#c1-sec-2" className="hover:underline">
+                      Mechanics of a System of Particles
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#c1-sec-3" className="hover:underline">
+                      Constraints
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#c1-sec-4" className="hover:underline">
+                      D&apos;Alembert&apos;s Principle and Lagrange&apos;s
+                      Equations
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#c1-sec-5" className="hover:underline">
+                      Velocity-Dependent Potentials and the Dissipation Function
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#c1-sec-6" className="hover:underline">
+                      Simple Applications of the Lagrangian Formulation
+                    </a>
+                  </li>
+                </ol>
+              </li>
+
+              {/* Chapter 2 */}
               <li>
                 <a href="#chapter-2" className="text-blue-700 hover:underline">
                   Chapter 2: Variational Principles and Lagrange&apos;s
@@ -56,6 +98,13 @@ const page = () => {
                   </li>
                 </ol>
               </li>
+
+              {/* Glossary */}
+              <li>
+                <a href="#glossary" className="text-blue-700 hover:underline">
+                  Glossary
+                </a>
+              </li>
             </ol>
           </nav>
         </aside>
@@ -83,6 +132,56 @@ const page = () => {
                 . Because the aim is focused preparation, not every chapter will
                 be covered — only the most relevant parts will be explored.
               </p>
+            </section>
+
+            {/* Chapter 1 */}
+            <section id="chapter-1" className="scroll-mt-24 space-y-10">
+              <h1 className="text-5xl font-extrabold text-gray-900">
+                Chapter 1: Survey of the Elementary Principles
+              </h1>
+
+              <section id="c1-sec-1" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.1 Mechanics of a Particle
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
+
+              <section id="c1-sec-2" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.2 Mechanics of a System of Particles
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
+
+              <section id="c1-sec-3" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.3 Constraints
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
+
+              <section id="c1-sec-4" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.4 D&apos;Alembert&apos;s Principle and Lagrange&apos;s
+                  Equations
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
+
+              <section id="c1-sec-5" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.5 Velocity-Dependent Potentials and the Dissipation Function
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
+
+              <section id="c1-sec-6" className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  1.6 Simple Applications of the Lagrangian Formulation
+                </h2>
+                <p>Lorem ipsum placeholder text.</p>
+              </section>
             </section>
 
             {/* Chapter 2 */}
@@ -133,6 +232,28 @@ const page = () => {
                 </h2>
                 <p>Lorem ipsum placeholder text.</p>
               </section>
+            </section>
+
+            {/* Glossary */}
+            <section id="glossary" className="scroll-mt-24 space-y-6">
+              <h1 className="text-4xl font-extrabold text-gray-900">
+                Glossary
+              </h1>
+              <p className="text-gray-700">
+                This section will collect key terms and definitions as they
+                arise during study.
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>Action:</strong> Placeholder definition.
+                </li>
+                <li>
+                  <strong>Lagrangian:</strong> Placeholder definition.
+                </li>
+                <li>
+                  <strong>Constraint:</strong> Placeholder definition.
+                </li>
+              </ul>
             </section>
           </article>
         </section>
