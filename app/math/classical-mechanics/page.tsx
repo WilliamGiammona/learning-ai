@@ -18,43 +18,40 @@ const page = () => {
                 </a>
               </li>
               <li>
-                <a href="#chapter-8" className="text-blue-700 hover:underline">
-                  Chapter 8: Canonical Transformations
+                <a href="#chapter-2" className="text-blue-700 hover:underline">
+                  Chapter 2: Variational Principles and Lagrange&apos;s
+                  Equations
                 </a>
                 <ol className="ml-4 mt-1 space-y-1 list-decimal">
                   <li>
                     <a href="#sec-1" className="hover:underline">
-                      The Fundamental Problem of Mechanics
+                      Hamilton&apos;s Principle
                     </a>
                   </li>
                   <li>
                     <a href="#sec-2" className="hover:underline">
-                      The Concept of Canonical Transformation
+                      Some Techniques of the Calculus of Variations
                     </a>
                   </li>
                   <li>
                     <a href="#sec-3" className="hover:underline">
-                      Generating Functions
+                      Extension of Hamilton&apos;s Principle to Nonholonomic
+                      Systems
                     </a>
                   </li>
                   <li>
                     <a href="#sec-4" className="hover:underline">
-                      Examples of Canonical Transformations
+                      Advantages of a Variational Principle Formulation
                     </a>
                   </li>
                   <li>
                     <a href="#sec-5" className="hover:underline">
-                      The Poisson Bracket
+                      Conservation Theorems and Symmetry Properties
                     </a>
                   </li>
                   <li>
                     <a href="#sec-6" className="hover:underline">
-                      Invariance of Poisson Brackets
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-7" className="hover:underline">
-                      Infinitesimal Canonical Transformations
+                      Energy Function and the Conservation of Energy
                     </a>
                   </li>
                 </ol>
@@ -91,80 +88,50 @@ const page = () => {
             {/* Chapter 8 */}
             <section id="chapter-8" className="scroll-mt-24 space-y-10">
               <h1 className="text-5xl font-extrabold text-gray-900">
-                Chapter 8: Canonical Transformations
+                Chapter 2: Variational Principles and Lagrange&apos;s Equations
               </h1>
 
               <section id="sec-1" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  The Fundamental Problem of Mechanics
+                  2.1 Hamilton&apos;s Principle
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                  vitae nibh et leo congue convallis.
-                </p>
+                <p>Lorem ipsum placeholder for derivations and explanations.</p>
               </section>
 
               <section id="sec-2" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  The Concept of Canonical Transformation
+                  2.2 Some Techniques of the Calculus of Variations
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia curae.
-                </p>
+                <p>Lorem ipsum placeholder text.</p>
               </section>
 
               <section id="sec-3" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  Generating Functions
+                  2.3 Extension of Hamilton&apos;s Principle to Nonholonomic
+                  Systems
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse sed tellus nec nisi vestibulum tincidunt.
-                </p>
+                <p>Lorem ipsum placeholder text.</p>
               </section>
 
               <section id="sec-4" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  Examples of Canonical Transformations
+                  2.4 Advantages of a Variational Principle Formulation
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer a risus id arcu porta rutrum.
-                </p>
+                <p>Lorem ipsum placeholder text.</p>
               </section>
 
               <section id="sec-5" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  The Poisson Bracket
+                  2.5 Conservation Theorems and Symmetry Properties
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur vitae hendrerit mi. Phasellus sagittis sapien eu
-                  posuere volutpat.
-                </p>
+                <p>Lorem ipsum placeholder text.</p>
               </section>
 
               <section id="sec-6" className="scroll-mt-24 space-y-4">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  Invariance of Poisson Brackets
+                  2.6 Energy Function and the Conservation of Energy
                 </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Mauris vulputate lectus ac laoreet bibendum.
-                </p>
-              </section>
-
-              <section id="sec-7" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  Infinitesimal Canonical Transformations
-                </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer nec magna nunc. Vivamus laoreet, libero ut pulvinar
-                  mattis, arcu erat porttitor nulla.
-                </p>
+                <p>Lorem ipsum placeholder text.</p>
               </section>
             </section>
           </article>
