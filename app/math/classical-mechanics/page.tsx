@@ -85,8 +85,8 @@ const page = () => {
               </p>
             </section>
 
-            {/* Chapter 8 */}
-            <section id="chapter-8" className="scroll-mt-24 space-y-10">
+            {/* Chapter 2 */}
+            <section id="chapter-2" className="scroll-mt-24 space-y-10">
               <h1 className="text-5xl font-extrabold text-gray-900">
                 Chapter 2: Variational Principles and Lagrange&apos;s Equations
               </h1>
