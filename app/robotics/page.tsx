@@ -735,7 +735,7 @@ const Robotics = () => {
                     </code>{" "}
                     to{" "}
                     <code className="px-1 py-0.5 rounded bg-gray-100">
-                      "keyboard"
+                      &quot;keyboard&quot;
                     </code>{" "}
                     and use:
                     <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
@@ -832,8 +832,8 @@ const Robotics = () => {
                   The config file can be found at src/lerobot/configs/
                 </p>
                 <p>
-                  The goal is to pick up the black cube as many times as you've
-                  set in your config file.
+                  The goal is to pick up the black cube as many times as
+                  you&apos;ve set in your config file.
                 </p>
               </div>
             </section>
