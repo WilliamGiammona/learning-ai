@@ -232,7 +232,7 @@ const page = () => {
                   </div>
                   <p className="text-gray-700">
                     because Fᵢ = ṗᵢ. This equation is called{" "}
-                    <strong>D'Alembert&apos;s Principle</strong>.
+                    <strong>D&apos;Alembert&apos;s Principle</strong>.
                   </p>
                 </div>
 
@@ -245,8 +245,8 @@ const page = () => {
                     This is still ugly because position vector r is in Cartesian
                     coordinates, which may or may not be equal to the number of
                     degrees of freedom in the system. If there are more
-                    coordinates than degrees of freedom, the coordinates won't
-                    be independent. We need new coordinates that are{" "}
+                    coordinates than degrees of freedom, the coordinates
+                    won&apos;t be independent. We need new coordinates that are{" "}
                     <strong>
                       always have the same number of coordinates as the amount
                       of degrees of freedom
@@ -304,14 +304,15 @@ const page = () => {
                   </div>
                 </div>
 
-                {/* D'Alemberts Principle with Generalized Coordinates */}
+                {/* DAlemberts Principle with Generalized Coordinates */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Applying Generalized Coordinates to D'Alembert&apos;s
+                    Applying Generalized Coordinates to D&apos;Alembert&apos;s
                     Principle
                   </h3>
                   <p className="text-gray-700">
-                    For the first part of D'Alembert&apos;s Principle we get:
+                    For the first part of D&apos;Alembert&apos;s Principle we
+                    get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">
@@ -430,8 +431,9 @@ const page = () => {
                     </p>
                   </div>
                   <p className="text-gray-700">
-                    OK, but we don't want the 2 because in our original equation
-                    it&apos; vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by 1/2.
+                    OK, but we don&apos;t want the 2 because in our original
+                    equation it&apos; vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by
+                    1/2.
                   </p>
                   <p className="text-gray-700">
                     So we get that ∑ Fᵢ⁽ᵃ⁾ · δrᵢ = ∑ⱼ Qⱼδqⱼ and that:
@@ -551,9 +553,9 @@ const page = () => {
                   representing what could happen at a single moment.
                 </li>
                 <li>
-                  <strong>D'Alembert&apos;s Principle:</strong> The principle
-                  stating that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the principle
-                  of virtual work to dynamic systems.
+                  <strong>D&apos;Alembert&apos;s Principle:</strong> The
+                  principle stating that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the
+                  principle of virtual work to dynamic systems.
                 </li>
                 <li>
                   <strong>Generalized Coordinates:</strong> Independent
@@ -563,7 +565,7 @@ const page = () => {
                 <li>
                   <strong>Lagrange&apos;s Equations:</strong> Equations of
                   motion in generalized coordinates, derived from
-                  D'Alembert&apos;s principle.
+                  D&apos;Alembert&apos;s principle.
                 </li>
               </ul>
             </section>
