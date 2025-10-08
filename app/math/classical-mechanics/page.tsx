@@ -25,21 +25,6 @@ const page = () => {
                 </a>
                 <ol className="ml-4 mt-1 space-y-1 list-decimal">
                   <li>
-                    <a href="#c1-sec-1" className="hover:underline">
-                      Mechanics of a Particle
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#c1-sec-2" className="hover:underline">
-                      Mechanics of a System of Particles
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#c1-sec-3" className="hover:underline">
-                      Constraints
-                    </a>
-                  </li>
-                  <li>
                     <a href="#c1-sec-4" className="hover:underline">
                       D&apos;Alembert&apos;s Principle and Lagrange&apos;s
                       Equations
