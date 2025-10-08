@@ -432,8 +432,8 @@ const page = () => {
                   </div>
                   <p className="text-gray-700">
                     OK, but we don&apos;t want the 2 because in our original
-                    equation it&apos; vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by
-                    1/2.
+                    equation it&apos;s vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply
+                    by 1/2.
                   </p>
                   <p className="text-gray-700">
                     So we get that ∑ Fᵢ⁽ᵃ⁾ · δrᵢ = ∑ⱼ Qⱼδqⱼ and that:
