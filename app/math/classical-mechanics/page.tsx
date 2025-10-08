@@ -106,16 +106,11 @@ const page = () => {
                 <em>The Origin and Nature of Life on Earth</em>. For this
                 purpose, the reference text is Goldstein, Poole, and
                 Safko&apos;s{" "}
-                <a
-                  href="https://poincare.matf.bg.ac.rs/~zarkom/Book_Mechanics_Goldstein_Classical_Mechanics_optimized.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Classical Mechanics (3rd Edition)
-                </a>
-                . Because the aim is focused preparation, not every chapter will
-                be covered — only the most relevant parts will be explored.
+                href="https://poincare.matf.bg.ac.rs/~zarkom/Book_Mechanics_Goldstein_Classical_Mechanics_optimized.pdf"
+                target="_blank" rel="noopener noreferrer" className="underline"
+                <a>Classical Mechanics (3rd Edition)</a>. Because the aim is
+                focused preparation, not every chapter will be covered — only
+                the most relevant parts will be explored.
               </p>
             </section>
 
@@ -125,33 +120,332 @@ const page = () => {
                 Chapter 1: Survey of the Elementary Principles
               </h1>
 
-              <section id="c1-sec-1" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  1.1 Mechanics of a Particle
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="c1-sec-2" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  1.2 Mechanics of a System of Particles
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="c1-sec-3" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  1.3 Constraints
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="c1-sec-4" className="scroll-mt-24 space-y-4">
+              <section id="c1-sec-4" className="scroll-mt-24 space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800">
                   1.4 D&apos;Alembert&apos;s Principle and Lagrange&apos;s
                   Equations
                 </h2>
-                <p>Lorem ipsum placeholder text.</p>
+
+                {/* Virtual Displacement */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Virtual Infinitesimal Displacement (δr)
+                  </h3>
+                  <p className="text-gray-700">
+                    The <strong>virtual displacement</strong> δr is the same as
+                    dr but has <strong>no time factor</strong>. It's imaginary
+                    (virtual), so it's everything happening at that exact moment
+                    (so no force/constraint can change because there's no time
+                    factor).
+                  </p>
+                </div>
+
+                {/* Equilibrium System */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    System in Equilibrium
+                  </h3>
+                  <p className="text-gray-700">
+                    Let's say that we have a system in equilibrium that's
+                    static. Thus the virtual work of the forces in direction of
+                    displacement δr (r = vector from origin to a particle) must
+                    be 0 since in equilibrium:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">∑ Fᵢ · δrᵢ = 0</p>
+                  </div>
+                </div>
+
+                {/* Separating Forces */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Separating Forces
+                  </h3>
+                  <p className="text-gray-700">
+                    This is ugly because it includes forces of constraint. Let's
+                    separate the forces into:
+                  </p>
+                  <ol className="list-decimal ml-6 space-y-2 text-gray-700">
+                    <li>
+                      <strong>Applied forces</strong> (F⁽ᵃ⁾)
+                    </li>
+                    <li>
+                      <strong>Forces of constraint</strong> (f)
+                    </li>
+                  </ol>
+                  <p className="text-gray-700">This gives us the equation:</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ Fᵢ⁽ᵃ⁾ · δrᵢ + ∑ fᵢ · δrᵢ = 0
+                    </p>
+                  </div>
+                </div>
+
+                {/* Systems Without Constraint Forces */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Systems Without Work from Forces of Constraint
+                  </h3>
+                  <p className="text-gray-700">
+                    Now let's only work with systems without work from forces of
+                    constraint. Then we get the much nicer:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">∑ Fᵢ⁽ᵃ⁾ · δrᵢ = 0</p>
+                  </div>
+                  <p className="text-gray-700">
+                    This formula is called the{" "}
+                    <strong>"principle of virtual work"</strong>.
+                  </p>
+                </div>
+
+                {/* Dynamic Equilibrium */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Dynamic Equilibrium: Bernoulli-D'Alembert Principle
+                  </h3>
+                  <p className="text-gray-700">
+                    Remember this was under the assumption of static
+                    equilibrium, but we want an equation that works for both
+                    static and dynamic equilibrium. To do this we use the
+                    Bernoulli-D'Alembert principle:
+                  </p>
+                  <p className="text-gray-700">
+                    We know that F = ṗ (momentum = mv̇), which means:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">Fᵢ - ṗᵢ = 0</p>
+                  </div>
+                  <p className="text-gray-700">
+                    According to the equation of motion. So:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    because Fᵢ = ṗᵢ. This is called{" "}
+                    <strong>D'Alembert's Principle</strong>.
+                  </p>
+                </div>
+
+                {/* Generalized Coordinates */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Generalized Coordinates
+                  </h3>
+                  <p className="text-gray-700">
+                    This is still ugly because position vector r is in Cartesian
+                    coordinates, which may or may not be equal to degrees of
+                    freedom. If there are more dimensions than degrees of
+                    freedom, they won't be independent. We need new coordinates
+                    that are <strong>always = 2 × degrees of freedom</strong>{" "}
+                    (this is similar to the basis vector idea in linear
+                    algebra). We call these coordinates{" "}
+                    <strong>generalized coordinates</strong>: q₁, ..., qₙ where
+                    n is equal to the number of degrees of freedom.
+                  </p>
+                  <p className="text-gray-700">
+                    We also add a time element, so this vector is:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      rᵢ = rᵢ(q₁⁽ᵗ⁾, ..., qₙ⁽ᵗ⁾, t)
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    So that we remember its purpose. Hence position of rᵢ is a
+                    function of generalized coordinates where n = number of
+                    degrees of freedom.
+                  </p>
+                </div>
+
+                {/* Velocity and Chain Rule */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Velocity Using the Chain Rule
+                  </h3>
+                  <p className="text-gray-700">
+                    Now we know that vᵢ = drᵢ/dt, which with the chain rule gets
+                    us:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      vᵢ = ∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    Also for virtual infinitesimal (no dt) we get:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      δrᵢ = ∑ₖ (∂rᵢ/∂qₖ)δqₖ
+                    </p>
+                  </div>
+                </div>
+
+                {/* D'Alembert's Principle with Generalized Coordinates */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Applying Generalized Coordinates to D'Alembert's Principle
+                  </h3>
+                  <p className="text-gray-700">
+                    For the first part of D'Alembert's Principle we get:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ Fᵢ · δrᵢ = ∑ Fᵢ · (∂rᵢ/∂qⱼ)δqⱼ
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    Let Qⱼ = ∑ Fᵢ · (∂rᵢ/∂qⱼ), then ∑ Fᵢδrᵢ = ∑ⱼ Qⱼδqⱼ, where
+                    Qⱼδqⱼ has the dimension of work.
+                  </p>
+                </div>
+
+                {/* Second Part */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    The Second Part: ∑ ṗᵢ · δrᵢ
+                  </h3>
+                  <p className="text-gray-700">
+                    Now for the second part where ∑ ṗᵢ · δrᵢ, we can say that p
+                    = mᵢr̈ᵢ by definition. Thus:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ ṗᵢ · δrᵢ = ∑ mᵢr̈ᵢ · δrᵢ ⇒ ∑ mᵢr̈ᵢ · (∂rᵢ/∂qⱼ)δqⱼ
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    Now, we know that d/dt(mᵢṙᵢ · ∂rᵢ/∂qⱼ). By the product rule
+                    we would get:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      mᵢr̈ᵢ · (∂rᵢ/∂qⱼ) + mᵢṙᵢ · d/dt(∂rᵢ/∂qⱼ)
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    We only want the first part, so we must subtract. So:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ᵢ [d/dt(mᵢṙᵢ · ∂rᵢ/∂qⱼ) - mᵢṙᵢ · d/dt(∂rᵢ/∂qⱼ)]
+                    </p>
+                  </div>
+                </div>
+
+                {/* Ugly Math */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Simplifying d/dt(∂rᵢ/∂qⱼ)
+                  </h3>
+                  <p className="text-gray-700">
+                    Now this is ugly! Let's tackle it step by step. For the last
+                    part, we have d/dt(∂rᵢ/∂qⱼ). We want to get this to ∂vᵢ/∂qⱼ.
+                  </p>
+                  <p className="text-gray-700">Here is the math:</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt)
+                    </p>
+                  </div>
+                  <p className="text-gray-700">which by chain rule =</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∂/∂qⱼ[∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t]
+                    </p>
+                  </div>
+                  <p className="text-gray-700">⇒</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ₖ (∂²rᵢ/∂qⱼ∂qₖ)(dqₖ/dt) + ∂²rᵢ/∂qⱼ∂t
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    Now d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt), that's just = ∂vᵢ/∂qⱼ
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">⇒ ∂vᵢ/∂qⱼ</p>
+                  </div>
+                  <p className="text-gray-700">
+                    So we get ∂vᵢ/∂qⱼ · 1 + 0 + 0 to 1. Therefore:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∂vᵢ/∂(dqⱼ/dt) = ∂rᵢ/∂qⱼ
+                    </p>
+                  </div>
+                </div>
+
+                {/* Final Expression */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Bringing It Together
+                  </h3>
+                  <p className="text-gray-700">Now:</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ᵢ [d/dt(mᵢvᵢ · ∂vᵢ/∂(dqⱼ/dt)) - mᵢvᵢ · ∂vᵢ/∂qⱼ]
+                    </p>
+                  </div>
+                  <p className="text-gray-700">We want to then show that:</p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      2vᵢ · ∂vᵢ/∂(dqⱼ/dt) = ∂vᵢ²/∂(dqⱼ/dt)
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    (we treat mass as constant). So what is ∂vᵢ²/∂(dqⱼ/dt)? Use
+                    chain rule to get:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∂vᵢ²/∂vᵢ · ∂vᵢ/∂(dqⱼ/dt) or ∂vᵢ²/∂vᵢ · ∂vᵢ/∂(dqⱼ/dt) ⇒ 2vᵢ
+                      · ∂vᵢ/∂(dqⱼ/dt)
+                    </p>
+                  </div>
+                  <p className="text-gray-700">
+                    OK, but we don't want the 2 because in our original equation
+                    it's vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by 1/2.
+                  </p>
+                  <p className="text-gray-700">
+                    So we get that ∑ Fᵢ⁽ᵃ⁾ · δrᵢ = ∑ⱼ Qⱼδqⱼ and that:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      ∑ ṗᵢ · δrᵢ = ∑ [d/dt[∂/∂(dqⱼ/dt)(∑ᵢ ½mᵢvᵢ²)] - ∂/∂qⱼ(∑ᵢ
+                      ½mᵢvᵢ²)]δqⱼ
+                    </p>
+                  </div>
+                </div>
+
+                {/* Final Form */}
+                <div className="space-y-3 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                  <h3 className="text-xl font-semibold text-blue-900">
+                    Lagrange's Equations
+                  </h3>
+                  <p className="text-blue-800">
+                    We can change ∑ Fᵢ⁽ᵃ⁾ - ṗᵢ) · δr = 0 to ∑(r̈ᵢ - Fᵢ⁽ᵃ⁾) · δr =
+                    0 since both expressions are equivalent (they must both be 0
+                    to get 0).
+                  </p>
+                  <p className="text-blue-800">So we get:</p>
+                  <div className="bg-white p-4 rounded-lg border border-blue-200">
+                    <p className="text-center font-mono text-blue-900">
+                      ∑ⱼ [d/dt[∂T/∂(dqⱼ/dt)] - ∂T/∂qⱼ - Qⱼ]δqⱼ = 0
+                    </p>
+                  </div>
+                  <p className="text-blue-800">
+                    where T = ∑ᵢ ½mᵢvᵢ² (kinetic energy). This is{" "}
+                    <strong>
+                      Lagrange's equation in its most general form
+                    </strong>
+                    .
+                  </p>
+                </div>
               </section>
 
               <section id="c1-sec-5" className="scroll-mt-24 space-y-4">
@@ -230,8 +524,23 @@ const page = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Mechanics:</strong> The study of motion and the forces
-                  that cause it.
+                  <strong>Virtual Displacement (δr):</strong> An infinitesimal
+                  displacement with no time factor—imaginary and instantaneous,
+                  representing what could happen at a single moment.
+                </li>
+                <li>
+                  <strong>D'Alembert's Principle:</strong> The principle stating
+                  that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the principle of
+                  virtual work to dynamic systems.
+                </li>
+                <li>
+                  <strong>Generalized Coordinates:</strong> Independent
+                  coordinates (q₁, ..., qₙ) equal in number to the degrees of
+                  freedom of the system.
+                </li>
+                <li>
+                  <strong>Lagrange's Equations:</strong> Equations of motion in
+                  generalized coordinates, derived from D'Alembert's principle.
                 </li>
               </ul>
             </section>
