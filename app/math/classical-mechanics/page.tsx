@@ -103,9 +103,8 @@ const page = () => {
               <p className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-md text-blue-800 not-prose">
                 The goal of this project is to gain enough grounding in
                 mechanics to eventually read Eric Smith&apos;s book:{" "}
-                <em>The Origin and Nature of Life on Earth</em>. For this
-                purpose, the reference text is Goldstein, Poole, and
-                Safko&apos;s{" "}
+                <em>The Origin and Nature of Life on Earth</em>. I will be using
+                Goldstein, Poole, and Safko&apos;s book{" "}
                 <a
                   href="https://poincare.matf.bg.ac.rs/~zarkom/Book_Mechanics_Goldstein_Classical_Mechanics_optimized.pdf"
                   target="_blank"
