@@ -115,7 +115,7 @@ const page = () => {
                   Classical Mechanics (3rd Edition)
                 </a>
                 . Chapters and sections not essential to understanidng Eric
-                Smith's book will not be covered.
+                Smith&apos;s book will not be covered.
               </p>
             </section>
 
@@ -138,10 +138,10 @@ const page = () => {
                   </h3>
                   <p className="text-gray-800 leading-relaxed">
                     The <strong>virtual displacement</strong> δr is the same as
-                    dr but has <strong>no time factor</strong>. It's imaginary
-                    (virtual), so it's everything happening at that exact moment
-                    (so no force/constraint can change because there's no time
-                    factor).
+                    dr but has <strong>no time factor</strong>. It&apos;s
+                    imaginary (virtual), so it&apos;s everything happening at
+                    that exact moment (so no force/constraint can change because
+                    there&apos;s no time factor).
                   </p>
                 </div>
 
