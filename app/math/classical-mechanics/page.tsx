@@ -200,7 +200,7 @@ const page = () => {
                   </div>
                   <p className="text-gray-700">
                     This formula is called the{" "}
-                    <strong>"principle of virtual work"</strong>.
+                    <strong>&quot;principle of virtual work&quot;</strong>.
                   </p>
                 </div>
 
