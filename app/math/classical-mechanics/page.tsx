@@ -147,7 +147,7 @@ const page = () => {
                 {/* Equilibrium System */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    System in Equilibrium
+                    System in Static Equilibrium
                   </h3>
                   <p className="text-gray-700">
                     Let&apos;s say we have a system in static equilibrium. In
