@@ -126,17 +126,17 @@ const page = () => {
                   Equations
                 </h2>
 
-                {/* Virtual Displacement */}
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-800">
+                {/* Virtual Displacement - Definition Card */}
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-bold text-amber-900 mb-3">
                     Virtual Infinitesimal Displacement (δr)
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-gray-800 leading-relaxed">
                     The <strong>virtual displacement</strong> δr is the same as
-                    dr but has <strong>no time factor</strong>. It&apos;s
-                    imaginary (virtual), so it&apos;s everything happening at
-                    that exact moment (so no force/constraint can change because
-                    there&apos;s no time factor).
+                    dr but has <strong>no time factor</strong>. It's imaginary
+                    (virtual), so it's everything happening at that exact moment
+                    (so no force/constraint can change because there's no time
+                    factor).
                   </p>
                 </div>
 
