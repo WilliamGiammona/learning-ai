@@ -133,10 +133,10 @@ const page = () => {
                   </h3>
                   <p className="text-gray-700">
                     The <strong>virtual displacement</strong> δr is the same as
-                    dr but has <strong>no time factor</strong>. It's imaginary
-                    (virtual), so it's everything happening at that exact moment
-                    (so no force/constraint can change because there's no time
-                    factor).
+                    dr but has <strong>no time factor</strong>. It&apos;s
+                    imaginary (virtual), so it&apos;s everything happening at
+                    that exact moment (so no force/constraint can change because
+                    there&apos;s no time factor).
                   </p>
                 </div>
 
@@ -146,10 +146,10 @@ const page = () => {
                     System in Equilibrium
                   </h3>
                   <p className="text-gray-700">
-                    Let's say that we have a system in equilibrium that's
-                    static. Thus the virtual work of the forces in direction of
-                    displacement δr (r = vector from origin to a particle) must
-                    be 0 since in equilibrium:
+                    Let&apos;s say that we have a system in equilibrium
+                    that&apos;s static. Thus the virtual work of the forces in
+                    direction of displacement δr (r = vector from origin to a
+                    particle) must be 0 since in equilibrium:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">∑ Fᵢ · δrᵢ = 0</p>
@@ -162,8 +162,8 @@ const page = () => {
                     Separating Forces
                   </h3>
                   <p className="text-gray-700">
-                    This is ugly because it includes forces of constraint. Let's
-                    separate the forces into:
+                    This is ugly because it includes forces of constraint.
+                    Let&apos;s separate the forces into:
                   </p>
                   <ol className="list-decimal ml-6 space-y-2 text-gray-700">
                     <li>
@@ -187,8 +187,8 @@ const page = () => {
                     Systems Without Work from Forces of Constraint
                   </h3>
                   <p className="text-gray-700">
-                    Now let's only work with systems without work from forces of
-                    constraint. Then we get the much nicer:
+                    Now let&apos;s only work with systems without work from
+                    forces of constraint. Then we get the much nicer:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">∑ Fᵢ⁽ᵃ⁾ · δrᵢ = 0</p>
@@ -202,13 +202,12 @@ const page = () => {
                 {/* Dynamic Equilibrium */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Dynamic Equilibrium: Bernoulli-D'Alembert Principle
+                    Dynamic Equilibrium
                   </h3>
                   <p className="text-gray-700">
                     Remember this was under the assumption of static
                     equilibrium, but we want an equation that works for both
-                    static and dynamic equilibrium. To do this we use the
-                    Bernoulli-D'Alembert principle:
+                    static and dynamic equilibrium.
                   </p>
                   <p className="text-gray-700">
                     We know that F = ṗ (momentum = mv̇), which means:
@@ -217,7 +216,9 @@ const page = () => {
                     <p className="text-center font-mono">Fᵢ - ṗᵢ = 0</p>
                   </div>
                   <p className="text-gray-700">
-                    According to the equation of motion. So:
+                    According to the equation of motion (we again limit
+                    ourselves to systems without work from the force of
+                    constraint). So:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">
@@ -226,7 +227,7 @@ const page = () => {
                   </div>
                   <p className="text-gray-700">
                     because Fᵢ = ṗᵢ. This is called{" "}
-                    <strong>D'Alembert's Principle</strong>.
+                    <strong>D'Alembert&apos;s Principle</strong>.
                   </p>
                 </div>
 
@@ -285,13 +286,14 @@ const page = () => {
                   </div>
                 </div>
 
-                {/* D'Alembert's Principle with Generalized Coordinates */}
+                {/* D'Alemberts Principle with Generalized Coordinates */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Applying Generalized Coordinates to D'Alembert's Principle
+                    Applying Generalized Coordinates to D'Alembert&apos;s
+                    Principle
                   </h3>
                   <p className="text-gray-700">
-                    For the first part of D'Alembert's Principle we get:
+                    For the first part of D'Alembert&apos;s Principle we get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">
@@ -343,8 +345,9 @@ const page = () => {
                     Simplifying d/dt(∂rᵢ/∂qⱼ)
                   </h3>
                   <p className="text-gray-700">
-                    Now this is ugly! Let's tackle it step by step. For the last
-                    part, we have d/dt(∂rᵢ/∂qⱼ). We want to get this to ∂vᵢ/∂qⱼ.
+                    Now this is ugly! Let&apos;s tackle it step by step. For the
+                    last part, we have d/dt(∂rᵢ/∂qⱼ). We want to get this to
+                    ∂vᵢ/∂qⱼ.
                   </p>
                   <p className="text-gray-700">Here is the math:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
@@ -365,7 +368,8 @@ const page = () => {
                     </p>
                   </div>
                   <p className="text-gray-700">
-                    Now d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt), that's just = ∂vᵢ/∂qⱼ
+                    Now d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt), that&apos;s just =
+                    ∂vᵢ/∂qⱼ
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">⇒ ∂vᵢ/∂qⱼ</p>
@@ -409,7 +413,7 @@ const page = () => {
                   </div>
                   <p className="text-gray-700">
                     OK, but we don't want the 2 because in our original equation
-                    it's vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by 1/2.
+                    it&apos; vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply by 1/2.
                   </p>
                   <p className="text-gray-700">
                     So we get that ∑ Fᵢ⁽ᵃ⁾ · δrᵢ = ∑ⱼ Qⱼδqⱼ and that:
@@ -425,7 +429,7 @@ const page = () => {
                 {/* Final Form */}
                 <div className="space-y-3 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
                   <h3 className="text-xl font-semibold text-blue-900">
-                    Lagrange's Equations
+                    Lagrange&apos;s Equations
                   </h3>
                   <p className="text-blue-800">
                     We can change ∑ Fᵢ⁽ᵃ⁾ - ṗᵢ) · δr = 0 to ∑(r̈ᵢ - Fᵢ⁽ᵃ⁾) · δr =
@@ -441,7 +445,7 @@ const page = () => {
                   <p className="text-blue-800">
                     where T = ∑ᵢ ½mᵢvᵢ² (kinetic energy). This is{" "}
                     <strong>
-                      Lagrange's equation in its most general form
+                      Lagrange&apos;s equation in its most general form
                     </strong>
                     .
                   </p>
@@ -529,9 +533,9 @@ const page = () => {
                   representing what could happen at a single moment.
                 </li>
                 <li>
-                  <strong>D'Alembert's Principle:</strong> The principle stating
-                  that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the principle of
-                  virtual work to dynamic systems.
+                  <strong>D'Alembert&apos;s Principle:</strong> The principle
+                  stating that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the principle
+                  of virtual work to dynamic systems.
                 </li>
                 <li>
                   <strong>Generalized Coordinates:</strong> Independent
@@ -539,8 +543,9 @@ const page = () => {
                   freedom of the system.
                 </li>
                 <li>
-                  <strong>Lagrange's Equations:</strong> Equations of motion in
-                  generalized coordinates, derived from D'Alembert's principle.
+                  <strong>Lagrange&apos;s Equations:</strong> Equations of
+                  motion in generalized coordinates, derived from
+                  D'Alembert&apos;s principle.
                 </li>
               </ul>
             </section>
