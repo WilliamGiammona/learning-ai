@@ -102,7 +102,7 @@ const page = () => {
               <h2>Overview</h2>
               <p className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-md text-blue-800 not-prose">
                 The goal of this project is to gain enough grounding in
-                mechanics to eventually read Eric Smith&apos;s{" "}
+                mechanics to eventually read Eric Smith&apos;s book:{" "}
                 <em>The Origin and Nature of Life on Earth</em>. For this
                 purpose, the reference text is Goldstein, Poole, and
                 Safko&apos;s{" "}
