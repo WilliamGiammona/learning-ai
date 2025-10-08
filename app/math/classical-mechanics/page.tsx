@@ -151,10 +151,15 @@ const page = () => {
                     System in Equilibrium
                   </h3>
                   <p className="text-gray-700">
-                    Let&apos;s say that we have a system in equilibrium
-                    that&apos;s static. Thus the virtual work of the forces in
-                    direction of displacement δr (r = vector from origin to a
-                    particle) must be 0 since in equilibrium:
+                    Let&apos;s say we have a system in static equilibrium. In
+                    that case, the virtual work of all forces during an
+                    infinitesimal (virtual) displacement δr must be zero, since
+                    in equilibrium the net force in the direction of any
+                    possible displacement is zero (otherwise there would be
+                    movement). The component of one vector in the direction of
+                    another, for example, the force in the direction of the
+                    displacement, is represented by their dot product.
+                    Therefore:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">∑ Fᵢ · δrᵢ = 0</p>
