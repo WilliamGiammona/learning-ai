@@ -226,7 +226,7 @@ const page = () => {
                     </p>
                   </div>
                   <p className="text-gray-700">
-                    because Fᵢ = ṗᵢ. This is called{" "}
+                    because Fᵢ = ṗᵢ. This equation is called{" "}
                     <strong>D'Alembert&apos;s Principle</strong>.
                   </p>
                 </div>
@@ -238,17 +238,31 @@ const page = () => {
                   </h3>
                   <p className="text-gray-700">
                     This is still ugly because position vector r is in Cartesian
-                    coordinates, which may or may not be equal to degrees of
-                    freedom. If there are more dimensions than degrees of
-                    freedom, they won't be independent. We need new coordinates
-                    that are <strong>always = 2 × degrees of freedom</strong>{" "}
-                    (this is similar to the basis vector idea in linear
+                    coordinates, which may or may not be equal to the number of
+                    degrees of freedom in the system. If there are more
+                    coordinates than degrees of freedom, the coordinates won't
+                    be independent. We need new coordinates that are{" "}
+                    <strong>
+                      always have the same number of coordinates as the amount
+                      of degrees of freedom
+                    </strong>{" "}
+                    (this is similar to the concept of basis vectors in linear
                     algebra). We call these coordinates{" "}
                     <strong>generalized coordinates</strong>: q₁, ..., qₙ where
                     n is equal to the number of degrees of freedom.
                   </p>
                   <p className="text-gray-700">
-                    We also add a time element, so this vector is:
+                    We also add a time element, so the position vector can be
+                    described as the following function:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p className="text-center font-mono">
+                      rᵢ = f(q₁⁽ᵗ⁾, ..., qₙ⁽ᵗ⁾, t)
+                    </p>
+                  </div>
+                  <p>
+                    we give f the name rᵢ so that we can better remember its
+                    purpose giving us:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">
@@ -256,9 +270,8 @@ const page = () => {
                     </p>
                   </div>
                   <p className="text-gray-700">
-                    So that we remember its purpose. Hence position of rᵢ is a
-                    function of generalized coordinates where n = number of
-                    degrees of freedom.
+                    Hence position of rᵢ is a function of generalized
+                    coordinates where n = number of degrees of freedom.
                   </p>
                 </div>
 
@@ -273,7 +286,7 @@ const page = () => {
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <p className="text-center font-mono">
-                      vᵢ = ∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t
+                      vᵢ = drᵢ/dt = ∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t
                     </p>
                   </div>
                   <p className="text-gray-700">
