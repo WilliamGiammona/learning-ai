@@ -106,11 +106,16 @@ const page = () => {
                 <em>The Origin and Nature of Life on Earth</em>. For this
                 purpose, the reference text is Goldstein, Poole, and
                 Safko&apos;s{" "}
-                href="https://poincare.matf.bg.ac.rs/~zarkom/Book_Mechanics_Goldstein_Classical_Mechanics_optimized.pdf"
-                target="_blank" rel="noopener noreferrer" className="underline"
-                <a>Classical Mechanics (3rd Edition)</a>. Because the aim is
-                focused preparation, not every chapter will be covered — only
-                the most relevant parts will be explored.
+                <a
+                  href="https://poincare.matf.bg.ac.rs/~zarkom/Book_Mechanics_Goldstein_Classical_Mechanics_optimized.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Classical Mechanics (3rd Edition)
+                </a>
+                . Because the aim is focused preparation, not every chapter or
+                every section will be covered.
               </p>
             </section>
 
