@@ -114,8 +114,8 @@ const page = () => {
                 >
                   Classical Mechanics (3rd Edition)
                 </a>
-                . Because the aim is focused preparation, not every chapter or
-                every section will be covered.
+                . Chapters and sections not essential to understanidng Eric
+                Smith's book will not be covered.
               </p>
             </section>
 
