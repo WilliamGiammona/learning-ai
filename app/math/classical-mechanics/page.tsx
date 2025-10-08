@@ -240,7 +240,7 @@ const page = () => {
                 Glossary
               </h1>
               <p className="text-gray-700">
-                This section will collect key terms and definitions as they
+                This section will collect definitions and key terms as they
                 arise during study.
               </p>
               <ul className="list-disc pl-6 space-y-2">
