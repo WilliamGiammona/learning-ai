@@ -170,7 +170,7 @@ const Page = () => {
                   </div>
                   <p className="text-gray-700">
                     This formula is called the{" "}
-                    <strong>"principle of virtual work"</strong>.
+                    <strong>&quot;principle of virtual work&quot;</strong>.
                   </p>
                 </div>
 
@@ -225,8 +225,8 @@ const Page = () => {
                     <LaTeX>{"\\mathbf{r}"}</LaTeX> is in Cartesian coordinates,
                     which may or may not be equal to the number of degrees of
                     freedom in the system. If there are more coordinates than
-                    degrees of freedom, the coordinates won't be independent. We
-                    need new coordinates that{" "}
+                    degrees of freedom, the coordinates won&apos;t be
+                    independent. We need new coordinates that{" "}
                     <strong>
                       always have the same number of coordinates as the amount
                       of degrees of freedom
@@ -467,8 +467,8 @@ const Page = () => {
                     </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    OK, but we don't want the 2 because in our original equation
-                    it&apos;s{" "}
+                    OK, but we don&apos;t want the 2 because in our original
+                    equation it&apos;s{" "}
                     <LaTeX>
                       {
                         "\\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j}"
