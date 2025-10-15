@@ -26,7 +26,8 @@ const Page = () => {
                 <ol className="ml-4 mt-1 space-y-1 list-decimal">
                   <li>
                     <a href="#c1-sec-4" className="hover:underline">
-                      D'Alembert&apos;s Principle and Lagrange&apos;s Equations
+                      D&apos;Alembert&apos;s Principle and Lagrange&apos;s
+                      Equations
                     </a>
                   </li>
                   <li>
@@ -77,7 +78,8 @@ const Page = () => {
 
               <section id="c1-sec-4" className="scroll-mt-24 space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  1.4 D'Alembert&apos;s Principle and Lagrange&apos;s Equations
+                  1.4 D&apos;Alembert&apos;s Principle and Lagrange&apos;s
+                  Equations
                 </h2>
 
                 {/* Virtual Displacement */}
@@ -209,7 +211,7 @@ const Page = () => {
                     because{" "}
                     <LaTeX>{"\\mathbf{F}_i = \\dot{\\mathbf{p}}_i"}</LaTeX>.
                     This equation is called{" "}
-                    <strong>D'Alembert&apos;s Principle</strong>.
+                    <strong>D&apos;Alembert&apos;s Principle</strong>.
                   </p>
                 </div>
 
@@ -284,14 +286,15 @@ const Page = () => {
                   </div>
                 </div>
 
-                {/* D'Alemberts Principle with Generalized Coordinates */}
+                {/* DAlemberts Principle with Generalized Coordinates */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Applying Generalized Coordinates to D'Alembert&apos;s
+                    Applying Generalized Coordinates to D&apos;Alembert&apos;s
                     Principle
                   </h3>
                   <p className="text-gray-700">
-                    For the first part of D'Alembert&apos;s Principle we get:
+                    For the first part of D&apos;Alembert&apos;s Principle we
+                    get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <LaTeX block>
@@ -556,8 +559,8 @@ const Page = () => {
                   moment.
                 </li>
                 <li>
-                  <strong>D'Alembert&apos;s Principle:</strong> The principle
-                  stating that{" "}
+                  <strong>D&apos;Alembert&apos;s Principle:</strong> The
+                  principle stating that{" "}
                   <LaTeX>
                     {
                       "\\sum_i (\\mathbf{F}_i^{(a)} - \\dot{\\mathbf{p}}_i) \\cdot \\delta \\mathbf{r}_i = 0"
@@ -573,7 +576,7 @@ const Page = () => {
                 <li>
                   <strong>Lagrange&apos;s Equations:</strong> Equations of
                   motion in generalized coordinates, derived from
-                  D'Alembert&apos;s principle.
+                  D&apos;Alembert&apos;s principle.
                 </li>
               </ul>
             </section>
