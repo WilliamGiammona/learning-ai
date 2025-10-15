@@ -1110,6 +1110,24 @@ const ClassicalMechanics = () => {
                   motion in generalized coordinates, derived from
                   D&apos;Alembert&apos;s principle.
                 </li>
+                <li>
+                  <strong>Scalar Potential Function:</strong> A function{" "}
+                  <LaTeX>{"V"}</LaTeX> that depends on position, from which
+                  forces can be derived as{" "}
+                  <LaTeX>{"\\mathbf{F} = -\\nabla V"}</LaTeX>.
+                </li>
+                <li>
+                  <strong>
+                    Lagrangian (<LaTeX>{"L"}</LaTeX>):
+                  </strong>{" "}
+                  The difference between kinetic and potential energy,{" "}
+                  <LaTeX>{"L = T - V"}</LaTeX>.
+                </li>
+                <li>
+                  <strong>Hamilton&apos;s Principle:</strong> The motion of a
+                  system makes the action integral{" "}
+                  <LaTeX>{"I = \\int_{t_1}^{t_2} L \\, dt"}</LaTeX> stationary.
+                </li>
               </ul>
             </section>
           </article>
