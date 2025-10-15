@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
 
-const page = () => {
+import React from "react";
+import { LaTeX } from "@/app/components/LaTeX"; // Adjust path as needed
+
+const Page = () => {
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Main layout: TOC + Content */}
       <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* TOC */}
         <aside className="hidden md:block md:col-span-3">
@@ -17,8 +19,6 @@ const page = () => {
                   Overview
                 </a>
               </li>
-
-              {/* Chapter 1 */}
               <li>
                 <a href="#chapter-1" className="text-blue-700 hover:underline">
                   Chapter 1: Survey of the Elementary Principles
@@ -26,8 +26,7 @@ const page = () => {
                 <ol className="ml-4 mt-1 space-y-1 list-decimal">
                   <li>
                     <a href="#c1-sec-4" className="hover:underline">
-                      D&apos;Alembert&apos;s Principle and Lagrange&apos;s
-                      Equations
+                      D'Alembert&apos;s Principle and Lagrange&apos;s Equations
                     </a>
                   </li>
                   <li>
@@ -41,54 +40,6 @@ const page = () => {
                     </a>
                   </li>
                 </ol>
-              </li>
-
-              {/* Chapter 2 */}
-              <li>
-                <a href="#chapter-2" className="text-blue-700 hover:underline">
-                  Chapter 2: Variational Principles and Lagrange&apos;s
-                  Equations
-                </a>
-                <ol className="ml-4 mt-1 space-y-1 list-decimal">
-                  <li>
-                    <a href="#sec-1" className="hover:underline">
-                      Hamilton&apos;s Principle
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-2" className="hover:underline">
-                      Some Techniques of the Calculus of Variations
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-3" className="hover:underline">
-                      Extension of Hamilton&apos;s Principle to Nonholonomic
-                      Systems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-4" className="hover:underline">
-                      Advantages of a Variational Principle Formulation
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-5" className="hover:underline">
-                      Conservation Theorems and Symmetry Properties
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#sec-6" className="hover:underline">
-                      Energy Function and the Conservation of Energy
-                    </a>
-                  </li>
-                </ol>
-              </li>
-
-              {/* Glossary */}
-              <li>
-                <a href="#glossary" className="text-blue-700 hover:underline">
-                  Glossary
-                </a>
               </li>
             </ol>
           </nav>
@@ -113,7 +64,7 @@ const page = () => {
                 >
                   Classical Mechanics (3rd Edition)
                 </a>
-                . Chapters and sections not essential to understanidng Eric
+                . Chapters and sections not essential to understanding Eric
                 Smith&apos;s book will not be covered.
               </p>
             </section>
@@ -126,20 +77,22 @@ const page = () => {
 
               <section id="c1-sec-4" className="scroll-mt-24 space-y-6">
                 <h2 className="text-2xl font-bold text-gray-800">
-                  1.4 D&apos;Alembert&apos;s Principle and Lagrange&apos;s
-                  Equations
+                  1.4 D'Alembert&apos;s Principle and Lagrange&apos;s Equations
                 </h2>
 
-                {/* Virtual Displacement - Definition Card */}
+                {/* Virtual Displacement */}
                 <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg shadow-sm">
                   <h3 className="text-xl font-bold text-amber-900 mb-3">
-                    Virtual Infinitesimal Displacement (δr)
+                    Virtual Infinitesimal Displacement (
+                    <LaTeX>{"\\delta \\mathbf{r}"}</LaTeX>)
                   </h3>
                   <p className="text-gray-800 leading-relaxed">
-                    The <strong>virtual displacement</strong> δr is the same as
-                    dr but has <strong>no time factor</strong>. It&apos;s
-                    imaginary (virtual), so it&apos;s everything happening at
-                    that exact moment (so no force/constraint can change because
+                    The <strong>virtual displacement</strong>{" "}
+                    <LaTeX>{"\\delta \\mathbf{r}"}</LaTeX> is the same as{" "}
+                    <LaTeX>{"d\\mathbf{r}"}</LaTeX> but has{" "}
+                    <strong>no time factor</strong>. It&apos;s imaginary
+                    (virtual), so it&apos;s everything happening at that exact
+                    moment (so no force/constraint can change because
                     there&apos;s no time factor).
                   </p>
                 </div>
@@ -152,7 +105,8 @@ const page = () => {
                   <p className="text-gray-700">
                     Let&apos;s say we have a system in static equilibrium. In
                     that case, the virtual work of all forces during an
-                    infinitesimal (virtual) displacement δr must be zero, since
+                    infinitesimal (virtual) displacement{" "}
+                    <LaTeX>{"\\delta \\mathbf{r}"}</LaTeX> must be zero, since
                     in equilibrium the net force in the direction of any
                     possible displacement is zero (otherwise there would be
                     movement). The component of one vector in the direction of
@@ -161,7 +115,9 @@ const page = () => {
                     Therefore:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">∑ Fᵢ · δrᵢ = 0</p>
+                    <LaTeX block>
+                      {"\\sum_i \\mathbf{F}_i \\cdot \\delta \\mathbf{r}_i = 0"}
+                    </LaTeX>
                   </div>
                 </div>
 
@@ -176,17 +132,21 @@ const page = () => {
                   </p>
                   <ol className="list-decimal ml-6 space-y-2 text-gray-700">
                     <li>
-                      <strong>Applied forces</strong> (F⁽ᵃ⁾)
+                      <strong>Applied forces</strong> (
+                      <LaTeX>{"\\mathbf{F}^{(a)}"}</LaTeX>)
                     </li>
                     <li>
-                      <strong>Forces of constraint</strong> (f)
+                      <strong>Forces of constraint</strong> (
+                      <LaTeX>{"\\mathbf{f}"}</LaTeX>)
                     </li>
                   </ol>
                   <p className="text-gray-700">This gives us the equation:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ Fᵢ⁽ᵃ⁾ · δrᵢ + ∑ fᵢ · δrᵢ = 0
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\mathbf{F}_i^{(a)} \\cdot \\delta \\mathbf{r}_i + \\sum_i \\mathbf{f}_i \\cdot \\delta \\mathbf{r}_i = 0"
+                      }
+                    </LaTeX>
                   </div>
                 </div>
 
@@ -200,11 +160,15 @@ const page = () => {
                     forces of constraint. Then we get the much nicer:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">∑ Fᵢ⁽ᵃ⁾ · δrᵢ = 0</p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\mathbf{F}_i^{(a)} \\cdot \\delta \\mathbf{r}_i = 0"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
                     This formula is called the{" "}
-                    <strong>&quot;principle of virtual work&quot;</strong>.
+                    <strong>"principle of virtual work"</strong>.
                   </p>
                 </div>
 
@@ -219,10 +183,15 @@ const page = () => {
                     static and dynamic equilibrium.
                   </p>
                   <p className="text-gray-700">
-                    We know that F = ṗ (momentum = mv̇), which means:
+                    We know that{" "}
+                    <LaTeX>{"\\mathbf{F} = \\dot{\\mathbf{p}}"}</LaTeX>{" "}
+                    (momentum = <LaTeX>{"m\\dot{\\mathbf{v}}"}</LaTeX>), which
+                    means:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">Fᵢ - ṗᵢ = 0</p>
+                    <LaTeX block>
+                      {"\\mathbf{F}_i - \\dot{\\mathbf{p}}_i = 0"}
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
                     According to the equation of motion (we again limit
@@ -230,13 +199,17 @@ const page = () => {
                     constraint). So:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i (\\mathbf{F}_i^{(a)} - \\dot{\\mathbf{p}}_i) \\cdot \\delta \\mathbf{r}_i = 0"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    because Fᵢ = ṗᵢ. This equation is called{" "}
-                    <strong>D&apos;Alembert&apos;s Principle</strong>.
+                    because{" "}
+                    <LaTeX>{"\\mathbf{F}_i = \\dot{\\mathbf{p}}_i"}</LaTeX>.
+                    This equation is called{" "}
+                    <strong>D'Alembert&apos;s Principle</strong>.
                   </p>
                 </div>
 
@@ -246,41 +219,38 @@ const page = () => {
                     Generalized Coordinates
                   </h3>
                   <p className="text-gray-700">
-                    This is still ugly because position vector r is in Cartesian
-                    coordinates, which may or may not be equal to the number of
-                    degrees of freedom in the system. If there are more
-                    coordinates than degrees of freedom, the coordinates
-                    won&apos;t be independent. We need new coordinates that are{" "}
+                    This is still ugly because position vector{" "}
+                    <LaTeX>{"\\mathbf{r}"}</LaTeX> is in Cartesian coordinates,
+                    which may or may not be equal to the number of degrees of
+                    freedom in the system. If there are more coordinates than
+                    degrees of freedom, the coordinates won't be independent. We
+                    need new coordinates that{" "}
                     <strong>
                       always have the same number of coordinates as the amount
                       of degrees of freedom
                     </strong>{" "}
                     (this is similar to the concept of basis vectors in linear
                     algebra). We call these coordinates{" "}
-                    <strong>generalized coordinates</strong>: q₁, ..., qₙ where
-                    n is equal to the number of degrees of freedom.
+                    <strong>generalized coordinates</strong>:{" "}
+                    <LaTeX>{"q_1, \\ldots, q_n"}</LaTeX> where{" "}
+                    <LaTeX>{"n"}</LaTeX> is equal to the number of degrees of
+                    freedom.
                   </p>
                   <p className="text-gray-700">
                     We also add a time element, so the position vector can be
                     described as the following function:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      rᵢ = f(q₁⁽ᵗ⁾, ..., qₙ⁽ᵗ⁾, t)
-                    </p>
-                  </div>
-                  <p>
-                    we give f the name rᵢ so that we can better remember its
-                    purpose giving us:
-                  </p>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      rᵢ = rᵢ(q₁⁽ᵗ⁾, ..., qₙ⁽ᵗ⁾, t)
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\mathbf{r}_i = \\mathbf{r}_i(q_1(t), \\ldots, q_n(t), t)"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    Hence position of rᵢ is a function of generalized
-                    coordinates where n = number of degrees of freedom.
+                    Hence position of <LaTeX>{"\\mathbf{r}_i"}</LaTeX> is a
+                    function of generalized coordinates where{" "}
+                    <LaTeX>{"n"}</LaTeX> = number of degrees of freedom.
                   </p>
                 </div>
 
@@ -290,120 +260,171 @@ const page = () => {
                     Velocity Using the Chain Rule
                   </h3>
                   <p className="text-gray-700">
-                    Now we know that vᵢ = drᵢ/dt, which with the chain rule gets
-                    us:
+                    Now we know that{" "}
+                    <LaTeX>{"\\mathbf{v}_i = d\\mathbf{r}_i/dt"}</LaTeX>, which
+                    with the chain rule gets us:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      vᵢ = drᵢ/dt = ∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\mathbf{v}_i = \\frac{d\\mathbf{r}_i}{dt} = \\sum_k \\frac{\\partial \\mathbf{r}_i}{\\partial q_k}\\frac{dq_k}{dt} + \\frac{\\partial \\mathbf{r}_i}{\\partial t}"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    Also for virtual infinitesimal (no dt) we get:
-                  </p>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      δrᵢ = ∑ₖ (∂rᵢ/∂qₖ)δqₖ
-                    </p>
-                  </div>
-                </div>
-
-                {/* DAlemberts Principle with Generalized Coordinates */}
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    Applying Generalized Coordinates to D&apos;Alembert&apos;s
-                    Principle
-                  </h3>
-                  <p className="text-gray-700">
-                    For the first part of D&apos;Alembert&apos;s Principle we
+                    Also for virtual infinitesimal (no <LaTeX>{"dt"}</LaTeX>) we
                     get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ Fᵢ · δrᵢ = ∑ Fᵢ · (∂rᵢ/∂qⱼ)δqⱼ
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\delta \\mathbf{r}_i = \\sum_k \\frac{\\partial \\mathbf{r}_i}{\\partial q_k}\\delta q_k"
+                      }
+                    </LaTeX>
+                  </div>
+                </div>
+
+                {/* D'Alemberts Principle with Generalized Coordinates */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    Applying Generalized Coordinates to D'Alembert&apos;s
+                    Principle
+                  </h3>
+                  <p className="text-gray-700">
+                    For the first part of D'Alembert&apos;s Principle we get:
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\mathbf{F}_i \\cdot \\delta \\mathbf{r}_i = \\sum_{i,j} \\mathbf{F}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\delta q_j"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    Let Qⱼ = ∑ Fᵢ · (∂rᵢ/∂qⱼ), then ∑ Fᵢδrᵢ = ∑ⱼ Qⱼδqⱼ, where
-                    Qⱼδqⱼ has the dimension of work.
+                    Let{" "}
+                    <LaTeX>
+                      {
+                        "Q_j = \\sum_i \\mathbf{F}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}"
+                      }
+                    </LaTeX>
+                    , then{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i \\mathbf{F}_i \\cdot \\delta \\mathbf{r}_i = \\sum_j Q_j \\delta q_j"
+                      }
+                    </LaTeX>
+                    , where <LaTeX>{"Q_j \\delta q_j"}</LaTeX> has the dimension
+                    of work.
                   </p>
                 </div>
 
                 {/* Second Part */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    The Second Part: ∑ ṗᵢ · δrᵢ
+                    The Second Part:{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i \\dot{\\mathbf{p}}_i \\cdot \\delta \\mathbf{r}_i"
+                      }
+                    </LaTeX>
                   </h3>
                   <p className="text-gray-700">
-                    Now for the second part where ∑ ṗᵢ · δrᵢ, we can say that p
-                    = mᵢr̈ᵢ by definition. Thus:
+                    Now for the second part where{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i \\dot{\\mathbf{p}}_i \\cdot \\delta \\mathbf{r}_i"
+                      }
+                    </LaTeX>
+                    , we can say that{" "}
+                    <LaTeX>{"\\mathbf{p} = m_i \\ddot{\\mathbf{r}}_i"}</LaTeX>{" "}
+                    by definition. Thus:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ ṗᵢ · δrᵢ = ∑ mᵢr̈ᵢ · δrᵢ ⇒ ∑ mᵢr̈ᵢ · (∂rᵢ/∂qⱼ)δqⱼ
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\dot{\\mathbf{p}}_i \\cdot \\delta \\mathbf{r}_i = \\sum_i m_i \\ddot{\\mathbf{r}}_i \\cdot \\delta \\mathbf{r}_i \\Rightarrow \\sum_{i,j} m_i \\ddot{\\mathbf{r}}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\delta q_j"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    Now, we know that d/dt(mᵢṙᵢ · ∂rᵢ/∂qⱼ). By the product rule
-                    we would get:
+                    Now, we know that{" "}
+                    <LaTeX>
+                      {
+                        "\\frac{d}{dt}\\left(m_i \\dot{\\mathbf{r}}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right)"
+                      }
+                    </LaTeX>
+                    . By the product rule we would get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      mᵢr̈ᵢ · (∂rᵢ/∂qⱼ) + mᵢṙᵢ · d/dt(∂rᵢ/∂qⱼ)
-                    </p>
+                    <LaTeX block>
+                      {
+                        "m_i \\ddot{\\mathbf{r}}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j} + m_i \\dot{\\mathbf{r}}_i \\cdot \\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right)"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
                     We only want the first part, so we must subtract. So:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ᵢ [d/dt(mᵢṙᵢ · ∂rᵢ/∂qⱼ) - mᵢṙᵢ · d/dt(∂rᵢ/∂qⱼ)]
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\left[\\frac{d}{dt}\\left(m_i \\dot{\\mathbf{r}}_i \\cdot \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right) - m_i \\dot{\\mathbf{r}}_i \\cdot \\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right)\\right]"
+                      }
+                    </LaTeX>
                   </div>
                 </div>
 
-                {/* Ugly Math */}
+                {/* Simplifying */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Simplifying d/dt(∂rᵢ/∂qⱼ)
+                    Simplifying{" "}
+                    <LaTeX>
+                      {
+                        "\\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right)"
+                      }
+                    </LaTeX>
                   </h3>
                   <p className="text-gray-700">
                     Now this is ugly! Let&apos;s tackle it step by step. For the
-                    last part, we have d/dt(∂rᵢ/∂qⱼ). We want to get this to
-                    ∂vᵢ/∂qⱼ.
+                    last part, we have{" "}
+                    <LaTeX>
+                      {
+                        "\\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right)"
+                      }
+                    </LaTeX>
+                    . We want to get this to{" "}
+                    <LaTeX>
+                      {"\\frac{\\partial \\mathbf{v}_i}{\\partial q_j}"}
+                    </LaTeX>
+                    .
                   </p>
                   <p className="text-gray-700">Here is the math:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt)
-                    </p>
-                  </div>
-                  <p className="text-gray-700">which by chain rule =</p>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∂/∂qⱼ[∑ₖ (∂rᵢ/∂qₖ)(dqₖ/dt) + ∂rᵢ/∂t]
-                    </p>
-                  </div>
-                  <p className="text-gray-700">⇒</p>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ₖ (∂²rᵢ/∂qⱼ∂qₖ)(dqₖ/dt) + ∂²rᵢ/∂qⱼ∂t
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right) = \\frac{\\partial}{\\partial q_j}\\left(\\frac{d\\mathbf{r}_i}{dt}\\right)"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    Now d/dt(∂rᵢ/∂qⱼ) = ∂/∂qⱼ(drᵢ/dt), that&apos;s just =
-                    ∂vᵢ/∂qⱼ
+                    Now{" "}
+                    <LaTeX>
+                      {
+                        "\\frac{d}{dt}\\left(\\frac{\\partial \\mathbf{r}_i}{\\partial q_j}\\right) = \\frac{\\partial}{\\partial q_j}\\left(\\frac{d\\mathbf{r}_i}{dt}\\right)"
+                      }
+                    </LaTeX>
+                    , that&apos;s just ={" "}
+                    <LaTeX>
+                      {"\\frac{\\partial \\mathbf{v}_i}{\\partial q_j}"}
+                    </LaTeX>
                   </p>
+                  <p className="text-gray-700">Therefore:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">⇒ ∂vᵢ/∂qⱼ</p>
-                  </div>
-                  <p className="text-gray-700">
-                    So we get ∂vᵢ/∂qⱼ · 1 + 0 + 0 to 1. Therefore:
-                  </p>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∂vᵢ/∂(dqⱼ/dt) = ∂rᵢ/∂qⱼ
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j} = \\frac{\\partial \\mathbf{r}_i}{\\partial q_j}"
+                      }
+                    </LaTeX>
                   </div>
                 </div>
 
@@ -414,40 +435,64 @@ const page = () => {
                   </h3>
                   <p className="text-gray-700">Now:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ᵢ [d/dt(mᵢvᵢ · ∂vᵢ/∂(dqⱼ/dt)) - mᵢvᵢ · ∂vᵢ/∂qⱼ]
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\left[\\frac{d}{dt}\\left(m_i \\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j}\\right) - m_i \\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial q_j}\\right]"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">We want to then show that:</p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      2vᵢ · ∂vᵢ/∂(dqⱼ/dt) = ∂vᵢ²/∂(dqⱼ/dt)
-                    </p>
+                    <LaTeX block>
+                      {
+                        "2\\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j} = \\frac{\\partial v_i^2}{\\partial \\dot{q}_j}"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    (we treat mass as constant). So what is ∂vᵢ²/∂(dqⱼ/dt)? Use
-                    chain rule to get:
+                    (we treat mass as constant). So what is{" "}
+                    <LaTeX>
+                      {"\\frac{\\partial v_i^2}{\\partial \\dot{q}_j}"}
+                    </LaTeX>
+                    ? Use chain rule to get:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∂vᵢ²/∂vᵢ · ∂vᵢ/∂(dqⱼ/dt) or ∂vᵢ²/∂vᵢ · ∂vᵢ/∂(dqⱼ/dt) ⇒ 2vᵢ
-                      · ∂vᵢ/∂(dqⱼ/dt)
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\frac{\\partial v_i^2}{\\partial \\mathbf{v}_i} \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j} \\Rightarrow 2\\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j}"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-gray-700">
-                    OK, but we don&apos;t want the 2 because in our original
-                    equation it&apos;s vᵢ · ∂vᵢ/∂(dqⱼ/dt) not 2vᵢ. So multiply
-                    by 1/2.
+                    OK, but we don't want the 2 because in our original equation
+                    it&apos;s{" "}
+                    <LaTeX>
+                      {
+                        "\\mathbf{v}_i \\cdot \\frac{\\partial \\mathbf{v}_i}{\\partial \\dot{q}_j}"
+                      }
+                    </LaTeX>{" "}
+                    not <LaTeX>{"2\\mathbf{v}_i"}</LaTeX>. So multiply by 1/2.
                   </p>
                   <p className="text-gray-700">
-                    So we get that ∑ Fᵢ⁽ᵃ⁾ · δrᵢ = ∑ⱼ Qⱼδqⱼ and that:
+                    So we get that{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i \\mathbf{F}_i^{(a)} \\cdot \\delta \\mathbf{r}_i = \\sum_j Q_j \\delta q_j"
+                      }
+                    </LaTeX>{" "}
+                    and that:
                   </p>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <p className="text-center font-mono">
-                      ∑ ṗᵢ · δrᵢ = ∑ [d/dt[∂/∂(dqⱼ/dt)(∑ᵢ ½mᵢvᵢ²)] - ∂/∂qⱼ(∑ᵢ
-                      ½mᵢvᵢ²)]δqⱼ
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_i \\dot{\\mathbf{p}}_i \\cdot \\delta \\mathbf{r}_i = \\sum_j \\left[\\frac{d}{dt}\\left(\\frac{\\partial T}{\\partial \\dot{q}_j}\\right) - \\frac{\\partial T}{\\partial q_j}\\right]\\delta q_j"
+                      }
+                    </LaTeX>
                   </div>
+                  <p className="text-gray-700">
+                    where <LaTeX>{"T = \\sum_i \\frac{1}{2}m_i v_i^2"}</LaTeX>{" "}
+                    (kinetic energy).
+                  </p>
                 </div>
 
                 {/* Final Form */}
@@ -456,88 +501,38 @@ const page = () => {
                     Lagrange&apos;s Equations
                   </h3>
                   <p className="text-blue-800">
-                    We can change ∑ Fᵢ⁽ᵃ⁾ - ṗᵢ) · δr = 0 to ∑(r̈ᵢ - Fᵢ⁽ᵃ⁾) · δr =
-                    0 since both expressions are equivalent (they must both be 0
+                    We can change{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i (\\mathbf{F}_i^{(a)} - \\dot{\\mathbf{p}}_i) \\cdot \\delta \\mathbf{r} = 0"
+                      }
+                    </LaTeX>{" "}
+                    to{" "}
+                    <LaTeX>
+                      {
+                        "\\sum_i (\\ddot{\\mathbf{r}}_i - \\mathbf{F}_i^{(a)}) \\cdot \\delta \\mathbf{r} = 0"
+                      }
+                    </LaTeX>{" "}
+                    since both expressions are equivalent (they must both be 0
                     to get 0).
                   </p>
                   <p className="text-blue-800">So we get:</p>
                   <div className="bg-white p-4 rounded-lg border border-blue-200">
-                    <p className="text-center font-mono text-blue-900">
-                      ∑ⱼ [d/dt[∂T/∂(dqⱼ/dt)] - ∂T/∂qⱼ - Qⱼ]δqⱼ = 0
-                    </p>
+                    <LaTeX block>
+                      {
+                        "\\sum_j \\left[\\frac{d}{dt}\\left(\\frac{\\partial T}{\\partial \\dot{q}_j}\\right) - \\frac{\\partial T}{\\partial q_j} - Q_j\\right]\\delta q_j = 0"
+                      }
+                    </LaTeX>
                   </div>
                   <p className="text-blue-800">
-                    where T = ∑ᵢ ½mᵢvᵢ² (kinetic energy). This is{" "}
+                    where <LaTeX>{"T = \\sum_i \\frac{1}{2}m_i v_i^2"}</LaTeX>{" "}
+                    (kinetic energy). This is{" "}
                     <strong>
                       Lagrange&apos;s equation in its most general form
                     </strong>
                     .
                   </p>
                 </div>
-              </section>
-
-              <section id="c1-sec-5" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  1.5 Velocity-Dependent Potentials and the Dissipation Function
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="c1-sec-6" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  1.6 Simple Applications of the Lagrangian Formulation
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-            </section>
-
-            {/* Chapter 2 */}
-            <section id="chapter-2" className="scroll-mt-24 space-y-10">
-              <h1 className="text-5xl font-extrabold text-gray-900">
-                Chapter 2: Variational Principles and Lagrange&apos;s Equations
-              </h1>
-
-              <section id="sec-1" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.1 Hamilton&apos;s Principle
-                </h2>
-                <p>Lorem ipsum placeholder for derivations and explanations.</p>
-              </section>
-
-              <section id="sec-2" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.2 Some Techniques of the Calculus of Variations
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="sec-3" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.3 Extension of Hamilton&apos;s Principle to Nonholonomic
-                  Systems
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="sec-4" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.4 Advantages of a Variational Principle Formulation
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="sec-5" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.5 Conservation Theorems and Symmetry Properties
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
-              </section>
-
-              <section id="sec-6" className="scroll-mt-24 space-y-4">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  2.6 Energy Function and the Conservation of Energy
-                </h2>
-                <p>Lorem ipsum placeholder text.</p>
               </section>
             </section>
 
@@ -552,24 +547,33 @@ const page = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Virtual Displacement (δr):</strong> An infinitesimal
-                  displacement with no time factor—imaginary and instantaneous,
-                  representing what could happen at a single moment.
+                  <strong>
+                    Virtual Displacement (<LaTeX>{"\\delta \\mathbf{r}"}</LaTeX>
+                    ):
+                  </strong>{" "}
+                  An infinitesimal displacement with no time factor—imaginary
+                  and instantaneous, representing what could happen at a single
+                  moment.
                 </li>
                 <li>
-                  <strong>D&apos;Alembert&apos;s Principle:</strong> The
-                  principle stating that ∑(Fᵢ⁽ᵃ⁾ - ṗᵢ) · δrᵢ = 0, extending the
-                  principle of virtual work to dynamic systems.
+                  <strong>D'Alembert&apos;s Principle:</strong> The principle
+                  stating that{" "}
+                  <LaTeX>
+                    {
+                      "\\sum_i (\\mathbf{F}_i^{(a)} - \\dot{\\mathbf{p}}_i) \\cdot \\delta \\mathbf{r}_i = 0"
+                    }
+                  </LaTeX>
+                  , extending the principle of virtual work to dynamic systems.
                 </li>
                 <li>
                   <strong>Generalized Coordinates:</strong> Independent
-                  coordinates (q₁, ..., qₙ) equal in number to the degrees of
-                  freedom of the system.
+                  coordinates (<LaTeX>{"q_1, \\ldots, q_n"}</LaTeX>) equal in
+                  number to the degrees of freedom of the system.
                 </li>
                 <li>
                   <strong>Lagrange&apos;s Equations:</strong> Equations of
                   motion in generalized coordinates, derived from
-                  D&apos;Alembert&apos;s principle.
+                  D'Alembert&apos;s principle.
                 </li>
               </ul>
             </section>
@@ -580,4 +584,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
