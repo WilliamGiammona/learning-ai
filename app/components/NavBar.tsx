@@ -111,6 +111,13 @@ export default function Navbar() {
             >
               Robotics
             </Link>
+
+            <Link
+              href="/robotics"
+              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              Reinforcement Learning
+            </Link>
           </div>
 
           {/* Mobile menu button */}
