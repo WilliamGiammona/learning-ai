@@ -238,18 +238,16 @@ export default function ReinforcementLearningPage() {
               In many situations, the agent is forced to operate with incomplete
               information about the environment. This is called a{" "}
               <strong>partially observable environment</strong>. Think about
-              trading in the stock market. You don’t know what’s happening
-              inside companies. You don’t know what decisions executives are
-              about to make. You don’t know what governments are planning, what
-              competitors are building, or what unexpected event is about to
-              drop out of the sky. You’re making decisions based on noisy,
-              delayed, and incomplete signals. From the agent’s point of view,
-              it’s like trying to play chess while only seeing half the board
-              and occasionally being lied to. In these settings, the agent has
-              to guess, infer, and build beliefs about what might be going on
-              behind the scenes. This makes it much harder (sometimes even
-              impossible) for the agent to have states that follow the markov
-              property.
+              playing poker. You don’t know what cards the other players are
+              holding. You don’t know who is bluffing, who is scared, or who is
+              quietly setting a trap. You only see your own hand and the cards
+              on the table. You’re making decisions based on incomplete
+              information. From the agent’s point of view, it’s like trying to
+              play chess while only seeing half the board and occasionally being
+              lied to. In these settings, the agent has to guess and build
+              beliefs about what might be going on behind the scenes. This makes
+              it much harder (sometimes even impossible) for the agent to have
+              states that follow the markov property.
             </p>
           </section>
         </main>
