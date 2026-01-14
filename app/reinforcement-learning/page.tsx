@@ -658,7 +658,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              The first think Markov needed a situation where one event was
+              The first thing Markov needed was a situation where one event was
               clearly dependent on a previous event. He settled on using a very
               famous Russian poem, "Eugene Onegin", by early 19th century anti
               Tsarist Russian poet (and father of modern Russian literature),
@@ -668,7 +668,7 @@ export default function ReinforcementLearningPage() {
               just needed to prove that consonants and vowels in the poem
               followed the law of large numbers, and that would show that
               dependent events can also follow the law of large numbers (not
-              just indepenedent events).
+              just independent events).
             </p>
 
             <p className="mb-4">
