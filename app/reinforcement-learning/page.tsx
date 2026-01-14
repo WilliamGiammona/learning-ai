@@ -129,6 +129,49 @@ export default function ReinforcementLearningPage() {
               of the game, and it contains everything the agent needs to decide
               what move (action) to make next.
             </p>
+
+            <p className="mb-4">
+              <strong>
+                So… who decides what information is important enough to go into
+                a state, and what isn't?
+              </strong>
+              <br />
+              <br />
+              At this point, a very reasonable question pops up: how does the
+              agent actually know what belongs in the state? Like, who decided
+              that the board position matters in chess, but the player’s mood or
+              what they had for breakfast does not? The answer is… sometimes a
+              human does, and sometimes nobody does. In the early days of
+              Reinforcement Learning, a human would sit there and carefully
+              hand-pick what information the agent gets to see. “Here, you can
+              have position, velocity, and angle. No more, no less.” The agent
+              never questioned it. It just accepted this version of reality and
+              tried to make the best of it.
+            </p>
+
+            <p className="mb-4">
+              In modern Reinforcement Learning, especially with deep neural
+              networks, things get a lot more interesting. Instead of
+              spoon-feeding the agent a neatly packaged state, we often just
+              dump a pile of raw data on it, including pixels, sensor readings,
+              board encodings, etc, and say, “Good luck.” The agent is then
+              forced to figure out for itself what actually matters enough to be
+              incorporated into its state. It does this in the only way it knows
+              how: by following the reward. If paying attention to something
+              helps it get more reward, that thing becomes important. If it
+              doesn’t, it quietly fades into irrelevance.
+            </p>
+
+            <p className="mb-4">
+              If the reward is badly designed, the agent will learn that the
+              wrong things are “important.” In chess, if a bad reward is given
+              (trying to handcode values for each piece for example), the agent
+              might fixate on material and ignore king safety. In other domains,
+              it might exploit loopholes you didn’t even realize existed. This
+              is why state design and reward design are basically the two
+              pressure points of Reinforcement Learning. Get them right, and the
+              agent can solve extremely difficult problems.
+            </p>
           </section>
         </main>
       </div>
