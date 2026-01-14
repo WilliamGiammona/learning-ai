@@ -746,7 +746,8 @@ export default function ReinforcementLearningPage() {
               law of large numbers) to a ratio of .43 for vowels and .57 for
               consonants. When Markov checked if those were the true ratios,
               they were. Hence, Markov Chains prove that dependent events also
-              follow the law of large numbers.
+              follow the law of large numbers (thereby proving Nekrasov's
+              assumptions and conclusions to be incorrect).
             </p>
           </section>
         </main>
