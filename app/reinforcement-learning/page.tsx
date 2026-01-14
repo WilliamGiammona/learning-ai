@@ -535,7 +535,7 @@ export default function ReinforcementLearningPage() {
               actions to do better than whatever I’m currently doing?” These are
               all questions about{" "}
               <strong>sequences of decisions over time</strong>. Not one action
-              and one reward, but long chains of cause and effect.
+              and one reward, but long chains of actions and rewards.
             </p>
 
             <p className="mb-4">
