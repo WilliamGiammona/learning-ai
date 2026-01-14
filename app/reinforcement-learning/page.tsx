@@ -729,9 +729,24 @@ export default function ReinforcementLearningPage() {
               13 percent (and hence 87 percent of going from a state of a vowel
               to a state of a consonant). This was done for all the state
               transitions where consonant to consanant was .33 and consonant to
-              vowel was .67. So this transition probability object tells me
+              vowel was .67. So this transition probability matrix tells me
               about the probability of "chaining" vowel and consonant states
-              together
+              together, hence the name Markov chain. When you follow this
+              transition matrix, you eventually converge to .43 for Vowels and
+              .57 for Consonants, the exact ratio Markov counted.
+              <br />
+              <br />
+              To recap, we have this new mathematical object, the Markov Chain,
+              where you have states (vowels and consonants) and a transition
+              probability matrix that tells you the likelihood of going from
+              state one to state two (vowel to vowel, vowel to consonant,
+              consonant to vowel, and consonant to consonant). Using this
+              mathematical object, you can predict that the ratio of vowels and
+              consonants to the total amount of letters will converge (follow
+              law of large numbers) to a ratio of .43 for vowels and .57 for
+              consonants. When Markov checked if those were the true ratios,
+              they were. Hence, Markov Chains prove that dependent events also
+              follow the law of large numbers.
             </p>
           </section>
         </main>
