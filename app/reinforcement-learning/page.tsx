@@ -291,18 +291,41 @@ export default function ReinforcementLearningPage() {
               <br />
               What are the components that make up the agent? The first of these
               is the <strong>policy</strong>, which is basically the agent’s
-              rulebook for what to do in each state. In chess terms, this is the
-              part that looks at the board and says, “In positions like this, I
-              usually move the knight here,” or “This feels like a good time to
-              attack.” The second is the <strong>value function</strong>, which
-              is the agent’s opinionated ranking system for how much future
-              reward it expects to get from a given state (and sometimes from a
-              specific action in that state). This is the voice in the agent’s
-              head saying, “This position looks great, I’m probably winning,” or
-              “I'm probably losing badly.” And sometimes, if the agent is
-              feeling extra ambitious, it also builds a <strong>model</strong>{" "}
-              of the environment, which is an internal simulation of how the
+              rulebook for what to do in each state. The second is the{" "}
+              <strong>value function</strong>, which is the agent’s opinionated
+              ranking system for how much future reward it expects to get from a
+              given state (and sometimes from a specific action in that state).
+              Finally , there is the agent's <strong>model</strong> of the
+              environment, which is an internal simulation of how the
               environment it's in actually works.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center">The Policy</strong>
+              <br />
+              Let’s zoom in on the first of those components: the{" "}
+              <strong>policy</strong>. The policy is the agent’s behavior. It’s
+              the thing that actually answers the question, “Okay, I’m in this
+              situation… now what?” Formally, a policy is just a mapping from
+              states to actions, but in human terms, it’s the agent’s way of
+              making decisions. In chess, this is the part of the agent that
+              looks at the board and decides, “I’m going to move the knight,” or
+              “I’m going to castle,” or “I’m going to do something bold and
+              probably regret it.”
+            </p>
+
+            <p className="mb-4">
+              Some agents are very decisive. They use what’s called a{" "}
+              <strong>deterministic policy</strong>, which means that for every
+              state, there is exactly one action they will take. Same position,
+              same move, every time. No hesitation. No randomness. Other agents
+              are more… flexible. They use a <strong>stochastic policy</strong>,
+              which means that instead of committing to a single move, they
+              assign probabilities to different moves. “In this position, I
+              usually attack, but sometimes I defend, and occasionally I panic
+              and do something weird.” The agent then samples from this
+              distribution and picks an action. From the outside, it looks like
+              randomness. From the inside, it’s controlled chaos.
             </p>
           </section>
         </main>
