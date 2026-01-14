@@ -192,6 +192,13 @@ export default function Navbar() {
             >
               Robotics
             </Link>
+            <Link
+              href="/reinforcement-learning"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Reinforcement Learning
+            </Link>
           </div>
         </div>
       )}
