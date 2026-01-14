@@ -551,12 +551,12 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               In other words, an MDP is the math version of: “Here is the
-              situation, here are the things you can do, here is how the world
-              reacts, and here is how good or bad that reaction is.” Once you
-              write a problem in this form, an enormous amount of theory
-              suddenly becomes available. Questions like “What is the best
-              possible behavior?” and “How should I change my behavior to get
-              more reward?” can now be answered mathematically.
+              situation (state), here are the things you can do (actions), here
+              is how the world reacts, and here is how good or bad that reaction
+              is (rewards).” Once you write a problem in this form, an enormous
+              amount of theory suddenly becomes available. Questions like “What
+              is the best possible behavior?” and “How should I change my
+              behavior to get more reward?” can now be answered mathematically.
             </p>
 
             <p className="mb-4">
