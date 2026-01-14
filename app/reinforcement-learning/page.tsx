@@ -365,72 +365,47 @@ export default function ReinforcementLearningPage() {
                 The Value Function
               </strong>
               <br />
-              If the policy is the agent’s “what should I do?” mechanism, then
-              the <strong>value function</strong> is its “how good is this,
-              really?” mechanism. The value function is the agent’s prediction
-              of how much total reward it expects to collect in the future,
-              starting from this particular state. In chess terms, this is the
-              part of the agent that looks at a position and thinks, “This feels
-              great, I’m probably winning,” or “Uh oh, this is a disaster
-              waiting to happen.” Remember, it's not only looking at how much
+              If the policy is the agent’s “what should I do in this state?”
+              mechanism, then the <strong>value function</strong> is its “how
+              good is this state?” mechanism. The value function is the agent’s
+              prediction of how much total reward it expects to collect in the
+              future, starting from this particular state. In chess terms, this
+              is the part of the agent that looks at a position and thinks, “I’m
+              probably winning in this position” or “Uh oh, I'm probably losing
+              in this position.” Remember, it's not only looking at how much
               reward it will get on the next move, but in the entire game
               starting from this position. For example, if I sacrifice my queen
               and only look one step ahead, my value function may be very low
               because losing a queen is usually bad, but if it will lead to a
               position that ends in checkmate in 6 moves, the value function
               ranks that state highly because it's looking at TOTAL reward from
-              that state. Remember that value functions MUST be tied to
-              policies, because your future reward given on a state DEPENDS on
-              what moves you are likely to make in future states. Bobby Fischer
-              would likely have a very different value function in a given chess
-              position than an agent that just learned how to play chess.
+              that state, not just the immediate reward. Also please note that
+              value functions MUST be tied to policies, because your future
+              reward given on a state DEPENDS on what moves you are likely to
+              make in future states. Bobby Fischer would likely have a very
+              different value function in a given chess position than someone
+              who just learned how to play chess. Mathamatically the value
+              function is written as{" "}
             </p>
 
             <p className="mb-4">
-              Formally, the value function is written as{" "}
-              <span className="font-mono">
-                V<sub>π</sub>(s)
-              </span>
-              , and that subscript <span className="font-mono">π</span> is
-              extremely important. It means:{" "}
-              <em>the value of this state if I follow policy π from now on</em>.
-              In math, it looks like:
-              <br />
               <span className="block text-center font-mono my-2">
                 V<sub>π</sub>(s) = E<sub>π</sub>[ R<sub>t</sub> + γR
                 <sub>t+1</sub> + γ²R<sub>t+2</sub> + … | S<sub>t</sub> = s ]
               </span>
-              which is just a fancy way of saying: “If I’m in state{" "}
-              <span className="font-mono">s</span> right now, and I keep
-              following policy <span className="font-mono">π</span>, how much
-              reward do I expect to accumulate in total, on average, in the
-              future?”
-            </p>
-
-            <p className="mb-4">
-              And here’s the key point that trips people up:{" "}
-              <strong>a state does not have a single, absolute value</strong>.
-              Its value depends entirely on what you plan to do next. The same
-              chess position can be amazing for a grandmaster and terrible for a
-              beginner. The board didn’t change — the <em>policy</em> did.
-              That’s why the value function is always defined{" "}
-              <strong>with respect to a policy</strong>. Without a policy, the
-              question “how good is this state?” is meaningless. Good for{" "}
-              <em>doing what</em>? Attacking? Defending? Panicking? Resigning?
-            </p>
-
-            <p className="mb-4">
-              So when we write{" "}
-              <span className="font-mono">
-                V<sub>π</sub>(s)
-              </span>
-              , we are really saying: “How good is this state if I behave
-              according to policy <span className="font-mono">π</span> from now
-              on?” Change the policy, and the value changes. This is why
-              learning in Reinforcement Learning is so intertwined: as the
-              policy improves, the value estimates change, and as the value
-              estimates change, the policy improves. They’re locked in a
-              feedback loop, constantly updating each other.
+              <br />
+              which means the Value, V, I get if I follow policy, π, from now on
+              in state, s, is equal to the Expected Value I'll get if I follow
+              this policy, E<sub>π</sub> (what I think I'll get), If I add up
+              all my rewards for all the future states, R<sub>t</sub>, R
+              <sub>t+1</sub>, etc i think I'll be in. In many situations (like
+              finance) the current reward is worth more than future rewards
+              (money now is more valuable than the same dollar amount tomorrow),
+              so we multiply future rewards by a discount factor of γ.
+              <br />
+              <br />
+              Put simply, give me a state and the value function under a policy
+              spits out what it thinks the total reward will be.
             </p>
           </section>
         </main>
