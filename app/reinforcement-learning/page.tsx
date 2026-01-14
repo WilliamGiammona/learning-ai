@@ -502,7 +502,7 @@ export default function ReinforcementLearningPage() {
               <strong>policy learning</strong>, <strong>value learning</strong>,
               and <strong>model learning</strong>.
             </p>
-            <p className="mb-4">
+            <p className="mb-8">
               Put simply: On one axis <strong>value-based</strong> is “Which
               option is best?”, <strong>policy-based</strong> is “What should I
               do?”, <strong>actor-critic</strong> is “What should I do, and how
@@ -510,12 +510,64 @@ export default function ReinforcementLearningPage() {
               “If I do this, what will happen?”, and <strong>model-free</strong>{" "}
               is “I’ll find out via trial and error.”
             </p>
+
+            <p className="mb-4">
+              This is all the information I think is important to know before
+              diving into learning RL. Next, we will discuss Markov Decision
+              Processes in detail.
+            </p>
           </section>
           <section id="markov-decision-process" className="mb-12">
             <h1 className="text-3xl font-bold mb-6 text-center">
               Markov Decision Process
             </h1>
-            <p className="mb-12">lorem</p>
+            <p className="mb-4">
+              At this point, a very natural question starts forming in the back
+              of your mind: okay, we have agents, states, actions, environments,
+              rewards, policies, value functions, models, etc, but what are we
+              actually trying to <em>do</em> with all of this? What kinds of
+              questions are we trying to answer? Are we just collecting symbols
+              for fun, or is there some bigger structure hiding underneath?
+            </p>
+
+            <p className="mb-4">
+              The kinds of questions we care about in Reinforcement Learning are
+              things like: “Is this decision better than that one?”, “If I start
+              here and keep going, how much reward can I expect to get?”, “Is
+              there a best way to behave in this world?”, and “Can I do better
+              than whatever I’m currently doing?” These are all questions about{" "}
+              <strong>sequences of decisions over time</strong>. Not one move
+              and one reward, but long chains of cause and effect.
+            </p>
+
+            <p className="mb-4">
+              It turns out that there is a very clean and very powerful
+              mathematical way to organize exactly these kinds of questions.
+              It’s called a <strong>Markov Decision Process</strong>, or{" "}
+              <strong>MDP</strong>. An MDP is just a way of formally writing
+              down the ingredients we’ve already been talking about: states,
+              actions, transitions, and rewards, all stitched together with the
+              idea that the present contains everything you need to know about
+              the future.
+            </p>
+
+            <p className="mb-4">
+              In other words, an MDP is the math version of: “Here is the
+              situation, here are the things you can do, here is how the world
+              reacts, and here is how good or bad that reaction is.” Once you
+              write a problem in this form, an enormous amount of theory
+              suddenly becomes available. Questions like “What is the best
+              possible behavior?” and “How should I change my behavior to get
+              more reward?” can now be answered mathematically.
+            </p>
+
+            <p className="mb-4">
+              We’re not going to dive into the machinery just yet. For now, the
+              important thing to know is this: MDPs are the framework that turns
+              ‘learning by experience (trial and error)’ into a solvable
+              problem. They are the reason we can talk about optimal policies,
+              expected returns, and improvement at all.
+            </p>
           </section>
         </main>
       </div>
