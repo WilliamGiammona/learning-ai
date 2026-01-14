@@ -14,7 +14,7 @@ export default function ReinforcementLearningPage() {
                   href="#reinforcement-learning-problem"
                   className="text-blue-600 hover:text-blue-800 underline block"
                 >
-                  Reinforcement Learning Problem
+                  Introduction
                 </a>
               </li>
               {/* Add more sections here later */}
@@ -25,9 +25,7 @@ export default function ReinforcementLearningPage() {
         {/* Main Content */}
         <main className="flex-1 min-w-0">
           <section id="reinforcement-learning-problem" className="mb-12">
-            <h1 className="text-3xl font-bold mb-6">
-              Reinforcement Learning Problem
-            </h1>
+            <h1 className="text-3xl font-bold mb-6">Introduction</h1>
             <p className="mb-4">test </p>
           </section>
         </main>
