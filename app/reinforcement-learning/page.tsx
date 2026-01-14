@@ -75,6 +75,14 @@ export default function ReinforcementLearningPage() {
                       Value Function
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#model"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Model
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -406,6 +414,58 @@ export default function ReinforcementLearningPage() {
               <br />
               Put simply, give me a state and the value function under a policy
               spits out what it thinks the total reward will be.
+            </p>
+
+            <p className="mb-4">
+              <strong id="model" className="block text-center">
+                The Model
+              </strong>
+              <br />
+              So far, our agent has been reacting to the world: see state, pick
+              action, get reward, repeat. But some agents go a step further and
+              build something extra: a <strong>model</strong> of the
+              environment. This is basically the agent’s internal guess of how
+              the world works. If the policy is the agent’s rulebook and the
+              value function is its gut feeling, then the model is its
+              imagination. It answers questions like: “If I do this, what will
+              probably happen next?”
+            </p>
+
+            <p className="mb-4">
+              More formally, the model tries to predict two things. First, the{" "}
+              <strong>transitions</strong>: given my current state and action,
+              what state will I end up in next? And second, the{" "}
+              <strong>rewards</strong>: how much immediate reward will I get for
+              doing that? In math language, this is written as:
+              <br />
+              <span className="block text-center font-mono my-2">
+                P(s' | s, a) &nbsp;&nbsp;and&nbsp;&nbsp; R(s, a)
+              </span>
+              <br />
+              Which just means: the probability of landing in next state{" "}
+              <em>s'</em> if I’m in state <em>s</em> and take action <em>a</em>,
+              and the expected reward I’ll get for that move.
+            </p>
+
+            <p className="mb-4">
+              In a physical robot, this might mean learning physics: “If I push
+              here, the arm will move there.” In a self-driving car, it might
+              mean learning how other cars and pedestrians usually behave. In a
+              video game, it’s learning the game rules. The model lets the agent
+              run little mental simulations of the future before actually doing
+              anything. It’s the difference between blindly touching the stove
+              and thinking, “Last time I touched that, it hurt. Maybe don’t.”
+            </p>
+
+            <p className="mb-4">
+              Not all agents have models. Many modern deep RL agents are
+              <strong>model-free</strong>: they skip the crystal ball and just
+              learn by trial and error. Others are <strong>model-based</strong>:
+              they actively try to understand the environment so they can plan
+              ahead. Model-based agents can be much more efficient, because
+              instead of learning only from real mistakes, they can learn from
+              imagined ones too. Basically: if you can predict the future, you
+              can avoid a lot of unnecessary pain.
             </p>
           </section>
         </main>
