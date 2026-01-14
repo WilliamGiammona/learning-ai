@@ -671,49 +671,7 @@ export default function ReinforcementLearningPage() {
               just independent events).
             </p>
 
-            <p className="mb-4">
-              Enter Pavel Nekrasov, another Russian mathematician, who was using
-              probability arguments to “prove” things about society, morality,
-              and even the role of the Tsar. Nekrasov’s work leaned heavily on
-              the idea that random events had a kind of mystical independence.
-              Markov read this and basically said: “Absolutely not.” He was
-              irritated, and not quietly. He decided to demonstrate, very
-              publicly, that you could have random processes where the future
-              absolutely depends on the past — but only in a very specific,
-              local way.
-            </p>
-
-            <p className="mb-4">
-              So Markov did what any mature adult would do: he invented an
-              entire branch of mathematics to prove Nekrasov wrong. He
-              constructed sequences where each step depended only on the
-              previous one, not on the whole history, and showed that you could
-              still do clean, rigorous probability theory without mystical
-              independence assumptions. These became known as{" "}
-              <strong>Markov chains</strong>. His point was basically: “Look,
-              you can have dependency. You just have to be precise about it.” It
-              was math, but it was also a flex.
-            </p>
-
-            <p className="mb-4">
-              Markov’s original goal was not to build AI, control robots, or
-              solve games. He was trying to clean up probability theory and slap
-              bad philosophy out of it. But in the process, he introduced the
-              idea that a system could move from state to state, where each new
-              state depends only on the current one. That single idea — now
-              called the <strong>Markov property</strong> — turned out to be
-              unbelievably powerful. It was the seed that later grew into Markov
-              Decision Processes.
-            </p>
-
-            <p className="mb-4">
-              Decades later, people added <strong>decisions</strong> and{" "}
-              <strong>rewards</strong>
-              on top of Markov’s chains. Now it wasn’t just “what happens next,”
-              but “what should I do next.” And just like that, a petty academic
-              feud in Tsarist Russia became the backbone of modern Reinforcement
-              Learning. Which is kind of beautiful. And kind of hilarious.
-            </p>
+            <p className="mb-4"></p>
           </section>
         </main>
       </div>
