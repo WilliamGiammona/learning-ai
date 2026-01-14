@@ -605,7 +605,7 @@ export default function ReinforcementLearningPage() {
               mathematician was the extremely religious Pavel Nekrasov. He
               wanted to use probability theory to prove the existence of free
               will and the will of God. Andrey Markov was a Russian
-              mathematician, who was both an atheist and deeply anti tsarit, and
+              mathematician, who was both an atheist and deeply anti Tsarit, and
               for this reason set out to discover an entirely new branch of
               mathematics in order to prove Nekrasov wrong.
             </p>
