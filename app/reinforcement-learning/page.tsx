@@ -64,7 +64,7 @@ export default function ReinforcementLearningPage() {
                       href="#policy"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Policy
+                      The Agent's Policy
                     </a>
                   </li>
                   <li>
@@ -72,7 +72,7 @@ export default function ReinforcementLearningPage() {
                       href="#value-function"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Value Function
+                      The Agent's Value Function
                     </a>
                   </li>
                   <li>
@@ -80,7 +80,7 @@ export default function ReinforcementLearningPage() {
                       href="#model"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Model
+                      The Agent's Model
                     </a>
                   </li>
                 </ul>
@@ -316,7 +316,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong id="policy" className="block text-center">
-                The Policy
+                The Agent's Policy
               </strong>
               <br />
               Let’s zoom in on the first of those components: the{" "}
@@ -370,7 +370,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong id="value-function" className="block text-center">
-                The Value Function
+                The Agent's Value Function
               </strong>
               <br />
               If the policy is the agent’s “what should I do in this state?”
@@ -418,7 +418,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong id="model" className="block text-center">
-                The Model
+                The Agent's Model
               </strong>
               <br />
               So far, our agent has been reacting to the world: see state, pick
