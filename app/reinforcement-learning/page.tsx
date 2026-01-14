@@ -217,7 +217,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong className="block text-center">
-                Seeing Everything vs. Guessing a Lot
+                Seeing Everything vs. Guessing A Lot
               </strong>
               <br />
               Up until now, we’ve been quietly assuming something very
@@ -231,9 +231,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              Unfortunately, most real-world problems are not nearly aren't
-              fully observable. In many situations, the agent is forced to
-              operate with incomplete information. This is called a{" "}
+              Unfortunately, most real-world problems are not fully observable.
+              In many situations, the agent is forced to operate with incomplete
+              information. This is called a{" "}
               <strong>partially observable environment</strong>. Think about
               trading in the stock market. You don’t know what’s happening
               inside companies. You don’t know what decisions executives are
@@ -244,9 +244,9 @@ export default function ReinforcementLearningPage() {
               it’s like trying to play chess while only seeing half the board
               and occasionally being lied to. In these settings, the agent has
               to guess, infer, and build beliefs about what might be going on
-              behind the scenes—which makes the problem dramatically harder.
-              This makes it much harder (sometimes even impossible) to have
-              states that follow the markov property.
+              behind the scenes. This makes it much harder (sometimes even
+              impossible) for the agent to have states that follow the markov
+              property.
             </p>
           </section>
         </main>
