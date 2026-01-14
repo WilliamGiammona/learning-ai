@@ -566,6 +566,100 @@ export default function ReinforcementLearningPage() {
               problem. They are the reason we can talk about optimal policies,
               expected returns, and improvement at all.
             </p>
+
+            <p className="mb-4">
+              <strong id="why-history-matters" className="block text-center">
+                A Quick Detour: Why the History Actually Matters
+              </strong>
+              <br />
+              Before we jump into the math, it’s worth asking a slightly
+              philosophical question: why bother learning the history behind
+              these ideas at all? Why not just memorize the formulas and move
+              on? The answer is that our brains are terrible at remembering
+              abstract symbols in isolation, but they are very good at
+              remembering stories. When you know <em>why</em> an idea was
+              invented, what problem it was trying to solve, and what kind of
+              human was behind it, the math stops being a random collection of
+              letters and starts becoming a narrative. And narratives stick.
+            </p>
+
+            <p className="mb-4">
+              There’s also something deeply clarifying about seeing that most
+              mathematical ideas were not created in a vacuum. They were
+              responses to confusion, to bad arguments, to practical problems,
+              and sometimes to personal rivalries. When you understand the
+              original motivation, the structure of the idea often suddenly
+              makes sense. It feels less like “someone decided this should be
+              the rule” and more like “oh… yeah, that had to be the rule.”
+            </p>
+
+            <p className="mb-4">
+              So this little historical detour is not just trivia. It’s a way of
+              building intuition. It’s a way of making the concepts feel
+              inevitable instead of arbitrary. And in the case of Markov, it
+              also happens to involve academic drama, ideological arguments, and
+              a man who was apparently fueled by spite. Which, honestly, is a
+              bonus.
+            </p>
+
+            <p className="mb-4">
+              <strong id="markov-history" className="block text-center">
+                A Short, Petty, and Surprisingly Entertaining History of Markov
+              </strong>
+              <br />
+              Before Markov Decision Processes were a clean box in a textbook,
+              before they powered robots and game-playing AIs, they started as…
+              a mathematical grudge. Andrey Markov was a Russian mathematician
+              in the early 1900s who cared deeply about rigor, logic, and not
+              letting nonsense sneak into serious math. At the time, probability
+              theory was kind of the wild west. People were making loose
+              philosophical arguments about randomness, free will, and divine
+              intervention, and Markov was not having it.
+            </p>
+
+            <p className="mb-4">
+              Enter Nikolay Nekrasov, another Russian mathematician, who was
+              using probability arguments to “prove” things about society,
+              morality, and even the role of the Tsar. Nekrasov’s work leaned
+              heavily on the idea that random events had a kind of mystical
+              independence. Markov read this and basically said: “Absolutely
+              not.” He was irritated, and not quietly. He decided to
+              demonstrate, very publicly, that you could have random processes
+              where the future absolutely depends on the past — but only in a
+              very specific, local way.
+            </p>
+
+            <p className="mb-4">
+              So Markov did what any mature adult would do: he invented an
+              entire branch of mathematics to prove Nekrasov wrong. He
+              constructed sequences where each step depended only on the
+              previous one, not on the whole history, and showed that you could
+              still do clean, rigorous probability theory without mystical
+              independence assumptions. These became known as{" "}
+              <strong>Markov chains</strong>. His point was basically: “Look,
+              you can have dependency. You just have to be precise about it.” It
+              was math, but it was also a flex.
+            </p>
+
+            <p className="mb-4">
+              Markov’s original goal was not to build AI, control robots, or
+              solve games. He was trying to clean up probability theory and slap
+              bad philosophy out of it. But in the process, he introduced the
+              idea that a system could move from state to state, where each new
+              state depends only on the current one. That single idea — now
+              called the <strong>Markov property</strong> — turned out to be
+              unbelievably powerful. It was the seed that later grew into Markov
+              Decision Processes.
+            </p>
+
+            <p className="mb-4">
+              Decades later, people added <strong>decisions</strong> and{" "}
+              <strong>rewards</strong>
+              on top of Markov’s chains. Now it wasn’t just “what happens next,”
+              but “what should I do next.” And just like that, a petty academic
+              feud in Tsarist Russia became the backbone of modern Reinforcement
+              Learning. Which is kind of beautiful. And kind of hilarious.
+            </p>
           </section>
         </main>
       </div>
