@@ -647,6 +647,28 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
+              Markov then set out to prove that Nekrasov's claims were wrong and
+              needed to show that dependent events could also follow the law of
+              large numbers. This would break Nekrasov's link that because
+              marriage, crime, and birth rates followed the law of large
+              numbers, that they needed to be independent. This would prove to
+              be a huge milestone in the world of probability because it would
+              show that you can still use probability theory on dependent events
+              (including RL).
+            </p>
+
+            <p className="mb-4">
+              The first think Markov needed a situation where one event was
+              clearly dependent on a previous event. He settled on using text,
+              the idea being that the probability of the next letter being a
+              consonant or a vowel was clearly dependent upon what the current
+              letter is. Now he just needed to prove that consonants and vowels
+              in text followed the law of large numbers to show that dependent
+              events can also follow the law of large numbers (not just
+              indepenedent events).
+            </p>
+
+            <p className="mb-4">
               Enter Pavel Nekrasov, another Russian mathematician, who was using
               probability arguments to “prove” things about society, morality,
               and even the role of the Tsar. Nekrasov’s work leaned heavily on
