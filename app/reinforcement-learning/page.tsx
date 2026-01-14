@@ -278,25 +278,7 @@ export default function ReinforcementLearningPage() {
               it much harder (sometimes even impossible) for the agent to have
               states that follow the markov property.
             </p>
-            <p className="mb-4">
-              <strong id="agent-components" className="block text-center">
-                Agent Coponents
-              </strong>
-              <br />
-              What’s are the components that make up the agent? The first of
-              these is the <strong>policy</strong>, which is basically the
-              agent’s rulebook for what to do in each state. “If I see this, I
-              usually do that.” The second is the{" "}
-              <strong>value function</strong>, which is the agent’s opinionated
-              ranking system for how much future reward it expects to get from a
-              given state (and sometimes state-action pairs). And sometimes, if
-              the agent is feeling extra ambitious, it also builds a{" "}
-              <strong>model</strong> of the environment, which is an internal
-              simulation of how the world works, so it can imagine the future
-              before actually living it. Put together, these components are how
-              the agent decides, evaluates, and occasionally daydreams about
-              what might happen next.
-            </p>
+
             <p className="mb-4">
               <strong className="block text-center">Agent Components</strong>
               <br />
