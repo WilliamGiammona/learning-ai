@@ -302,8 +302,7 @@ export default function ReinforcementLearningPage() {
               “I'm probably losing badly.” And sometimes, if the agent is
               feeling extra ambitious, it also builds a <strong>model</strong>{" "}
               of the environment, which is an internal simulation of how the
-              environment works, and how it will change depending on what action
-              you take.
+              environment it's in actually works.
             </p>
           </section>
         </main>
