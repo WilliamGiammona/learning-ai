@@ -61,7 +61,7 @@ export default function ReinforcementLearningPage() {
         <main className="flex-1 min-w-0">
           <section id="reinforcement-learning-problem" className="mb-12">
             <h1 className="text-3xl font-bold mb-6 text-center">
-              Introduction
+              Introduction to Reinforcement Learning
             </h1>
             <p className="mb-12">
               In this section I'm going to talk about Reinforcement Learning,
