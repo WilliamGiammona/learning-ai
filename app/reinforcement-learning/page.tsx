@@ -716,7 +716,22 @@ export default function ReinforcementLearningPage() {
               Now Markov needed to show that the law of large numbers was still
               shown even though the letter was dependent on the previous letter
               in the sequence. To do this he created what is now known as a{" "}
-              <strong>Markov Chain</strong>.
+              <strong>Markov Chain</strong>. He had each letter be a state. He
+              then had an arrow from one arrow to the next (one state to the
+              next) as his transitions. Now he needed to find the transition
+              probabilities. How did he do this? Let's take the transition
+              probability for vowel to vowel as an example.
+              <br />
+              <br />
+              The probability of a vowel is .43 and the probability of 2
+              consecutive vowels was .06, so he divided .06 by .43 to get .13
+              Thus the probability of transitioning TO a vowel FROM a vowel is
+              13 percent (and hence 87 percent of going from a state of a vowel
+              to a state of a consonant). This was done for all the state
+              transitions where consonant to consanant was .33 and consonant to
+              vowel was .67. So this transition probability object tells me
+              about the probability of "chaining" vowel and consonant states
+              together
             </p>
           </section>
         </main>
