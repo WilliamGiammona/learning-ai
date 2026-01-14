@@ -38,7 +38,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>The characters</strong>
+              <strong>The Characters</strong>
               <br />
               In Reinforcement Learning, there are two main characters in our
               story. The first is the <strong>agent</strong>, which is the
@@ -55,7 +55,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>The data</strong>
+              <strong>The Data</strong>
               <br />
               Now, in order for the agent to figure out which actions are
               brilliant and which ones are terrible, it needs data. What kind of
