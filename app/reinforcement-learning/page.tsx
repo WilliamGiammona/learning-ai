@@ -40,6 +40,7 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               <strong>The Characters</strong>
               <br />
+              <br />
               In Reinforcement Learning, there are two main characters in our
               story. The first is the <strong>agent</strong>, which is the
               decision-maker (think: the chess player). The agent's goal is to
@@ -56,6 +57,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong>The Data</strong>
+              <br />
               <br />
               Now, in order for the agent to figure out which actions are
               brilliant and which ones are terrible, it needs data. What kind of
