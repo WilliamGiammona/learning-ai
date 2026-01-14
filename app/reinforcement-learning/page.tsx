@@ -676,7 +676,7 @@ export default function ReinforcementLearningPage() {
               spaces and punctuation, and stitched them together into one
               enormous string of letters. He found that 57% of the letters were
               consonants and 43% were vowels. He then decided to have each
-              letter paired with the one after it. Thus 4 possible states
+              letter paired with the one after it. Thus 4 possible combinations
               emerged:
               <br />
               <br />
@@ -689,20 +689,19 @@ export default function ReinforcementLearningPage() {
               4) Vowel Vowel.
               <br />
               <br />
-              1st he had to prove that each letter was dependent on the previous
-              letter instead of independent. To do this he multiplied the
-              probabilities by their states in order to show what the
+              1st he had to demonstrate that each letter was dependent on the
+              previous letter instead of independent. To do this he multiplied
+              the probabilities by their states in order to show what the
               distribution would be if they were independent.
               <br />
               <br />
-              1) For consonant consonant it was: (.57 * C) * (.57 * C) = .32
-              chance
+              1) For consonant consonant it was: (.57) * (.57 ) = .32 chance
               <br />
-              2) For consonant vowel it was: (.57 * C) * (.43 * V) = .25 chance
+              2) For consonant vowel it was: (.57) * (.43) = .25 chance
               <br />
-              3) For vowel consonant it was: (.43 * V) * (.57 * C) = .25 chance
+              3) For vowel consonant it was: (.43) * (.57) = .25 chance
               <br />
-              4) For vowel vowel it was: (.43 * V) * (.43 * V) = .18 chance
+              4) For vowel vowel it was: (.43) * (.43) = .18 chance
               <br />
               The numbers he actually got were .19, .375, .375, and .06
               <br />
@@ -717,10 +716,11 @@ export default function ReinforcementLearningPage() {
               shown even though the letter was dependent on the previous letter
               in the sequence. To do this he created what is now known as a{" "}
               <strong>Markov Chain</strong>. He had each letter be a state. He
-              then had an arrow from one arrow to the next (one state to the
-              next) as his transitions. Now he needed to find the transition
-              probabilities. How did he do this? Let's take the transition
-              probability for vowel to vowel as an example.
+              then had an arrow from one letter to the next (one state to the
+              next). This arrow was his transition probability. Now he needed to
+              find the transition probabilities. How did he do this? Let's take
+              a look at the transition probability for vowel to vowel as an
+              example.
               <br />
               <br />
               The probability of a vowel is .43 and the probability of 2
@@ -738,16 +738,17 @@ export default function ReinforcementLearningPage() {
               <br />
               To recap, we have this new mathematical object, the Markov Chain,
               where you have states (vowels and consonants) and a transition
-              probability matrix that tells you the likelihood of going from
+              probability matrix that tells you the probability of going from
               state one to state two (vowel to vowel, vowel to consonant,
               consonant to vowel, and consonant to consonant). Using this
               mathematical object, you can predict that the ratio of vowels and
-              consonants to the total amount of letters will converge (follow
-              law of large numbers) to a ratio of .43 for vowels and .57 for
+              consonants to the total amount of letters will converge to a
+              stable long term ratio (an analogue of the law of large numbers
+              for dependent processes) to a ratio of .43 for vowels and .57 for
               consonants. When Markov checked if those were the true ratios,
-              they were. Hence, Markov Chains prove that dependent events also
-              follow the law of large numbers (thereby proving Nekrasov's
-              assumptions and conclusions to be incorrect).
+              they were. Hence, Markov used this Markov Chain to prove that
+              dependent events also follow the law of large numbers (thereby
+              proving Nekrasov's assumptions and conclusions to be incorrect).
             </p>
           </section>
         </main>
