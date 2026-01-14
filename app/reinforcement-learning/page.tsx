@@ -86,11 +86,12 @@ export default function ReinforcementLearningPage() {
               checkmating its opponent) The second is the{" "}
               <strong>environment</strong>, which is everything the agent is
               dealing with (think: the chessboard, the pieces, and the opponent
-              trying to ruin your plans). The agent looks at the situation,
-              makes a move it thinks is most likely to lead to having the best
+              trying to ruin your plans). The agent looks at the position, makes
+              a move it thinks is most likely to lead to having the best
               possible chance of checkmating its opponent, and then the
-              environment reacts by either rewarding the agent, punishing it, or
-              just shrugging indifferently.
+              environment reacts (opposing player makes their move) by either
+              rewarding the agent (good position for the agent) or punishing it
+              (bad position for the agent).
             </p>
 
             <p className="mb-4">
