@@ -659,13 +659,16 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               The first think Markov needed a situation where one event was
-              clearly dependent on a previous event. He settled on using text,
-              the idea being that the probability of the next letter being a
-              consonant or a vowel was clearly dependent upon what the current
-              letter is. Now he just needed to prove that consonants and vowels
-              in text followed the law of large numbers to show that dependent
-              events can also follow the law of large numbers (not just
-              indepenedent events).
+              clearly dependent on a previous event. He settled on using a very
+              famous Russian poem, "Eugene Onegin", by early 19th century anti
+              Tsarist Russian poet (and father of modern Russian literature),
+              Alexander Pushkin. The idea was that the probability of the next
+              letter in the poem being a consonant or a vowel was clearly
+              dependent upon what the current letter in the poem was. Now he
+              just needed to prove that consonants and vowels in the poem
+              followed the law of large numbers, and that would show that
+              dependent events can also follow the law of large numbers (not
+              just indepenedent events).
             </p>
 
             <p className="mb-4">
