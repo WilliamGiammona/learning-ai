@@ -91,7 +91,10 @@ export default function ReinforcementLearningPage() {
               possible chance of checkmating its opponent, and then the
               environment reacts (opposing player makes their move) by either
               rewarding the agent (good position for the agent) or punishing it
-              (bad position for the agent).
+              (bad position for the agent). In chess the opponent is part of the
+              environment, although in more complex settings there can be an
+              important distinction between the environment and other agents,
+              which we’ll talk about later.
             </p>
 
             <p className="mb-4">
@@ -210,6 +213,40 @@ export default function ReinforcementLearningPage() {
               is why state and reward are basically the two pressure points of
               Reinforcement Learning. Get them right, and the agent can solve
               extremely difficult problems.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center">
+                Seeing Everything vs. Guessing a Lot
+              </strong>
+              <br />
+              Up until now, we’ve been quietly assuming something very
+              convenient: that the agent can see everything that matters. Chess
+              is like this. The entire board is right there in front of you. No
+              hidden pieces. No secret information. No fog of war. This is
+              what’s called a <strong>fully observable environment</strong>.
+              This makes it easier to have states that follow the markov
+              property (contain everything you need to know to make the best
+              decision).
+            </p>
+
+            <p className="mb-4">
+              Unfortunately, most real-world problems are not nearly aren't
+              fully observable. In many situations, the agent is forced to
+              operate with incomplete information. This is called a{" "}
+              <strong>partially observable environment</strong>. Think about
+              trading in the stock market. You don’t know what’s happening
+              inside companies. You don’t know what decisions executives are
+              about to make. You don’t know what governments are planning, what
+              competitors are building, or what unexpected event is about to
+              drop out of the sky. You’re making decisions based on noisy,
+              delayed, and incomplete signals. From the agent’s point of view,
+              it’s like trying to play chess while only seeing half the board
+              and occasionally being lied to. In these settings, the agent has
+              to guess, infer, and build beliefs about what might be going on
+              behind the scenes—which makes the problem dramatically harder.
+              This makes it much harder (sometimes even impossible) to have
+              states that follow the markov property.
             </p>
           </section>
         </main>
