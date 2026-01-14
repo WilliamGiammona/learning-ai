@@ -64,7 +64,7 @@ export default function ReinforcementLearningPage() {
                       href="#agent-components"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Agent Coponents
+                      Agent Components
                     </a>
                   </li>
                 </ul>
