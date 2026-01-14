@@ -97,9 +97,9 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               Formally, this is captured by something called the{" "}
-              <strong>Markov property</strong>, which says that the future
-              depends only on the present, not on the entire past. In math form,
-              it looks like this:
+              <strong>Markov property</strong> (named after Andrey Markov),
+              which says that the future depends only on the present, not on the
+              entire past. In math form, it looks like this:
               <br />
               <span className="font-mono">
                 P(S<sub>t+1</sub> | S<sub>t</sub>) = P(S<sub>t+1</sub> | S
