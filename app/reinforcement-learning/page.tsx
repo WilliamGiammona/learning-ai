@@ -115,8 +115,8 @@ export default function ReinforcementLearningPage() {
               decisions. The goal is simple (and also not simple at all), at
               every moment in time the agent should pick the action that will
               eventually lead to the most overall reward. Not, “the most reward
-              right now” (short-sighted reward), but “the most reward when
-              everything is said and done” (far-sighted reward). To keep things
+              right now” (short sighted reward), but “the most reward when
+              everything is said and done” (far sighted reward). To keep things
               concrete, I'll use chess as our main example.
             </p>
             <p className="mb-4">
@@ -459,48 +459,44 @@ export default function ReinforcementLearningPage() {
               environment, and some have all three.
             </p>
             <p className="mb-4">
-              The first big split is <strong>value-based</strong> vs{" "}
-              <strong>policy-based</strong> vs <strong>actor-critic</strong>. A{" "}
-              <strong>value-based</strong> agent is like: “Don’t give me a
-              rulebook. Just tell me which options are good.” It learns a value
-              function and then picks the action with the highest value. So it
-              has a value function, but the policy is <em>implicit</em>, i.e.
-              “do whatever has the biggest value.” A{" "}
-              <strong>policy-based</strong> agent is the opposite. It learns the
-              policy without giving states an explicit value. An
-              <strong>actor-critic</strong> agent uses both a policy and a value
-              function. The <strong>actor</strong> is the policy (the thing that
-              chooses actions), and the <strong>critic</strong> is the value
-              function (the thing that judges how good things are).
+              The first big split is value-based vs policy-based vs ctor-critic.
+              A value-based agent doesn't need a rulebook (policy) on what to do
+              in each state, it just wants to know which states are good and
+              which are bad to be in. It learns a value function and then picks
+              the action with the highest value. Thus, it has a value function,
+              but the policy is <em>implicit</em>, i.e. “do whatever has the
+              biggest value.” A policy-based agent is the opposite. It learns
+              the policy without giving states an explicit value. An
+              actor-critic agent uses both a policy and a value function. The
+              "actor" is the policy (the thing that chooses actions), and the
+              ""critic""is the value function (the thing that judges how good
+              things are).
             </p>
 
             <p className="mb-4">
               Whether an agent is value based, policy based, or actor critic
-              doesn't determine whether its
-              <strong> model-free</strong> or <strong>model-based</strong> and
-              vice versa. That's because the model is just about whether the
-              agent tries to learn the <em>rules of the environment</em> or not.
+              doesn't determine whether its model-free or model-based and vice
+              versa. That's because the model is just about whether the agent
+              tries to learn the <em>rules of the environment</em> or not.
             </p>
             <p className="mb-4">
-              A <strong>model-free</strong> agent doesn't need to predict the
-              future. It learns what works by experience/trial and error, using
-              reward signals, without explicitly learning how the environment
-              transitions from <span className="font-mono">(s, a)</span> to{" "}
-              <span className="font-mono">s'</span>. A{" "}
-              <strong>model-based</strong> agent needs to predict the future. It
-              tries to learn <span className="font-mono">P(s' | s, a)</span> and{" "}
+              A model-free agent doesn't need to predict the future. It learns
+              what works by experience/trial and error, using reward signals,
+              without explicitly learning how the environment transitions from{" "}
+              <span className="font-mono">(s, a)</span> to{" "}
+              <span className="font-mono">s'</span>. A model-basedagent needs to
+              predict the future. It tries to learn{" "}
+              <span className="font-mono">P(s' | s, a)</span> and{" "}
               <span className="font-mono">R(s, a)</span> so it can run mental
               simulations and plan ahead.
             </p>
             <p className="mb-4">
               And because these are two separate axes, you can mix and match.
-              You can have a <strong>value-based, model-free</strong> agent. Or
-              a <strong>policy-based, model-free</strong> agent. Or an{" "}
-              <strong>actor-critic, model-free</strong> agent (very common). And
-              you can also build <strong>model-based</strong> versions of any of
-              these. Different agents are just different combinations of{" "}
-              <strong>policy learning</strong>, <strong>value learning</strong>,
-              and <strong>model learning</strong>.
+              You can have a value-based, model-free agent. Or a policy-based,
+              model-free agent. Or an actor-critic, model-free agent (very
+              common). And you can also build model-based versions of any of
+              these. Different agents are just different combinations of policy
+              learning, value learning, and model learning.
             </p>
             <p className="mb-8">
               Put simply: On one axis <strong>value-based</strong> is “Which
@@ -522,12 +518,13 @@ export default function ReinforcementLearningPage() {
               Markov Decision Process
             </h1>
             <p className="mb-4">
-              At this point, a very natural question starts forming in the back
-              of your mind: okay, we have agents, states, actions, environments,
-              rewards, policies, value functions, models, etc, but what are we
-              actually trying to <em>do</em> with all of this? What kinds of
-              questions are we trying to answer? Are we just collecting symbols
-              for fun, or is there some bigger structure hiding underneath?
+              At this point, a very natural question should be forming in the
+              back of your mind: okay, we have agents, states, actions,
+              environments, rewards, policies, value functions, models, etc, but
+              what are we actually trying to <em>do</em> with all of this? What
+              kinds of questions are we trying to answer? Are we just collecting
+              symbols for fun, or is there some bigger structure hiding
+              underneath?
             </p>
 
             <p className="mb-4">
