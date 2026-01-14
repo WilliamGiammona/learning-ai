@@ -59,6 +59,14 @@ export default function ReinforcementLearningPage() {
                       Seeing Everything vs Guessing
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#agent-components"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Agent Coponents
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -255,6 +263,47 @@ export default function ReinforcementLearningPage() {
               beliefs about what might be going on behind the scenes. This makes
               it much harder (sometimes even impossible) for the agent to have
               states that follow the markov property.
+            </p>
+            <p className="mb-4">
+              <strong id="agent-components" className="block text-center">
+                Agent Coponents
+              </strong>
+              <br />
+              What’s are the components that make up the agent? The first of
+              these is the <strong>policy</strong>, which is basically the
+              agent’s rulebook for what to do in each state. “If I see this, I
+              usually do that.” The second is the{" "}
+              <strong>value function</strong>, which is the agent’s opinionated
+              ranking system for how much future reward it expects to get from a
+              given state (and sometimes state-action pairs). And sometimes, if
+              the agent is feeling extra ambitious, it also builds a{" "}
+              <strong>model</strong> of the environment, which is an internal
+              simulation of how the world works, so it can imagine the future
+              before actually living it. Put together, these components are how
+              the agent decides, evaluates, and occasionally daydreams about
+              what might happen next.
+            </p>
+
+            <p className="mb-4">
+              <strong id="agent-components" className="block text-center">
+                Agent Components
+              </strong>
+              <br />
+              What are the components that make up the agent? The first of these
+              is the <strong>policy</strong>, which is basically the agent’s
+              rulebook for what to do in each state. In chess terms, this is the
+              part that looks at the board and says, “In positions like this, I
+              usually move the knight here,” or “This feels like a good time to
+              attack.” The second is the <strong>value function</strong>, which
+              is the agent’s opinionated ranking system for how much future
+              reward it expects to get from a given state (and sometimes from a
+              specific action in that state). This is the voice in the agent’s
+              head saying, “This position looks great, I’m probably winning,” or
+              “I'm probably losing badly.” And sometimes, if the agent is
+              feeling extra ambitious, it also builds a <strong>model</strong>{" "}
+              of the environment, which is an internal simulation of how the
+              environment works, and how it will change depending on what action
+              you take.
             </p>
           </section>
         </main>
