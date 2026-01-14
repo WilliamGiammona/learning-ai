@@ -61,10 +61,10 @@ export default function ReinforcementLearningPage() {
                   </li>
                   <li>
                     <a
-                      href="#agent-components"
+                      href="#policy"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Agent Components
+                      Policy
                     </a>
                   </li>
                 </ul>
@@ -285,9 +285,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong id="agent-components" className="block text-center">
-                Agent Components
-              </strong>
+              <strong className="block text-center">Agent Components</strong>
               <br />
               What are the components that make up the agent? The first of these
               is the <strong>policy</strong>, which is basically the agent’s
@@ -301,7 +299,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">The Policy</strong>
+              <strong id="policy" className="block text-center">
+                The Policy
+              </strong>
               <br />
               Let’s zoom in on the first of those components: the{" "}
               <strong>policy</strong>. The policy is the agent’s behavior. It’s
