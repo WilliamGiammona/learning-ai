@@ -599,11 +599,24 @@ export default function ReinforcementLearningPage() {
               revolution) against the tsar. This fiercly divided the empire into
               two political camps, the pro tsarists and the anti tsarists. In
               the world of mathematics, the most important pro tsar mathmatician
-              was Pavel Nekrasov. Andrey Markov was a Russian mathematician, who
-              was both an athiest and an anti tsarit. At the time, probability
-              theory was kind of the wild west. People were making loose
-              philosophical arguments about randomness, free will, and divine
-              intervention, and Markov was not having it.
+              was the extremely religious Pavel Nekrasov. He wanted to use
+              probability theory to prove the existence of free will and the
+              will of God. Andrey Markov was a Russian mathematician, who was
+              both an athiest and deeply anti tsarit, and for this reason set
+              out to discover an entirely new branch of mathamatics in order to
+              prove Nekrasov wrong.
+            </p>
+
+            <p className="mb-4">
+              <strong id="markov-history" className="block text-center">
+                A History of MDPs
+              </strong>
+              <br />
+              The feud centered around the Law of Large Numbers (the average
+              outcome of a large amount of independent trials converges to the
+              expected value), first proven by Jacob Bernouli in 1713. It was
+              the most important concept of probability theory until Andrey
+              Markov's.
             </p>
 
             <p className="mb-4">
