@@ -633,6 +633,16 @@ export default function ReinforcementLearningPage() {
               whether it also applied to DEPENDENT events. Nekrasov argued that
               it didn't, and that if you observed the Law of Large Numbers, you
               could infer that the underlying events MUST be independent.
+              Nekrasov looked at large amounts of data about marriage rates,
+              crime rates, and birth rates and saw that they seemed to follow
+              the law of large numbers. This data came from decisions to get
+              married, decisions to commit crime, and decisions to have
+              children. Thus because they followed the law of large numbers, the
+              decisions causing them MUST be independent (since he believed only
+              independent events could follow the Law of Large Numbers). Because
+              they were independent, they must be decisions of free will, and
+              hence free will existed and was something that could be measured
+              mathamatically using the Law of Large Numbers.
             </p>
 
             <p className="mb-4">
