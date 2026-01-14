@@ -563,8 +563,10 @@ export default function ReinforcementLearningPage() {
               We’re not going to dive into the machinery just yet. For now, the
               important thing to know is this: MDPs are the framework that turns
               ‘learning by experience (trial and error)’ into a solvable
-              problem. They are the reason we can talk about optimal policies,
-              expected returns, and improvement at all.
+              problem. They are the reason we can talk afbout optimal policies,
+              expected returns, and improvement at all. First though, let's
+              travel back to the turn of the 20th century to learn about the
+              history of MDPs.
             </p>
 
             <p className="mb-4">
