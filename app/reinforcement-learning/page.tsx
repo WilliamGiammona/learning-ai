@@ -140,11 +140,11 @@ export default function ReinforcementLearningPage() {
               At this point, a very reasonable question pops up: how does the
               agent actually know what belongs in the state? Who decided that
               the board position matters in chess, but the player’s mood or what
-              they had for breakfast does not? The answer is… sometimes a human
-              does, and sometimes the agent has to learn that on its own. In the
-              early days of Reinforcement Learning, a human would carefully
-              choose what information the agent gets to see. “Here, you can have
-              position, velocity, and angle. No more, no less.”
+              they had for breakfast does not? The answer is that sometimes a
+              human does, and sometimes the agent has to learn that on its own.
+              In the early days of Reinforcement Learning, a human would
+              carefully choose what information the agent gets to see. “Here,
+              you can have position, velocity, and angle. No more, no less.”
             </p>
 
             <p className="mb-4">
