@@ -591,26 +591,31 @@ export default function ReinforcementLearningPage() {
                 A History of MDPs
               </strong>
               <br />
-              Before Markov Decision Processes were a clean box in a textbook,
-              before they powered robots and game-playing AIs, they started as…
-              a mathematical grudge. Andrey Markov was a Russian mathematician
-              in the early 1900s who cared deeply about rigor, logic, and not
-              letting nonsense sneak into serious math. At the time, probability
+              The origin of the MDP began at the dawn of the the 20th century in
+              Russia and centers around a feud between Andrey Markov and Pavel
+              Nekrasov. The powerful European Russia Empire had just been
+              humiliated by Japan after losing the 1905 Russo-Japanese war, and
+              socialist groups all across Russia began a revolution (not that
+              revolution) against the tsar. This fiercly divided the empire into
+              two political camps, the pro tsarists and the anti tsarists. In
+              the world of mathematics, the most important pro tsar mathmatician
+              was Pavel Nekrasov. Andrey Markov was a Russian mathematician, who
+              was both an athiest and an anti tsarit. At the time, probability
               theory was kind of the wild west. People were making loose
               philosophical arguments about randomness, free will, and divine
               intervention, and Markov was not having it.
             </p>
 
             <p className="mb-4">
-              Enter Nikolay Nekrasov, another Russian mathematician, who was
-              using probability arguments to “prove” things about society,
-              morality, and even the role of the Tsar. Nekrasov’s work leaned
-              heavily on the idea that random events had a kind of mystical
-              independence. Markov read this and basically said: “Absolutely
-              not.” He was irritated, and not quietly. He decided to
-              demonstrate, very publicly, that you could have random processes
-              where the future absolutely depends on the past — but only in a
-              very specific, local way.
+              Enter Pavel Nekrasov, another Russian mathematician, who was using
+              probability arguments to “prove” things about society, morality,
+              and even the role of the Tsar. Nekrasov’s work leaned heavily on
+              the idea that random events had a kind of mystical independence.
+              Markov read this and basically said: “Absolutely not.” He was
+              irritated, and not quietly. He decided to demonstrate, very
+              publicly, that you could have random processes where the future
+              absolutely depends on the past — but only in a very specific,
+              local way.
             </p>
 
             <p className="mb-4">
