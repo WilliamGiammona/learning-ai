@@ -531,8 +531,9 @@ export default function ReinforcementLearningPage() {
               The kinds of questions we care about in Reinforcement Learning are
               things like: “Is this decision better than that one?”, “If I start
               here and keep going, how much reward can I expect to get?”, “Is
-              there a best way to behave in this world?”, and “Can I do better
-              than whatever I’m currently doing?” These are all questions about{" "}
+              there a best way to behave in this world?”, and “Can I take
+              actions to do better than whatever I’m currently doing?” These are
+              all questions about{" "}
               <strong>sequences of decisions over time</strong>. Not one move
               and one reward, but long chains of cause and effect.
             </p>
