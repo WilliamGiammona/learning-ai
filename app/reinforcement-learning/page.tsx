@@ -1,5 +1,7 @@
 // app/reinforcement-learning/page.tsx
 
+import Link from "next/link";
+
 export default function ReinforcementLearningPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl">
@@ -611,12 +613,26 @@ export default function ReinforcementLearningPage() {
               <strong id="markov-history" className="block text-center">
                 A History of MDPs
               </strong>
+              <br />A good summary can be found here:
+              <br />
+              <Link
+                href="https://www.youtube.com/watch?v=KZeIEiBrT_w&t=1210s"
+                target="_blank"
+                className="text-blue-600 underline hover:text-blue-800"
+              >
+                The Strange Math That Predicts (Almost) Anything
+              </Link>
+              <br />
               <br />
               The feud centered around the Law of Large Numbers (the average
               outcome of a large amount of independent trials converges to the
               expected value), first proven by Jacob Bernouli in 1713. It was
               the most important concept of probability theory until Andrey
-              Markov's.
+              Markov's. Bernouli had proved that the Law of Large Numbers
+              applied to INDEPENDENT events, but it was an open question as to
+              whether it also applied to DEPENDENT events. Nekrasov argued that
+              it didn't, and that if you observed the Law of Large Numbers, you
+              could infer that the underlying events MUST be independent.
             </p>
 
             <p className="mb-4">
