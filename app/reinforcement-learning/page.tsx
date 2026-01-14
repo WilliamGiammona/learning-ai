@@ -671,7 +671,53 @@ export default function ReinforcementLearningPage() {
               just independent events).
             </p>
 
-            <p className="mb-4"></p>
+            <p className="mb-4">
+              He took the first 20,000 letters in the poem, removed all the
+              spaces and punctuation, and stitched them together into one
+              enormous string of letters. He found that 57% of the letters were
+              consonants and 43% were vowels. He then decided to have each
+              letter paired with the one after it. Thus 4 possible states
+              emerged:
+              <br />
+              <br />
+              1) Consonant Consonant
+              <br />
+              2) Consonant Vowel
+              <br />
+              3) Vowel Consonant
+              <br />
+              4) Vowel Vowel.
+              <br />
+              <br />
+              1st he had to prove that each letter was dependent on the previous
+              letter instead of independent. To do this he multiplied the
+              probabilities by their states in order to show what the
+              distribution would be if they were independent.
+              <br />
+              <br />
+              1) For consonant consonant it was: (.57 * C) * (.57 * C) = .32
+              chance
+              <br />
+              2) For consonant vowel it was: (.57 * C) * (.43 * V) = .25 chance
+              <br />
+              3) For vowel consonant it was: (.43 * V) * (.57 * C) = .25 chance
+              <br />
+              4) For vowel vowel it was: (.43 * V) * (.43 * V) = .18 chance
+              <br />
+              The numbers he actually got were .19, .375, .375, and .06
+              <br />
+              <br />
+              Since the numbers he got were extremely far away from what one
+              would get for independent events with that large of a sample size,
+              it can be inferred with extremely high probability that these were
+              dependent, not independent, events (as common sense would imply).
+            </p>
+            <p className="mb-4">
+              Now Markov needed to show that the law of large numbers was still
+              shown even though the letter was dependent on the previous letter
+              in the sequence. To do this he created what is now known as a{" "}
+              <strong>Markov Chain</strong>.
+            </p>
           </section>
         </main>
       </div>
