@@ -141,12 +141,10 @@ export default function ReinforcementLearningPage() {
               agent actually know what belongs in the state? Who decided that
               the board position matters in chess, but the player’s mood or what
               they had for breakfast does not? The answer is… sometimes a human
-              does, and sometimes nobody does. In the early days of
-              Reinforcement Learning, a human would sit there and carefully
-              hand-pick what information the agent gets to see. “Here, you can
-              have position, velocity, and angle. No more, no less.” The agent
-              never questioned it. It just accepted this version of reality and
-              tried to make the best of it.
+              does, and sometimes the agent has to learn that on its own. In the
+              early days of Reinforcement Learning, a human would carefully
+              choose what information the agent gets to see. “Here, you can have
+              position, velocity, and angle. No more, no less.”
             </p>
 
             <p className="mb-4">
