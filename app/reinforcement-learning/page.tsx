@@ -93,6 +93,12 @@ export default function ReinforcementLearningPage() {
                   </li>
                 </ul>
               </li>
+              <a
+                href="#markov-decision-process"
+                className="text-blue-600 hover:text-blue-800 underline block font-medium"
+              >
+                Markov Decision Process
+              </a>
             </ul>
           </nav>
         </aside>
@@ -504,6 +510,12 @@ export default function ReinforcementLearningPage() {
               “If I do this, what will happen?”, and <strong>model-free</strong>{" "}
               is “I’ll find out via trial and error.”
             </p>
+          </section>
+          <section id="markov-decision-process" className="mb-12">
+            <h1 className="text-3xl font-bold mb-6 text-center">
+              Markov Decision Process
+            </h1>
+            <p className="mb-12">lorem</p>
           </section>
         </main>
       </div>
