@@ -534,7 +534,7 @@ export default function ReinforcementLearningPage() {
               there a best way to behave in this world?”, and “Can I take
               actions to do better than whatever I’m currently doing?” These are
               all questions about{" "}
-              <strong>sequences of decisions over time</strong>. Not one move
+              <strong>sequences of decisions over time</strong>. Not one action
               and one reward, but long chains of cause and effect.
             </p>
 
