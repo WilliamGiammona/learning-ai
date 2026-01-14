@@ -571,7 +571,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong id="why-history-matters" className="block text-center">
-                A Quick Detour: Why the History Actually Matters
+                A Quick Detour: Why Learn The History Of Math
               </strong>
               <br />
               Before we jump into the math, it’s worth asking a slightly
@@ -581,32 +581,14 @@ export default function ReinforcementLearningPage() {
               abstract symbols in isolation, but they are very good at
               remembering stories. When you know <em>why</em> an idea was
               invented, what problem it was trying to solve, and what kind of
-              human was behind it, the math stops being a random collection of
-              letters and starts becoming a narrative. And narratives stick.
-            </p>
-
-            <p className="mb-4">
-              There’s also something deeply clarifying about seeing that most
-              mathematical ideas were not created in a vacuum. They were
-              responses to confusion, to bad arguments, to practical problems,
-              and sometimes to personal rivalries. When you understand the
-              original motivation, the structure of the idea often suddenly
-              makes sense. It feels less like “someone decided this should be
-              the rule” and more like “oh… yeah, that had to be the rule.”
-            </p>
-
-            <p className="mb-4">
-              So this little historical detour is not just trivia. It’s a way of
-              building intuition. It’s a way of making the concepts feel
-              inevitable instead of arbitrary. And in the case of Markov, it
-              also happens to involve academic drama, ideological arguments, and
-              a man who was apparently fueled by spite. Which, honestly, is a
-              bonus.
+              human was behind it, it becomes much easier to both learn and
+              remember. The other reason is that I enjoy it and I'm the one
+              writing this!
             </p>
 
             <p className="mb-4">
               <strong id="markov-history" className="block text-center">
-                A Short, Petty, and Surprisingly Entertaining History of Markov
+                A History of MDPs
               </strong>
               <br />
               Before Markov Decision Processes were a clean box in a textbook,
