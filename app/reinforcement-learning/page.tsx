@@ -51,6 +51,14 @@ export default function ReinforcementLearningPage() {
                       Who Decides What Goes Into the State?
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#seeing-vs-guessing"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Seeing Everything vs Guessing
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -180,8 +188,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong id="who-decides-state" className="block text-center">
-                Who Decides What Information Is Important Enough To Go Into A
-                State, And What Isn't?
+                Who Decides What Goes Into the State?
               </strong>
               <br />
               At this point, a very reasonable question pops up: how does the
@@ -219,8 +226,8 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">
-                Seeing Everything vs. Guessing A Lot
+              <strong id="seeing-vs-guessing" className="block text-center">
+                Seeing Everything vs Guessing
               </strong>
               <br />
               Up until now, we’ve been quietly assuming something very
