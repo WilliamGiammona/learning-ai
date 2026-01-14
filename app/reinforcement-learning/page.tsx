@@ -319,13 +319,31 @@ export default function ReinforcementLearningPage() {
               <strong>deterministic policy</strong>, which means that for every
               state, there is only one action they will take. In a given
               position, they will make the same move every time. There is no
-              randomness. Other agents are more flexible. They use a{" "}
+              randomness. In math form, this is written as:
+              <br />
+              <span className="block text-center font-mono my-2">a = π(s)</span>
+              <br />
+              where the agent's policy, π, looks at its current state, s, and
+              selects the action, a, that it will take.
+              <br />
+              <br />
+              Other agents are more flexible. They use a{" "}
               <strong>stochastic policy</strong>, which means that instead of
               committing to a single move, they assign probabilities to
               different moves. “In this position, I usually attack, but
               sometimes I defend, and occasionally I panic and do something
-              weird.” A good way to think about when a stochastic policy would
-              be better than a deterministic one would be with the game rock,
+              weird.” In math form, this is written as:
+              <br />
+              <span className="block text-center font-mono my-2">
+                π(a | s) = P(A = a | S = s)
+              </span>
+              <br />
+              where the agent’s policy, π, looks at its current state, s, and
+              assigns a probability to each possible action, a, that is allowed
+              in that state.
+              <br />
+              <br />A good way to think about when a stochastic policy would be
+              better than a deterministic one would be with the game rock,
               paper, scissors. In a deterministic policy you would always choose
               rock for example. It would be easy for your opponent to figure
               this strategy out and win every time by just choosing paper. Thus,
