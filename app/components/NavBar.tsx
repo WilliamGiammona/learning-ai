@@ -113,7 +113,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/robotics"
+              href="/reinforcement-learning"
               className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
             >
               Reinforcement Learning
