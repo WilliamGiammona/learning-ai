@@ -317,20 +317,21 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               Some agents are very decisive. They use what’s called a{" "}
               <strong>deterministic policy</strong>, which means that for every
-              state, there is exactly one action they will take. Same position,
-              same move, every time. No randomness. Other agents are more…
-              flexible. They use a <strong>stochastic policy</strong>, which
-              means that instead of committing to a single move, they assign
-              probabilities to different moves. “In this position, I usually
-              attack, but sometimes I defend, and occasionally I panic and do
-              something weird.” A good way to think about when a stochastic
-              policy would be better than a deterministic one would be with the
-              game rock, paper, scissors. In a deterministic policy you would
-              always choose rock for example. It would be easy for your opponent
-              to figure this strategy out and win every time, so the optimal
-              policy is a stochastic (random) one where the agent sometimes
-              chooses rock, sometimes chooses paper, and sometimes chooses
-              scissors.
+              state, there is only one action they will take. In a given
+              position, they will make the same move every time. There is no
+              randomness. Other agents are more flexible. They use a{" "}
+              <strong>stochastic policy</strong>, which means that instead of
+              committing to a single move, they assign probabilities to
+              different moves. “In this position, I usually attack, but
+              sometimes I defend, and occasionally I panic and do something
+              weird.” A good way to think about when a stochastic policy would
+              be better than a deterministic one would be with the game rock,
+              paper, scissors. In a deterministic policy you would always choose
+              rock for example. It would be easy for your opponent to figure
+              this strategy out and win every time by just choosing paper. Thus,
+              the optimal policy is a stochastic (random) one where the agent
+              sometimes chooses rock, sometimes chooses paper, and sometimes
+              chooses scissors.
             </p>
           </section>
         </main>
