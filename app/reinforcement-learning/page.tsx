@@ -206,9 +206,9 @@ export default function ReinforcementLearningPage() {
               (trying to handcode values for each piece for example), the agent
               might fixate on material and ignore king safety. In other domains,
               it might exploit loopholes you didn’t even realize existed. This
-              is why state design and reward design are basically the two
-              pressure points of Reinforcement Learning. Get them right, and the
-              agent can solve extremely difficult problems.
+              is why state and reward are basically the two pressure points of
+              Reinforcement Learning. Get them right, and the agent can solve
+              extremely difficult problems.
             </p>
           </section>
         </main>
