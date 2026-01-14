@@ -618,7 +618,7 @@ export default function ReinforcementLearningPage() {
               <Link
                 href="https://www.youtube.com/watch?v=KZeIEiBrT_w&t=1210s"
                 target="_blank"
-                className="text-blue-600 underline hover:text-blue-800"
+                className="text-blue-600 underline hover:text-blue-400"
               >
                 The Strange Math That Predicts (Almost) Anything
               </Link>
