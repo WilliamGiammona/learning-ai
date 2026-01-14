@@ -94,7 +94,9 @@ export default function ReinforcementLearningPage() {
               (bad position for the agent). In chess the opponent is part of the
               environment, although in more complex settings there can be an
               important distinction between the environment and other agents,
-              which we’ll talk about later.
+              which we’ll talk about later. The environment also determines the
+              pieces on the board, how each piece moves, etc. The agent learns
+              how the environment operates by trial and error.
             </p>
 
             <p className="mb-4">
@@ -164,15 +166,16 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              In chess, this is very intuitive. The current board position is
-              the state. You don’t need to know how the pieces got there, how
-              many blunders were made, or how confident the players felt on move
-              12. All that matters for deciding the next move is the position in
-              front of you right now. Two games that arrive at the same board
-              position are, from the agent’s perspective, the same situation.
-              That board position is a compressed summary of the entire history
-              of the game, and it contains everything the agent needs to decide
-              what move (action) to make next.
+              In chess, this is very intuitive. The current board position
+              (where each piece currently is on the board) is the state that has
+              the Markov Property. You don’t need to know how the pieces got
+              there, how many blunders were made, or how confident the players
+              felt on move 12. All that matters for deciding the next move is
+              the position in front of you right now. Two games that arrive at
+              the same board position are, from the agent’s perspective, the
+              same situation. That board position is a compressed summary of the
+              entire history of the game, and it contains everything the agent
+              needs to decide what move (action) to make next.
             </p>
 
             <p className="mb-4">
@@ -221,10 +224,10 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               Up until now, we’ve been quietly assuming something very
-              convenient: that the agent can see everything that matters. Chess
-              is like this. The entire board is right there in front of you. No
-              hidden pieces. No secret information. No fog of war. This is
-              what’s called a <strong>fully observable environment</strong>.
+              convenient: that the agent can see everything in the environment.
+              Chess is like this. The entire board is right there in front of
+              you. No hidden pieces. No secret information. No fog of war. This
+              is what’s called a <strong>fully observable environment</strong>.
               This makes it easier to have states that follow the markov
               property (contain everything you need to know to make the best
               decision).
@@ -233,7 +236,7 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               Unfortunately, most real-world problems are not fully observable.
               In many situations, the agent is forced to operate with incomplete
-              information. This is called a{" "}
+              information about the environment. This is called a{" "}
               <strong>partially observable environment</strong>. Think about
               trading in the stock market. You don’t know what’s happening
               inside companies. You don’t know what decisions executives are
