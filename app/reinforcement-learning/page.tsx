@@ -83,6 +83,14 @@ export default function ReinforcementLearningPage() {
                       The Agent's Model
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dont-need-all-pieces"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      You Don't Need All The Pieces
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -105,7 +113,6 @@ export default function ReinforcementLearningPage() {
               everything is said and done” (far-sighted reward). To keep things
               concrete, I'll use chess as our main example.
             </p>
-
             <p className="mb-4">
               <strong id="the-characters" className="block text-center">
                 The Characters
@@ -130,7 +137,6 @@ export default function ReinforcementLearningPage() {
               pieces on the board, how each piece moves, etc. The agent learns
               how the environment operates by trial and error.
             </p>
-
             <p className="mb-4">
               <strong id="the-data" className="block text-center">
                 The Data
@@ -157,7 +163,6 @@ export default function ReinforcementLearningPage() {
               slowly, painfully, and eventually impressively figure out how to
               make better and better decisions.
             </p>
-
             <p className="mb-4">
               <strong id="the-state" className="block text-center">
                 The State
@@ -172,7 +177,6 @@ export default function ReinforcementLearningPage() {
               everything that actually matters into a single snapshot of “what’s
               going on right now.”
             </p>
-
             <p className="mb-4">
               Formally, this is captured by something called the{" "}
               <strong>Markov property</strong> (named after Andrey Markov),
@@ -196,7 +200,6 @@ export default function ReinforcementLearningPage() {
               </em>
               . Anything before that is just extra unnecessary baggage.
             </p>
-
             <p className="mb-4">
               In chess, this is very intuitive. The current board position
               (where each piece currently is on the board) is the state that has
@@ -209,7 +212,6 @@ export default function ReinforcementLearningPage() {
               entire history of the game, and it contains everything the agent
               needs to decide what move (action) to make next.
             </p>
-
             <p className="mb-4">
               <strong id="who-decides-state" className="block text-center">
                 Who Decides What Goes Into the State?
@@ -224,7 +226,6 @@ export default function ReinforcementLearningPage() {
               carefully choose what information the agent gets to see. “Here,
               you can have position, velocity, and angle. No more, no less.”
             </p>
-
             <p className="mb-4">
               In modern Reinforcement Learning, especially with deep neural
               networks, things get a lot more interesting. Instead of
@@ -237,7 +238,6 @@ export default function ReinforcementLearningPage() {
               helps it get more reward, that thing becomes important. If it
               doesn’t, it quietly fades into irrelevance.
             </p>
-
             <p className="mb-4">
               If the reward is badly designed, the agent will learn that the
               wrong things are “important.” In chess, if a bad reward is given
@@ -248,7 +248,6 @@ export default function ReinforcementLearningPage() {
               Reinforcement Learning. Get them right, and the agent can solve
               extremely difficult problems.
             </p>
-
             <p className="mb-4">
               <strong id="seeing-vs-guessing" className="block text-center">
                 Seeing Everything vs Guessing
@@ -263,7 +262,6 @@ export default function ReinforcementLearningPage() {
               property (contain everything you need to know to make the best
               decision).
             </p>
-
             <p className="mb-4">
               Unfortunately, most real-world problems are not fully observable.
               In many situations, the agent is forced to operate with incomplete
@@ -299,7 +297,6 @@ export default function ReinforcementLearningPage() {
               the agent decides, evaluates, and occasionally daydreams about
               what might happen next.
             </p>
-
             <p className="mb-4">
               <strong className="block text-center">Agent Components</strong>
               <br />
@@ -313,7 +310,6 @@ export default function ReinforcementLearningPage() {
               environment, which is an internal simulation of how the
               environment it's in actually works.
             </p>
-
             <p className="mb-4">
               <strong id="policy" className="block text-center">
                 The Agent's Policy
@@ -329,7 +325,6 @@ export default function ReinforcementLearningPage() {
               move the knight to this square,” or “I’m going to do something
               bold and probably regret it.”
             </p>
-
             <p className="mb-4">
               Some agents are very decisive. They use what’s called a{" "}
               <strong>deterministic policy</strong>, which means that for every
@@ -367,7 +362,6 @@ export default function ReinforcementLearningPage() {
               sometimes chooses rock, sometimes chooses paper, and sometimes
               chooses scissors.
             </p>
-
             <p className="mb-4">
               <strong id="value-function" className="block text-center">
                 The Agent's Value Function
@@ -395,7 +389,6 @@ export default function ReinforcementLearningPage() {
               who just learned how to play chess. Mathamatically the value
               function is written as{" "}
             </p>
-
             <p className="mb-4">
               <span className="block text-center font-mono my-2">
                 V<sub>π</sub>(s) = E<sub>π</sub>[ R<sub>t</sub> + γR
@@ -415,7 +408,6 @@ export default function ReinforcementLearningPage() {
               Put simply, give me a state and the value function under a policy
               spits out what it thinks the total reward will be.
             </p>
-
             <p className="mb-4">
               <strong id="model" className="block text-center">
                 The Agent's Model
@@ -433,7 +425,6 @@ export default function ReinforcementLearningPage() {
               For example, if I drop this object, gravity will make it fall
               towards the ground.
             </p>
-
             <p className="mb-4">
               More formally, the model tries to predict two things. First, the{" "}
               <strong>state transitions</strong>: given my current state and
@@ -464,6 +455,72 @@ export default function ReinforcementLearningPage() {
               <em>s'</em> if I’m in state <em>s</em> and take action <em>a</em>,
               and the expected (immediate not total) reward I’ll get for taking
               action a in state s.
+            </p>
+            <p className="mb-4">
+              <strong id="dont-need-all-pieces" className="block text-center">
+                You Don’t Need All The Pieces
+              </strong>
+              <br />
+              Up until now, we’ve been talking about <strong>
+                policies
+              </strong>, <strong>value functions</strong>, and{" "}
+              <strong>models</strong> assuming every RL agent has all three of
+              these. Real agents can be more minimalist. Some agents don’t
+              explicitly learn a policy at all, some agents don’t explicitly
+              learn a value function, some don’t bother building a model of the
+              environment, and some have all three.
+            </p>
+            <p className="mb-4">
+              The first big split is <strong>value-based</strong> vs{" "}
+              <strong>policy-based</strong> vs <strong>actor-critic</strong>. A{" "}
+              <strong>value-based</strong> agent is like: “Don’t give me a
+              rulebook. Just tell me which options are good.” It learns a value
+              function and then picks the action with the highest value. So it
+              has a value function, but the policy is <em>implicit</em>, i.e.
+              “do whatever has the biggest value.” A{" "}
+              <strong>policy-based</strong> agent is the opposite. It learns the
+              policy without giving states an explicit value. An
+              <strong>actor-critic</strong> agent uses both a policy and a value
+              function. The <strong>actor</strong> is the policy (the thing that
+              chooses actions), and the <strong>critic</strong> is the value
+              function (the thing that judges how good things are).
+            </p>
+
+            <p className="mb-4">
+              Whether an agent is value based, policy based, or actor critic
+              doesn't determine whether its
+              <strong>model-free</strong> or <strong>model-based</strong> and
+              vice versa. That's because the model is just about whether the
+              agent tries to learn the <em>rules of the environment</em> or not.
+            </p>
+            <p className="mb-4">
+              A <strong>model-free</strong> agent doesn't need to predict the
+              future. It learns what works by experience/trial and error, using
+              reward signals, without explicitly learning how the environment
+              transitions from <span className="font-mono">(s, a)</span> to{" "}
+              <span className="font-mono">s'</span>. A{" "}
+              <strong>model-based</strong> agent needs to predict the future. It
+              tries to learn <span className="font-mono">P(s' | s, a)</span> and{" "}
+              <span className="font-mono">R(s, a)</span> so it can run mental
+              simulations and plan ahead.
+            </p>
+            <p className="mb-4">
+              And because these are two separate axes, you can mix and match.
+              You can have a <strong>value-based, model-free</strong> agent. Or
+              a <strong>policy-based, model-free</strong> agent. Or an{" "}
+              <strong>actor-critic, model-free</strong> agent (very common). And
+              you can also build <strong>model-based</strong> versions of any of
+              these. Different agents are just different combinations of{" "}
+              <strong>policy learning</strong>, <strong>value learning</strong>,
+              and <strong>model learning</strong>.
+            </p>
+            <p className="mb-4">
+              Put simply: One one axis <strong>value-based</strong> is “Which
+              option is best?”, <strong>policy-based</strong> is “What should I
+              do?”, <strong>actor-critic</strong> is “What should I do, and how
+              did I do?”. On a different axis, <strong>model-based</strong> is
+              “If I do this, what will happen?”, and <strong>model-free</strong>{" "}
+              is “I’ll find out via trial and error.”
             </p>
           </section>
         </main>
