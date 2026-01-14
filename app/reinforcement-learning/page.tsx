@@ -425,47 +425,45 @@ export default function ReinforcementLearningPage() {
               action, get reward, repeat. But some agents go a step further and
               build something extra: a <strong>model</strong> of the
               environment. This is basically the agent’s internal guess of how
-              the world works. If the policy is the agent’s rulebook and the
-              value function is its gut feeling, then the model is its
-              imagination. It answers questions like: “If I do this, what will
-              probably happen next?”
+              the world works. If the policy is the agent’s rulebook for what to
+              do in a state, and the value function tells it how much expected
+              total future reward it expects to get from a state, then the model
+              is its guess of what the rules of the environment are. It answers
+              questions like: “If I do this, what will probably happen next?”
+              For example, if I drop this object, gravity will make it fall
+              towards the ground.
             </p>
 
             <p className="mb-4">
               More formally, the model tries to predict two things. First, the{" "}
-              <strong>transitions</strong>: given my current state and action,
-              what state will I end up in next? And second, the{" "}
-              <strong>rewards</strong>: how much immediate reward will I get for
-              doing that? In math language, this is written as:
+              <strong>state transitions</strong>: given my current state and
+              action, what state will the environment put me in next? And
+              second, the <strong>rewards</strong>: how much immediate reward
+              will I get for doing that? As an example, think about driving a
+              car. Your model of the environment includes certain laws of
+              physics as well as how other drivers behave. If you turn the
+              steering wheel left, the car will have a high probability of
+              transitioning to a state where it is turning left. If you slam the
+              brakes, the car will have a high probability of transitioning to a
+              state with a lower speed. If I run a red light, I have a high
+              likelihood of transitioning into a state where a policeman gives
+              me a big ticket. Those are all predictions about{" "}
+              <strong>state transitions </strong>
+              and <strong>rewards</strong>. You’re constantly running little
+              simulations of “If I do this in my current state, then I have a
+              certain likelihood of transitioning into this particular new
+              state.” Mathematically, for a transition model P, and immediate
+              Reward function, R:
               <br />
               <span className="block text-center font-mono my-2">
-                P(s' | s, a) &nbsp;&nbsp;and&nbsp;&nbsp; R(s, a)
+                state transition = P(s' | s, a) &nbsp;&nbsp;and&nbsp;&nbsp;
+                immediate reward = R(s, a)
               </span>
               <br />
               Which just means: the probability of landing in next state{" "}
               <em>s'</em> if I’m in state <em>s</em> and take action <em>a</em>,
-              and the expected reward I’ll get for that move.
-            </p>
-
-            <p className="mb-4">
-              In a physical robot, this might mean learning physics: “If I push
-              here, the arm will move there.” In a self-driving car, it might
-              mean learning how other cars and pedestrians usually behave. In a
-              video game, it’s learning the game rules. The model lets the agent
-              run little mental simulations of the future before actually doing
-              anything. It’s the difference between blindly touching the stove
-              and thinking, “Last time I touched that, it hurt. Maybe don’t.”
-            </p>
-
-            <p className="mb-4">
-              Not all agents have models. Many modern deep RL agents are
-              <strong>model-free</strong>: they skip the crystal ball and just
-              learn by trial and error. Others are <strong>model-based</strong>:
-              they actively try to understand the environment so they can plan
-              ahead. Model-based agents can be much more efficient, because
-              instead of learning only from real mistakes, they can learn from
-              imagined ones too. Basically: if you can predict the future, you
-              can avoid a lot of unnecessary pain.
+              and the expected (immediate not total) reward I’ll get for taking
+              action a in state s.
             </p>
           </section>
         </main>
