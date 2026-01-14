@@ -595,7 +595,7 @@ export default function ReinforcementLearningPage() {
               <br />
               The origin of the MDP began at the dawn of the the 20th century in
               Russia and centers around a feud between Andrey Markov and Pavel
-              Nekrasov. The powerful European Russia Empire had just been
+              Nekrasov. The powerful European Russian Empire had just been
               humiliated by Japan after losing the 1905 Russo-Japanese war, and
               socialist groups all across Russia began a revolution (not that
               revolution) against the tsar. This fiercely divided the empire
