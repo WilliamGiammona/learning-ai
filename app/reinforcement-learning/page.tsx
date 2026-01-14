@@ -489,7 +489,7 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               Whether an agent is value based, policy based, or actor critic
               doesn't determine whether its
-              <strong>model-free</strong> or <strong>model-based</strong> and
+              <strong> model-free</strong> or <strong>model-based</strong> and
               vice versa. That's because the model is just about whether the
               agent tries to learn the <em>rules of the environment</em> or not.
             </p>
