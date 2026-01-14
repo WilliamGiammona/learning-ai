@@ -25,7 +25,9 @@ export default function ReinforcementLearningPage() {
         {/* Main Content */}
         <main className="flex-1 min-w-0">
           <section id="reinforcement-learning-problem" className="mb-12">
-            <h1 className="text-3xl font-bold mb-6">Introduction</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center">
+              Introduction
+            </h1>
             <p className="mb-12">
               In this section I'm going to talk about Reinforcement Learning,
               which is basically the art of teaching a computer how to make good
@@ -38,8 +40,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>The Characters</strong>
-              <br />
+              <strong className="block text-center">The Characters</strong>
               <br />
               In Reinforcement Learning, there are two main characters in our
               story. The first is the <strong>agent</strong>, which is the
@@ -56,8 +57,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>The Data</strong>
-              <br />
+              <strong className="block text-center">The Data</strong>
               <br />
               Now, in order for the agent to figure out which actions are
               brilliant and which ones are terrible, it needs data. What kind of
@@ -82,8 +82,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>The State</strong>
-              <br />
+              <strong className="block text-center">The State</strong>
               <br />
               The history is great to use as a way to select actions in theory,
               but is terrible in practice. Imagine trying to make every decision
@@ -101,7 +100,8 @@ export default function ReinforcementLearningPage() {
               which says that the future depends only on the present, not on the
               entire past. In math form, it looks like this:
               <br />
-              <span className="font-mono">
+              <br />
+              <span className="block font-mono text-center">
                 P(S<sub>t+1</sub> | S<sub>t</sub>) = P(S<sub>t+1</sub> | S
                 <sub>1</sub>, S<sub>2</sub>, … , S<sub>t</sub>)
               </span>
@@ -131,11 +131,10 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong>
-                So… who decides what information is important enough to go into
-                a state, and what isn't?
+              <strong className="block text-center">
+                Who Decides What Information Is Important Enough To Go Into A
+                State, And What Isn't?
               </strong>
-              <br />
               <br />
               At this point, a very reasonable question pops up: how does the
               agent actually know what belongs in the state? Who decided that
