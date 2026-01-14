@@ -12,12 +12,47 @@ export default function ReinforcementLearningPage() {
               <li>
                 <a
                   href="#reinforcement-learning-problem"
-                  className="text-blue-600 hover:text-blue-800 underline block"
+                  className="text-blue-600 hover:text-blue-800 underline block font-medium"
                 >
                   Introduction
                 </a>
+
+                {/* Subsections */}
+                <ul className="mt-2 ml-4 space-y-1">
+                  <li>
+                    <a
+                      href="#the-characters"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      The Characters
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#the-data"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      The Data
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#the-state"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      The State
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#who-decides-state"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Who Decides What Goes Into the State?
+                    </a>
+                  </li>
+                </ul>
               </li>
-              {/* Add more sections here later */}
             </ul>
           </nav>
         </aside>
@@ -40,7 +75,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">The Characters</strong>
+              <strong id="the-characters" className="block text-center">
+                The Characters
+              </strong>
               <br />
               In Reinforcement Learning, there are two main characters in our
               story. The first is the <strong>agent</strong>, which is the
@@ -57,7 +94,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">The Data</strong>
+              <strong id="the-data" className="block text-center">
+                The Data
+              </strong>
               <br />
               Now, in order for the agent to figure out which actions are
               brilliant and which ones are terrible, it needs data. What kind of
@@ -82,7 +121,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">The State</strong>
+              <strong id="the-state" className="block text-center">
+                The State
+              </strong>
               <br />
               The history is great to use as a way to select actions in theory,
               but is terrible in practice. Imagine trying to make every decision
@@ -131,7 +172,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center">
+              <strong id="who-decides-state" className="block text-center">
                 Who Decides What Information Is Important Enough To Go Into A
                 State, And What Isn't?
               </strong>
