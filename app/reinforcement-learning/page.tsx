@@ -599,14 +599,15 @@ export default function ReinforcementLearningPage() {
               humiliated by Japan after losing the 1905 Russo-Japanese war, and
               socialist groups all across Russia began a revolution (not that
               revolution) against the tsar. This fiercly divided the empire into
-              two political camps, the pro tsarists and the anti tsarists. In
-              the world of mathematics, the most important pro tsar mathmatician
-              was the extremely religious Pavel Nekrasov. He wanted to use
-              probability theory to prove the existence of free will and the
-              will of God. Andrey Markov was a Russian mathematician, who was
-              both an athiest and deeply anti tsarit, and for this reason set
-              out to discover an entirely new branch of mathamatics in order to
-              prove Nekrasov wrong.
+              two political camps, the pro tsarists (usually religious and
+              conservative) and the anti tsarists (usually socialist and
+              athiest). In the world of mathematics, the most important pro tsar
+              mathmatician was the extremely religious Pavel Nekrasov. He wanted
+              to use probability theory to prove the existence of free will and
+              the will of God. Andrey Markov was a Russian mathematician, who
+              was both an athiest and deeply anti tsarit, and for this reason
+              set out to discover an entirely new branch of mathamatics in order
+              to prove Nekrasov wrong.
             </p>
 
             <p className="mb-4">
