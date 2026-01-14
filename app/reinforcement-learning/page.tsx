@@ -515,7 +515,7 @@ export default function ReinforcementLearningPage() {
               and <strong>model learning</strong>.
             </p>
             <p className="mb-4">
-              Put simply: One one axis <strong>value-based</strong> is “Which
+              Put simply: On one axis <strong>value-based</strong> is “Which
               option is best?”, <strong>policy-based</strong> is “What should I
               do?”, <strong>actor-critic</strong> is “What should I do, and how
               did I do?”. On a different axis, <strong>model-based</strong> is
