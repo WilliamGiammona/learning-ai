@@ -721,6 +721,9 @@ export default function ReinforcementLearningPage() {
               they were. Hence, Markov used this Markov Chain to prove that
               dependent events also follow the law of large numbers (thereby
               proving Nekrasov's assumptions and conclusions to be incorrect).
+              In the 1950s American mathmetician Richard Bellman extended Markov
+              chains by adding decisions and rewards, giving rise to Markov
+              Decision Processes.
             </p>
           </section>
         </main>
