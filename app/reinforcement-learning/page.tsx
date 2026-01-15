@@ -746,7 +746,27 @@ export default function ReinforcementLearningPage() {
               Markov created the Markov Chain, described in the history section
               above, which deals with discrete (countable) space. When you
               include discrete AND continuous space, its called a "Markov
-              Process." Now lets take a more detailed look at Markov Processes.
+              Process." One of the most central ideas of a Markov Process is
+              that it follows the Markov Property, which says that the future
+              depends only on the present, not on the entire past. In math form,
+              it looks like this:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                P(S<sub>t+1</sub> | S<sub>t</sub>) = P(S<sub>t+1</sub> | S
+                <sub>1</sub>, S<sub>2</sub>, … , S<sub>t</sub>)
+              </span>
+              <br />
+              In normal human language, this just means: the probability of what
+              happens in the next state: P(S<sub>t+1</sub>), given the current
+              state: | S<sub>t</sub>, is the same as the probability of what
+              happens next: P(S<sub>t+1</sub>) given the entire history: | S
+              <sub>1</sub>, S<sub>2</sub>, … , S<sub>t</sub>. In other words,{" "}
+              <em>
+                the current state was able to compress all the useful dependent
+                information from the past
+              </em>
+              . Anything before that is just extra unnecessary baggage.
             </p>
           </section>
         </main>
