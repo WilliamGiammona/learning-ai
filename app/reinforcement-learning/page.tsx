@@ -95,12 +95,26 @@ export default function ReinforcementLearningPage() {
                   </li>
                 </ul>
               </li>
-              <a
-                href="#markov-decision-process"
-                className="text-blue-600 hover:text-blue-800 underline block font-medium"
-              >
-                Markov Decision Process
-              </a>
+              <li>
+                <a
+                  href="#markov-decision-process"
+                  className="text-blue-600 hover:text-blue-800 underline block font-medium"
+                >
+                  Markov Decision Process
+                </a>
+
+                {/* Subsections */}
+                <ul className="mt-2 ml-4 space-y-1">
+                  <li>
+                    <a
+                      href="#mdp-history"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      History of MDPs
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </nav>
         </aside>
@@ -531,11 +545,11 @@ export default function ReinforcementLearningPage() {
               <strong>dependent events</strong>, where what happens next depends
               on what just happened, and what happened before that, etc. This is
               the world most real problems live in. The challenge is that
-              dependence makes probability messy and hard to work with. MDPs
-              exist to solve exactly this problem. They give us a mathematical
-              framework for using probability in a world where events are not
-              independent. The key idea is to compress all the relevant
-              information from the past into a single object called the
+              dependence makes classical probability messy and hard to work
+              with. MDPs exist to solve exactly this problem. They give us a
+              mathematical framework for using probability in a world where
+              events are not independent. One key idea is to compress all the
+              relevant information from the past into a single object called the{" "}
               <strong>state</strong>. Once you do that, you can treat the future
               as depending only on the present state, and probability becomes
               usable again. So, if you have a problem that deals with sequences
@@ -561,7 +575,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong id="markov-history" className="block text-center">
+              <strong id="mdp-history" className="block text-center">
                 A History of MDPs
               </strong>
               <br />
@@ -583,9 +597,6 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong id="markov-history" className="block text-center">
-                A History of MDPs
-              </strong>
               <br />A good summary can be found here:
               <br />
               <Link
