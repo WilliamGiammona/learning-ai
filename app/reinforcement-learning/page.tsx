@@ -746,7 +746,7 @@ export default function ReinforcementLearningPage() {
               Markov created the Markov Chain, described in the above history
               section, which deals with discrete (countable) space. When you
               include discrete AND continuous space, its called a "Markov
-              Process."
+              Process." Now lets take a more detailed look at Markov Processes.
             </p>
           </section>
         </main>
