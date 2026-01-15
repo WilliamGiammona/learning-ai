@@ -768,6 +768,17 @@ export default function ReinforcementLearningPage() {
               </em>
               . Anything before that is just extra unnecessary baggage.
             </p>
+            <p className="mb=4">
+              The two fundamental objects in any Markov Process are:
+              <br />
+              1) The state - a compression of all important dependent
+              information in the history up to that point
+              <br />
+              2) The transition probability - represented as a matrix for
+              discrete states or a probability distribution for continuous
+              states - which tells you the probability of going from one state
+              to the next
+            </p>
           </section>
         </main>
       </div>
