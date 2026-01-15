@@ -540,14 +540,14 @@ export default function ReinforcementLearningPage() {
               sequences of events: the first is sequences of{" "}
               <strong> independent events</strong>, things like coin flips or
               dice rolls, where each outcome has nothing to do with the one
-              before it. Classical probability theory was built for this world,
-              and it works beautifully there. The second kind are sequences of{" "}
-              <strong>dependent events</strong>, where what happens next depends
-              on what just happened, and what happened before that, etc. This is
-              the world most real problems live in. The challenge is that
-              dependence makes classical probability messy and hard to work
-              with. MDPs exist to solve exactly this problem. They give us a
-              mathematical framework for using probability in a world where
+              before it. Classical probability theory (pre 1900) was built for
+              this world, and it works beautifully there. The second kind are
+              sequences of <strong>dependent events</strong>, where what happens
+              next depends on what just happened, and what happened before that,
+              etc. This is the world most real problems live in. The challenge
+              is that dependence makes classical probability messy and hard to
+              work with. MDPs exist to solve exactly this problem. They give us
+              a mathematical framework for using probability in a world where
               events are not independent. One key idea is to compress all the
               relevant information from the past into a single object called the{" "}
               <strong>state</strong>. Once you do that, you can treat the future
