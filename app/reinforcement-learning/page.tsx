@@ -736,6 +736,18 @@ export default function ReinforcementLearningPage() {
               chains by adding decisions and rewards, giving rise to Markov
               Decision Processes.
             </p>
+
+            <p className="mb-4">
+              <strong id="mdp-history" className="block text-center">
+                Markov Process
+              </strong>
+              <br />
+              Ok, enough history, now back to the mathematics. A quick note,
+              Markov created the Markov Chain, described in the above history
+              section, which deals with discrete (countable) space. When you
+              include discrete AND continuous space, its called a "Markov
+              Process."
+            </p>
           </section>
         </main>
       </div>
