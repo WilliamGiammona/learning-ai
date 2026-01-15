@@ -521,11 +521,13 @@ export default function ReinforcementLearningPage() {
             </h1>
             <p className="mb-4">
               At a very high level, Reinforcement Learning is really about
-              dealing with two fundamentally different kinds of events. The
-              first kind are <strong> independent events</strong>, things like
-              coin flips or dice rolls, where each outcome has nothing to do
-              with the one before it. Classical probability theory was built for
-              this world, and it works beautifully there. The second kind are{" "}
+              dealing with sequences of dependent events and wanting to learn
+              about them by using probability. There are two broad kinds of
+              sequences of events: the first is sequences of{" "}
+              <strong> independent events</strong>, things like coin flips or
+              dice rolls, where each outcome has nothing to do with the one
+              before it. Classical probability theory was built for this world,
+              and it works beautifully there. The second kind are sequences of{" "}
               <strong>dependent events</strong>, where what happens next depends
               on what just happened, and what happened before that, etc. This is
               the world most real problems live in. The challenge is that
@@ -537,7 +539,8 @@ export default function ReinforcementLearningPage() {
               <strong>state</strong>. Once you do that, you can treat the future
               as depending only on the present state, and probability becomes
               usable again. So, if you have a problem that deals with sequences
-              of dependent events, MDPs are the mathematics you need.
+              of dependent events, and you want to apply probability theory to
+              them (like in RL), MDPs are the mathematics you need.
             </p>
 
             <p className="mb-4">
