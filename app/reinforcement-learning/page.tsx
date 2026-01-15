@@ -764,7 +764,7 @@ export default function ReinforcementLearningPage() {
               <sub>1</sub>, S<sub>2</sub>, … , S<sub>t</sub>. In other words,{" "}
               <em>
                 the current state was able to compress all the useful dependent
-                information from the past
+                information from the past history
               </em>
               . Anything before that is just extra unnecessary baggage.
             </p>
