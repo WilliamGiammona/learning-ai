@@ -520,55 +520,24 @@ export default function ReinforcementLearningPage() {
               Markov Decision Process
             </h1>
             <p className="mb-4">
-              At this point, a very natural question should be forming in the
-              back of your mind: okay, we have agents, states, actions,
-              environments, rewards, policies, value functions, models, etc, but
-              what are we actually trying to <em>do</em> with all of this? What
-              kinds of questions are we trying to answer? Are we just collecting
-              symbols for fun, or is there some bigger structure hiding
-              underneath?
-            </p>
-
-            <p className="mb-4">
-              The kinds of questions we care about in Reinforcement Learning are
-              things like: “Is this decision better than that one?”, “If I start
-              here and keep going, how much reward can I expect to get?”, “Is
-              there a best way to behave in this world?”, and “Can I take
-              actions to do better than whatever I’m currently doing?” These are
-              all questions about{" "}
-              <strong>sequences of decisions over time</strong>. Not one action
-              and one reward, but long chains of actions and rewards.
-            </p>
-
-            <p className="mb-4">
-              It turns out that there is a very clean and very powerful
-              mathematical way to organize exactly these kinds of questions.
-              It’s called a <strong>Markov Decision Process</strong>, or{" "}
-              <strong>MDP</strong>. An MDP is just a way of formally writing
-              down the ingredients we’ve already been talking about: states,
-              actions, transitions, and rewards, all stitched together with the
-              idea that the present contains everything you need to know about
-              the future.
-            </p>
-
-            <p className="mb-4">
-              In other words, an MDP is the math version of: “Here is the
-              situation (state), here are the things you can do (actions), here
-              is how the world reacts, and here is how good or bad that reaction
-              is (rewards).” Once you write a problem in this form, an enormous
-              amount of theory suddenly becomes available. Questions like “What
-              is the best possible behavior?” and “How should I change my
-              behavior to get more reward?” can now be answered mathematically.
-            </p>
-
-            <p className="mb-4">
-              I'm not going to dive into the machinery just yet. For now, the
-              important thing to know is this: MDPs are the framework that turns
-              ‘learning by experience (trial and error)’ into a solvable
-              problem. They are the reason we can talk afbout optimal policies,
-              expected returns, and improvement at all. First though, let's
-              travel back in time to the turn of the 20th century to learn about
-              the history of MDPs.
+              At a very high level, Reinforcement Learning is really about
+              dealing with two fundamentally different kinds of events. The
+              first kind are <strong> independent events</strong>, things like
+              coin flips or dice rolls, where each outcome has nothing to do
+              with the one before it. Classical probability theory was built for
+              this world, and it works beautifully there. The second kind are{" "}
+              <strong>dependent events</strong>, where what happens next depends
+              on what just happened, and what happened before that, etc. This is
+              the world most real problems live in. The challenge is that
+              dependence makes probability messy and hard to work with. MDPs
+              exist to solve exactly this problem. They give us a mathematical
+              framework for using probability in a world where events are not
+              independent. The key idea is to compress all the relevant
+              information from the past into a single object called the
+              <strong>state</strong>. Once you do that, you can treat the future
+              as depending only on the present state, and probability becomes
+              usable again. So, if you have a problem that deals with sequences
+              of dependent events, MDPs are the mathematics you need.
             </p>
 
             <p className="mb-4">
