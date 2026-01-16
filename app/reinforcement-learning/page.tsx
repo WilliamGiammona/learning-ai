@@ -113,6 +113,22 @@ export default function ReinforcementLearningPage() {
                       History of MDPs
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#mp"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Markov Process
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#mrp"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Markov Reward Process
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -738,7 +754,7 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong id="mdp-history" className="block text-center">
+              <strong id="mp" className="block text-center">
                 Markov Process
               </strong>
               <br />
@@ -776,8 +792,262 @@ export default function ReinforcementLearningPage() {
               <br />
               2) The transition probability - represented as a matrix for
               discrete states or a probability distribution for continuous
-              states - which tells you the probability of going from one state
-              to the next
+              states, that tells you the probability of going from one state to
+              the next
+              <br />
+              <br />
+              Formally, a <strong>Markov Process</strong> is defined as a tuple
+              (S, P) where:
+              <br />
+              <br />• <strong>S</strong> is a finite set of states
+              <br />• <strong>P</strong> is the state transition probability
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                P<sub>ss'</sub> = P[S<sub>t+1</sub> = s' | S<sub>t</sub> = s]
+              </span>
+              <br />
+              This notation means: "the probability of transitioning TO state s'
+              (where you'll be next) GIVEN that you're currently in state s."
+            </p>
+            <br />
+            <br />
+            <p className="mb-4">
+              For discrete states, we can organize all these transition
+              probabilities into a <strong>state transition matrix</strong> 𝒫.
+              The matrix is structured so that:
+              <br />
+              <br />• Each <strong>row</strong> represents a starting state
+              (where you are now)
+              <br />• Each <strong>column</strong> represents a possible next
+              state (where you could go)
+              <br />• Each entry P<sub>ij</sub> tells you the probability of
+              going FROM state i TO state j
+              <br />
+              <br />
+              <span className="block text-center">
+                <span className="italic">from</span> 𝒫 ={" "}
+                <span className="italic">to</span>
+                <span className="inline-block ml-4">
+                  [P<sub>11</sub> ... P<sub>1m</sub>]
+                  <br />
+                  <span className="ml-4">[⋮ ⋱ ⋮]</span>
+                  <br />
+                  [P<sub>n1</sub> ... P<sub>nm</sub>]
+                </span>
+              </span>
+              <br />
+              <br />A key property: each row must sum to 1, because from any
+              given state, you must transition <em>somewhere</em> (even if
+              "somewhere" means staying in the same state). This constraint
+              ensures the probabilities are valid.
+            </p>
+            <p className="mb-4">
+              This transition matrix gives you the complete structure of the{" "}
+              <strong>Markov Process</strong>. The "Markov Process" refers to
+              the entire system of how states evolve over time according to
+              these transition probabilities. Once you know the transition
+              matrix 𝒫, you can answer questions like: "If I start in state s,
+              what's the probability I'll be in state s' after 10 steps?" or
+              "What's the long-term distribution of states?" The matrix encodes
+              all the dynamics of the system, i.e. it tells you everything about
+              how the process moves through states over time. For continuous
+              states, we use a probability distribution (called a transition
+              kernel) instead of a matrix, but the concept is the same.
+            </p>
+            <p className="mb-4">
+              To recap: for a Markov Process all you need are two things: (1){" "}
+              <strong>states</strong> that satisfy the Markov Property, meaning
+              each state compresses all the relevant dependent information from
+              the past into a single snapshot of "where you are now", and (2){" "}
+              <strong>transition probabilities</strong> that tell you how likely
+              you are to move from any given state to any other state. That's
+              it. These two ingredients completely specify the entire system.
+              With just these, you can predict how the system will evolve over
+              time, calculate long-term behavior, and answer probability
+              questions about sequences of dependent events.
+            </p>
+
+            <p className="mb-4">
+              <strong id="mrp" className="block text-center">
+                Markov Reward Process
+              </strong>
+              <br />A Markov Process gives us the mathematical tools to handle
+              sequences of dependent events, but it's missing something crucial
+              for reinforcement learning: feedback from the environment, like
+              victory for chekcmating an opponent in chess, or defeat for being
+              checkmated. In RL, we want to express the environment fully. The
+              environment has states, state transitions, and a reward/penalty
+              given to us by the environment. There can be one reward at the
+              end, or several rewards. Remember in RL we want the agent to learn
+              which actions get us to states that give us the largest total
+              reward. However, environment rewards in the future aren't worth as
+              much as those right now (just like how in finance a dollar today
+              is worth than a dollar tomorrow), so we use a discount factor, γ
+              (gamma), for future rewards. These are all the ingredients we need
+              to model our environment.
+            </p>
+            <p className="mb-4">
+              Formally, a <strong>Markov Reward Process</strong> is defined as a
+              tuple (S, P, R, γ) where:
+              <br />
+              <br />• <strong>S</strong> is a finite set of states
+              <br />• <strong>P</strong> is the state transition probability
+              matrix we saw before, where P<sub>ss'</sub> = P[S<sub>t+1</sub> =
+              s' | S<sub>t</sub> = s]
+              <br />
+              <br />
+              This notation means: "the probability of transitioning TO state s'
+              (where you'll be next) GIVEN that you're currently in state s."
+              <br /> <br />• <strong>R</strong> is a reward function: R
+              <sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
+              <br />
+              <br />
+              This notation means: Let's break down the reward function
+              notation:{" "}
+              <strong>
+                R<sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
+              </strong>
+              <br />
+              <br />•{" "}
+              <strong>
+                R<sub>s</sub>
+              </strong>
+              : The reward associated with state s
+              <br />• <strong>E[...]</strong>: Expected value (the average)
+              <br />•{" "}
+              <strong>
+                R<sub>t+1</sub>
+              </strong>
+              : The reward received at the next time step
+              <br />• <strong>|</strong>: "given that" (conditional probability)
+              <br />•{" "}
+              <strong>
+                S<sub>t</sub> = s
+              </strong>
+              : You're currently in state s at time t
+              <br />
+              <br />
+              Putting it together: "The reward for state s equals the{" "}
+              <em>expected </em>
+              reward you'll receive at the next time step, given that you're
+              currently in state s."
+              <br />
+              <br />
+              Two important notes: First, the expectation E[...] is there
+              because rewards can be stochastic (random). You might not always
+              get exactly the same reward from the same state - maybe sometimes
+              you get 10, sometimes 12. R<sub>s</sub> is the average.
+              <br />
+              <br />
+              Second, notice it's R<sub>t+1</sub> (next time step), not R
+              <sub>t</sub> (current time step). Why this notation? The answer is
+              that it's just about how we index things in the sequence - the
+              difference is mostly bookkeeping. In practice, there are different
+              ways to think about when you receive rewards:
+              <br />
+              <br />
+              <strong>
+                Convention 1 (more intuitive): Reward is a property of states
+              </strong>
+              <br />
+              You enter state s and immediately receive reward R(s). Like in a
+              video game: you step on a tile and instantly get points.
+              <br />
+              <br />
+              <strong>
+                Convention 2 (less intuitive): Reward happens "between" states
+              </strong>
+              <br />
+              You're in state s at time t, you transition to the next state, you
+              receive reward R<sub>t+1</sub>, and now you're in state s' at time
+              t+1. This is the convention I'm using with the R<sub>t+1</sub> | S
+              <sub>t</sub> = s notation.
+              <br />
+              <br />
+              Both conventions are mathematically equivalent. I'm using
+              Convention 2 here because it's the standard notation used in the
+              main RL textbook, "Reinforcement Learning: An Introduction" by
+              Sutton and Barto.
+              <br />
+              <br />
+              The key difference between the two conventions is timing:
+              Convention 1 gives you the reward immediately upon entering a
+              state, while Convention 2 gives it to you as you leave (indexed at
+              the next time step). But wait! For convention 2, if you only get
+              the reward after leaving a state, then for the last state in an
+              episode (the terminal state), you won't get the reward b/c the
+              episode will end before you ever leave that last state (thus not
+              getting the reward for the last state). Because of this, the
+              reward from convention 1 and convention 2 won't equal eachother
+              right?? No, not right. There is a special rule for convention 2
+              that covers the case for terminal states (states that are either
+              at the end of an episode, or that you never leave from).
+              Convention 2 gives you the reward of the terminal state
+              immediately when entering it. Therefore the final reward will be
+              the reward for leaving the penultimate (one before the last one)
+              state ADDED to the reward you get when entering this special
+              terminal state where you don't have to leave it to get the reward.
+              <br />
+              <br />
+              <strong>Example showing both conventions:</strong>
+              <br />
+              To clear up any confusion, here is an example for both
+              conventions. Suppose we have three states with rewards: state s
+              gives a reward of 5, state s' gives a reward of 10, and terminal
+              state s'' gives a reward of -4.
+              <br />
+              <br />
+              <strong>Convention 1 (reward upon entering):</strong>
+              <br />
+              - t=0: Enter state s → get reward 5
+              <br />
+              - t=1: Transition to state s' → get reward 10
+              <br />
+              - t=2: Transition to terminal state s'' → get reward -4
+              <br />- <strong>Total reward: 5 + 10 + (-4) = 11</strong>
+              <br />
+              <br />
+              <strong>Convention 2 (Sutton & Barto):</strong>
+              <br />
+              - t=0: In state s → no reward yet
+              <br />- t=1: Transition to state s' → receive R<sub>1</sub> = 5
+              (the reward for having been in s)
+              <br />- t=2: Transition to terminal state s'' → receive R
+              <sub>2</sub> = 5 (this combines the reward for having been in s',
+              which is 10, AND receive R<sub>3</sub> immediately upon entering
+              the terminal state (because the terminal state is special) with
+              reward of -4), giving us the total reward for that timestep of:
+              (10 - 4) which is 6.
+              <br />- <strong>Total reward: 5 + 6 = 11</strong> ✓
+              <br />
+              <br />
+              The key difference is timing: Convention 1 gives you the reward
+              immediately upon entering a state, while Convention 2 gives it to
+              you as you leave (indexed at the next time step). But wait! For
+              convention 2, if you only get the reward after leaving a state,
+              then for the last state in an episode (the terminal state), you
+              won't get the reward b/c the episode will end before you ever
+              leave it. Thus, the reward from convention 1 and convention 2
+              won't equal eachother right?? No, not right. There is a special
+              rule for convention 2 that covers the case for terminal states
+              (states that are either at the end of an episode, or that you
+              never leave from). Convention 2 combines both the previous state's
+              reward and the terminal outcome into that final reward signal.
+              Both conventions result in the same total reward, just organized
+              differently.
+              <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
+              [0,1]
+              <br />
+              <br />
+              The reward function R<sub>s</sub> tells us the expected immediate
+              reward for being in state s. Note that it's written as an
+              expectation E[...] because rewards can be stochastic
+              (probabilistic) - sometimes you might get different rewards from
+              the same state. The discount factor γ determines how much we value
+              future rewards. Together with the states and transitions from our
+              Markov Process, these four components fully specify the
+              environment.
             </p>
           </section>
         </main>
