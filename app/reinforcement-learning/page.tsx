@@ -1037,7 +1037,7 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb4">
               <strong id="the-state" className="block text-center">
-                The Inertia of Bad Conventions
+                The History Of The Inertia Of Bad Conventions
               </strong>
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
