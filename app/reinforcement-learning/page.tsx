@@ -1039,6 +1039,7 @@ export default function ReinforcementLearningPage() {
               <strong id="the-state" className="block text-center">
                 The History Of The Inertia Of Bad Conventions
               </strong>
+              <br />
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
               answer this, lets look at the history of how we came up with the
@@ -1049,6 +1050,18 @@ export default function ReinforcementLearningPage() {
               First, let's look at how we got the names sine and cosine (from
               the latin sinus meaning pocket) for trigonometry when they seem to
               have no relation at all to the unit circle or length in general.
+              <br />A good summary can be found here:
+              <br />
+              <br />
+              <Link
+                href="https://www.youtube.com/watch?v=AzVL432lEWA"
+                target="_blank"
+                className="text-blue-600 underline hover:text-blue-400"
+              >
+                Why sin and cos don't mean anything
+              </Link>
+              <br />
+              <br />
             </p>
           </section>
         </main>
