@@ -1020,22 +1020,6 @@ export default function ReinforcementLearningPage() {
               reward of -4), giving us the total reward for that timestep of:
               (10 - 4) which is 6.
               <br />- <strong>Total reward: 5 + 6 = 11</strong> ✓
-              <br />
-              <br />
-              The key difference is timing: Convention 1 gives you the reward
-              immediately upon entering a state, while Convention 2 gives it to
-              you as you leave (indexed at the next time step). But wait! For
-              convention 2, if you only get the reward after leaving a state,
-              then for the last state in an episode (the terminal state), you
-              won't get the reward b/c the episode will end before you ever
-              leave it. Thus, the reward from convention 1 and convention 2
-              won't equal eachother right?? No, not right. There is a special
-              rule for convention 2 that covers the case for terminal states
-              (states that are either at the end of an episode, or that you
-              never leave from). Convention 2 combines both the previous state's
-              reward and the terminal outcome into that final reward signal.
-              Both conventions result in the same total reward, just organized
-              differently.
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
               [0,1]
               <br />
