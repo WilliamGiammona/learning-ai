@@ -1020,6 +1020,8 @@ export default function ReinforcementLearningPage() {
               reward of -4), giving us the total reward for that timestep of:
               (10 - 4) which is 6.
               <br />- <strong>Total reward: 5 + 6 = 11</strong> ✓
+              <br />
+              <br />
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
               [0,1]
               <br />
@@ -1032,6 +1034,13 @@ export default function ReinforcementLearningPage() {
               future rewards. Together with the states and transitions from our
               Markov Process, these four components fully specify the
               environment.
+            </p>
+            <p className="mb4">
+              So, Why would anyone ever use convention 2 when convention 1 is so
+              much easier? People should just adopt convention 1 right? To
+              answer this, lets look at the history of how we came up with the
+              name sine and cosine, as well as why we use the ratio pi when
+              doing probalems involving a radius.
             </p>
           </section>
         </main>
