@@ -1036,11 +1036,19 @@ export default function ReinforcementLearningPage() {
               environment.
             </p>
             <p className="mb4">
+              <strong id="the-state" className="block text-center">
+                The Inertia of Bad Conventions
+              </strong>
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
               answer this, lets look at the history of how we came up with the
               name sine and cosine, as well as why we use the ratio pi when
-              doing probalems involving a radius.
+              doing probalems involving a radius instead of a diameter.
+            </p>
+            <p className="mb=4">
+              First, let's look at how we got the names sine and cosine (from
+              the latin sinus meaning pocket) for trigonometry when they seem to
+              have no relation at all to the unit circle or length in general.
             </p>
           </section>
         </main>
