@@ -1159,15 +1159,21 @@ export default function ReinforcementLearningPage() {
               much more sense geometrically) because of centuries of convention.
             </p>
             <p className="mb-4">
+              Second, let&apos;s look at how the ratio of a circumference to its
+              diameter, π (pi) = 3.14..., became the number we use when dealing
+              with problems involving a radius instead of τ (tau) = 6.28...,
+              which is the ratio of a circumference to its radius.
+            </p>
+            <p className="mb-4">
               <br />
               There&apos;s an ongoing debate in mathematics about whether we
-              should use π = 3.14159... or τ (tau) = 6.28318... as our
-              fundamental circle constant. Many mathematicians argue that τ
-              makes more sense because it represents the ratio of a
-              circle&apos;s circumference to its <em>radius</em> (C = τr), which
-              would make many formulas cleaner. A full circle would simply be τ
-              radians instead of 2π radians, a quarter circle would be τ/4
-              instead of π/2, and so on.
+              should use π = 3.14... or τ (tau) = 6.28... as our fundamental
+              circle constant. Many mathematicians argue that τ makes more sense
+              because it represents the ratio of a circle&apos;s circumference
+              to its <em>radius</em> (C = τr), which would make many formulas
+              cleaner. A full unit circle would simply be τ radians instead of
+              2π radians, a quarter unit circle would be τ/4 instead of π/2, and
+              so on.
               <br />
               <br />
               So why do we use π = 3.14159... universally instead? The answer
