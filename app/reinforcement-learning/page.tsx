@@ -1177,25 +1177,23 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               So why do we use π = 3.14159... universally instead? The answer
-              lies with 18th-century mathematician Leonhard Euler and one
-              influential book. Welsh mathematician William Jones first
-              introduced the symbol π in 1706 to represent the ratio of
-              circumference to diameter. But it was Euler who popularized it,
-              however{" "}
+              lies with the greatest mathematician who ever lived, Leonhard
+              Euler. Euler used the greek letter π (pi) simply to stand for
+              perimeter,{" "}
               <strong>
-                Euler actually used both values pragmatically depending on what
-                he was working with.
+                but let its value vary depending on whether he was working on a
+                problem dealing with diameter or with radius.
               </strong>
               <br />
               <br />
               When Euler was working with problems involving{" "}
-              <strong>diameter</strong>, he used π = 3.14... (circumference to
-              diameter ratio). When he was working with problems involving{" "}
-              <strong>radius</strong>, he used π = 6.28... (circumference to
-              radius ratio). This makes perfect sense, use whichever constant is
-              most convenient for the problem at hand! In different works
-              throughout the 1720s-1740s, you can find him using both values
-              depending on the mathematical context.
+              <strong>diameter</strong>, he set π equal to 3.14...
+              (circumference to diameter ratio). When he was working with
+              problems involving <strong>radius</strong>, he set π equal to
+              6.28... (circumference to radius ratio). This makes perfect sense,
+              use whichever constant is most convenient for the problem at hand!
+              In different works throughout the 1720s-1740s, you can find him
+              using both values depending on the mathematical context.
               <br />
               <br />
               Then in 1748, Euler published his famous calculus book{" "}
@@ -1208,10 +1206,16 @@ export default function ReinforcementLearningPage() {
               <br />
               However, instead of following Euler&apos;s pragmatic approach of
               switching between values based on context, later mathematicians
-              simply adopted the π = 3.14... his book as the universal standard
-              for everything. They stopped adjusting based on whether they were
-              working with radius or diameter. That&apos;s why we&apos;re now
-              stuck with the unit circle looking like this: instead of this:
+              simply adopted the value for π as 3.14 regardless of the
+              mathematical context because that was the value they had seen
+              Euler use in this book. They stopped adjusting based on whether
+              they were working with radius or diameter. That&apos;s why
+              we&apos;re now stuck with the unit circle looking like this:
+              <br />
+              <br />
+              instead of this:
+              <br />
+              <br />
               along with many other confusing and inelegant complications when
               using a diameter based constant for radius based problems.
               <br />
@@ -1226,14 +1230,14 @@ export default function ReinforcementLearningPage() {
               for learners simply because of convention. The reward at timestep
               t+1 convention (Convention 2) is now standard in RL for similar
               historical reasons, i.e. because it appeared in the most
-              influential textbook (Sutton & Barto) in the 90s and everyone
-              adopted it.
+              influential RL textbook (Reinforcement Learning: An Introduction
+              by Sutton & Barto) in the 1998 and everyone adopted it.
             </p>
             <p className="mb-4">
               Now we come to the final part in the Markov Reward Process, which
               is the discount factor.
-              <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
-              [0,1] (gamma is just a number between 0 and 1).
+              <br /> <br />• <strong>γ</strong> (gamma) is a discount factor,
+              where γ ∈ [0,1] (gamma is just a number between 0 and 1).
               <br />
               <br />
               The discount factor γ determines how much we value future rewards
