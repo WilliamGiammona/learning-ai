@@ -1146,17 +1146,17 @@ export default function ReinforcementLearningPage() {
               <em>jiba</em> was written simply as the consonants "j-b" (جب).
               <br />
               <br />
-              In the 12th century, when European scholars translated the famous
-              al-Kitāb al-Mukhtaṣar fī Ḥisāb al-Jabr wal-Muqābalah (which is
-              where we get algebra [al-Jabr] from) book into Latin, they thought
-              that jb referred to the arabic word jayb (جيب), which meant
-              pocket, and so translated it as the Latin word <em>sinus</em>,
-              Latin for "pocket". Finally, in 1593, in his only known
-              publication, Horologiographia, English mathematician Thomas Fale
-              converted the Latin <em>sinus</em> into English as "sine", and
-              that&apos;s the word we still use today, instead of using the
-              words bowstring and co-bowstring (which make much more sense)
-              because of centuries of convention.
+              In the 12th century, when European scholars translated Muhammad
+              ibn Musa al-Khwarizmi's famous work, al-Kitāb al-Mukhtaṣar fī
+              Ḥisāb al-Jabr wal-Muqābalah (which is where we get algebra
+              [al-Jabr] from), into Latin, they thought that jb referred to the
+              arabic word jayb (جيب), which meant pocket, and so translated it
+              as the Latin word <em>sinus</em>, Latin for "pocket". Finally, in
+              1593, in his only known publication, Horologiographia, English
+              mathematician Thomas Fale converted the Latin <em>sinus</em> into
+              English as "sine", and that&apos;s the word we still use today,
+              instead of using the words bowstring and co-bowstring (which make
+              much more sense geometrically) because of centuries of convention.
             </p>
             <p className="mb-4">
               <br />
