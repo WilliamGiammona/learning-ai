@@ -732,8 +732,18 @@ export default function ReinforcementLearningPage() {
               vowel was .67. So this transition probability matrix tells me
               about the probability of "chaining" vowel and consonant states
               together, hence the name Markov chain. When you follow this
-              transition matrix, you eventually converge to .43 for Vowels and
-              .57 for Consonants, the exact ratio Markov counted.
+              transition matrix and start at a random starting point in the
+              poem, you initially get wildly different ratios for the number of
+              consonants and vowels you have (just like with independent events
+              like flipping a coin, you might initially get 6 heads and 2 tails
+              instead of the 50/50 split predicted). However, given a long
+              enough length of letters, you eventually converge to .43 for
+              Vowels and .57 for Consonants (just like how with a large enough
+              amount of coin flips you converge to a 50/50 split). Thus Markov
+              had shown that the law of large numbers applied to this dependent
+              system, showing that Nekrasov was wrong and that you cannot just
+              assume if a system follows the law of large numbers that it must
+              be independent.
               <br />
               <br />
               To recap, we have this new mathematical object, the Markov Chain,
