@@ -1028,8 +1028,9 @@ export default function ReinforcementLearningPage() {
               <br />
               The discount factor γ determines how much we value future rewards
               relative to immediate rewards. When we calculate the total return,
-              we don't just add up all future rewards equally - instead, we
-              discount them based on how far in the future they occur:
+              G<sub>t</sub>, we don't just add up all future rewards equally
+              (unlyess we make gamma equal to 1), we discount them based on how
+              far in the future they occur:
               <br />
               <br />
               <span className="block font-mono text-center">
