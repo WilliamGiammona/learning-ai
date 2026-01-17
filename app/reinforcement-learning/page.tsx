@@ -1126,14 +1126,15 @@ export default function ReinforcementLearningPage() {
               gives us the TOTAL expected reward per state under a specific
               policy). Note that it&apos;s written as an expectation E[...]
               because rewards can be stochastic (probabilistic), sometimes you
-              receive different rewards from the same state. The discount factor
-              γ determines how much we value future rewards. Together with the
-              states and transitions from our Markov Process, these four
-              components fully specify the environment. We now have a way to
-              meaningfully categorize aspects of the environment (states),
-              probability functions on the probability of going from one
-              particular state to another, and rewards the environment gives for
-              each state. Remember though, there are two characters in our
+              receive different rewards from the same state. The important thing
+              is that we get the AVERAGE (expected) reward per state. The
+              discount factor γ determines how much we value future rewards.
+              Together with the states and transitions from our Markov Process,
+              these four components fully specify the environment. We now have a
+              way to meaningfully categorize aspects of the environment
+              (states), probability functions on the probability of going from
+              one particular state to another, and rewards the environment gives
+              for each state. Remember though, there are two characters in our
               story, the environment AND the agent, and the agent also gets to
               take actions in states that influence the probability of
               transitioning to subsequent states (This is what we will look at
