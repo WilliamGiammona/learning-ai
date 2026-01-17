@@ -1491,20 +1491,19 @@ export default function ReinforcementLearningPage() {
               fundamental concepts to understand in RL. The key insight is that
               instead of computing the value function by summing up all future
               discounted rewards directly (R<sub>t+1</sub> + γR<sub>t+2</sub> +
-              γ²R<sub>t+3</sub> + ...), we can use a recursive decomposition. We
-              break the expected return into two parts: (1) the immediate reward
-              R<sub>t+1</sub> we get right now, and (2) the discounted value
-              γv(S<sub>t+1</sub>) of wherever we end up next. The recursion
-              works because v(S<sub>t+1</sub>) itself represents R<sub>t+2</sub>{" "}
-              + γR<sub>t+3</sub> + γ²R<sub>t+4</sub> + ..., so when we discount
-              it by γ, we get γR<sub>t+2</sub> + γ²R
+              γ²R<sub>t+3</sub> + ...), we can use a recursion. We break the
+              expected return into two parts: (1) the immediate reward R
+              <sub>t+1</sub> we get right now, and (2) the discounted value γv(S
+              <sub>t+1</sub>) of wherever we end up next. The recursion works
+              because v(S<sub>t+1</sub>) itself represents R<sub>t+2</sub> + γR
+              <sub>t+3</sub> + γ²R<sub>t+4</sub> + ..., so when we discount it
+              by γ, we get γR<sub>t+2</sub> + γ²R
               <sub>t+3</sub> + γ³R<sub>t+4</sub> + ... Adding the immediate
               reward gives us R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
-              <sub>t+3</sub> + ..., which is exactly what we wanted. This
-              recursive structure is what makes the Bellman Equation so
-              powerful—instead of computing an infinite sum, we only need to
-              look one step ahead and trust that the value function at the next
-              state has already done the rest of the work for us.
+              <sub>t+3</sub> + ..., which is exactly what we wanted. Thus,
+              instead of computing an infinite sum, we only need to look one
+              step ahead and trust that the value function at the next state has
+              already done the rest of the work for us.
             </p>
           </section>
         </main>
