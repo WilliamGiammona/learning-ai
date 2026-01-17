@@ -1047,11 +1047,11 @@ export default function ReinforcementLearningPage() {
               the terminal state (because the terminal state is special) with
               reward of -4), giving us the total reward for that timestep of:
               (10 - 4) which is 6.
-              <br />- <strong>Total reward: 5 + 6 = 11</strong> ✓
+              <br />- <strong>Total reward: 5 + 6 = 11</strong>
+              <br />
               <br />
               Now we come to the final part in the Markov Reward Process, which
               is the discount factor.
-              <br />
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
               [0,1]
               <br />
