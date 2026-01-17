@@ -545,7 +545,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               This is all the information I think is important to know before
-              diving into learning RL. Next, we will discuss Markov Decision
+              diving into learning RL. Next, I will discuss Markov Decision
               Processes in detail.
             </p>
           </section>
@@ -582,7 +582,7 @@ export default function ReinforcementLearningPage() {
                 A Quick Detour: Why Learn The History Of Math
               </strong>
               <br />
-              Before we jump into the math, it&apos;s worth asking a slightly
+              Before I jump into the math, it&apos;s worth asking a slightly
               philosophical question: why bother learning the history behind
               these ideas at all? Why not just memorize the formulas and move
               on? The answer is that our brains are terrible at remembering
@@ -757,26 +757,26 @@ export default function ReinforcementLearningPage() {
               they would need the ENTIRE history in order to make calculations.
               <br />
               <br />
-              To recap, we have this new mathematical object, the Markov Chain,
-              where you have states (vowels and consonants) and a transition
-              probability matrix that tells you the probability of going from
-              state one to state two (vowel to vowel, vowel to consonant,
-              consonant to vowel, and consonant to consonant). Using this
-              mathematical object, you can predict that the ratio of vowels and
-              consonants to the total amount of letters will converge to a
-              stable long term ratio (an analogue of the law of large numbers
-              for dependent processes) to a ratio of .43 for vowels and .57 for
-              consonants. Hence, Markov used this Markov Chain to prove that
-              dependent events also follow the law of large numbers and that
-              there were in fact mathematical structures that could be used to
-              model dependent systems apart from the old way of needing the
-              ENTIRE history to do anything useful. In the 1950s American
-              mathmetician Richard Bellman extended Markov chains by adding
-              decisions and rewards, giving rise to Markov Decision Processes.
+              To recap, there is a mathematical object, the Markov Chain, which
+              has states (vowels and consonants) and a transition probability
+              matrix that tells you the probability of going from state one to
+              state two (vowel to vowel, vowel to consonant, consonant to vowel,
+              and consonant to consonant). Using this mathematical object, you
+              can predict that the ratio of vowels and consonants to the total
+              amount of letters will converge to a stable long term ratio (an
+              analogue of the law of large numbers for dependent processes) to a
+              ratio of .43 for vowels and .57 for consonants. Hence, Markov used
+              this Markov Chain to prove that dependent events also follow the
+              law of large numbers and that there were in fact mathematical
+              structures that could be used to model dependent systems apart
+              from the old way of needing the ENTIRE history to do anything
+              useful. In the 1950s American mathmetician Richard Bellman
+              extended Markov chains by adding decisions and rewards, giving
+              rise to Markov Decision Processes.
             </p>
             <p>
               Fast forward to the 1950s: American mathematician Richard Bellman
-              looked at Markov Chains and thought "what if we add decisions and
+              looked at Markov Chains and thought "what if I add decisions and
               rewards?" This expanded the notion of Markov Chains/Processes into
               Markov Decision Processes, the mathematical foundation of
               reinforcement learning.
@@ -863,9 +863,9 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              For discrete states, we can organize all these transition
-              probabilities into a <strong>state transition matrix</strong> 𝒫.
-              The matrix is structured so that:
+              For discrete states, all these transition probabilities can be
+              organized into a <strong>state transition matrix</strong> 𝒫. The
+              matrix is structured so that:
               <br />
               <br />• Each <strong>row</strong> represents a starting state
               (where you are now)
@@ -903,9 +903,9 @@ export default function ReinforcementLearningPage() {
               or "What&apos;s the long-term distribution of states?" The matrix
               encodes all the dynamics of the system, i.e. it tells you
               everything about how the process moves through states over time.
-              For continuous states, we use a probability distribution (called a
-              transition kernel) instead of a matrix, but the concept is the
-              same.
+              For continuous states, a probability distribution (called a
+              transition kernel) is used instead of a matrix, but the concept is
+              the same.
             </p>
 
             <p className="mb-4">
@@ -1458,13 +1458,13 @@ export default function ReinforcementLearningPage() {
               The value function v(s) tells us the expected (we take the
               weighted average if there are multiple possible transitions from a
               state) total discounted return from state s (not just the
-              immediate reward, which is what the reward function tells us). For
-              Markov Decision Processes, we will introduce the agent that is
-              able to take actions in order to increase the likelihood of
-              entering states with higher returns. This will be essentially what
-              RL really is, a way for an agent to learn which actions give him
-              the highest likelihood of transitioning to states with the highest
-              return.
+              immediate reward, which is what the reward function tells us).
+              Later I will extend this idea to Markov Decision Processes, where
+              I introduce the agent that is able to take actions in order to
+              increase the likelihood of entering states with higher returns.
+              This will be essentially what RL really is, a way for an agent to
+              learn which actions give him the highest likelihood of
+              transitioning to states with the highest return.
               <br />
             </p>
           </section>
