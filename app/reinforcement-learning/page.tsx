@@ -1140,6 +1140,148 @@ export default function ReinforcementLearningPage() {
               patient and considerate of long-term consequences.
               <br />
               <br />
+            </p>
+            <p className="mb-4">
+              Remember how we said the reward function R<sub>s</sub> tells us
+              the immediate reward we get from being in state s? Well, the value
+              function (this is the value function for Markov Reward Processes,
+              the value function for MDPs, which is the one we really care
+              about, will be slightly different because it's policy dependent,
+              but this is a good stepping stone to understanding it) tells us
+              something much more useful: how good is it to BE in state s when
+              considering all future rewards? It's the difference between asking
+              "what do I get right now?" versus "what's the total payoff I can
+              expect from here onwards?"
+              <br />
+              <br />
+              Formally, the state value function v(s) of an MRP is the expected
+              return (total sum of all discounted rewards) starting from state
+              s:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s]
+              </span>
+              <br />
+              Breaking this down: we're taking the expectation (average) of the
+              return G<sub>t</sub>
+              (remember, that's the sum of all discounted future rewards: r
+              <sub>t+1</sub> + γr
+              <sub>t+2</sub> + γ²r<sub>t+3</sub> + ...) given that we start in
+              state s. This is why it's called the "long-term value" - it's not
+              just what you get immediately, but everything you expect to
+              accumulate going forward.
+              <br />
+              <br />
+              For example, imagine a state that gives you a small immediate
+              reward of +1, but always transitions to terrible states that give
+              -10 rewards. That state has a high immediate reward but a low
+              value function. Conversely, a state might give you 0 immediate
+              reward but lead to a sequence of highly rewarding states - that
+              state would have a high value function despite its low immediate
+              reward. The value function captures this "looking ahead"
+              perspective.
+            </p>
+            <p className="mb-4">
+              <strong className="block text-center">
+                Return vs Expected Return: What's the Difference?
+              </strong>
+              <br />
+              This is a subtle but crucial distinction. Let's break down why G
+              <sub>t</sub> and v(s) look different mathematically.
+              <br />
+              <br />
+              <strong>
+                G<sub>t</sub> (the return)
+              </strong>{" "}
+              describes what happens in ONE specific trajectory:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
+                <sub>t+3</sub> + ...
+              </span>
+              <br />
+              Notice the lowercase r's - these are the{" "}
+              <strong>actual rewards</strong> you receive as you move through
+              the MRP. No expectation needed because this is describing what
+              literally happened: "I got reward r<sub>t+1</sub>, then r
+              <sub>t+2</sub>, then r<sub>t+3</sub>..." It's like your bank
+              statement - just the facts of what you received.
+              <br />
+              <br />
+              <strong>v(s) (the value function)</strong> describes what you
+              EXPECT across ALL possible trajectories:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s]
+              </span>
+              <br />
+              Now we need the expectation E[...] because from state s, many
+              different things can happen:
+              <ul className="list-disc ml-8 mb-4">
+                <li>
+                  The transition probabilities might send you to different next
+                  states
+                </li>
+                <li>
+                  The rewards might be stochastic (sometimes +5, sometimes +3
+                  from the same state)
+                </li>
+                <li>
+                  Each possible path forward has its own G<sub>t</sub>
+                </li>
+              </ul>
+              <br />
+              <strong>Example:</strong> You're in state s with discount factor
+              γ=0.9. From s, there's a 50% chance to go to state A (which gives
+              reward +10) and 50% chance to go to state B (which gives reward
+              +2). Let's say both A and B are terminal states.
+              <br />
+              <br />
+              <strong>Trajectory 1:</strong> s → A
+              <br />G<sub>t</sub> = 10 (this is the actual return for this
+              specific path)
+              <br />
+              <br />
+              <strong>Trajectory 2:</strong> s → B
+              <br />G<sub>t</sub> = 2 (this is the actual return for this
+              specific path)
+              <br />
+              <br />
+              <strong>Value function:</strong>
+              <br />
+              v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s] = 0.5 × 10 + 0.5 × 2 =
+              6
+              <br />
+              <br />
+              The value function is the <strong>average</strong> of all possible
+              returns weighted by their probabilities. G<sub>t</sub> is what you
+              get on any particular run. v(s) is what you expect on average if
+              you started from s many times.
+              <br />
+              <br />
+              <strong>Why the math is different:</strong>
+              <ul className="list-disc ml-8">
+                <li>
+                  G<sub>t</sub>: No expectation operator → describes ONE
+                  trajectory
+                </li>
+                <li>
+                  v(s): Has expectation operator E[...] → averages over ALL
+                  possible trajectories
+                </li>
+                <li>
+                  G<sub>t</sub>: Uses lowercase r (actual rewards received)
+                </li>
+                <li>
+                  v(s): Uses uppercase R in its definition because R<sub>s</sub>{" "}
+                  = E[r<sub>t+1</sub>] is already an expected immediate reward
+                </li>
+              </ul>
+            </p>
+            <p>
               To recap, the reward function R<sub>s</sub> = E[R<sub>t+1</sub> |
               S<sub>t</sub> = s] tells us the expected immediate reward for
               being in state s (This is not to be confused with the value
