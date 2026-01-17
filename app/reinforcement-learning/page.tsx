@@ -251,7 +251,8 @@ export default function ReinforcementLearningPage() {
               from the agent&apos;s perspective, the same situation. That board
               position is a compressed summary of the entire history of the
               game, and it contains everything the agent needs to decide what
-              move (action) to make next.
+              move (action) to make next (Yea I know technically en passant and
+              a few other rules don't follow this, but you get the idea).
             </p>
             <p className="mb-4">
               <strong id="who-decides-state" className="block text-center">
@@ -826,7 +827,8 @@ export default function ReinforcementLearningPage() {
               from the agent&apos;s perspective, the same situation. That board
               position is a compressed summary of the entire history of the
               game, and it contains everything the agent needs to decide what
-              move (action) to make next.
+              move (action) to make next (Yea I know technically en passant and
+              a few other rules don't follow this, but you get the idea).
             </p>
             <p className="mb-4">
               The two fundamental objects in any Markov Process are:
