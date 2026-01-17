@@ -1300,7 +1300,8 @@ export default function ReinforcementLearningPage() {
               <br />
               The choice of γ is a design decision that significantly affects
               what the agent learns to do. A higher γ makes the agent more
-              patient and considerate of long-term consequences.
+              patient and considerate of long-term consequences, while a lower γ
+              does the opposite.
               <br />
               <br />
             </p>
