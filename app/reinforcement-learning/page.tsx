@@ -1061,7 +1061,7 @@ export default function ReinforcementLearningPage() {
               Now we come to the final part in the Markov Reward Process, which
               is the discount factor.
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
-              [0,1]
+              [0,1] (gamma is just a number between 0 and 1).
               <br />
               <br />
               The discount factor γ determines how much we value future rewards
@@ -1074,6 +1074,12 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
                 <sub>t+3</sub> + ...
+              </span>
+              <br />
+              This can also be written more compactly in sigma notation as:
+              <span className="block font-mono text-center">
+                <br />G<sub>t</sub> = Σ<sub>k=0</sub>
+                <sup>∞</sup> γ<sup>k</sup>r<sub>t+k+1</sub>
               </span>
               <br />
               <br />
