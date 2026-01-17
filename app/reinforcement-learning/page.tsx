@@ -731,19 +731,27 @@ export default function ReinforcementLearningPage() {
               transitions where consonant to consanant was .33 and consonant to
               vowel was .67. So this transition probability matrix tells me
               about the probability of "chaining" vowel and consonant states
-              together, hence the name Markov chain. When you follow this
-              transition matrix and start at a random starting point in the
-              poem, you initially get wildly different ratios for the number of
-              consonants and vowels you have (just like with independent events
-              like flipping a coin, you might initially get 6 heads and 2 tails
-              instead of the 50/50 split predicted). However, given a long
-              enough length of letters, you eventually converge to .43 for
-              Vowels and .57 for Consonants (just like how with a large enough
-              amount of coin flips you converge to a 50/50 split). Thus Markov
-              had shown that the law of large numbers applied to this dependent
-              system, showing that Nekrasov was wrong and that you cannot just
-              assume if a system follows the law of large numbers that it must
-              be independent.
+              together, hence the name Markov chain.
+            </p>
+
+            <p className="mb-4">
+              When you follow this transition matrix and start at a random
+              starting point in the poem, you initially get wildly different
+              ratios for the number of consonants and vowels you have (just like
+              with independent events like flipping a coin, you might initially
+              get 6 heads and 2 tails instead of the 50/50 split predicted).
+              However, given a long enough length of letters, you eventually
+              converge to .43 for Vowels and .57 for Consonants (just like how
+              with a large enough amount of coin flips you converge to a 50/50
+              split). Thus Markov had shown that the law of large numbers
+              applied to this dependent system, showing that Nekrasov was wrong
+              and that you cannot just assume if a system follows the law of
+              large numbers that it must be independent. This was groundbreaking
+              because it showed that dependent systems aren't just chaotic and
+              unpredictable, they can be modeled with mathematical structure and
+              have predictable long-term behavior. Before Markov, mathematicians
+              had no systematic way to handle dependent sequences of events,
+              they would need the ENTIRE history in order to make calculations.
               <br />
               <br />
               To recap, we have this new mathematical object, the Markov Chain,
@@ -755,13 +763,20 @@ export default function ReinforcementLearningPage() {
               consonants to the total amount of letters will converge to a
               stable long term ratio (an analogue of the law of large numbers
               for dependent processes) to a ratio of .43 for vowels and .57 for
-              consonants. When Markov checked if those were the true ratios,
-              they were. Hence, Markov used this Markov Chain to prove that
-              dependent events also follow the law of large numbers (thereby
-              proving Nekrasov&apos;s assumptions and conclusions to be
-              incorrect). In the 1950s American mathmetician Richard Bellman
-              extended Markov chains by adding decisions and rewards, giving
-              rise to Markov Decision Processes.
+              consonants. Hence, Markov used this Markov Chain to prove that
+              dependent events also follow the law of large numbers and that
+              there were in fact mathematical structures that could be used to
+              model dependent systems apart from the old way of needing the
+              ENTIRE history to do anything useful. In the 1950s American
+              mathmetician Richard Bellman extended Markov chains by adding
+              decisions and rewards, giving rise to Markov Decision Processes.
+            </p>
+            <p>
+              Fast forward to the 1950s: American mathematician Richard Bellman
+              looked at Markov Chains and thought "what if we add decisions and
+              rewards?" This expanded the notion of Markov Chains/Processes into
+              Markov Decision Processes, the mathematical foundation of
+              reinforcement learning.
             </p>
 
             <p className="mb-4">
