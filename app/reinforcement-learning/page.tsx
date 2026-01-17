@@ -1095,7 +1095,7 @@ export default function ReinforcementLearningPage() {
               <br />- t=1: Transition to state s' → receive R<sub>1</sub> = 5
               (the reward for having been in s)
               <br />- t=2: Transition to terminal state s'' → receive R
-              <sub>2</sub> = 5 (this combines the reward for having been in s',
+              <sub>2</sub> = 6 (this combines the reward for having been in s',
               which is 10, AND receive R<sub>3</sub> immediately upon entering
               the terminal state (because the terminal state is special) with
               reward of -4), giving us the total reward for that timestep of:
@@ -1107,8 +1107,8 @@ export default function ReinforcementLearningPage() {
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
               answer this, lets look at the history of how we came up with the
-              name sine and cosine, as well as why we use the ratio pi when
-              doing probalems involving a radius instead of a diameter.
+              name sine and cosine, as well as why we use the ratio pi = 3.14...
+              when doing problems involving a radius instead of a diameter.
             </p>
             <p className="mb-4">
               First, let&apos;s look at how we got the names sine and cosine
