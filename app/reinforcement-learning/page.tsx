@@ -1490,20 +1490,66 @@ export default function ReinforcementLearningPage() {
               about dynamic programming. This is one of the most important and
               fundamental concepts to understand in RL. The key insight is that
               instead of computing the value function by summing up all future
-              discounted rewards directly (R<sub>t+1</sub> + γR<sub>t+2</sub> +
-              γ²R<sub>t+3</sub> + ...), we can use a recursion. We break the
-              expected return into two parts: (1) the immediate reward R
-              <sub>t+1</sub> we get right now, and (2) the discounted value γv(S
-              <sub>t+1</sub>) of wherever we end up next. The recursion works
-              because v(S<sub>t+1</sub>) itself represents R<sub>t+2</sub> + γR
-              <sub>t+3</sub> + γ²R<sub>t+4</sub> + ..., so when we discount it
-              by γ, we get γR<sub>t+2</sub> + γ²R
-              <sub>t+3</sub> + γ³R<sub>t+4</sub> + ... Adding the immediate
-              reward gives us R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
-              <sub>t+3</sub> + ..., which is exactly what we wanted. Thus,
-              instead of computing an infinite sum, we only need to look one
-              step ahead and trust that the value function at the next state has
-              already done the rest of the work for us.
+              discounted rewards directly, we can use recursion. Here&apos;s how
+              it works formally:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                = E[R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R<sub>t+3</sub> + ...
+                | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                = E[R<sub>t+1</sub> + γ(R<sub>t+2</sub> + γR<sub>t+3</sub> +
+                ...) | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                = E[R<sub>t+1</sub> + γG<sub>t+1</sub> | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                = E[R<sub>t+1</sub> + γv(S<sub>t+1</sub>) | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <br />
+              Notice how we factored out γ from the infinite sum R<sub>
+                t+2
+              </sub>{" "}
+              + γR<sub>t+3</sub> + γ²R<sub>t+4</sub> + ..., which is exactly G
+              <sub>t+1</sub> (the return starting from time t+1). By definition,
+              the expected value of G<sub>t+1</sub> starting from state S
+              <sub>t+1</sub> is just the value function of the next state v(S
+              <sub>t+1</sub>). Thus, instead of computing a very long sum of
+              rewards, we only need to look one step ahead and do two things:
+              <br />
+              <br />
+              1) Add the immediate reward R<sub>t+1</sub>
+              <br />
+              2) Add the discounted value γv(S<sub>t+1</sub>),
+              <br />
+              trusting that the value function at the next state has already
+              done the rest of the work for us.
+            </p>
+            <p className="mb-4">
+              This recursive formulation is enormously more efficient than
+              computing the full sum directly. If we tried to calculate v(s) by
+              literally summing all future rewards, we&apos;d need to count
+              every possible trajectory from state s all the way to the end
+              (which could be infinitely long), calculate the discounted return
+              for each trajectory, and then average them weighted by their
+              probabilities. This becomes near computationally impossible very
+              quickly, even for a simple environment with just 10 states. The
+              number of possible paths explodes exponentially with the length of
+              the episode. But with the Bellman Equation, we only need to know:
+              (1) the immediate reward distribution from the current state, (2)
+              the transition probabilities to next states, and (3) the values of
+              those next states. This transforms an exponentially complex
+              problem into a simple one step calculation.
             </p>
           </section>
         </main>
