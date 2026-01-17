@@ -1026,6 +1026,55 @@ export default function ReinforcementLearningPage() {
               [0,1]
               <br />
               <br />
+              The discount factor γ determines how much we value future rewards
+              relative to immediate rewards. When we calculate the total return,
+              we don't just add up all future rewards equally - instead, we
+              discount them based on how far in the future they occur:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
+                <sub>t+3</sub> + ...
+              </span>
+              <br />
+              <br />
+              <strong>Why discount at all?</strong> There are several important
+              reasons:
+              <br />
+              <br />
+              1) <strong>Uncertainty about the future</strong>: Rewards far in
+              the future are less certain to actually happen. A reward you might
+              get in 100 steps is less reliable than one you'll get in 2 steps.
+              <br />
+              <br />
+              2) <strong>Mathematical convenience</strong>: Discounting ensures
+              that infinite sums of rewards converge to a finite number, making
+              the math tractable. Without discounting (γ = 1), an infinite
+              episode would have infinite return.
+              <br />
+              <br />
+              3) <strong>Models real preferences</strong>: In many scenarios,
+              getting something now is genuinely more valuable than getting it
+              later. This is like the time value of money in finance - a dollar
+              today is worth more than a dollar tomorrow because you could
+              invest it and earn interest.
+              <br />
+              <br />
+              <strong>What does γ mean in practice?</strong>
+              <br />- If <strong>γ = 0</strong>: The agent only cares about
+              immediate rewards, completely ignoring the future (myopic)
+              <br />- If <strong>γ = 1</strong>: All future rewards count
+              equally, no matter how far away (far-sighted, only works for
+              finite episodes)
+              <br />- If <strong>γ = 0.9</strong>: A reward 10 steps away is
+              worth (0.9)<sup>10</sup> ≈ 0.35 of what that same reward would be
+              worth right now
+              <br />
+              <br />
+              The choice of γ is a design decision that significantly affects
+              what the agent learns to do. Higher γ makes the agent more patient
+              and considerate of long-term consequences.
+              <br />
               The reward function R<sub>s</sub> tells us the expected immediate
               reward for being in state s. Note that it's written as an
               expectation E[...] because rewards can be stochastic
