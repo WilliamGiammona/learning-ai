@@ -1122,9 +1122,10 @@ export default function ReinforcementLearningPage() {
               <br />
               To recap, the reward function R<sub>s</sub> = E[R<sub>t+1</sub> |
               S<sub>t</sub> = s] tells us the expected immediate reward for
-              being in state s (The value function which will be discussed later
-              gives us the TOTAL expected reward per state under a specific
-              policy). Note that it&apos;s written as an expectation E[...]
+              being in state s (This is not to be confused with the value
+              function which will be discussed later and gives us the TOTAL
+              expected sum of DISCOUNTED rewards starting from a particular
+              state, s). Note that it&apos;s written as an expectation E[...]
               because rewards can be stochastic (probabilistic), sometimes you
               receive different rewards from the same state. The important thing
               is that we get the AVERAGE (expected) reward per state. The
