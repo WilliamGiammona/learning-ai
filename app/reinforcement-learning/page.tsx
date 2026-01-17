@@ -66,7 +66,7 @@ export default function ReinforcementLearningPage() {
                       href="#policy"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      The Agent's Policy
+                      The Agent&apos;s Policy
                     </a>
                   </li>
                   <li>
@@ -74,7 +74,7 @@ export default function ReinforcementLearningPage() {
                       href="#value-function"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      The Agent's Value Function
+                      The Agent&apos;s Value Function
                     </a>
                   </li>
                   <li>
@@ -82,7 +82,7 @@ export default function ReinforcementLearningPage() {
                       href="#model"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      The Agent's Model
+                      The Agent&apos;s Model
                     </a>
                   </li>
                   <li>
@@ -90,7 +90,7 @@ export default function ReinforcementLearningPage() {
                       href="#dont-need-all-pieces"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      You Don't Need All The Pieces
+                      You Don&apos;t Need All The Pieces
                     </a>
                   </li>
                 </ul>
@@ -142,14 +142,14 @@ export default function ReinforcementLearningPage() {
               Introduction to Reinforcement Learning
             </h1>
             <p className="mb-12">
-              In this section I'm going to talk about Reinforcement Learning,
-              which is basically the art of teaching a computer how to make good
-              decisions. The goal is simple (and also not simple at all), at
-              every moment in time the agent should pick the action that will
-              eventually lead to the most overall reward. Not, “the most reward
-              right now” (short sighted reward), but “the most reward when
-              everything is said and done” (far sighted reward). To keep things
-              concrete, I'll use chess as our main example.
+              In this section I&apos;m going to talk about Reinforcement
+              Learning, which is basically the art of teaching a computer how to
+              make good decisions. The goal is simple (and also not simple at
+              all), at every moment in time the agent should pick the action
+              that will eventually lead to the most overall reward. Not, “the
+              most reward right now” (short sighted reward), but “the most
+              reward when everything is said and done” (far sighted reward). To
+              keep things concrete, I'll use chess as our main example.
             </p>
             <p className="mb-4">
               <strong id="the-characters" className="block text-center">
@@ -158,8 +158,8 @@ export default function ReinforcementLearningPage() {
               <br />
               In Reinforcement Learning, there are two main characters in our
               story. The first is the <strong>agent</strong>, which is the
-              decision-maker (think: the chess player). The agent's goal is to
-              maximize its reward (make the best chess moves that lead to
+              decision-maker (think: the chess player). The agent&apos;s goal is
+              to maximize its reward (make the best chess moves that lead to
               checkmating its opponent) The second is the{" "}
               <strong>environment</strong>, which is everything the agent is
               dealing with (think: the chessboard, the pieces, and the opponent
@@ -171,9 +171,9 @@ export default function ReinforcementLearningPage() {
               (bad position for the agent). In chess the opponent is part of the
               environment, although in more complex settings there can be an
               important distinction between the environment and other agents,
-              which we’ll talk about later. The environment also determines the
-              pieces on the board, how each piece moves, etc. The agent learns
-              how the environment operates by trial and error.
+              which we&apos;ll talk about later. The environment also determines
+              the pieces on the board, how each piece moves, etc. The agent
+              learns how the environment operates by trial and error.
             </p>
             <p className="mb-4">
               <strong id="the-data" className="block text-center">
