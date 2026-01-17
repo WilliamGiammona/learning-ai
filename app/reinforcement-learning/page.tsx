@@ -1029,8 +1029,10 @@ export default function ReinforcementLearningPage() {
                 Convention 1 (more intuitive): Reward is a property of states
               </strong>
               <br />
-              You enter state s and immediately receive reward R(s). Like in a
-              video game: you step on a tile and instantly get points.
+              You enter state s at time t and immediately receive reward: R
+              <sub>t</sub>
+              = R(s). Like in a video game: you step on a tile and instantly get
+              points.
               <br />
               <br />
               <strong>
