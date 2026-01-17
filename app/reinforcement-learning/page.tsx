@@ -129,6 +129,14 @@ export default function ReinforcementLearningPage() {
                       Markov Reward Process
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#bellman-equation-introduction"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Introduction to Bellman Equation
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -1467,6 +1475,14 @@ export default function ReinforcementLearningPage() {
               highest likelihood of transitioning to states with the highest
               return.
               <br />
+            </p>
+            <p className="mb-4">
+              <strong
+                id="bellman-equation-introduction"
+                className="block text-center"
+              >
+                Introduction to the Bellman Equation
+              </strong>
             </p>
           </section>
         </main>
