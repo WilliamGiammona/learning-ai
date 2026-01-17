@@ -1332,20 +1332,17 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               Breaking this down: we're taking the expectation (average) of the
-              return G<sub>t</sub>
-              (remember, that's the sum of all discounted future rewards: r
-              <sub>t+1</sub> + γr
+              return G<sub>t</sub> (remember, that's the sum of all discounted
+              future rewards: r<sub>t+1</sub> + γr
               <sub>t+2</sub> + γ²r<sub>t+3</sub> + ...) given that we start in
-              state s. This is why it's called the "long-term value" - it's not
-              just what you get immediately, but everything you expect to
-              accumulate going forward.
+              state s.
               <br />
               <br />
               For example, imagine a state that gives you a small immediate
               reward of +1, but always transitions to terrible states that give
               -10 rewards. That state has a high immediate reward but a low
               value function. Conversely, a state might give you 0 immediate
-              reward but lead to a sequence of highly rewarding states - that
+              reward but lead to a sequence of highly rewarding states, that
               state would have a high value function despite its low immediate
               reward. The value function captures this "looking ahead"
               perspective.
@@ -1370,12 +1367,10 @@ export default function ReinforcementLearningPage() {
                 <sub>t+3</sub> + ...
               </span>
               <br />
-              Notice the lowercase r's - these are the{" "}
-              <strong>actual rewards</strong> you receive as you move through
-              the MRP. No expectation needed because this is describing what
-              literally happened: "I got reward r<sub>t+1</sub>, then r
-              <sub>t+2</sub>, then r<sub>t+3</sub>..." It's like your bank
-              statement - just the facts of what you received.
+              Notice the lowercase r's are the ACTUAL REWARDS you receive as you
+              move through the MRP. No expectation needed because this is
+              describing what literally happened: "I got reward r<sub>t+1</sub>,
+              then r<sub>t+2</sub>, then r<sub>t+3</sub>..."
               <br />
               <br />
               <strong>v(s) (the value function)</strong> describes what you
@@ -1402,11 +1397,11 @@ export default function ReinforcementLearningPage() {
                 Each possible path forward has its own G<sub>t</sub>
               </li>
             </ul>
-            <p>
-              <strong>Example:</strong> You're in state s with discount factor
-              γ=0.9. From s, there's a 50% chance to go to state A (which gives
-              reward +10) and 50% chance to go to state B (which gives reward
-              +2). Let's say both A and B are terminal states.
+            <p className="mb-4">
+              <strong>Example:</strong> You're in state s. From s, there's a 50%
+              chance to go to state A (which gives reward +10) and 50% chance to
+              go to state B (which gives reward +2). Let's say both A and B are
+              terminal states.
               <br />
               <br />
               <strong>Trajectory 1:</strong> s → A
@@ -1421,8 +1416,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <strong>Value function:</strong>
               <br />
-              v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s] = 0.5 × 10 + 0.5 × 2 =
-              6
+              v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s] = (0.5 × 10) + (0.5 ×
+              2) = (5) + (1) = 6
               <br />
               <br />
               The value function is the <strong>average</strong> of all possible
@@ -1450,27 +1445,27 @@ export default function ReinforcementLearningPage() {
                 </li>
               </ul>
             </p>
-            <p>
-              To recap, the reward function R<sub>s</sub> = E[R<sub>t+1</sub> |
-              S<sub>t</sub> = s] tells us the expected immediate reward for
-              being in state s (This is not to be confused with the value
-              function which will be discussed later and gives us the TOTAL
-              expected sum of DISCOUNTED rewards starting from a particular
-              state, s). Note that it&apos;s written as an expectation E[...]
-              because rewards can be stochastic (probabilistic), sometimes you
-              receive different rewards from the same state. The important thing
-              is that we get the AVERAGE (expected) reward per state. The
-              discount factor γ determines how much we value future rewards.
-              Together with the states and transitions from our Markov Process,
-              these four components fully specify the environment. We now have a
-              way to meaningfully categorize aspects of the environment
-              (states), probability functions on the probability of going from
-              one particular state to another, and rewards the environment gives
-              for each state. Remember though, there are two characters in our
-              story, the environment AND the agent, and the agent also gets to
-              take actions in states that influence the probability of
-              transitioning to subsequent states (This is what we will look at
-              in the MDP section).
+            <p className="mb-4">
+              To recap, a Markov Reward Process gives us a complete mathematical
+              description of an environment by extending Markov Processes with
+              rewards and a discount factor. It&apos;s defined by the tuple (S,
+              P, R, γ) where S captures all possible states the environment can
+              be in, P describes how the environment transitions between states,
+              R specifies the feedback (rewards or penalties) the environment
+              gives us for being in each state, and γ determines how we weight
+              future rewards versus immediate ones. Together, these four
+              components fully characterize the environment&apos;s structure.
+              The value function v(s) tells us the expected (we take the
+              weighted average if there are multiple possible transitions from a
+              state) total discounted return from state s (not just the
+              immediate reward, which is what the reward function tells us). For
+              Markov Decision Processes, we will introduce the agent that is
+              able to take actions in order to increase the likelihood of
+              entering states with higher returns. This will be essentially what
+              RL really is, a way for an agent to learn which actions give him
+              the highest likelihood of transitioning to states with the highest
+              return.
+              <br />
             </p>
           </section>
         </main>
