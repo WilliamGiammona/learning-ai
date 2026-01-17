@@ -187,19 +187,19 @@ export default function ReinforcementLearningPage() {
               (positive or negative) from the environment, and then the agent
               taking an action it thinks will lead to the most future cumulative
               reward from this moment onwards. This creates a repeating loop
-              that goes like this: the agent observes what’s going on, takes an
-              action, and then gets a reward. Over time, this builds up a long
-              sequence of “I saw this → I did that → this happened.” (The chess
-              player looks at his current position, figures out how good or bad
-              it is, and then tries to make the best move in that position).
-              That growing chain of experiences is called the agent’s{" "}
-              <strong>history</strong>, and it’s basically the agent’s memory of
-              everything it has ever tried and how the world responded. (Think
-              of the history as every move that's been played during the chess
-              game and an evaluation of how good each position was per move)
-              Reinforcement Learning is the process of using that history to
-              slowly, painfully, and eventually impressively figure out how to
-              make better and better decisions.
+              that goes like this: the agent observes what&apos;s going on,
+              takes an action, and then gets a reward. Over time, this builds up
+              a long sequence of “I saw this → I did that → this happened.” (The
+              chess player looks at his current position, figures out how good
+              or bad it is, and then tries to make the best move in that
+              position). That growing chain of experiences is called the
+              agent&apos;s <strong>history</strong>, and it&apos;s basically the
+              agent&apos;s memory of everything it has ever tried and how the
+              world responded. (Think of the history as every move that&apos;s
+              been played during the chess game and an evaluation of how good
+              each position was per move) Reinforcement Learning is the process
+              of using that history to slowly, painfully, and eventually
+              impressively figure out how to make better and better decisions.
             </p>
             <p className="mb-4">
               <strong id="the-state" className="block text-center">
@@ -212,8 +212,8 @@ export default function ReinforcementLearningPage() {
               ever happened to you. So instead, Reinforcement Learning uses a
               clever shortcut called the <strong>state</strong>. The idea is:
               instead of carrying around the whole messy history, we compress
-              everything that actually matters into a single snapshot of “what’s
-              going on right now.”
+              everything that actually matters into a single snapshot of
+              “what&apos;s going on right now.”
             </p>
             <p className="mb-4">
               Formally, this is captured by something called the{" "}
@@ -241,14 +241,15 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               In chess, this is very intuitive. The current board position
               (where each piece currently is on the board) is the state that has
-              the Markov Property. You don’t need to know how the pieces got
-              there, how many blunders were made, or how confident the players
-              felt on move 12. All that matters for deciding the next move is
-              the position in front of you right now. Two games that arrive at
-              the same board position are, from the agent’s perspective, the
-              same situation. That board position is a compressed summary of the
-              entire history of the game, and it contains everything the agent
-              needs to decide what move (action) to make next.
+              the Markov Property. You don&apos;t need to know how the pieces
+              got there, how many blunders were made, or how confident the
+              players felt on move 12. All that matters for deciding the next
+              move is the position in front of you right now. Two games that
+              arrive at the same board position are, from the agent&apos;s
+              perspective, the same situation. That board position is a
+              compressed summary of the entire history of the game, and it
+              contains everything the agent needs to decide what move (action)
+              to make next.
             </p>
             <p className="mb-4">
               <strong id="who-decides-state" className="block text-center">
@@ -257,10 +258,10 @@ export default function ReinforcementLearningPage() {
               <br />
               At this point, a very reasonable question pops up: how does the
               agent actually know what belongs in the state? Who decided that
-              the board position matters in chess, but the player’s mood or what
-              they had for breakfast does not? The answer is that sometimes a
-              human does, and sometimes the agent has to learn that on its own.
-              In the early days of Reinforcement Learning, a human would
+              the board position matters in chess, but the player&apos;s mood or
+              what they had for breakfast does not? The answer is that sometimes
+              a human does, and sometimes the agent has to learn that on its
+              own. In the early days of Reinforcement Learning, a human would
               carefully choose what information the agent gets to see. “Here,
               you can have position, velocity, and angle. No more, no less.”
             </p>
@@ -281,9 +282,9 @@ export default function ReinforcementLearningPage() {
               wrong things are “important.” In chess, if a bad reward is given
               (trying to handcode values for each piece for example), the agent
               might fixate on material and ignore king safety. In other domains,
-              it might exploit loopholes you didn’t even realize existed. This
-              is why state and reward are basically the two pressure points of
-              Reinforcement Learning. Get them right, and the agent can solve
+              it might exploit loopholes you didn&apos;t even realize existed.
+              This is why state and reward are basically the two pressure points
+              of Reinforcement Learning. Get them right, and the agent can solve
               extremely difficult problems.
             </p>
             <p className="mb-4">
@@ -291,62 +292,62 @@ export default function ReinforcementLearningPage() {
                 Seeing Everything vs Guessing
               </strong>
               <br />
-              Up until now, we’ve been quietly assuming something very
+              Up until now, we&apos;ve been quietly assuming something very
               convenient: that the agent can see everything in the environment.
               Chess is like this. The entire board is right there in front of
               you. No hidden pieces. No secret information. No fog of war. This
-              is what’s called a <strong>fully observable environment</strong>.
-              This makes it easier to have states that follow the markov
-              property (contain everything you need to know to make the best
-              decision).
+              is what&apos;s called a{" "}
+              <strong>fully observable environment</strong>. This makes it
+              easier to have states that follow the markov property (contain
+              everything you need to know to make the best decision).
             </p>
             <p className="mb-4">
               Unfortunately, most real-world problems are not fully observable.
               In many situations, the agent is forced to operate with incomplete
               information about the environment. This is called a{" "}
               <strong>partially observable environment</strong>. Think about
-              playing poker. You don’t know what cards the other players are
-              holding. You don’t know who is bluffing, who is scared, or who is
-              quietly setting a trap. You only see your own hand and the cards
-              on the table. You’re making decisions based on incomplete
-              information. From the agent’s point of view, it’s like trying to
-              play chess while only seeing half the board and occasionally being
-              lied to. In these settings, the agent has to guess and build
-              beliefs about what might be going on behind the scenes. This makes
-              it much harder (sometimes even impossible) for the agent to have
-              states that follow the markov property.
+              playing poker. You don&apos;t know what cards the other players
+              are holding. You don&apos;t know who is bluffing, who is scared,
+              or who is quietly setting a trap. You only see your own hand and
+              the cards on the table. You&apos;re making decisions based on
+              incomplete information. From the agent&apos;s point of view,
+              it&apos;s like trying to play chess while only seeing half the
+              board and occasionally being lied to. In these settings, the agent
+              has to guess and build beliefs about what might be going on behind
+              the scenes. This makes it much harder (sometimes even impossible)
+              for the agent to have states that follow the markov property.
             </p>
 
             <p className="mb-4">
               <strong className="block text-center">Agent Components</strong>
               <br />
               What are the components that make up the agent? The first of these
-              is the <strong>policy</strong>, which is basically the agent’s
-              rulebook for what to do in each state. The second is the{" "}
-              <strong>value function</strong>, which is the agent’s opinionated
-              ranking system for how much future reward it expects to get from a
-              given state (and sometimes from a specific action in that state).
-              Finally , there is the agent's <strong>model</strong> of the
-              environment, which is an internal simulation of how the
-              environment it's in actually works.
+              is the <strong>policy</strong>, which is basically the
+              agent&apos;s rulebook for what to do in each state. The second is
+              the <strong>value function</strong>, which is the agent&apos;s
+              opinionated ranking system for how much future reward it expects
+              to get from a given state (and sometimes from a specific action in
+              that state). Finally , there is the agent&apos;s{" "}
+              <strong>model</strong> of the environment, which is an internal
+              simulation of how the environment it&apos;s in actually works.
             </p>
             <p className="mb-4">
               <strong id="policy" className="block text-center">
-                The Agent's Policy
+                The Agent&apos;s Policy
               </strong>
               <br />
-              Let’s zoom in on the first of those components: the{" "}
-              <strong>policy</strong>. The policy is the agent’s behavior. It’s
-              the thing that actually answers the question, “Okay, I’m in this
-              situation… now what?” Formally, a policy is just a mapping from
-              states to actions, but in human terms, it’s the agent’s way of
-              making decisions. In chess, this is the part of the agent that
-              looks at the board and decides, “In this position, I’m going to
-              move the knight to this square,” or “I’m going to do something
-              bold and probably regret it.”
+              Let&apos;s zoom in on the first of those components: the{" "}
+              <strong>policy</strong>. The policy is the agent&apos;s behavior.
+              It&apos;s the thing that actually answers the question, “Okay,
+              I&apos;m in this situation… now what?” Formally, a policy is just
+              a mapping from states to actions, but in human terms, it&apos;s
+              the agent&apos;s way of making decisions. In chess, this is the
+              part of the agent that looks at the board and decides, “In this
+              position, I&apos;m going to move the knight to this square,” or
+              “I&apos;m going to do something bold and probably regret it.”
             </p>
             <p className="mb-4">
-              Some agents are very decisive. They use what’s called a{" "}
+              Some agents are very decisive. They use what&apos;s called a{" "}
               <strong>deterministic policy</strong>, which means that for every
               state, there is only one action they will take. In a given
               position, they will make the same move every time. There is no
@@ -354,8 +355,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <span className="block text-center font-mono my-2">a = π(s)</span>
               <br />
-              where the agent's policy, π, looks at its current state, s, and
-              selects the action, a, that it will take.
+              where the agent&apos;s policy, π, looks at its current state, s,
+              and selects the action, a, that it will take.
               <br />
               <br />
               Other agents are more flexible. They use a{" "}
@@ -369,9 +370,9 @@ export default function ReinforcementLearningPage() {
                 π(a | s) = P(A = a | S = s)
               </span>
               <br />
-              where the agent’s policy, π, looks at its current state, s, and
-              assigns a probability to each possible action, a, that is allowed
-              in that state.
+              where the agent&apos;s policy, π, looks at its current state, s,
+              and assigns a probability to each possible action, a, that is
+              allowed in that state.
               <br />
               <br />A good way to think about when a stochastic policy would be
               better than a deterministic one would be with the game rock,
@@ -384,30 +385,30 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               <strong id="value-function" className="block text-center">
-                The Agent's Value Function
+                The Agent&apos;s Value Function
               </strong>
               <br />
-              If the policy is the agent’s “what should I do in this state?”
-              mechanism, then the <strong>value function</strong> is its “how
-              good is this state?” mechanism. The value function is the agent’s
-              prediction of how much total reward it expects to collect in the
-              future, starting from this particular state. In chess terms, this
-              is the part of the agent that looks at a position and thinks, “I’m
-              probably winning in this position” or “Uh oh, I'm probably losing
-              in this position.” Remember, it's not only looking at how much
-              reward it will get on the next move, but in the entire game
-              starting from this position. For example, if I sacrifice my queen
-              and only look one step ahead, my value function may be very low
-              because losing a queen is usually bad, but if it will lead to a
-              position that ends in checkmate in 6 moves, the value function
-              ranks that state highly because it's looking at TOTAL reward from
-              that state, not just the immediate reward. Also please note that
-              value functions MUST be tied to policies, because your future
-              reward given on a state DEPENDS on what moves you are likely to
-              make in future states. Bobby Fischer would likely have a very
-              different value function in a given chess position than someone
-              who just learned how to play chess. Mathamatically the value
-              function is written as{" "}
+              If the policy is the agent&apos;s “what should I do in this
+              state?” mechanism, then the <strong>value function</strong> is its
+              “how good is this state?” mechanism. The value function is the
+              agent&apos;s prediction of how much total reward it expects to
+              collect in the future, starting from this particular state. In
+              chess terms, this is the part of the agent that looks at a
+              position and thinks, “I&apos;m probably winning in this position”
+              or “Uh oh, I&apos;m probably losing in this position.” Remember,
+              it&apos;s not only looking at how much reward it will get on the
+              next move, but in the entire game starting from this position. For
+              example, if I sacrifice my queen and only look one step ahead, my
+              value function may be very low because losing a queen is usually
+              bad, but if it will lead to a position that ends in checkmate in 6
+              moves, the value function ranks that state highly because
+              it&apos;s looking at TOTAL reward from that state, not just the
+              immediate reward. Also please note that value functions MUST be
+              tied to policies, because your future reward given on a state
+              DEPENDS on what moves you are likely to make in future states.
+              Bobby Fischer would likely have a very different value function in
+              a given chess position than someone who just learned how to play
+              chess. Mathamatically the value function is written as{" "}
             </p>
             <p className="mb-4">
               <span className="block text-center font-mono my-2">
@@ -436,14 +437,14 @@ export default function ReinforcementLearningPage() {
               So far, our agent has been reacting to the world: see state, pick
               action, get reward, repeat. But some agents go a step further and
               build something extra: a <strong>model</strong> of the
-              environment. This is basically the agent’s internal guess of how
-              the world works. If the policy is the agent’s rulebook for what to
-              do in a state, and the value function tells it how much expected
-              total future reward it expects to get from a state, then the model
-              is its guess of what the rules of the environment are. It answers
-              questions like: “If I do this, what will probably happen next?”
-              For example, if I drop this object, gravity will make it fall
-              towards the ground.
+              environment. This is basically the agent&apos;s internal guess of
+              how the world works. If the policy is the agent&apos;s rulebook
+              for what to do in a state, and the value function tells it how
+              much expected total future reward it expects to get from a state,
+              then the model is its guess of what the rules of the environment
+              are. It answers questions like: “If I do this, what will probably
+              happen next?” For example, if I drop this object, gravity will
+              make it fall towards the ground.
             </p>
             <p className="mb-4">
               More formally, the model tries to predict two things. First, the{" "}
@@ -460,11 +461,11 @@ export default function ReinforcementLearningPage() {
               likelihood of transitioning into a state where a policeman gives
               me a big ticket. Those are all predictions about{" "}
               <strong>state transitions </strong>
-              and <strong>rewards</strong>. You’re constantly running little
-              simulations of “If I do this in my current state, then I have a
-              certain likelihood of transitioning into this particular new
-              state.” Mathematically, for a transition model P, and immediate
-              Reward function, R:
+              and <strong>rewards</strong>. You&apos;re constantly running
+              little simulations of “If I do this in my current state, then I
+              have a certain likelihood of transitioning into this particular
+              new state.” Mathematically, for a transition model P, and
+              immediate Reward function, R:
               <br />
               <span className="block text-center font-mono my-2">
                 state transition = P(s' | s, a) &nbsp;&nbsp;and&nbsp;&nbsp;
@@ -472,33 +473,32 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               Which just means: the probability of landing in next state{" "}
-              <em>s'</em> if I’m in state <em>s</em> and take action <em>a</em>,
-              and the expected (immediate not total) reward I’ll get for taking
-              action a in state s.
+              <em>s'</em> if I&apos;m in state <em>s</em> and take action{" "}
+              <em>a</em>, and the expected (immediate not total) reward
+              I&apos;ll get for taking action a in state s.
             </p>
             <p className="mb-4">
               <strong id="dont-need-all-pieces" className="block text-center">
-                You Don’t Need All The Pieces
+                You Don&apos;t Need All The Pieces
               </strong>
               <br />
-              Up until now, we’ve been talking about <strong>
-                policies
-              </strong>, <strong>value functions</strong>, and{" "}
+              Up until now, we&apos;ve been talking about{" "}
+              <strong>policies</strong>, <strong>value functions</strong>, and{" "}
               <strong>models</strong> assuming every RL agent has all three of
-              these. Real agents can be more minimalist. Some agents don’t
-              explicitly learn a policy at all, some agents don’t explicitly
-              learn a value function, some don’t bother building a model of the
-              environment, and some have all three.
+              these. Real agents can be more minimalist. Some agents don&apos;t
+              explicitly learn a policy at all, some agents don&apos;t
+              explicitly learn a value function, some don&apos;t bother building
+              a model of the environment, and some have all three.
             </p>
             <p className="mb-4">
               The first big split is value-based vs policy-based vs ctor-critic.
-              A value-based agent doesn't need a rulebook (policy) on what to do
-              in each state, it just wants to know which states are good and
-              which are bad to be in. It learns a value function and then picks
-              the action with the highest value. Thus, it has a value function,
-              but the policy is <em>implicit</em>, i.e. “do whatever has the
-              biggest value.” A policy-based agent is the opposite. It learns
-              the policy without giving states an explicit value. An
+              A value-based agent doesn&apos;t need a rulebook (policy) on what
+              to do in each state, it just wants to know which states are good
+              and which are bad to be in. It learns a value function and then
+              picks the action with the highest value. Thus, it has a value
+              function, but the policy is <em>implicit</em>, i.e. “do whatever
+              has the biggest value.” A policy-based agent is the opposite. It
+              learns the policy without giving states an explicit value. An
               actor-critic agent uses both a policy and a value function. The
               "actor" is the policy (the thing that chooses actions), and the
               ""critic""is the value function (the thing that judges how good
@@ -507,15 +507,16 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               Whether an agent is value based, policy based, or actor critic
-              doesn't determine whether its model-free or model-based and vice
-              versa. That's because the model is just about whether the agent
-              tries to learn the <em>rules of the environment</em> or not.
+              doesn&apos;t determine whether its model-free or model-based and
+              vice versa. That&apos;s because the model is just about whether
+              the agent tries to learn the <em>rules of the environment</em> or
+              not.
             </p>
             <p className="mb-4">
-              A model-free agent doesn't need to predict the future. It learns
-              what works by experience/trial and error, using reward signals,
-              without explicitly learning how the environment transitions from{" "}
-              <span className="font-mono">(s, a)</span> to{" "}
+              A model-free agent doesn&apos;t need to predict the future. It
+              learns what works by experience/trial and error, using reward
+              signals, without explicitly learning how the environment
+              transitions from <span className="font-mono">(s, a)</span> to{" "}
               <span className="font-mono">s'</span>. A model-basedagent needs to
               predict the future. It tries to learn{" "}
               <span className="font-mono">P(s' | s, a)</span> and{" "}
@@ -536,7 +537,7 @@ export default function ReinforcementLearningPage() {
               do?”, <strong>actor-critic</strong> is “What should I do, and how
               did I do?”. On a different axis, <strong>model-based</strong> is
               “If I do this, what will happen?”, and <strong>model-free</strong>{" "}
-              is “I’ll find out via trial and error.”
+              is “I&apos;ll find out via trial and error.”
             </p>
 
             <p className="mb-4">
@@ -578,7 +579,7 @@ export default function ReinforcementLearningPage() {
                 A Quick Detour: Why Learn The History Of Math
               </strong>
               <br />
-              Before we jump into the math, it’s worth asking a slightly
+              Before we jump into the math, it&apos;s worth asking a slightly
               philosophical question: why bother learning the history behind
               these ideas at all? Why not just memorize the formulas and move
               on? The answer is that our brains are terrible at remembering
@@ -586,7 +587,7 @@ export default function ReinforcementLearningPage() {
               remembering stories. When you know <em>why</em> an idea was
               invented, what problem it was trying to solve, and what kind of
               human was behind it, it becomes much easier to both learn and
-              remember. The other reason is that I enjoy it and I'm the one
+              remember. The other reason is that I enjoy it and I&apos;m the one
               writing this!
             </p>
 
@@ -628,11 +629,11 @@ export default function ReinforcementLearningPage() {
               outcome of a large amount of independent trials converges to the
               expected value), first proven by Jacob Bernouli in 1713. It was
               the most important concept of probability theory until Andrey
-              Markov's. Bernouli had proved that the Law of Large Numbers
+              Markov&apos;s. Bernouli had proved that the Law of Large Numbers
               applied to INDEPENDENT events, but it was an open question as to
               whether it also applied to DEPENDENT events. Nekrasov argued that
-              it didn't, and that if you observed the Law of Large Numbers, you
-              could infer that the underlying events MUST be independent.
+              it didn&apos;t, and that if you observed the Law of Large Numbers,
+              you could infer that the underlying events MUST be independent.
               Nekrasov looked at large amounts of data about marriage rates,
               crime rates, and birth rates and saw that they seemed to follow
               the law of large numbers. This data came from decisions to get
@@ -646,14 +647,14 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              Markov then set out to prove that Nekrasov's claims were wrong and
-              needed to show that dependent events could also follow the law of
-              large numbers. This would break Nekrasov's link that because
-              marriage, crime, and birth rates followed the law of large
-              numbers, that they needed to be independent. This would prove to
-              be a huge milestone in the world of probability because it would
-              show that you can still use probability theory on dependent events
-              (including RL).
+              Markov then set out to prove that Nekrasov&apos;s claims were
+              wrong and needed to show that dependent events could also follow
+              the law of large numbers. This would break Nekrasov&apos;s link
+              that because marriage, crime, and birth rates followed the law of
+              large numbers, that they needed to be independent. This would
+              prove to be a huge milestone in the world of probability because
+              it would show that you can still use probability theory on
+              dependent events (including RL).
             </p>
 
             <p className="mb-4">
@@ -717,8 +718,8 @@ export default function ReinforcementLearningPage() {
               <strong>Markov Chain</strong>. He had each letter be a state. He
               then had an arrow from one letter to the next (one state to the
               next). This arrow was his transition probability. Now he needed to
-              find the transition probabilities. How did he do this? Let's take
-              a look at the transition probability for vowel to vowel as an
+              find the transition probabilities. How did he do this? Let&apos;s
+              take a look at the transition probability for vowel to vowel as an
               example.
               <br />
               <br />
@@ -747,10 +748,10 @@ export default function ReinforcementLearningPage() {
               consonants. When Markov checked if those were the true ratios,
               they were. Hence, Markov used this Markov Chain to prove that
               dependent events also follow the law of large numbers (thereby
-              proving Nekrasov's assumptions and conclusions to be incorrect).
-              In the 1950s American mathmetician Richard Bellman extended Markov
-              chains by adding decisions and rewards, giving rise to Markov
-              Decision Processes.
+              proving Nekrasov&apos;s assumptions and conclusions to be
+              incorrect). In the 1950s American mathmetician Richard Bellman
+              extended Markov chains by adding decisions and rewards, giving
+              rise to Markov Decision Processes.
             </p>
 
             <p className="mb-4">
@@ -848,12 +849,13 @@ export default function ReinforcementLearningPage() {
               the entire system of how states evolve over time according to
               these transition probabilities. Once you know the transition
               matrix 𝒫, you can answer questions like: "If I start in state s,
-              what's the probability I'll be in state s' after 10 steps?" or
-              "What's the long-term distribution of states?" The matrix encodes
-              all the dynamics of the system, i.e. it tells you everything about
-              how the process moves through states over time. For continuous
-              states, we use a probability distribution (called a transition
-              kernel) instead of a matrix, but the concept is the same.
+              what&apos;s the probability I'll be in state s' after 10 steps?"
+              or "What&apos;s the long-term distribution of states?" The matrix
+              encodes all the dynamics of the system, i.e. it tells you
+              everything about how the process moves through states over time.
+              For continuous states, we use a probability distribution (called a
+              transition kernel) instead of a matrix, but the concept is the
+              same.
             </p>
             <p className="mb-4">
               To recap: for a Markov Process all you need are two things: (1){" "}
@@ -861,11 +863,11 @@ export default function ReinforcementLearningPage() {
               each state compresses all the relevant dependent information from
               the past into a single snapshot of "where you are now", and (2){" "}
               <strong>transition probabilities</strong> that tell you how likely
-              you are to move from any given state to any other state. That's
-              it. These two ingredients completely specify the entire system.
-              With just these, you can predict how the system will evolve over
-              time, calculate long-term behavior, and answer probability
-              questions about sequences of dependent events.
+              you are to move from any given state to any other state.
+              That&apos;s it. These two ingredients completely specify the
+              entire system. With just these, you can predict how the system
+              will evolve over time, calculate long-term behavior, and answer
+              probability questions about sequences of dependent events.
             </p>
 
             <p className="mb-4">
@@ -873,19 +875,19 @@ export default function ReinforcementLearningPage() {
                 Markov Reward Process
               </strong>
               <br />A Markov Process gives us the mathematical tools to handle
-              sequences of dependent events, but it's missing something crucial
-              for reinforcement learning: feedback from the environment, like
-              victory for chekcmating an opponent in chess, or defeat for being
-              checkmated. In RL, we want to express the environment fully. The
-              environment has states, state transitions, and a reward/penalty
-              given to us by the environment. There can be one reward at the
-              end, or several rewards. Remember in RL we want the agent to learn
-              which actions get us to states that give us the largest total
-              reward. However, environment rewards in the future aren't worth as
-              much as those right now (just like how in finance a dollar today
-              is worth than a dollar tomorrow), so we use a discount factor, γ
-              (gamma), for future rewards. These are all the ingredients we need
-              to model our environment.
+              sequences of dependent events, but it&apos;s missing something
+              crucial for reinforcement learning: feedback from the environment,
+              like victory for chekcmating an opponent in chess, or defeat for
+              being checkmated. In RL, we want to express the environment fully.
+              The environment has states, state transitions, and a
+              reward/penalty given to us by the environment. There can be one
+              reward at the end, or several rewards. Remember in RL we want the
+              agent to learn which actions get us to states that give us the
+              largest total reward. However, environment rewards in the future
+              aren&apos;t worth as much as those right now (just like how in
+              finance a dollar today is worth than a dollar tomorrow), so we use
+              a discount factor, γ (gamma), for future rewards. These are all
+              the ingredients we need to model our environment.
             </p>
             <p className="mb-4">
               Formally, a <strong>Markov Reward Process</strong> is defined as a
@@ -903,7 +905,7 @@ export default function ReinforcementLearningPage() {
               <sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
               <br />
               <br />
-              This notation means: Let's break down the reward function
+              This notation means: Let&apos;s break down the reward function
               notation:{" "}
               <strong>
                 R<sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
@@ -940,11 +942,11 @@ export default function ReinforcementLearningPage() {
               you get 10, sometimes 12. R<sub>s</sub> is the average.
               <br />
               <br />
-              Second, notice it's R<sub>t+1</sub> (next time step), not R
+              Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
               <sub>t</sub> (current time step). Why this notation? The answer is
-              that it's just about how we index things in the sequence - the
-              difference is mostly bookkeeping. In practice, there are different
-              ways to think about when you receive rewards:
+              that it&apos;s just about how we index things in the sequence -
+              the difference is mostly bookkeeping. In practice, there are
+              different ways to think about when you receive rewards:
               <br />
               <br />
               <strong>
@@ -961,13 +963,13 @@ export default function ReinforcementLearningPage() {
               <br />
               You're in state s at time t, you transition to the next state, you
               receive reward R<sub>t+1</sub>, and now you're in state s' at time
-              t+1. This is the convention I'm using with the R<sub>t+1</sub> | S
-              <sub>t</sub> = s notation.
+              t+1. This is the convention I&apos;m using with the R
+              <sub>t+1</sub> | S<sub>t</sub> = s notation.
               <br />
               <br />
-              Both conventions are mathematically equivalent. I'm using
-              Convention 2 here because it's the standard notation used in the
-              main RL textbook, "Reinforcement Learning: An Introduction" by
+              Both conventions are mathematically equivalent. I&apos;m using
+              Convention 2 here because it&apos;s the standard notation used in
+              the main RL textbook, "Reinforcement Learning: An Introduction" by
               Sutton and Barto.
               <br />
               <br />
@@ -976,18 +978,19 @@ export default function ReinforcementLearningPage() {
               state, while Convention 2 gives it to you as you leave (indexed at
               the next time step). But wait! For convention 2, if you only get
               the reward after leaving a state, then for the last state in an
-              episode (the terminal state), you won't get the reward b/c the
-              episode will end before you ever leave that last state (thus not
-              getting the reward for the last state). Because of this, the
-              reward from convention 1 and convention 2 won't equal eachother
-              right?? No, not right. There is a special rule for convention 2
-              that covers the case for terminal states (states that are either
-              at the end of an episode, or that you never leave from).
-              Convention 2 gives you the reward of the terminal state
+              episode (the terminal state), you won&apos;t get the reward b/c
+              the episode will end before you ever leave that last state (thus
+              not getting the reward for the last state). Because of this, the
+              reward from convention 1 and convention 2 won&apos;t equal
+              eachother right?? No, not right. There is a special rule for
+              convention 2 that covers the case for terminal states (states that
+              are either at the end of an episode, or that you never leave
+              from). Convention 2 gives you the reward of the terminal state
               immediately when entering it. Therefore the final reward will be
               the reward for leaving the penultimate (one before the last one)
               state ADDED to the reward you get when entering this special
-              terminal state where you don't have to leave it to get the reward.
+              terminal state where you don&apos;t have to leave it to get the
+              reward.
               <br />
               <br />
               <strong>Example showing both conventions:</strong>
@@ -1028,9 +1031,9 @@ export default function ReinforcementLearningPage() {
               <br />
               The discount factor γ determines how much we value future rewards
               relative to immediate rewards. When we calculate the total return,
-              G<sub>t</sub>, we don't just add up all future rewards equally
-              (unlyess we make gamma equal to 1), we discount them based on how
-              far in the future they occur:
+              G<sub>t</sub>, we don&apos;t just add up all future rewards
+              equally (unlyess we make gamma equal to 1), we discount them based
+              on how far in the future they occur:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -1044,11 +1047,12 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               1) <strong>Uncertainty about the future</strong>: For complex real
-              world problems, it's very difficult to make any algorithm that can
-              accurately predict the far future equally as well as the immediate
-              future. Rewards far in the future are less certain to actually
-              happen. A reward you might get in 100 steps is less reliable than
-              one you'll get in 2 steps, so it should be weighted less.
+              world problems, it&apos;s very difficult to make any algorithm
+              that can accurately predict the far future equally as well as the
+              immediate future. Rewards far in the future are less certain to
+              actually happen. A reward you might get in 100 steps is less
+              reliable than one you'll get in 2 steps, so it should be weighted
+              less.
               <br />
               <br />
               2) <strong>Mathematical convenience</strong>: Discounting ensures
@@ -1084,7 +1088,7 @@ export default function ReinforcementLearningPage() {
               To recap, the reward function R<sub>s</sub> tells us the expected
               immediate reward for being in state s (The value function which
               will be discussed later gives us the TOTAL expected reward per
-              state under a specific policy). Note that it's written as an
+              state under a specific policy). Note that it&apos;s written as an
               expectation E[...] because rewards can be stochastic
               (probabilistic), sometimes you receive different rewards from the
               same state. The discount factor γ determines how much we value
@@ -1111,9 +1115,10 @@ export default function ReinforcementLearningPage() {
               doing probalems involving a radius instead of a diameter.
             </p>
             <p className="mb=4">
-              First, let's look at how we got the names sine and cosine (from
-              the Latin sinus meaning pocket) for trigonometry when they seem to
-              have no relation at all to the unit circle or length in general.
+              First, let&apos;s look at how we got the names sine and cosine
+              (from the Latin sinus meaning pocket) for trigonometry when they
+              seem to have no relation at all to the unit circle or length in
+              general.
               <br />
               A good summary can be found here:
               <br />
@@ -1123,7 +1128,7 @@ export default function ReinforcementLearningPage() {
                 target="_blank"
                 className="text-blue-600 underline hover:text-blue-400"
               >
-                Why sin and cos don't mean anything
+                Why sin and cos don&apos;t mean anything
               </Link>
               <br />
               <br />
@@ -1141,9 +1146,10 @@ export default function ReinforcementLearningPage() {
               they transliterated the Sanskrit word <em>jīvá</em> (a synonym of
               jyā) into Arabic as <em>jiba</em> (جيب). Arabic is written without
               short vowels, so <em>jiba</em> was written simply as the
-              consonants "j-y-b" (جيب). Later Arab scholars who didn't know this
-              was a transliterated technical term read these same consonants as{" "}
-              <em>jayb</em> (جيب), a common Arabic word meaning "pocket."
+              consonants "j-y-b" (جيب). Later Arab scholars who didn&apos;t know
+              this was a transliterated technical term read these same
+              consonants as <em>jayb</em> (جيب), a common Arabic word meaning
+              "pocket."
               <br />
               <br />
               In the 12th century, when European scholars translated Arabic
@@ -1151,19 +1157,20 @@ export default function ReinforcementLearningPage() {
               (pocket) as the Latin word <em>sinus</em>, which also means
               "pocket". Finally, in the 1590s, English mathematician Thomas Fale
               borrowed the Latin <em>sinus</em> into English as "sine", and
-              that's the word we still use today, instead of using the words
-              bowstring and co-bowstring (which make much more sense) because of
-              centuries of convention.
+              that&apos;s the word we still use today, instead of using the
+              words bowstring and co-bowstring (which make much more sense)
+              because of centuries of convention.
             </p>
             <p className="mb-4">
               <br />
-              There's an ongoing debate in mathematics about whether we should
-              use π = 3.14159... or τ (tau) = 6.28318... as our fundamental
-              circle constant. Many mathematicians argue that τ makes more sense
-              because it represents the ratio of a circle's circumference to its{" "}
-              <em>radius</em> (C = τr), which would make many formulas cleaner.
-              A full circle would simply be τ radians instead of 2π radians, a
-              quarter circle would be τ/4 instead of π/2, and so on.
+              There&apos;s an ongoing debate in mathematics about whether we
+              should use π = 3.14159... or τ (tau) = 6.28318... as our
+              fundamental circle constant. Many mathematicians argue that τ
+              makes more sense because it represents the ratio of a
+              circle&apos;s circumference to its <em>radius</em> (C = τr), which
+              would make many formulas cleaner. A full circle would simply be τ
+              radians instead of 2π radians, a quarter circle would be τ/4
+              instead of π/2, and so on.
               <br />
               <br />
               So why do we use π = 3.14159... universally instead? The answer
@@ -1196,22 +1203,22 @@ export default function ReinforcementLearningPage() {
               century, widely read and studied across Europe.
               <br />
               <br />
-              However, instead of following Euler's pragmatic approach of
+              However, instead of following Euler&apos;s pragmatic approach of
               switching between values based on context, later mathematicians
               simply adopted the π = 3.14... his book as the universal standard
               for everything. They stopped adjusting based on whether they were
-              working with radius or diameter. That's why we're now stuck with
-              the unit circle looking like this: instead of this: along with
-              many other confusing and inelegant complications when using a
-              diameter based constant for radius based problems.
+              working with radius or diameter. That&apos;s why we&apos;re now
+              stuck with the unit circle looking like this: instead of this:
+              along with many other confusing and inelegant complications when
+              using a diameter based constant for radius based problems.
               <br />
               <br />
-              Euler's flexible approach was, of course, the sensible approach,
-              but we continue to have a standardized value because of centuries
-              of convention.
+              Euler&apos;s flexible approach was, of course, the sensible
+              approach, but we continue to have a standardized value because of
+              centuries of convention.
             </p>
             <p className="mb=4">
-              I think you can see where I'm going with this. There are many
+              I think you can see where I&apos;m going with this. There are many
               areas of mathematics where notation is used that is less intuitive
               for learners simply because of convention. The reward at timestep
               t+1 convention (Convention 2) is now standard in RL for similar
