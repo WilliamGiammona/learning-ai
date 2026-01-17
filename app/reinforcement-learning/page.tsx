@@ -1240,11 +1240,12 @@ export default function ReinforcementLearningPage() {
               where γ ∈ [0,1] (gamma is just a number between 0 and 1).
               <br />
               <br />
-              The discount factor γ determines how much we value future rewards
-              relative to immediate rewards. When we calculate the total sum of
-              rewards (the return), G<sub>t</sub>, we don&apos;t just add up all
-              future rewards equally (unless we make gamma equal to 1), we
-              discount them based on how far in the future they occur:
+              The discount factor, γ, determines how much we value future
+              rewards relative to immediate rewards. When we calculate the total
+              sum of rewards from a given state (the return), G<sub>t</sub>, we
+              don&apos;t just add up all future rewards equally (unless we set γ
+              equal to 1), we discount them based on how far in the future they
+              occur:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -1268,7 +1269,7 @@ export default function ReinforcementLearningPage() {
               that can accurately predict the far future equally as well as the
               immediate future. Rewards far in the future are less certain to
               actually happen. A reward you might get in 100 steps is less
-              reliable than one you'll get in 2 steps, so it should be weighted
+              reliable than one you'll get in 1 step, so it should be weighted
               less.
               <br />
               <br />
@@ -1292,8 +1293,8 @@ export default function ReinforcementLearningPage() {
               <br />- If <strong>γ = 1</strong>: All future rewards count
               equally, no matter how far away (far-sighted, only works for
               finite episodes)
-              <br />- If <strong>γ = 0.9</strong>: A reward 10 steps away is
-              worth (0.9)<sup>10</sup> ≈ 0.35 of what that same reward would be
+              <br />- If <strong>γ = 0.5</strong>: A reward 4 steps away is
+              worth (0.5)<sup>4</sup> ≈ 0.0625 of what that same reward would be
               worth right now
               <br />
               <br />
