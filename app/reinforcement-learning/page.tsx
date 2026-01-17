@@ -834,7 +834,7 @@ export default function ReinforcementLearningPage() {
               Formally, a <strong>Markov Process</strong> is defined as a tuple
               (S, P) where:
               <br />
-              <br />• <strong>S</strong> is a finite set of states
+              <br />• <strong>S</strong> is a (finite or infinite) set of states
               <br />• <strong>P</strong> is the state transition probability
               <br />
               <br />
@@ -861,6 +861,7 @@ export default function ReinforcementLearningPage() {
               move (action) to make next (Yea I know technically en passant and
               a few other rules don't follow this, but you get the idea).
             </p>
+
             <p className="mb-4">
               For discrete states, we can organize all these transition
               probabilities into a <strong>state transition matrix</strong> 𝒫.
@@ -891,6 +892,7 @@ export default function ReinforcementLearningPage() {
               "somewhere" means staying in the same state). This constraint
               ensures the probabilities are valid.
             </p>
+
             <p className="mb-4">
               This transition matrix gives you the complete structure of the{" "}
               <strong>Markov Process</strong>. The "Markov Process" refers to
@@ -904,6 +906,25 @@ export default function ReinforcementLearningPage() {
               For continuous states, we use a probability distribution (called a
               transition kernel) instead of a matrix, but the concept is the
               same.
+            </p>
+
+            <p className="mb-4">
+              Here is an example to better understand the complete transition
+              matrix: In a simplified weather model with three states (Sunny,
+              Cloudy, Rainy), the transition matrix might look like this:
+              <br />
+              <br />
+              <span className="block font-mono text-sm">
+                From Sunny: 70% → Sunny, 20% → Cloudy, 10% → Rainy
+                <br />
+                From Cloudy: 30% → Sunny, 40% → Cloudy, 30% → Rainy
+                <br />
+                From Rainy: 20% → Sunny, 30% → Cloudy, 50% → Rainy
+              </span>
+              <br />
+              Each row shows the transition probabilities from one state to all
+              possible next states, and together they form the complete
+              transition probability matrix 𝒫.
             </p>
             <p className="mb-4">
               To recap: for a Markov Process all you need are two things: (1){" "}
