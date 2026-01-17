@@ -784,13 +784,13 @@ export default function ReinforcementLearningPage() {
                 Markov Process
               </strong>
               <br />
-              Ok, enough history, now back to the mathematics. A quick note,
-              Markov created the Markov Chain, described in the history section
-              above, which deals with discrete (countable) time. When you deal
-              with continuous time, its called a "Markov Process." One of the
-              most central ideas of a Markov Process is that it follows the
-              Markov Property, which says that the future depends only on the
-              present, not on the entire past. In math form, it looks like this:
+              Ok, enough history, now back to mathematics. A quick note, Markov
+              created the Markov Chain, described in the history section above,
+              which deals with discrete (countable) time. When you deal with
+              continuous time, its called a "Markov Process." One of the most
+              central ideas of a Markov Process is that it follows the Markov
+              Property, which says that the future depends only on the present,
+              not on the entire past. In math form, it looks like this:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -822,7 +822,7 @@ export default function ReinforcementLearningPage() {
               contains everything the agent needs to decide what move (action)
               to make next.
             </p>
-            <p className="mb=4">
+            <p className="mb-4">
               The two fundamental objects in any Markov Process are:
               <br />
               1) The state - a compression of all important dependent
@@ -1064,14 +1064,14 @@ export default function ReinforcementLearningPage() {
               <br />- <strong>Total reward: 5 + 6 = 11</strong>
               <br />
             </p>
-            <p className="mb4">
+            <p className="mb-4">
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
               answer this, lets look at the history of how we came up with the
               name sine and cosine, as well as why we use the ratio pi when
               doing probalems involving a radius instead of a diameter.
             </p>
-            <p className="mb=4">
+            <p className="mb-4">
               First, let&apos;s look at how we got the names sine and cosine
               (from the Latin sinus meaning pocket) for trigonometry when they
               seem to have no relation at all to the unit circle or length in
@@ -1174,7 +1174,7 @@ export default function ReinforcementLearningPage() {
               approach, but we continue to have a standardized value because of
               centuries of convention.
             </p>
-            <p className="mb=4">
+            <p className="mb-4">
               I think you can see where I&apos;m going with this. There are many
               areas of mathematics where notation is used that is less intuitive
               for learners simply because of convention. The reward at timestep
@@ -1183,7 +1183,7 @@ export default function ReinforcementLearningPage() {
               influential textbook (Sutton & Barto) in the 90s and everyone
               adopted it.
             </p>
-            <p>
+            <p className="mb-4">
               Now we come to the final part in the Markov Reward Process, which
               is the discount factor.
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
