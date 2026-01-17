@@ -1096,10 +1096,10 @@ export default function ReinforcementLearningPage() {
               (the reward for having been in s)
               <br />- t=2: Transition to terminal state s'' → receive R
               <sub>2</sub> = 6 (this combines the reward for having been in s',
-              which is 10, AND receive R<sub>3</sub> immediately upon entering
-              the terminal state (because the terminal state is special) with
-              reward of -4), giving us the total reward for that timestep of:
-              (10 - 4) which is 6.
+              which is 10, AND the reward you immediately upon entering the
+              terminal state (because the terminal state is special) which is
+              -4, giving us the total reward for that timestep of: (10 - 4)
+              which is 6.
               <br />- <strong>Total reward: 5 + 6 = 11</strong>
               <br />
             </p>
@@ -1151,7 +1151,7 @@ export default function ReinforcementLearningPage() {
               In the 12th century, when European scholars translated Arabic
               mathematical texts into Latin, they translated <em>jayb</em>{" "}
               (pocket) as the Latin word <em>sinus</em>, which also means
-              "pocket". Finally, in the 1590s, English mathematician Thomas Fale
+              "pocket". Finally, in 1593, English mathematician Thomas Fale
               borrowed the Latin <em>sinus</em> into English as "sine", and
               that&apos;s the word we still use today, instead of using the
               words bowstring and co-bowstring (which make much more sense)
