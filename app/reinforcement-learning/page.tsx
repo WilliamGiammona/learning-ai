@@ -1,6 +1,7 @@
 // app/reinforcement-learning/page.tsx
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ReinforcementLearningPage() {
   return (
@@ -1550,6 +1551,38 @@ export default function ReinforcementLearningPage() {
               the transition probabilities to next states, and (3) the values of
               those next states. This transforms an exponentially complex
               problem into a simple one step calculation.
+            </p>
+            <p className="mb-4">
+              <Image
+                src="/images/reinforcement-learning/mdp/bellman-mrp-model.png"
+                alt="Bellman equation diagram showing state s transitioning to next states"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              The diagram above illustrates this one-step lookahead perspective.
+              From state s, we can transition to various next states s&apos;
+              with different probabilities. The Bellman Equation can be written
+              explicitly in terms of these transition probabilities:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v(s) = R<sub>s</sub> + γ Σ<sub>s&apos;∈S</sub> P
+                <sub>ss&apos;</sub>v(s&apos;)
+              </span>
+              <br />
+              <br />
+              This equation says: the value of state s equals the immediate
+              reward R<sub>s</sub> we get from being in state s, plus the
+              discounted sum of the values of all possible next states s&apos;,
+              each weighted by the probability P<sub>ss&apos;</sub> of
+              transitioning to that state. The summation Σ<sub>s&apos;∈S</sub>{" "}
+              means we&apos;re adding up the contributions from every possible
+              next state in the state space S. This is the concrete, calculable
+              form of the Bellman Equation—it tells us exactly how to compute
+              v(s) using only the immediate reward, the transition
+              probabilities, and the values of the neighboring states.
             </p>
           </section>
         </main>
