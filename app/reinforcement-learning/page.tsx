@@ -1049,6 +1049,8 @@ export default function ReinforcementLearningPage() {
               (10 - 4) which is 6.
               <br />- <strong>Total reward: 5 + 6 = 11</strong> ✓
               <br />
+              Now we come to the final part in the Markov Reward Process, which
+              is the discount factor.
               <br />
               <br /> <br />• <strong>γ</strong> is a discount factor, where γ ∈
               [0,1]
