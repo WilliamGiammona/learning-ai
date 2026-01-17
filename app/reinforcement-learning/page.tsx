@@ -788,8 +788,8 @@ export default function ReinforcementLearningPage() {
               history section above, which deals with discrete (countable) time.
               When you deal with continuous time, its called a "Markov Process."
               Ok, enough history, now back to mathematics. One of the most
-              central ideas of a Markov Process is that it follows the Markov
-              Property, which says that the future depends only on the present,
+              central ideas of a Markov Process is that it follows the "Markov
+              Property", which says that the future depends only on the present,
               not on the entire past. In math form, it looks like this:
               <br />
               <br />
