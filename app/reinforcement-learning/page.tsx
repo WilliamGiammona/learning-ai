@@ -1306,16 +1306,20 @@ export default function ReinforcementLearningPage() {
               <br />
             </p>
             <p className="mb-4">
-              Remember how we said the reward function R<sub>s</sub> tells us
-              the immediate reward we get from being in state s? Well, the value
-              function (this is the value function for Markov Reward Processes,
-              the value function for MDPs, which is the one we really care
-              about, will be slightly different because it's policy dependent,
-              but this is a good stepping stone to understanding it) tells us
-              something much more useful: how good is it to BE in state s when
-              considering all future rewards? It's the difference between asking
-              "what do I get right now?" versus "what's the total payoff I can
-              expect from here onwards?"
+              Now that we understand how the discount factor shapes our view of
+              future rewards, let&apos;s introduce the{" "}
+              <strong>value function</strong>. While the reward function tells
+              us the immediate reward from being in state s, the value function
+              tells us something more useful: the expected total return from
+              state s onwards. It&apos;s the difference between asking "what do
+              I get right now?" versus "what&apos;s the total payoff I can
+              expect from here?"
+              <br />
+              <br />
+              (Note: We&apos;re introducing the value function for Markov Reward
+              Processes first as a stepping stone. The value function for MDPs,
+              which we&apos;ll see later, is policy-dependent and slightly
+              different, but the core concept is the same.)
               <br />
               <br />
               Formally, the state value function v(s) of an MRP is the expected
