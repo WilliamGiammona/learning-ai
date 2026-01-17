@@ -1043,20 +1043,24 @@ export default function ReinforcementLearningPage() {
               reasons:
               <br />
               <br />
-              1) <strong>Uncertainty about the future</strong>: Rewards far in
-              the future are less certain to actually happen. A reward you might
-              get in 100 steps is less reliable than one you'll get in 2 steps.
+              1) <strong>Uncertainty about the future</strong>: For complex real
+              world problems, it's very difficult to make any algorithm that can
+              accurately predict the far future equally as well as the immediate
+              future. Rewards far in the future are less certain to actually
+              happen. A reward you might get in 100 steps is less reliable than
+              one you'll get in 2 steps, so it should be weighted less.
               <br />
               <br />
               2) <strong>Mathematical convenience</strong>: Discounting ensures
               that infinite sums of rewards converge to a finite number, making
-              the math tractable. Without discounting (γ = 1), an infinite
-              episode would have infinite return.
+              the math work better. Without discounting (γ = 1), an infinite
+              episode would have infinite return, making the math more difficult
+              to work with.
               <br />
               <br />
               3) <strong>Models real preferences</strong>: In many scenarios,
               getting something now is genuinely more valuable than getting it
-              later. This is like the time value of money in finance - a dollar
+              later. This is like the time value of money in finance, a dollar
               today is worth more than a dollar tomorrow because you could
               invest it and earn interest.
               <br />
@@ -1073,17 +1077,25 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The choice of γ is a design decision that significantly affects
-              what the agent learns to do. Higher γ makes the agent more patient
-              and considerate of long-term consequences.
+              what the agent learns to do. A higher γ makes the agent more
+              patient and considerate of long-term consequences.
               <br />
-              The reward function R<sub>s</sub> tells us the expected immediate
-              reward for being in state s. Note that it's written as an
+              <br />
+              To recap, the reward function R<sub>s</sub> tells us the expected
+              total reward for being in state s. Note that it's written as an
               expectation E[...] because rewards can be stochastic
-              (probabilistic) - sometimes you might get different rewards from
-              the same state. The discount factor γ determines how much we value
+              (probabilistic), sometimes you receive different rewards from the
+              same state. The discount factor γ determines how much we value
               future rewards. Together with the states and transitions from our
               Markov Process, these four components fully specify the
-              environment.
+              environment. We now have a way to meaningfully categorize aspects
+              of the environment (states), probabilities functions on the
+              probability of going from one particular state to another, and
+              rewards the environment gives for each state. Remember though,
+              there are two characters in our story, the environment AND the
+              agent, and the agent also gets to take actions in states that
+              influence the probability of transitioning to subsequent states
+              (This is what we will look at this MDPs).
             </p>
             <p className="mb4">
               <strong id="the-state" className="block text-center">
