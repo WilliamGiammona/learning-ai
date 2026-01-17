@@ -784,10 +784,10 @@ export default function ReinforcementLearningPage() {
                 Markov Process
               </strong>
               <br />
-              Ok, enough history, now back to mathematics. A quick note, Markov
-              created the Markov Chain, described in the history section above,
-              which deals with discrete (countable) time. When you deal with
-              continuous time, its called a "Markov Process." One of the most
+              A quick note, Markov created the Markov Chain, described in the
+              history section above, which deals with discrete (countable) time.
+              When you deal with continuous time, its called a "Markov Process."
+              Ok, enough history, now back to mathematics. One of the most
               central ideas of a Markov Process is that it follows the Markov
               Property, which says that the future depends only on the present,
               not on the entire past. In math form, it looks like this:
