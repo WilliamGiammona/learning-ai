@@ -785,8 +785,10 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               A quick note, Markov created the Markov Chain, described in the
-              history section above, which deals with discrete (countable) time.
-              When you deal with continuous time, its called a "Markov Process."
+              history section above, which deals ONLY with discrete (countable)
+              time. A "Markov Process", is a more general term that can deal
+              with both discrete or continuous time, so all Markov Chains are
+              Markov Processes, but not all Markov Processes are Markov Chains.
               Ok, enough history, now back to mathematics. One of the most
               central ideas of a Markov Process is that it follows the "Markov
               Property", which says that the future depends only on the present,
@@ -805,7 +807,9 @@ export default function ReinforcementLearningPage() {
               <sub>1</sub>, S<sub>2</sub>, … , S<sub>t</sub>. In other words,{" "}
               <em>
                 the current state was able to compress all the useful dependent
-                information from the past history
+                information from all the past history and use all that
+                compressed information to make probability judgements about the
+                immediate future.
               </em>
               . Anything before that is just extra unnecessary baggage.
             </p>
