@@ -946,17 +946,24 @@ export default function ReinforcementLearningPage() {
               <br />A Markov Process gives us the mathematical tools to handle
               sequences of dependent events, but it&apos;s missing something
               crucial for reinforcement learning: feedback from the environment,
-              like victory for chekcmating an opponent in chess, or defeat for
-              being checkmated. In RL, we want to express the environment fully.
-              The environment has states, state transitions, and a
-              reward/penalty given to us by the environment. There can be one
-              reward at the end, or several rewards. Remember in RL we want the
-              agent to learn which actions get us to states that give us the
-              largest total reward. However, environment rewards in the future
-              aren&apos;t worth as much as those right now (just like how in
-              finance a dollar today is worth than a dollar tomorrow), so we use
-              a discount factor, γ (gamma), for future rewards. These are all
-              the ingredients we need to model our environment.
+              like victory for checkmating an opponent in chess, or defeat for
+              being checkmated. In RL, we want to express the environment fully,
+              which brings us to the Markov Reward Process, where the
+              environment has states, state transitions, AND a reward/penalty
+              given to us by the environment which depends on the state we are
+              in. Remember, the ultimate goal in RL is for the agent to learn
+              which actions get us to states that give us the largest total
+              cumulative reward over a given time frame (although for MRPs we
+              don't have actions incorporated yet, that will come for MDPs in
+              the next section, this is just laying the groundwork), so
+              it&apos;s crucial that we have a way to model environment rewards
+              from states, not just states (but no reward associated with them)
+              and state transitions like we did for Markov Processes. However,
+              environment rewards in the future aren&apos;t worth as much as
+              those right now (just like how in finance a dollar today is worth
+              more than a dollar tomorrow), so we use a discount factor, γ
+              (gamma), for future rewards. These are all the ingredients we need
+              to model our environment.
             </p>
             <p className="mb-4">
               Formally, a <strong>Markov Reward Process</strong> is defined as a
@@ -974,8 +981,8 @@ export default function ReinforcementLearningPage() {
               <sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
               <br />
               <br />
-              This notation means: Let&apos;s break down the reward function
-              notation:{" "}
+              This notation is a bit complex, so let&apos;s break down the
+              reward function notation:{" "}
               <strong>
                 R<sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s]
               </strong>
@@ -1012,10 +1019,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
-              <sub>t</sub> (current time step). Why this notation? The answer is
-              that it&apos;s just about how we index things in the sequence -
-              the difference is mostly bookkeeping. In practice, there are
-              different ways to think about when you receive rewards:
+              <sub>t</sub> (current time step). Why this confusing notation
+              instead of just having the reward come at time t (R<sub>t</sub>)?
+              The answer is that there are actually two conventions, which are
+              mathematically equivalent, listed below:
               <br />
               <br />
               <strong>
