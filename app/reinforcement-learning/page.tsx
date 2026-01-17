@@ -1459,12 +1459,13 @@ export default function ReinforcementLearningPage() {
               weighted average if there are multiple possible transitions from a
               state) total discounted return from state s (not just the
               immediate reward, which is what the reward function tells us).
-              Later I will extend this idea to Markov Decision Processes, where
-              I introduce the agent that is able to take actions in order to
-              increase the likelihood of entering states with higher returns.
-              This will be essentially what RL really is, a way for an agent to
-              learn which actions give him the highest likelihood of
-              transitioning to states with the highest return.
+              Later Markov Reward Processes will be extended to Markov Decision
+              Processes, where the agent is introduced, and this agent is able
+              to take actions in order to increase the likelihood of entering
+              states with higher returns. This will be the core idea of RL,
+              building the best algorithm for an agent to learn which actions
+              give it the highest likelihood of transitioning to states with the
+              highest return.
               <br />
             </p>
           </section>
