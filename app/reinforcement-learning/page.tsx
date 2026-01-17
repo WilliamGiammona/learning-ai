@@ -1087,9 +1087,9 @@ export default function ReinforcementLearningPage() {
               (pocket) as the Latin word <em>sinus</em>, which also means
               "pocket". Finally, in the 1590s, English mathematician Thomas Fale
               borrowed the Latin <em>sinus</em> into English as "sine", and
-              that's the word we still use today, completely divorced from its
-              original meaning of "bowstring", because of centuries of
-              convention.
+              that's the word we still use today, instead of using the words
+              bowstring and co-bowstring (which make much more sense) because of
+              centuries of convention.
             </p>
             <p className="mb-4">
               <br />
@@ -1106,8 +1106,8 @@ export default function ReinforcementLearningPage() {
               lies with 18th-century mathematician Leonhard Euler and one
               influential book. Welsh mathematician William Jones first
               introduced the symbol π in 1706 to represent the ratio of
-              circumference to diameter. But it was Euler who popularized it -
-              and here's the interesting part:{" "}
+              circumference to diameter. But it was Euler who popularized it,
+              however{" "}
               <strong>
                 Euler actually used both values pragmatically depending on what
                 he was working with.
@@ -1124,7 +1124,7 @@ export default function ReinforcementLearningPage() {
               depending on the mathematical context.
               <br />
               <br />
-              Then in 1748, Euler published his hugely influential textbook{" "}
+              Then in 1748, Euler published his famous calculus book{" "}
               <em>Introductio in Analysin Infinitorum</em> (Introduction to the
               Analysis of the Infinite). In the book, he happened to be working
               with diameter based formulas, so he used π = 3.14... This textbook
@@ -1134,12 +1134,12 @@ export default function ReinforcementLearningPage() {
               <br />
               However, instead of following Euler's pragmatic approach of
               switching between values based on context, later mathematicians
-              simply adopted the π = 3.14... from this influential book as the
-              universal standard for everything. They stopped adjusting based on
-              whether they were working with radius or diameter. That's why
-              we're now stuck with the unit circle looking like this: instead of
-              this: along with many other confusing and inelegant complications
-              when using a diameter based constant for radius based problems.
+              simply adopted the π = 3.14... his book as the universal standard
+              for everything. They stopped adjusting based on whether they were
+              working with radius or diameter. That's why we're now stuck with
+              the unit circle looking like this: instead of this: along with
+              many other confusing and inelegant complications when using a
+              diameter based constant for radius based problems.
               <br />
               <br />
               Euler's flexible approach was, of course, the sensible approach,
