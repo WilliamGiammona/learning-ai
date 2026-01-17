@@ -1133,7 +1133,7 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb4">
               <strong id="the-state" className="block text-center">
-                The History Of The Inertia Of Bad Conventions
+                The History of The Inertia of Bad Conventions
               </strong>
               <br />
               So, Why would anyone ever use convention 2 when convention 1 is so
