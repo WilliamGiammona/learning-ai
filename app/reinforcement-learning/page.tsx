@@ -818,6 +818,19 @@ export default function ReinforcementLearningPage() {
               </em>
               . Anything before that is just extra unnecessary baggage.
             </p>
+            <p className="mb-4">
+              In chess, this is very intuitive. The current board position
+              (where each piece currently is on the board) is the state that has
+              the Markov Property. You don&apos;t need to know how the pieces
+              got there, how many blunders were made, or how confident the
+              players felt on move 12. All that matters for deciding the next
+              move is the position in front of you right now. Two games that
+              arrive at the same board position are, from the agent&apos;s
+              perspective, the same situation. That board position is a
+              compressed summary of the entire history of the game, and it
+              contains everything the agent needs to decide what move (action)
+              to make next.
+            </p>
             <p className="mb=4">
               The two fundamental objects in any Markov Process are:
               <br />
