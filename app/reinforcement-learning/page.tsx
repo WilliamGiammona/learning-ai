@@ -1148,10 +1148,9 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb=4">
               I think you can see where I'm going with this. There are many
-              areas of mathematics where we use notation that, while
-              mathematically equivalent, may be less intuitive for learners
-              simply because of convention. The reward at timestep t+1
-              convention (Convention 2) is now standard in RL for similar
+              areas of mathematics where notation is used that is less intuitive
+              for learners simply because of convention. The reward at timestep
+              t+1 convention (Convention 2) is now standard in RL for similar
               historical reasons, i.e. because it appeared in the most
               influential textbook (Sutton & Barto) in the 90s and everyone
               adopted it.
