@@ -1007,7 +1007,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               Putting it together: "The reward for state s equals the{" "}
-              <em>expected </em>
+              <em>expected</em>
               reward you'll receive at the next time step, given that you're
               currently in state s."
               <br />
