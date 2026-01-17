@@ -1110,23 +1110,24 @@ export default function ReinforcementLearningPage() {
               patient and considerate of long-term consequences.
               <br />
               <br />
-              To recap, the reward function R<sub>s</sub> tells us the expected
-              immediate reward for being in state s (The value function which
-              will be discussed later gives us the TOTAL expected reward per
-              state under a specific policy). Note that it&apos;s written as an
-              expectation E[...] because rewards can be stochastic
-              (probabilistic), sometimes you receive different rewards from the
-              same state. The discount factor γ determines how much we value
-              future rewards. Together with the states and transitions from our
-              Markov Process, these four components fully specify the
-              environment. We now have a way to meaningfully categorize aspects
-              of the environment (states), probability functions on the
-              probability of going from one particular state to another, and
-              rewards the environment gives for each state. Remember though,
-              there are two characters in our story, the environment AND the
-              agent, and the agent also gets to take actions in states that
-              influence the probability of transitioning to subsequent states
-              (This is what we will look at in the MDP section).
+              To recap, the reward function R<sub>s</sub> = E[R<sub>t+1</sub> |
+              S<sub>t</sub> = s] tells us the expected immediate reward for
+              being in state s (The value function which will be discussed later
+              gives us the TOTAL expected reward per state under a specific
+              policy). Note that it&apos;s written as an expectation E[...]
+              because rewards can be stochastic (probabilistic), sometimes you
+              receive different rewards from the same state. The discount factor
+              γ determines how much we value future rewards. Together with the
+              states and transitions from our Markov Process, these four
+              components fully specify the environment. We now have a way to
+              meaningfully categorize aspects of the environment (states),
+              probability functions on the probability of going from one
+              particular state to another, and rewards the environment gives for
+              each state. Remember though, there are two characters in our
+              story, the environment AND the agent, and the agent also gets to
+              take actions in states that influence the probability of
+              transitioning to subsequent states (This is what we will look at
+              in the MDP section).
             </p>
             <p className="mb4">
               <strong id="the-state" className="block text-center">
