@@ -794,12 +794,11 @@ export default function ReinforcementLearningPage() {
               <br />
               Ok, enough history, now back to the mathematics. A quick note,
               Markov created the Markov Chain, described in the history section
-              above, which deals with discrete (countable) space. When you
-              include discrete AND continuous space, its called a "Markov
-              Process." One of the most central ideas of a Markov Process is
-              that it follows the Markov Property, which says that the future
-              depends only on the present, not on the entire past. In math form,
-              it looks like this:
+              above, which deals with discrete (countable) time. When you deal
+              with continuous time, its called a "Markov Process." One of the
+              most central ideas of a Markov Process is that it follows the
+              Markov Property, which says that the future depends only on the
+              present, not on the entire past. In math form, it looks like this:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -835,12 +834,14 @@ export default function ReinforcementLearningPage() {
               The two fundamental objects in any Markov Process are:
               <br />
               1) The state - a compression of all important dependent
-              information in the history up to that point
+              information in the history up to that point (think of the chess
+              board position at any point in the game)
               <br />
               2) The transition probability - represented as a matrix for
               discrete states or a probability distribution for continuous
               states, that tells you the probability of going from one state to
-              the next
+              the next (Think of the likelihood it will continue being cloudy at
+              any point during the day)
               <br />
               <br />
               Formally, a <strong>Markov Process</strong> is defined as a tuple
