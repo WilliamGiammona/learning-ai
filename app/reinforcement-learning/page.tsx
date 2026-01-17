@@ -1015,13 +1015,13 @@ export default function ReinforcementLearningPage() {
               Two important notes: First, the expectation (average) E[...] is
               there because rewards can be stochastic (random). You might not
               always get exactly the same reward from the same state. Sometimes
-              you may get 10, sometimes 12,. R<sub>s</sub> is simply the average
+              you may get 10, sometimes 12. R<sub>s</sub> is simply the average
               reward from a state.
               <br />
               <br />
               Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
               <sub>t</sub> (current time step). Why this confusing notation
-              instead of just having the reward come at time t (R<sub>t</sub>)?
+              instead of just having R<sub>t</sub> (the reward come at time t)?
               The answer is that there are actually two conventions, which are
               mathematically equivalent, listed below:
               <br />
@@ -1030,7 +1030,7 @@ export default function ReinforcementLearningPage() {
                 Convention 1 (more intuitive): Reward is a property of states
               </strong>
               <br />
-              You enter state s at time t and immediately receive reward: R
+              You enter state s at time t and immediately receive the reward: R
               <sub>t</sub>
               = R(s), like in a video game where you step on a tile and
               instantly get points.
@@ -1136,24 +1136,24 @@ export default function ReinforcementLearningPage() {
               "bowstring," to describe what we now call the sine function. This
               made sense geometrically because the arc of a circle looks like a
               bow, and the chord (or half-chord) connecting its endpoints looks
-              like the bowstring.
+              like the bowstring. A common synonym of jyā was, <em>jīvá</em>,
+              which is the word that ended up being used.
               <br />
               <br />
-              When Arab scholars translated these Indian mathematical texts,
-              they transliterated the Sanskrit word <em>jīvá</em> (a synonym of
-              jyā) into Arabic as <em>jiba</em> (جيب). Arabic is written without
-              short vowels, so <em>jiba</em> was written simply as the
-              consonants "j-y-b" (جيب). Later Arab scholars who didn&apos;t know
-              this was a transliterated technical term read these same
-              consonants as <em>jayb</em> (جيب), a common Arabic word meaning
-              "pocket."
+              When 8th century Persian and Arab scholars translated these Indian
+              mathematical texts, they transliterated jīvá into Arabic as{" "}
+              <em>jiba</em> (جيب). Arabic is written without short vowels, so{" "}
+              <em>jiba</em> was written simply as the consonants "j-b" (جب).
               <br />
               <br />
-              In the 12th century, when European scholars translated Arabic
-              mathematical texts into Latin, they translated <em>jayb</em>{" "}
-              (pocket) as the Latin word <em>sinus</em>, which also means
-              "pocket". Finally, in 1593, English mathematician Thomas Fale
-              borrowed the Latin <em>sinus</em> into English as "sine", and
+              In the 12th century, when European scholars translated the famous
+              al-Kitāb al-Mukhtaṣar fī Ḥisāb al-Jabr wal-Muqābalah (which is
+              where we get algebra [al-Jabr] from) book into Latin, they thought
+              that jb referred to the arabic word jayb (جيب), which meant
+              pocket, and so translated it as the Latin word <em>sinus</em>,
+              Latin for "pocket". Finally, in 1593, in his only known
+              publication, Horologiographia, English mathematician Thomas Fale
+              converted the Latin <em>sinus</em> into English as "sine", and
               that&apos;s the word we still use today, instead of using the
               words bowstring and co-bowstring (which make much more sense)
               because of centuries of convention.
