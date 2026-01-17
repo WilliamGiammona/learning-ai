@@ -129,6 +129,14 @@ export default function ReinforcementLearningPage() {
                       Markov Reward Process
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#history-of-bad-conventions"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      History of Bad Conventions
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -1132,8 +1140,11 @@ export default function ReinforcementLearningPage() {
               in the MDP section).
             </p>
             <p className="mb4">
-              <strong id="the-state" className="block text-center">
-                The History of The Inertia of Bad Conventions
+              <strong
+                id="history-of-bad-conventions"
+                className="block text-center"
+              >
+                The History of Bad Conventions
               </strong>
               <br />
               So, Why would anyone ever use convention 2 when convention 1 is so
