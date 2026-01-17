@@ -834,8 +834,8 @@ export default function ReinforcementLearningPage() {
               The two fundamental objects in any Markov Process are:
               <br />
               1) The state - a compression of all important dependent
-              information in the history up to that point (think of the chess
-              board position at any point in the game)
+              information in the history up to that point (think of the weather
+              at any particular point in time during the day)
               <br />
               2) The transition probability - represented as a matrix for
               discrete states or a probability distribution for continuous
@@ -1220,20 +1220,21 @@ export default function ReinforcementLearningPage() {
               <br />
               Now we need the expectation E[...] because from state s, many
               different things can happen:
-              <ul className="list-disc ml-8 mb-4">
-                <li>
-                  The transition probabilities might send you to different next
-                  states
-                </li>
-                <li>
-                  The rewards might be stochastic (sometimes +5, sometimes +3
-                  from the same state)
-                </li>
-                <li>
-                  Each possible path forward has its own G<sub>t</sub>
-                </li>
-              </ul>
-              <br />
+            </p>
+            <ul className="list-disc ml-8 mb-4">
+              <li>
+                The transition probabilities might send you to different next
+                states
+              </li>
+              <li>
+                The rewards might be stochastic (sometimes +5, sometimes +3 from
+                the same state)
+              </li>
+              <li>
+                Each possible path forward has its own G<sub>t</sub>
+              </li>
+            </ul>
+            <p>
               <strong>Example:</strong> You're in state s with discount factor
               γ=0.9. From s, there's a 50% chance to go to state A (which gives
               reward +10) and 50% chance to go to state B (which gives reward
