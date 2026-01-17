@@ -1031,8 +1031,8 @@ export default function ReinforcementLearningPage() {
               <br />
               You enter state s at time t and immediately receive reward: R
               <sub>t</sub>
-              = R(s). Like in a video game: you step on a tile and instantly get
-              points.
+              = R(s), like in a video game where you step on a tile and
+              instantly get points.
               <br />
               <br />
               <strong>
@@ -1040,9 +1040,9 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               You're in state s at time t, you transition to the next state, you
-              receive reward R<sub>t+1</sub>, and now you're in state s' at time
-              t+1. This is the convention I&apos;m using with the R
-              <sub>t+1</sub> | S<sub>t</sub> = s notation.
+              receive reward R<sub>t+1</sub>, and at the exact same time you're
+              in state s' at time t+1. This is the convention I&apos;m using
+              with the R<sub>t+1</sub> | S<sub>t</sub> = s notation.
               <br />
               <br />
               Both conventions are mathematically equivalent. I&apos;m using
@@ -1056,10 +1056,10 @@ export default function ReinforcementLearningPage() {
               state, while Convention 2 gives it to you as you leave (indexed at
               the next time step). But wait! For convention 2, if you only get
               the reward after leaving a state, then for the last state in an
-              episode (the terminal state), you won&apos;t get the reward b/c
-              the episode will end before you ever leave that last state (thus
-              not getting the reward for the last state). Because of this, the
-              reward from convention 1 and convention 2 won&apos;t equal
+              episode (the terminal state), you won&apos;t get the reward
+              because the episode will end before you ever leave that last state
+              (thus not getting the reward for the last state). Because of this,
+              the reward from convention 1 and convention 2 won&apos;t equal
               eachother right?? No, not right. There is a special rule for
               convention 2 that covers the case for terminal states (states that
               are either at the end of an episode, or that you never leave
