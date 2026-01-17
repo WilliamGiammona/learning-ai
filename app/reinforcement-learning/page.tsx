@@ -1012,10 +1012,11 @@ export default function ReinforcementLearningPage() {
               currently in state s."
               <br />
               <br />
-              Two important notes: First, the expectation E[...] is there
-              because rewards can be stochastic (random). You might not always
-              get exactly the same reward from the same state - maybe sometimes
-              you get 10, sometimes 12. R<sub>s</sub> is the average.
+              Two important notes: First, the expectation (average) E[...] is
+              there because rewards can be stochastic (random). You might not
+              always get exactly the same reward from the same state. Sometimes
+              you may get 10, sometimes 12,. R<sub>s</sub> is simply the average
+              reward from a state.
               <br />
               <br />
               Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
