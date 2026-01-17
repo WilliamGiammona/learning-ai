@@ -1048,9 +1048,10 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb=4">
               First, let's look at how we got the names sine and cosine (from
-              the latin sinus meaning pocket) for trigonometry when they seem to
+              the Latin sinus meaning pocket) for trigonometry when they seem to
               have no relation at all to the unit circle or length in general.
-              <br />A good summary can be found here:
+              <br />
+              A good summary can be found here:
               <br />
               <br />
               <Link
@@ -1062,6 +1063,98 @@ export default function ReinforcementLearningPage() {
               </Link>
               <br />
               <br />
+              The story of how "sine" got its name involves a fascinating series
+              of mistranslations across cultures. It began with Indian
+              mathematicians around the 5th-6th century AD (like Aryabhata) who
+              used the Sanskrit word <strong>jyā</strong> (ज्या), meaning
+              "bowstring," to describe what we now call the sine function. This
+              made sense geometrically because the arc of a circle looks like a
+              bow, and the chord (or half-chord) connecting its endpoints looks
+              like the bowstring.
+              <br />
+              <br />
+              When Arab scholars translated these Indian mathematical texts,
+              they transliterated the Sanskrit word <em>jīvá</em> (a synonym of
+              jyā) into Arabic as <em>jiba</em> (جيب). Arabic is written without
+              short vowels, so <em>jiba</em> was written simply as the
+              consonants "j-y-b" (جيب). Later Arab scholars who didn't know this
+              was a transliterated technical term read these same consonants as{" "}
+              <em>jayb</em> (جيب), a common Arabic word meaning "pocket."
+              <br />
+              <br />
+              In the 12th century, when European scholars translated Arabic
+              mathematical texts into Latin, they translated <em>jayb</em>{" "}
+              (pocket) as the Latin word <em>sinus</em>, which also means
+              "pocket". Finally, in the 1590s, English mathematician Thomas Fale
+              borrowed the Latin <em>sinus</em> into English as "sine", and
+              that's the word we still use today, completely divorced from its
+              original meaning of "bowstring", because of centuries of
+              convention.
+            </p>
+            <p className="mb-4">
+              <br />
+              There's an ongoing debate in mathematics about whether we should
+              use π = 3.14159... or τ (tau) = 6.28318... as our fundamental
+              circle constant. Many mathematicians argue that τ makes more sense
+              because it represents the ratio of a circle's circumference to its{" "}
+              <em>radius</em> (C = τr), which would make many formulas cleaner.
+              A full circle would simply be τ radians instead of 2π radians, a
+              quarter circle would be τ/4 instead of π/2, and so on.
+              <br />
+              <br />
+              So why do we use π = 3.14159... universally instead? The answer
+              lies with 18th-century mathematician Leonhard Euler and one
+              influential book. Welsh mathematician William Jones first
+              introduced the symbol π in 1706 to represent the ratio of
+              circumference to diameter. But it was Euler who popularized it -
+              and here's the interesting part:{" "}
+              <strong>
+                Euler actually used both values pragmatically depending on what
+                he was working with.
+              </strong>
+              <br />
+              <br />
+              When Euler was working with problems involving{" "}
+              <strong>diameter</strong>, he used π = 3.14... (circumference to
+              diameter ratio). When he was working with problems involving{" "}
+              <strong>radius</strong>, he used π = 6.28... (circumference to
+              radius ratio). This makes perfect sense, use whichever constant is
+              most convenient for the problem at hand! In different works
+              throughout the 1720s-1740s, you can find him using both values
+              depending on the mathematical context.
+              <br />
+              <br />
+              Then in 1748, Euler published his hugely influential textbook{" "}
+              <em>Introductio in Analysin Infinitorum</em> (Introduction to the
+              Analysis of the Infinite). In the book, he happened to be working
+              with diameter based formulas, so he used π = 3.14... This textbook
+              became one of the most important mathematical works of the 18th
+              century, widely read and studied across Europe.
+              <br />
+              <br />
+              However, instead of following Euler's pragmatic approach of
+              switching between values based on context, later mathematicians
+              simply adopted the π = 3.14... from this influential book as the
+              universal standard for everything. They stopped adjusting based on
+              whether they were working with radius or diameter. That's why
+              we're now stuck with the unit circle looking like this: instead of
+              this: along with many other confusing and inelegant complications
+              when using a diameter based constant for radius based problems.
+              <br />
+              <br />
+              Euler's flexible approach was, of course, the sensible approach,
+              but we continue to have a standardized value because of centuries
+              of convention.
+            </p>
+            <p className="mb=4">
+              I think you can see where I'm going with this. There are many
+              areas of mathematics where we use notation that, while
+              mathematically equivalent, may be less intuitive for learners
+              simply because of convention. The reward at timestep t+1
+              convention (Convention 2) is now standard in RL for similar
+              historical reasons, i.e. because it appeared in the most
+              influential textbook (Sutton & Barto) in the 90s and everyone
+              adopted it.
             </p>
           </section>
         </main>
