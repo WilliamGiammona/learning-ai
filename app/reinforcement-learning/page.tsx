@@ -1065,10 +1065,6 @@ export default function ReinforcementLearningPage() {
               <br />
             </p>
             <p className="mb4">
-              <strong className="block text-center">
-                The History of Bad Conventions
-              </strong>
-              <br />
               So, Why would anyone ever use convention 2 when convention 1 is so
               much easier? People should just adopt convention 1 right? To
               answer this, lets look at the history of how we came up with the
