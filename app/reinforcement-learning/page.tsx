@@ -1574,15 +1574,24 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               This equation says: the value of state s equals the immediate
-              reward R<sub>s</sub> we get from being in state s, plus the
-              discounted sum of the values of all possible next states s&apos;,
-              each weighted by the probability P<sub>ss&apos;</sub> of
-              transitioning to that state. The summation Σ<sub>s&apos;∈S</sub>{" "}
-              means we&apos;re adding up the contributions from every possible
-              next state in the state space S. This is the concrete, calculable
-              form of the Bellman Equation—it tells us exactly how to compute
-              v(s) using only the immediate reward, the transition
-              probabilities, and the values of the neighboring states.
+              reward R<sub>s</sub> plus a weighted sum over all possible next
+              states. Here&apos;s how to compute it step by step:
+              <br />
+              <br />
+              1) Look at the first possible next state, s&apos;, you can
+              transition to from s
+              <br />
+              2) Find its discounted value γv(s&apos;)
+              <br />
+              3) Multiply it by P<sub>ss&apos;</sub>, the probability of
+              transitioning from s to s&apos; (given in the transition matrix P)
+              <br />
+              4) Repeat steps 1-3 for every other possible next state s&apos;
+              <br />
+              5) Add all these weighted values together
+              <br />
+              6) Finally, add the immediate reward R<sub>s</sub> you get from
+              being in state s
             </p>
           </section>
         </main>
