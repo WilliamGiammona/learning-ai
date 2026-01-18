@@ -1882,10 +1882,9 @@ export default function ReinforcementLearningPage() {
               policies and actions, we now have two types of Bellman Equations
               for MDPs: the <strong>Bellman Expectation Equation</strong> and
               the <strong>Bellman Optimality Equation</strong>. The Bellman
-              Expectation Equation tells us how to evaluate a specific policy π
-              (which we&apos;ll cover now), while the Bellman Optimality
-              Equation tells us how to find the best possible policy (which
-              we&apos;ll cover later).
+              Expectation Equation tells us how to evaluate a specific policy π,
+              while the Bellman Optimality Equation tells us how to find the
+              best possible policy.
               <br />
               <br />
               <strong>For the state-value function:</strong>
