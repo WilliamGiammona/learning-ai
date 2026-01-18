@@ -1600,8 +1600,9 @@ export default function ReinforcementLearningPage() {
               each individual state separately, we can organize all the state
               values into a column vector
               <strong> v</strong>, where each entry corresponds to one
-              state&apos;s value. Similarly, we organize all the immediate
-              rewards into a column vector
+              state&apos;s value. We multiply v by the identity matrix.
+              Similarly, we organize all the immediate rewards into a column
+              vector
               <strong> R</strong>. The transition probabilities, which tell us
               how likely we are to move from any state to any other state, form
               a matrix <strong>P</strong>. With this setup, the Bellman Equation
@@ -1609,7 +1610,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <span className="block font-mono text-center">
-                <strong>v</strong> = <strong>R</strong> + γ<strong>P</strong>
+                <strong>Iv</strong> = <strong>R</strong> + γ<strong>P</strong>
                 <strong>v</strong>
               </span>
               <br />
@@ -1623,7 +1624,7 @@ export default function ReinforcementLearningPage() {
               because it transforms our problem into a system of linear
               equations that we can solve directly in the following way:
               <span className="block font-mono text-center mt-4">
-                <strong>v</strong> - γ<strong>Pv</strong> = <strong>R</strong>
+                <strong>Iv</strong> - γ<strong>Pv</strong> = <strong>R</strong>
               </span>
               <br />
               <span className="block font-mono text-center">
