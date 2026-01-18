@@ -2118,9 +2118,9 @@ export default function ReinforcementLearningPage() {
               </strong>
               So far we&apos;ve been evaluating specific policies, "how good is
               this PARTICULAR strategy?" But the ultimate goal in RL is to find
-              the <strong>best possible policy</strong> "what is the BEST
-              strategy". This brings us to optimal value functions, which tell
-              us the maximum value achievable in any state or state-action pair.
+              the <em>best possible policy</em> "what is the BEST strategy".
+              This brings us to optimal value functions, which tell us the
+              maximum value achievable in any state or state-action pair.
               <br />
               <br />
               The <strong>optimal state-value function</strong> v<sub>*</sub>(s)
@@ -2135,11 +2135,10 @@ export default function ReinforcementLearningPage() {
               <strong>Chess analogy:</strong> v<sub>*</sub>(s) tells you the
               value of a position assuming you play <em>perfectly</em> from that
               point onwards. It doesn&apos;t matter what strategy you were
-              following before—v<sub>*</sub>
-              asks "what&apos;s the best I can possibly do from here?" A
-              position where you&apos;re up a queen has a very high v
-              <sub>*</sub> because even the best possible play from your
-              opponent probably can&apos;t stop you from winning.
+              following before, v<sub>*</sub> asks "what&apos;s the best I can
+              possibly do from here?" A position where you&apos;re up a queen
+              has a very high v<sub>*</sub> because even the best possible play
+              from your opponent probably can&apos;t stop you from winning.
               <br />
               <br />
               The <strong>optimal action-value function</strong> q<sub>*</sub>
@@ -2152,21 +2151,22 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> q<sub>*</sub>(s,a) tells you the
-              value of a specific move assuming you play perfectly afterwards.
-              It answers: "If I make this move, and then play optimally from the
-              resulting position, what&apos;s my expected outcome?" Even if
-              moving your knight to e5 seems like a random choice, q<sub>*</sub>{" "}
-              evaluates what happens if you make that move and then play like a
-              grandmaster for the rest of the game.
+              value of playing a specific move in a position, s, assuming you
+              play perfectly afterwards. It answers: "If I make this move, and
+              then play optimally from the resulting position, what&apos;s my
+              expected outcome?" Even if moving your knight to e5 seems like a
+              random choice, q<sub>*</sub> evaluates what happens if you make
+              that move and then play even better than Bobby Fishcer for the
+              rest of the game.
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
               specifies the best possible performance in the MDP. Once we know v
               <sub>*</sub> or q<sub>*</sub>, we&apos;ve essentially "solved" the
-              MDP—we know exactly how good each state and action can possibly
-              be. The challenge is computing these optimal values, which
-              we&apos;ll tackle with the Bellman Optimality Equation in the next
-              section.
+              MDP, i.e. we know exactly how good each state and action can
+              possibly be. The challenge is computing these optimal values,
+              which we&apos;ll tackle with the Bellman Optimality Equation
+              later.
             </p>
           </section>
         </main>
