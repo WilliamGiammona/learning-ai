@@ -2009,7 +2009,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <span className="block font-mono text-center">
                 q<sub>π</sub>(s, a) = R<sub>s</sub>
-                <sup>a</sup> + γ Σ<sub>s&apos;∈S</sub> P<sub>ss&apos;</sub>
+                <sup>a</sup> + γ Σ<sub>s&apos;</sub> P<sub>ss&apos;</sub>
                 <sup>a</sup>v<sub>π</sub>(s&apos;)
               </span>
               <br />
@@ -2087,11 +2087,11 @@ export default function ReinforcementLearningPage() {
                 className="mx-auto my-4"
               />
               <br />
-              Starting from state-action pair (s,a) (top dark circle—we&apos;ve
-              chosen action a), the environment transitions us to possible next
-              states s&apos; (middle light circles), and then from each s&apos;,
-              our policy considers possible next actions a&apos; (bottom dark
-              circles). This gives us:
+              Starting from state-action pair (s,a) (top dark circle where
+              we&apos;ve chosen action a), the environment transitions us to
+              possible next states s&apos; (middle light circles), and then from
+              each s&apos;, our policy considers possible next actions a&apos;
+              (bottom dark circles). This gives us:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -2106,18 +2106,10 @@ export default function ReinforcementLearningPage() {
               knight to e5. Your opponent responds, creating various positions.
               From each position, your strategy determines your next move. The
               value of "knight to e5" is: (immediate reward) + (average over
-              opponent responses of: the value of your follow-up moves in each
-              resulting position). This is also a two-step lookahead: your move
-              → opponent&apos;s response → your next move.
-              <br />
-              <br />
-              <strong>Why this matters:</strong> These complete equations show
-              the full recursive structure. Notice that v<sub>π</sub>(s) is
-              defined in terms of v<sub>π</sub>(s&apos;), and q<sub>π</sub>(s,a)
-              is defined in terms of q<sub>π</sub>(s&apos;,a&apos;). This is the
-              essence of dynamic programming—we can compute values iteratively
-              by repeatedly applying these backup operations until they converge
-              to the true values under policy π.
+              opponent responses i.e. all the s' states, and then the value of
+              your follow up moves in each of these hypothetical resulting
+              position). This is also a two-step lookahead: your move →
+              opponent&apos;s response → your next move.
             </p>
           </section>
         </main>
