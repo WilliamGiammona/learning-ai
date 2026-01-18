@@ -2162,12 +2162,13 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
-              specifies the best possible performance in the MDP. Once we know v
-              <sub>*</sub> or q<sub>*</sub>, we&apos;ve essentially "solved" the
-              MDP, i.e. we know exactly how good each state and action can
-              possibly be. The challenge is computing these optimal values,
-              which we&apos;ll tackle with the Bellman Optimality Equation
-              later.
+              specifies the best possible performance in the MDP. Once we know q
+              <sub>*</sub>, we&apos;ve essentially "solved" the MDP, i.e. we
+              know exactly how good each state-action can possibly be, and
+              therefore we know exactly which action to take in any state in
+              order to maximize total reward. The challenge is computing these
+              optimal values, which we&apos;ll tackle with the Bellman
+              Optimality Equation later.
             </p>
           </section>
         </main>
