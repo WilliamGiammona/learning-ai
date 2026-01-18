@@ -138,6 +138,14 @@ export default function ReinforcementLearningPage() {
                       Introduction to Bellman Equation
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#mdp"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Markov Decision Process
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -557,8 +565,7 @@ export default function ReinforcementLearningPage() {
               diving into learning RL. Next, I will discuss Markov Decision
               Processes in detail.
             </p>
-          </section>
-          <section id="markov-decision-process" className="mb-12">
+
             <h1 className="text-3xl font-bold mb-6 text-center">
               Markov Decision Process
             </h1>
@@ -1643,6 +1650,24 @@ export default function ReinforcementLearningPage() {
               Matrix inversion is computationally expensive for large state
               spaces (O(n³) complexity for n states), but more efficient
               iterative methods will be discussed in later sections.
+            </p>
+            <p className="mb-4">
+              <strong id="mdp" className="block text-center">
+                Markov Decision Process
+              </strong>
+            </p>
+            <p className="mb-4">
+              Now we are ready to talk about the full mathematical structure
+              that can describe reinforcement learning: the Markov Decision
+              Process. With a Markov Reward Process we could fully describe the
+              environment of RL, but there was still nothing to describe the
+              agent. An agent doesn't just exist in an environment, it can
+              actively choose to take actions that affect its probability of
+              ending up in a particular state. The way that the agent chooses
+              what actions to take in a given state is called the agent's
+              policy, and together with the transition dynamics of the
+              environment (matrix P), make up the total probability of an agent
+              going from state s to state s'
             </p>
           </section>
         </main>
