@@ -2216,7 +2216,7 @@ export default function ReinforcementLearningPage() {
               therefore we know exactly which action to take in any state in
               order to maximize total reward. The challenge is computing these
               optimal values, which we&apos;ll tackle with the Bellman
-              Optimality Equation later.
+              Optimality Equation.
             </p>
           </section>
         </main>
