@@ -2032,6 +2032,93 @@ export default function ReinforcementLearningPage() {
               represent chance nodes (where the environment decides based on
               transition probabilities).
             </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
+                The Complete Bellman Expectation Equations: Two Step Backup
+              </strong>
+              Now let&apos;s see what happens when we combine both relationships
+              into complete recursive equations. By substituting one equation
+              into the other, we can express each value function entirely in
+              terms of itself!
+              <br />
+              <br />
+              <strong>State-Value Full Backup:</strong>
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-v-q-together.png"
+                alt="Complete Bellman expectation equation for state-value showing two-step lookahead"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              Starting from state s (top light circle), we first consider all
+              possible actions our policy might choose (middle dark circles),
+              then for each action, we look at all possible next states s&apos;
+              (bottom light circles). This gives us:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v<sub>π</sub>(s) = Σ<sub>a</sub> π(a|s)(R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s&apos;</sub> P<sub>ss&apos;</sub>
+                <sup>a</sup>v<sub>π</sub>(s&apos;))
+              </span>
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> To evaluate your position, you
+              consider all moves your strategy might make (weighted by
+              probability). For each move, you look at all positions your
+              opponent might create (weighted by likelihood). The value is:
+              (immediate reward from moves) + (average value of resulting
+              positions). This is a two-step lookahead: position → your possible
+              moves → opponent&apos;s responses.
+              <br />
+              <br />
+              <strong>Action-Value Full Backup:</strong>
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-q-v-together.png"
+                alt="Complete Bellman expectation equation for action-value showing two-step lookahead"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              Starting from state-action pair (s,a) (top dark circle—we&apos;ve
+              chosen action a), the environment transitions us to possible next
+              states s&apos; (middle light circles), and then from each s&apos;,
+              our policy considers possible next actions a&apos; (bottom dark
+              circles). This gives us:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                q<sub>π</sub>(s, a) = R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s&apos;</sub> P<sub>ss&apos;</sub>
+                <sup>a</sup> Σ<sub>a&apos;</sub> π(a&apos;|s&apos;)q<sub>π</sub>
+                (s&apos;, a&apos;)
+              </span>
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> You&apos;ve decided to move your
+              knight to e5. Your opponent responds, creating various positions.
+              From each position, your strategy determines your next move. The
+              value of "knight to e5" is: (immediate reward) + (average over
+              opponent responses of: the value of your follow-up moves in each
+              resulting position). This is also a two-step lookahead: your move
+              → opponent&apos;s response → your next move.
+              <br />
+              <br />
+              <strong>Why this matters:</strong> These complete equations show
+              the full recursive structure. Notice that v<sub>π</sub>(s) is
+              defined in terms of v<sub>π</sub>(s&apos;), and q<sub>π</sub>(s,a)
+              is defined in terms of q<sub>π</sub>(s&apos;,a&apos;). This is the
+              essence of dynamic programming—we can compute values iteratively
+              by repeatedly applying these backup operations until they converge
+              to the true values under policy π.
+            </p>
           </section>
         </main>
       </div>
