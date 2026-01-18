@@ -1672,6 +1672,48 @@ export default function ReinforcementLearningPage() {
               2) The environment&apos;s dynamics (which were discussed in the
               Markov Reward Process section)
             </p>
+            <p className="mb-4">
+              Formally, a <strong>Markov Decision Process</strong> is defined as
+              a tuple (S, A, P, R, γ) where:
+              <br />
+              <br />• <strong>S</strong> is a finite set of states
+              <br />• <strong>A</strong> is a finite set of actions the agent
+              can take
+              <br />• <strong>P</strong> is the state transition probability
+              matrix, now action-dependent: P<sup>a</sup>
+              <sub>ss&apos;</sub> = P[S<sub>t+1</sub> = s&apos; | S<sub>t</sub>{" "}
+              = s, A<sub>t</sub> = a]
+              <br />
+              <br />
+              This reads as: "the probability of transitioning to state s&apos;
+              given that you&apos;re currently in state s AND you take action a"
+              <br />
+              <br />• <strong>R</strong> is the reward function, also now
+              action-dependent: R<sup>a</sup>
+              <sub>s</sub> = E[R<sub>t+1</sub> | S<sub>t</sub> = s, A
+              <sub>t</sub> = a]
+              <br />
+              <br />
+              This reads as: "the expected reward you receive given you&apos;re
+              in state s AND you take action a"
+              <br />
+              <br />• <strong>γ</strong> is the discount factor, γ ∈ [0,1], same
+              as before
+              <br />
+              <br />
+              The key difference from MRPs is that both P and R now depend on
+              the action taken, giving the agent control over the transition
+              dynamics and rewards through its choice of actions. Remember,
+              before P was entirely dependent on environment dynamics while in
+              state s, now it&apos;s a kind of combination with those dynamics
+              AND the action the agent takes. You can think of it as there
+              exists a separate matrix of transition probabilities for EACH
+              action you can take in a given state. Similarly, the reward R is
+              now dependent on both the state AND the action. Different actions
+              in the same state can yield different expected rewards (unlike
+              MRPs where the expected reward only dependen on the current state
+              you were in).
+            </p>
           </section>
         </main>
       </div>
