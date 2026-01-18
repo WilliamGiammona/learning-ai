@@ -1593,6 +1593,37 @@ export default function ReinforcementLearningPage() {
               6) Finally, add the immediate reward R<sub>s</sub> you get from
               being in state s
             </p>
+            <p className="mb-4">
+              The Bellman Equation becomes even more powerful when we express it
+              in matrix form, which allows us to solve for all state values
+              simultaneously using linear algebra. Instead of computing v(s) for
+              each individual state separately, we can organize all the state
+              values into a column vector
+              <strong> v</strong>, where each entry corresponds to one
+              state&apos;s value. Similarly, we organize all the immediate
+              rewards into a column vector
+              <strong> R</strong>. The transition probabilities, which tell us
+              how likely we are to move from any state to any other state, form
+              a matrix <strong>P</strong>. With this setup, the Bellman Equation
+              for the entire MRP can be written compactly as:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                <strong>v</strong> = <strong>R</strong> + γ<strong>P</strong>
+                <strong>v</strong>
+              </span>
+              <br />
+              <br />
+              This single matrix equation encodes the Bellman Equation for every
+              state at once. The matrix multiplication <strong>Pv</strong>{" "}
+              automatically computes the weighted sum of next-state values for
+              each state (exactly what the summation Σ<sub>s&apos;</sub> P
+              <sub>ss&apos;</sub>v(s&apos;) did), and adding <strong>R</strong>{" "}
+              gives us the immediate rewards. This formulation is crucial
+              because it transforms our problem into a system of linear
+              equations that we can solve directly using standard linear algebra
+              techniques.
+            </p>
           </section>
         </main>
       </div>
