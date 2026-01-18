@@ -1753,21 +1753,100 @@ export default function ReinforcementLearningPage() {
               given that it&apos;s currently in state s." There are two types of
               policies: deterministic policies and stochastic policies. A
               <strong> deterministic policy</strong> always chooses the same
-              action in a given state, π(a|s) equals 1 for one specific action
-              and 0 for all others. A <strong>stochastic policy</strong> assigns
-              probabilities to different actions in each state, for example,
-              π(a₁|s) = 0.7 and π(a₂|s) = 0.3 means there&apos;s a 70% chance of
-              taking action a₁ and a 30% chance of taking action a₂ when in
-              state s. The policy is what we ultimately want to learn in RL, the
-              best actions an agent can take to get the highest probability of
-              ending up in states that maximize its expected total reward.
+              action in a given state, there is no randomness. π(a|s) equals 1
+              for one specific action and 0 for all others. A{" "}
+              <strong>stochastic policy</strong> assigns probabilities to
+              different actions in each state, for example, π(a₁|s) = 0.7 and
+              π(a₂|s) = 0.3 means there&apos;s a 70% chance of taking action a₁
+              and a 30% chance of taking action a₂ when in state s. The policy
+              is what we ultimately want to learn in RL, the best actions an
+              agent can take to get the highest probability of ending up in
+              states that maximize its expected total reward.
             </p>
             <p className="mb-4">
-              I discussed value functions for MRPs in the MRP section, but there
-              was no way for the agent to make any decisions to affect the
-              likelihood of transitioning to different states (thereby affecting
-              overall reward). With MDPs, the value function is now entirely
-              dependent on
+              If the policy is the agent's “what should I do in this state?”
+              mechanism, then the value function is its “how good is this
+              state?” mechanism. The value function is the agent's prediction of
+              how much total reward it expects to collect in the future,
+              starting from a particular state. I already discussed value
+              functions for MRPs in the MRP section, but there was no way for
+              the agent to make any decisions to affect the likelihood of
+              transitioning to different states (thereby affecting overall
+              reward). With MDPs, the value function is now entirely dependent
+              on the agent's policy because your future reward given on a state
+              DEPENDS on what moves you are likely to make in future states.
+              Bobby Fischer would likely have a very different value function in
+              a given chess position than someone who just learned how to play
+              chess because Fischer is very likely to make different moves than
+              the person who just learned chess. Therefore instead of v(s) as we
+              wrote for the MRP, we now write v<sub>π</sub>(s), where π is the
+              policy.
+            </p>
+
+            <p className="mb-4">
+              MDPs have two value functions:
+              <br />
+              <br />
+              <strong>
+                1. State-Value Function v<sub>π</sub>(s)
+              </strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v<sub>π</sub>(s) = E<sub>π</sub>[G<sub>t</sub> | S<sub>t</sub> =
+                s]
+              </span>
+              <br />
+              <br />
+              The state-value function tells us the expected return (total
+              discounted reward) starting from state s and then following policy
+              π.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> Imagine you&apos;re looking at a
+              specific chess position. The state-value function answers: "If I
+              follow my usual strategy (policy) from this position onwards, how
+              good is my expected outcome?" A position where you&apos;re up a
+              queen might have a high value because following a reasonable
+              strategy from there typically leads to winning. A position where
+              you&apos;re down a queen has a very low value because your
+              strategy probably can&apos;t save you.
+              <br />
+              <br />
+              <strong>
+                2. Action-Value Function q<sub>π</sub>(s,a)
+              </strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                q<sub>π</sub>(s,a) = E<sub>π</sub>[G<sub>t</sub> | S<sub>t</sub>{" "}
+                = s, A<sub>t</sub> = a]
+              </span>
+              <br />
+              <br />
+              The action-value function tells us the expected return starting
+              from state s, taking action a, and then following policy π
+              afterwards.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> Now you&apos;re not just
+              evaluating the position, you&apos;re evaluating a specific move
+              from that position. The action-value function answers: "In the
+              position I'm in, if I make this particular move (like moving my
+              knight to e5), and then follow my usual strategy afterwards,
+              what&apos;s my expected outcome?" You might be in a good position
+              overall (high state value), but one specific move could be
+              terrible (low action value for that move) while another could be
+              excellent (high action value). The action-value function helps you
+              compare different moves from the same position.
+              <br />
+              <br />
+              <strong>Key difference:</strong> v<sub>π</sub>(s) tells you how
+              good a position is assuming you follow your policy, while q
+              <sub>π</sub>(s,a) tells you how good a specific move is from that
+              position, followed by your policy. In chess terms: state-value
+              evaluates positions, action-value evaluates moves in a given
+              position.
             </p>
           </section>
         </main>
