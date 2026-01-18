@@ -2118,9 +2118,10 @@ export default function ReinforcementLearningPage() {
               </strong>
               So far we&apos;ve been evaluating specific policies, "how good is
               this PARTICULAR strategy?" But the ultimate goal in RL is to find
-              the <em>best possible policy</em> "what is the BEST strategy".
-              This brings us to optimal value functions, which tell us the
-              maximum value achievable in any state or state-action pair.
+              the <em>best possible policy</em> "what is the BEST strategy that
+              will give me the most total cumulative reward". This brings us to
+              optimal value functions, which tell us the maximum value
+              achievable in any state or state-action pair.
               <br />
               <br />
               The <strong>optimal state-value function</strong> v<sub>*</sub>(s)
