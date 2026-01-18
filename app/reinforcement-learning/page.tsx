@@ -158,6 +158,20 @@ export default function ReinforcementLearningPage() {
             <h1 className="text-3xl font-bold mb-6 text-center">
               Introduction to Reinforcement Learning
             </h1>
+            <p className="mb-6">
+              The first nine lectures in this section are based on the excellent
+              Reinforcement Learning course by David Silver. You can find the
+              original course materials here at{" "}
+              <Link
+                href="https://davidstarsilver.wordpress.com/teaching/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline hover:text-blue-400"
+              >
+                David Silver&apos;s teaching page
+              </Link>
+              .
+            </p>
             <p className="mb-12">
               In this section I&apos;m going to talk about Reinforcement
               Learning, which is basically the art of teaching a computer how to
