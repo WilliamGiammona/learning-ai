@@ -1944,6 +1944,71 @@ export default function ReinforcementLearningPage() {
               <strong>Bellman Optimality Equation</strong>, which tells us
               "what&apos;s the value under the <em>best possible</em> strategy?"
             </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
+                Visualizing the Bellman Expectation Equations
+              </strong>
+              Let&apos;s visualize how these recursive relationships work using
+              tree diagrams.
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-qs.png"
+                alt="Bellman expectation equation for action-value function showing one-step lookahead"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              The diagram above shows the <strong>
+                action-value function
+              </strong>{" "}
+              q<sub>π</sub>(s,a). At the top, we have a state-action pair
+              (s,a)—we&apos;re in state s and we&apos;ve committed to taking
+              action a. After taking this action, the environment transitions us
+              to some next state s&apos; (shown at the bottom). The value of q
+              <sub>π</sub>(s,a) equals the immediate reward R<sub>s</sub>
+              <sup>a</sup> we get from this transition, plus the discounted sum
+              of the values of all possible next states s&apos;, weighted by
+              their transition probabilities P<sub>ss&apos;</sub>
+              <sup>a</sup>.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> You&apos;re evaluating moving your
+              knight to e5 (the action a from state s). After this move, your
+              opponent has several possible responses, leading to different
+              board positions (the various s&apos;). The value of your knight
+              move equals any immediate benefit (like threatening the queen)
+              plus the average value of the positions you might face next,
+              weighted by how likely each is to occur.
+              <br />
+              <br />
+              But notice something important: the diagram shows we&apos;re
+              computing q<sub>π</sub>(s,a) in terms of v<sub>π</sub>(s&apos;),
+              not q<sub>π</sub>(s&apos;,a&apos;). This is because once we reach
+              s&apos;, our policy π will determine which action to take next—we
+              don&apos;t need to know the specific action yet, just the value of
+              being in that state under our policy.
+              <br />
+              <br />
+              The equation shown is:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                q<sub>π</sub>(s, a) = R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s&apos;∈S</sub> P<sub>ss&apos;</sub>
+                <sup>a</sup>v<sub>π</sub>(s&apos;)
+              </span>
+              <br />
+              <br />
+              This relates the action-value function to the state-value
+              function. But we also need to relate the state-value function back
+              to action-values to complete the picture. That&apos;s where the
+              relationship between v<sub>π</sub> and q<sub>π</sub>
+              comes in, which we&apos;ll explore next with the full backup
+              diagrams.
+            </p>
           </section>
         </main>
       </div>
