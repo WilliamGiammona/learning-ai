@@ -1728,6 +1728,7 @@ export default function ReinforcementLearningPage() {
               MRPs where the expected reward only depended on the current state
               you were in).
             </p>
+
             <p className="mb-4">
               In order to talk about actions, I need to define what it means in
               an RL context for an agent to decide to take an action. In order
@@ -1736,8 +1737,8 @@ export default function ReinforcementLearningPage() {
               action it will take in a given state (or the probabilities for a
               set of available actions it can take in a given state). In chess,
               this is the part of the agent that looks at the board and decides,
-              “In this position, I'm going to move the knight to this square,”
-              or “I'm going to do something bold and probably regret it.”
+              "In this position, I'm going to move the knight to this square,"
+              or "I'm going to do something bold and probably regret it."
             </p>
 
             <p className="mb-4">
@@ -1759,10 +1760,25 @@ export default function ReinforcementLearningPage() {
               different actions in each state, for example, π(a₁|s) = 0.7 and
               π(a₂|s) = 0.3 means there&apos;s a 70% chance of taking action a₁
               and a 30% chance of taking action a₂ when in state s. The policy
-              is what we ultimately want to learn in RL, the best actions an
-              agent can take to get the highest probability of ending up in
-              states that maximize its expected total reward.
+              is what we ultimately want to learn in RL—the best actions an
+              agent can take to maximize its expected total reward.
             </p>
+
+            <p className="mb-4">
+              <strong>An important note:</strong> Once we fix a policy π, the
+              MDP behaves like an MRP. The transition probabilities become
+              policy-specific: P<sup>π</sup>
+              <sub>ss&apos;</sub> = Σ<sub>a</sub> π(a|s)P<sup>a</sup>
+              <sub>ss&apos;</sub>, and the rewards become policy-specific: R
+              <sup>π</sup>
+              <sub>s</sub> = Σ<sub>a</sub> π(a|s)R<sup>a</sup>
+              <sub>s</sub>. In other words, when the agent follows a specific
+              policy, the probabilities of transitioning between states and the
+              expected rewards are now determined by that policy combined with
+              the environment dynamics. This is why we could use the MRP Bellman
+              Equation earlier, once you fix a policy, an MDP reduces to an MRP!
+            </p>
+
             <p className="mb-4">
               If the policy is the agent's “what should I do in this state?”
               mechanism, then the value function is its “how good is this
