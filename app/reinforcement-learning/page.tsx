@@ -1568,7 +1568,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <span className="block font-mono text-center">
-                v(s) = R<sub>s</sub> + γ Σ<sub>s&apos;∈S</sub> P
+                v(s) = R<sub>s</sub> + γ Σ<sub>s&apos;</sub> P
                 <sub>ss&apos;</sub>v(s&apos;)
               </span>
               <br />
