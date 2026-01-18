@@ -146,6 +146,14 @@ export default function ReinforcementLearningPage() {
                       Markov Decision Process
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#bellman-expectation-equation"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Bellman Expectation Equation
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -1863,6 +1871,78 @@ export default function ReinforcementLearningPage() {
               position, followed by your policy. In chess terms: state-value
               evaluates positions, action-value evaluates moves in a given
               position.
+            </p>
+
+            <p id="bellman-expectation-equation" className="mb-4">
+              <strong className="block text-center mb-4">
+                Bellman Expectation Equation for MDPs
+              </strong>
+              Just like in MRPs, the value functions in MDPs can be decomposed
+              recursively using Bellman Equations. However, since MDPs involve
+              policies and actions, we now have two types of Bellman Equations
+              for MDPs: the <strong>Bellman Expectation Equation</strong> and
+              the <strong>Bellman Optimality Equation</strong>. The Bellman
+              Expectation Equation tells us how to evaluate a specific policy π
+              (which we&apos;ll cover now), while the Bellman Optimality
+              Equation tells us how to find the best possible policy (which
+              we&apos;ll cover later).
+              <br />
+              <br />
+              <strong>For the state-value function:</strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                v<sub>π</sub>(s) = E<sub>π</sub>[R<sub>t+1</sub> + γv
+                <sub>π</sub>(S<sub>t+1</sub>) | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <br />
+              This says: the value of being in state s under policy π equals the
+              expected immediate reward plus the discounted value of wherever
+              you end up next, when following policy π.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> The value of your current board
+              position equals: the immediate reward you get (maybe capturing a
+              piece) plus the discounted value of the position after your move,
+              assuming you continue playing according to your strategy. If your
+              strategy says "70% of the time move the knight, 30% of the time
+              move the bishop," then the value is the weighted average over
+              these possibilities.
+              <br />
+              <br />
+              <strong>For the action-value function:</strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                q<sub>π</sub>(s, a) = E<sub>π</sub>[R<sub>t+1</sub> + γq
+                <sub>π</sub>(S<sub>t+1</sub>, A<sub>t+1</sub>) | S<sub>t</sub> =
+                s, A<sub>t</sub> = a]
+              </span>
+              <br />
+              <br />
+              This says: the value of taking action a in state s under policy π
+              equals the expected immediate reward from taking that action plus
+              the discounted action-value of the next state-action pair, when
+              following policy π.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> The value of moving your knight to
+              e5 equals: any immediate reward from that move (like attacking the
+              queen) plus the discounted value of whatever move your strategy
+              tells you to make in the resulting position. Notice we&apos;re
+              looking ahead to the value of the <em>next move</em> (q at t+1) in
+              the next position, not solely the next position (v at t+1).
+              <br />
+              <br />
+              <strong>Important note:</strong> These are called "expectation"
+              equations because we&apos;re taking expectations under a{" "}
+              <em>specific policy</em> π. They tell us "how good is this state
+              (or state-action pair) under this current strategy I'm using?
+              (which might not be the best possible strategy that exists)"
+              Later, we&apos;ll learn about the{" "}
+              <strong>Bellman Optimality Equation</strong>, which tells us
+              "what&apos;s the value under the <em>best possible</em> strategy?"
             </p>
           </section>
         </main>
