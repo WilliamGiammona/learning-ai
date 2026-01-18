@@ -1665,9 +1665,10 @@ export default function ReinforcementLearningPage() {
               actively choose to take actions that affect its probability of
               ending up in a particular state. The way that the agent chooses
               what actions to take in a given state is called the agent's
-              policy, and together with the transition dynamics of the
-              environment (matrix P), make up the total probability of an agent
-              going from state s to state s'
+              policy. This gets combined with the transition dynamics of the
+              environment (matrix P from the MRP), to make up a new matrix P
+              which now gives the probability of an agent going from state s to
+              state s'
             </p>
           </section>
         </main>
