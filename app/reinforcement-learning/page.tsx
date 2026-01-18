@@ -2135,21 +2135,23 @@ export default function ReinforcementLearningPage() {
               policy is better.
               <br />
               <br />
-              <strong>Chess analogy:</strong> Think of Bobby Fischer versus any
-              other human chess player. Fischer's policy (his chess strategy) is
-              better because from <em>any</em>
-              board position you give him, he'll achieve an equal or better
-              expected outcome than the other player. It doesn't matter if the
-              position is a complex middlegame, an endgame with just a few
-              pieces, or a weird opening you've never seen - Fischer's superior
-              understanding means v<sub>Fischer</sub>(s) ≥ v
-              <sub>other player</sub>(s) for every position s. You can't
-              cherry-pick specific positions where the amateur does better;
-              Fischer dominates <em>everywhere</em>.
+              <strong>Chess analogy:</strong> Think of Bobby Fischer versus
+              inferior chess players (Soviet Grand Masters for instance).
+              Fischer's policy (his chess strategy) is better because from{" "}
+              <em>any</em> board position you give him, he'll achieve an equal
+              or better expected outcome than the Soviet Grand Master. It
+              doesn't matter if the position is a complex middlegame, an endgame
+              with just a few pieces, or a weird opening you've never seen,
+              Fischer just plays every move better, meaning v<sub>Fischer</sub>
+              (s) ≥ v<sub>SovietGrandMaster</sub>(s) for every position s. There
+              are no positions you can cherry pick specific positions where the
+              Soviet Grand Master does better. (Yes, I know Fischer wasn't
+              better than the Soviet Grand Masters in all positions, but it gets
+              the point across)
               <br />
               <br />
               This definition of "better" leads us naturally to ask: is there a
-              policy that's better than or equal to <em>all</em> other policies?
+              policy that's better than or equal to ALL other policies?
               Remarkably, the answer is yes! This brings us to optimal value
               functions.
             </p>
