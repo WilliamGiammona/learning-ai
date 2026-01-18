@@ -1734,8 +1734,14 @@ export default function ReinforcementLearningPage() {
               to do that, we need to learn about what a policy is. A policy
               fully defines the behavior of an agent, telling the agent what
               action it will take in a given state (or the probabilities for a
-              set of available actions it can take in a given state). Formally,
-              a policy π is a distribution over actions given states:
+              set of available actions it can take in a given state). In chess,
+              this is the part of the agent that looks at the board and decides,
+              “In this position, I'm going to move the knight to this square,”
+              or “I'm going to do something bold and probably regret it.”
+            </p>
+
+            <p className="mb-4">
+              Formally, a policy π is a distribution over actions given states:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -1755,6 +1761,13 @@ export default function ReinforcementLearningPage() {
               state s. The policy is what we ultimately want to learn in RL, the
               best actions an agent can take to get the highest probability of
               ending up in states that maximize its expected total reward.
+            </p>
+            <p className="mb-4">
+              I discussed value functions for MRPs in the MRP section, but there
+              was no way for the agent to make any decisions to affect the
+              likelihood of transitioning to different states (thereby affecting
+              overall reward). With MDPs, the value function is now entirely
+              dependent on
             </p>
           </section>
         </main>
