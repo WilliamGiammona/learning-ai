@@ -2153,7 +2153,11 @@ export default function ReinforcementLearningPage() {
               This definition of "better" leads us naturally to ask: is there a
               policy that's better than or equal to ALL other policies?
               Remarkably, the answer is yes! This brings us to optimal value
-              functions.
+              functions. (Please note you can have more than one optimal
+              policies that end up exactly equal to eachother at every state.
+              Think of some game where you need to pick up something and one
+              policy picks it up with your right hand and the other with your
+              left, both are equally good).
             </p>
 
             <p className="mb-4">
