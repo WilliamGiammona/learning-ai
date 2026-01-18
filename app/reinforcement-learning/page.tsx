@@ -1938,8 +1938,8 @@ export default function ReinforcementLearningPage() {
               equations because we&apos;re taking expectations under a{" "}
               <em>specific policy</em> π. They tell us "how good is this state
               (or state-action pair) under this current strategy I'm using?
-              (which might not be the best possible strategy that exists)"
-              Later, we&apos;ll learn about the{" "}
+              (which might not be the best possible strategy that exists)" Soon,
+              we&apos;ll learn about the{" "}
               <strong>Bellman Optimality Equation</strong>, which tells us
               "what&apos;s the value under the <em>best possible</em> strategy?"
             </p>
