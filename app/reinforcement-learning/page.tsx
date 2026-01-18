@@ -1621,8 +1621,22 @@ export default function ReinforcementLearningPage() {
               <sub>ss&apos;</sub>v(s&apos;) did), and adding <strong>R</strong>{" "}
               gives us the immediate rewards. This formulation is crucial
               because it transforms our problem into a system of linear
-              equations that we can solve directly using standard linear algebra
-              techniques.
+              equations that we can solve directly in the following way:
+              <span className="block font-mono text-center mt-4">
+                <strong>v</strong> - γ<strong>Pv</strong> = <strong>R</strong>
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                (<strong>I</strong> - γ<strong>P</strong>)<strong>v</strong> ={" "}
+                <strong>R</strong>
+              </span>
+              <br />
+              <span className="block font-mono text-center">
+                <strong>v</strong> = (<strong>I</strong> - γ<strong>P</strong>)
+                <sup>-1</sup> <strong>R</strong>
+              </span>
+              <br />
+              <br />
             </p>
           </section>
         </main>
