@@ -2156,7 +2156,7 @@ export default function ReinforcementLearningPage() {
               then play optimally from the resulting position, what&apos;s my
               expected outcome?" Even if moving your knight to e5 seems like a
               random choice, q<sub>*</sub> evaluates what happens if you make
-              that move and then play even better than Bobby Fishcer for the
+              that move and then play even better than Bobby Fischer for the
               rest of the game.
               <br />
               <br />
