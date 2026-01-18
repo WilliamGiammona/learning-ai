@@ -1663,12 +1663,14 @@ export default function ReinforcementLearningPage() {
               environment of RL, but there was still nothing to describe the
               agent. An agent doesn't just exist in an environment, it can
               actively choose to take actions that affect its probability of
-              ending up in a particular state. The way that the agent chooses
-              what actions to take in a given state is called the agent's
-              policy. This gets combined with the transition dynamics of the
-              environment (matrix P from the MRP), to make up a new matrix P
-              which now gives the probability of an agent going from state s to
-              state s'
+              ending up in a particular state. We now have two separate events
+              that affect the probability of going to s' from s:
+              <br />
+              <br />
+              1) The action the agent takes while in state s
+              <br />
+              2) The environment&apos;s dynamics (which were discussed in the
+              Markov Reward Process section)
             </p>
           </section>
         </main>
