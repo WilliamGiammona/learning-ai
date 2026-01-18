@@ -1711,7 +1711,7 @@ export default function ReinforcementLearningPage() {
               action you can take in a given state. Similarly, the reward R is
               now dependent on both the state AND the action. Different actions
               in the same state can yield different expected rewards (unlike
-              MRPs where the expected reward only dependen on the current state
+              MRPs where the expected reward only depended on the current state
               you were in).
             </p>
           </section>
