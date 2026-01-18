@@ -1641,9 +1641,8 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               Matrix inversion is computationally expensive for large state
-              spaces (O(n³) complexity for n states), which is why we&apos;ll
-              learn more efficient iterative methods in the dynamic programming
-              section.
+              spaces (O(n³) complexity for n states), but more efficient
+              iterative methods will be discussed in later sections.
             </p>
           </section>
         </main>
