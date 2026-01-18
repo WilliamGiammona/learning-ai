@@ -1714,6 +1714,34 @@ export default function ReinforcementLearningPage() {
               MRPs where the expected reward only depended on the current state
               you were in).
             </p>
+            <p className="mb-4">
+              In order to talk about actions, I need to define what it means in
+              an RL context for an agent to decide to take an action. In order
+              to do that, we need to learn about what a policy is. A policy
+              fully defines the behavior of an agent, telling the agent what
+              action it will take in a given state (or the probabilities for a
+              set of available actions it can take in a given state). Formally,
+              a policy π is a distribution over actions given states:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                π(a|s) = P[A<sub>t</sub> = a | S<sub>t</sub> = s]
+              </span>
+              <br />
+              <br />
+              This reads as: "the probability that the agent takes action a
+              given that it&apos;s currently in state s." There are two types of
+              policies: deterministic policies and stochastic policies. A
+              <strong> deterministic policy</strong> always chooses the same
+              action in a given state—π(a|s) equals 1 for one specific action
+              and 0 for all others. A <strong>stochastic policy</strong> assigns
+              probabilities to different actions in each state—for example,
+              π(a₁|s) = 0.7 and π(a₂|s) = 0.3 means there&apos;s a 70% chance of
+              taking action a₁ and a 30% chance of taking action a₂ when in
+              state s. The policy is what we ultimately want to learn in RL—a
+              mapping from states to actions that maximizes the expected total
+              reward.
+            </p>
           </section>
         </main>
       </div>
