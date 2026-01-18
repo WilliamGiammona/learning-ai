@@ -1950,49 +1950,61 @@ export default function ReinforcementLearningPage() {
                 Visualizing the Bellman Expectation Equations
               </strong>
               Let&apos;s visualize how these recursive relationships work using
-              tree diagrams.
+              tree diagrams. These diagrams show the "backup" operations, which
+              is how we compute values by looking one step ahead and then
+              "backing up" that information to the state we're trying to compute
+              the value of.
+              <br />
+              <br />
+              <strong>State-Value to Action-Value:</strong>
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp/mdp-bellman-qs.png"
-                alt="Bellman expectation equation for action-value function showing one-step lookahead"
+                src="/images/reinforcement-learning/mdp/mdp-bellman-vs.png"
+                alt="Bellman expectation equation showing state-value decomposed into action-values"
                 width={500}
                 height={300}
                 className="mx-auto my-4"
               />
               <br />
-              The diagram above shows the <strong>
-                action-value function
-              </strong>{" "}
-              q<sub>π</sub>(s,a). At the top, we have a state-action pair
-              (s,a)—we&apos;re in state s and we&apos;ve committed to taking
-              action a. After taking this action, the environment transitions us
-              to some next state s&apos; (shown at the bottom). The value of q
-              <sub>π</sub>(s,a) equals the immediate reward R<sub>s</sub>
-              <sup>a</sup> we get from this transition, plus the discounted sum
-              of the values of all possible next states s&apos;, weighted by
-              their transition probabilities P<sub>ss&apos;</sub>
-              <sup>a</sup>.
+              The first diagram shows how to compute v<sub>π</sub>(s) from
+              action-values. Starting from state s (top), we consider all
+              possible actions a that our policy might choose (shown as dark
+              circles at the bottom). The value of state s is the weighted
+              average of these action-values, where the weights are the policy
+              probabilities π(a|s):
               <br />
               <br />
-              <strong>Chess analogy:</strong> You&apos;re evaluating moving your
-              knight to e5 (the action a from state s). After this move, your
-              opponent has several possible responses, leading to different
-              board positions (the various s&apos;). The value of your knight
-              move equals any immediate benefit (like threatening the queen)
-              plus the average value of the positions you might face next,
-              weighted by how likely each is to occur.
+              <span className="block font-mono text-center">
+                v<sub>π</sub>(s) = Σ<sub>a</sub> π(a|s)q<sub>π</sub>(s, a)
+              </span>
               <br />
               <br />
-              But notice something important: the diagram shows we&apos;re
-              computing q<sub>π</sub>(s,a) in terms of v<sub>π</sub>(s&apos;),
-              not q<sub>π</sub>(s&apos;,a&apos;). This is because once we reach
-              s&apos;, our policy π will determine which action to take next—we
-              don&apos;t need to know the specific action yet, just the value of
-              being in that state under our policy.
+              <strong>Chess analogy:</strong> You&apos;re evaluating your
+              current position. Your strategy might say "40% chance move the
+              knight, 30% move the bishop, 30% castle." The value of your
+              position is the weighted average: 0.4 × (value of knight move) +
+              0.3 × (value of bishop move) + 0.3 × (value of castling).
               <br />
               <br />
-              The equation shown is:
+              <strong>Action-Value to State-Value:</strong>
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-qs.png"
+                alt="Bellman expectation equation showing action-value decomposed into next state-values"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              The second diagram shows how to compute q<sub>π</sub>(s,a) from
+              state-values. Starting from state-action pair (s,a) at the top
+              (dark circle—we&apos;ve committed to action a), the environment
+              transitions us to various possible next states s&apos; (light
+              circles at bottom). The action-value equals the immediate reward
+              plus the discounted sum of next-state values, weighted by
+              transition probabilities:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -2002,12 +2014,23 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               <br />
-              This relates the action-value function to the state-value
-              function. But we also need to relate the state-value function back
-              to action-values to complete the picture. That&apos;s where the
-              relationship between v<sub>π</sub> and q<sub>π</sub>
-              comes in, which we&apos;ll explore next with the full backup
-              diagrams.
+              <strong>Chess analogy:</strong> You&apos;re evaluating moving your
+              knight to e5. After this move, your opponent has several possible
+              responses (different s&apos;). The value of your knight move
+              equals any immediate reward (threatening pieces) plus the average
+              value of the positions you&apos;ll face, weighted by how likely
+              your opponent is to respond by moving their piece to create said
+              positions.
+              <br />
+              <br />
+              <strong>The key insight:</strong> These two equations work
+              together! The first expresses v in terms of q, and the second
+              expresses q in terms of v. Together, they form a recursive system
+              that fully characterizes the value functions under policy π.
+              Notice the difference in the circles: dark circles represent
+              decision points (where the agent or policy chooses), light circles
+              represent chance nodes (where the environment decides based on
+              transition probabilities).
             </p>
           </section>
         </main>
