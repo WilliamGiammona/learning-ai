@@ -2114,6 +2114,48 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong className="block text-center mb-4">
+                Comparing Policies: What Makes One Better Than Another?
+              </strong>
+              Before we talk about finding the <em>best</em> policy, we need to
+              define what "better" even means. In reinforcement learning, we say
+              that one policy π is better than or equal to another policy π' if
+              its value function is greater than or equal to the other policy's
+              value function FOR ALL STATES:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                π ≥ π' if v<sub>π</sub>(s) ≥ v<sub>π'</sub>(s) for all s ∈ S
+              </span>
+              <br />
+              <br />
+              Notice the "for all states" part, this is crucial. A policy isn't
+              just better because it does well in <em>some</em> positions; it
+              has to do at least as well everywhere. If there is even ONE state
+              where the other policy has a higher value, then we can't say which
+              policy is better.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> Think of Bobby Fischer versus any
+              other human chess player. Fischer's policy (his chess strategy) is
+              better because from <em>any</em>
+              board position you give him, he'll achieve an equal or better
+              expected outcome than the other player. It doesn't matter if the
+              position is a complex middlegame, an endgame with just a few
+              pieces, or a weird opening you've never seen - Fischer's superior
+              understanding means v<sub>Fischer</sub>(s) ≥ v
+              <sub>other player</sub>(s) for every position s. You can't
+              cherry-pick specific positions where the amateur does better;
+              Fischer dominates <em>everywhere</em>.
+              <br />
+              <br />
+              This definition of "better" leads us naturally to ask: is there a
+              policy that's better than or equal to <em>all</em> other policies?
+              Remarkably, the answer is yes! This brings us to optimal value
+              functions.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
                 Optimal Value Functions
               </strong>
               So far we&apos;ve been evaluating specific policies, "how good is
