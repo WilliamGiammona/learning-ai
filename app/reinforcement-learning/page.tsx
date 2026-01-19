@@ -2220,6 +2220,72 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong className="block text-center mb-4">
+                Bellman Optimality Equation for MDPs
+              </strong>
+              The Bellman Expectation Equation told us how to evaluate a
+              specific policy π. But what if we want to find the BEST policy?
+              That's where the Bellman Optimality Equation comes in. Instead of
+              averaging over actions according to some policy π, we simply pick
+              the best action at each step.
+              <br />
+              <br />
+              <strong>For the optimal state-value function:</strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>*</sub>(s) = max<sub>a</sub> E[R<sub>t+1</sub> + γv
+                <sub>*</sub>(S<sub>t+1</sub>) | S<sub>t</sub> = s, A<sub>t</sub>{" "}
+                = a]
+              </span>
+              This says: the optimal value of being in state s equals the
+              expected immediate reward plus the discounted optimal value of
+              wherever you end up next, when taking the BEST action. The key
+              difference from the expectation equation is that max<sub>a</sub> -
+              we're not averaging over a policy's action probabilities, we're
+              picking the action that maximizes the right-hand side.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> The optimal value of your current
+              board position equals: look at ALL possible moves you could make,
+              and for each one compute (immediate reward + discounted optimal
+              value of resulting position). Then pick whichever move gives the
+              highest total. That maximum value IS v<sub>*</sub>(s).
+              <br />
+              <br />
+              <strong>For the optimal action-value function:</strong>
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                q<sub>*</sub>(s, a) = E[R<sub>t+1</sub> + γ max<sub>a'</sub> q
+                <sub>*</sub>(S<sub>t+1</sub>, a') | S<sub>t</sub> = s, A
+                <sub>t</sub> = a]
+              </span>
+              This says: the optimal value of taking action a in state s equals
+              the expected immediate reward from that action plus the discounted
+              value of taking the BEST action in the next state. Notice the max
+              <sub>a'</sub> appears inside the expectation - after taking action
+              a and seeing where we land (S<sub>t+1</sub>), we then choose the
+              best next action a'.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> The optimal value of moving your
+              knight to e5 equals: the immediate reward from that move
+              (capturing material, improving position) plus the discounted value
+              of making the BEST possible move in the resulting position. You
+              commit to knight to e5 now, but after your opponent responds,
+              you'll choose optimally from whatever position results.
+              <br />
+              <br />
+              <strong>Important note:</strong> These are called "optimality"
+              equations because we're maximizing over actions rather than
+              following a specific policy. They tell us "what's the best
+              possible value achievable from this state?" The policy that
+              achieves these optimal values is called the optimal policy π
+              <sub>*</sub>.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
                 The Bellman Optimality Equations: A Visual Breakdown
               </strong>
               Now let's see how the optimal value functions relate to each other
@@ -2236,7 +2302,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <img
-                src="/mdp-bellman-optimal-v-star.png"
+                src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-v-star.png"
                 alt="Bellman Optimality for v*"
                 className="mx-auto mb-4"
               />
@@ -2266,7 +2332,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <img
-                src="/mdp-bellman-optimal-q-star.png"
+                src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-q-star.png"
                 alt="Bellman Optimality for q*"
                 className="mx-auto mb-4"
               />
