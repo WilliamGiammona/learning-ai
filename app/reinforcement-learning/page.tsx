@@ -2194,7 +2194,20 @@ export default function ReinforcementLearningPage() {
               following before, v<sub>*</sub> asks "what&apos;s the best I can
               possibly do from here?" A position where you&apos;re up a queen
               has a very high v<sub>*</sub> because even the best possible play
-              from your opponent probably can&apos;t stop you from winning.
+              from your opponent probably can&apos;t stop you from winning. This
+              is different from the value functions we've been looking at
+              before, which are just the value functions with regard to a
+              specific policy (not necessarily the best policy). For example,
+              imagine a very difficult chess position where one move led to
+              victory, but EVERY other possible move led to certain defeat.
+              Imagine that finding the correct move was so difficult only Bobby
+              Fischer himself would be able to find it. The optimal state-value
+              function (the value function under the optimal policy) would give
+              this position a very high score for you because it assumes perfect
+              play (that's what optimal policy means), but under most policies
+              (people who aren't Bobby Fischer), it gives the exact same
+              position a low score because even though there exists a winning
+              move, most people won't find it (they have sub optimal policies).
               <br />
               <br />
               The <strong>optimal action-value function</strong> q<sub>*</sub>
@@ -2212,8 +2225,8 @@ export default function ReinforcementLearningPage() {
               then play optimally from the resulting position, what&apos;s my
               expected outcome?" Even if moving your knight to e5 seems like a
               random choice, q<sub>*</sub> evaluates what happens if you make
-              that move and then play even better than Bobby Fischer for the
-              rest of the game.
+              that move and then play like Bobby Fischer for the rest of the
+              game.
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
@@ -2248,16 +2261,29 @@ export default function ReinforcementLearningPage() {
               This says: the optimal value of being in state s equals the
               expected immediate reward plus the discounted optimal value of
               wherever you end up next, when taking the BEST action. The key
-              difference from the expectation equation is that max<sub>a</sub> -
-              we're not averaging over a policy's action probabilities, we're
-              picking the action that maximizes the right-hand side.
+              difference from the expectation equation is when now have the max
+              <sub>a</sub>, which means that instead of averaging over a
+              policy's action probabilities (giving certain actions some
+              probability of occurring even though they aren't the best), we're
+              now picking the action that maximizes the right-hand side of the
+              equation (any actions that are not considered the best will get a
+              probability of 0 now).
               <br />
               <br />
-              <strong>Chess analogy:</strong> The optimal value of your current
-              board position equals: look at ALL possible moves you could make,
-              and for each one compute (immediate reward + discounted optimal
-              value of resulting position). Then pick whichever move gives the
-              highest total. That maximum value IS v<sub>*</sub>(s).
+              <strong>Chess analogy:</strong> The optimal value v<sub>*</sub>(s)
+              tells you how good your current position is assuming you play
+              perfectly from here onwards. To compute it, you look at ALL
+              possible moves, evaluate the value of each move (immediate reward
+              + discounted optimal value of resulting position), and take the
+              maximum. That maximum IS v<sub>*</sub>(s) - it's a number
+              representing "how good is this position with perfect play?"
+              <br />
+              <br />
+              The optimal POLICY π<sub>*</sub>(s) is the actual move that
+              achieves this maximum - it's the decision rule that says "in this
+              position, make THIS move." A suboptimal policy might tell you to
+              sacrifice your queen for no reason, giving you a low value. But π
+              <sub>*</sub> always picks the move that maximizes v<sub>*</sub>.
               <br />
               <br />
               <strong>For the optimal action-value function:</strong>
