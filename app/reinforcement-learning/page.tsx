@@ -154,6 +154,14 @@ export default function ReinforcementLearningPage() {
                       Bellman Expectation Equation
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#bellman-optimality-equation"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Bellman Optimality Equation
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -2218,7 +2226,7 @@ export default function ReinforcementLearningPage() {
               Optimality Equation.
             </p>
 
-            <p className="mb-4">
+            <p id="bellman-optimality-equation" className="mb-4">
               <strong className="block text-center mb-4">
                 Bellman Optimality Equation for MDPs
               </strong>
