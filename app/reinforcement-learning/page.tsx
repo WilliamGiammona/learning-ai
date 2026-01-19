@@ -2217,6 +2217,106 @@ export default function ReinforcementLearningPage() {
               optimal values, which we&apos;ll tackle with the Bellman
               Optimality Equation.
             </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
+                The Bellman Optimality Equations: A Visual Breakdown
+              </strong>
+              Now let's see how the optimal value functions relate to each other
+              through what's called the Bellman Optimality Equations. These
+              equations give us a recursive way to compute optimal values by
+              breaking them down into immediate rewards and future optimal
+              values.
+              <br />
+              <br />
+              <strong>
+                Equation 1: Optimal State-Value in terms of Optimal
+                Action-Values
+              </strong>
+              <br />
+              <br />
+              <img
+                src="/mdp-bellman-optimal-v-star.png"
+                alt="Bellman Optimality for v*"
+                className="mx-auto mb-4"
+              />
+              <span className="block font-mono text-center mb-4">
+                v<sub>*</sub>(s) = max<sub>a</sub> q<sub>*</sub>(s, a)
+              </span>
+              This diagram shows the one-step lookahead from state s. The hollow
+              circle at the top represents state s, and the filled circles below
+              represent the different actions you could take from s. The
+              equation says: "The optimal value of state s is simply the value
+              of the best action you can take from s." In other words, if you're
+              playing optimally, you'll always pick the action with the highest
+              q*-value, so v*(s) equals that maximum.
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> If you're in a chess position and
+              want to know v*(s) - the value of that position with perfect play
+              - you look at all your possible moves (the filled circles),
+              evaluate each one assuming perfect play afterwards (each q*(s,a)),
+              and pick the best. That best move's value IS the position's value.
+              <br />
+              <br />
+              <strong>
+                Equation 2: Optimal Action-Value in terms of Optimal
+                State-Values
+              </strong>
+              <br />
+              <br />
+              <img
+                src="/mdp-bellman-optimal-q-star.png"
+                alt="Bellman Optimality for q*"
+                className="mx-auto mb-4"
+              />
+              <span className="block font-mono text-center mb-4">
+                q<sub>*</sub>(s, a) = R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s'∈S</sub> P<sub>ss'</sub>
+                <sup>a</sup> v<sub>*</sub>(s')
+              </span>
+              This diagram shows what happens after you take action a from state
+              s. The filled circle represents the state-action pair (s,a), and
+              taking that action gets you a reward r and transitions you to a
+              next state s' (the hollow circle). The equation says: "The optimal
+              value of taking action a in state s equals the immediate reward
+              you get, plus the discounted expected optimal value of wherever
+              you end up."
+              <br />
+              <br />
+              Breaking down the notation:
+            </p>
+            <ul className="list-disc ml-8 mb-4">
+              <li>
+                R<sub>s</sub>
+                <sup>a</sup> is the expected immediate reward for taking action
+                a in state s
+              </li>
+              <li>γ is the discount factor</li>
+              <li>
+                P<sub>ss'</sub>
+                <sup>a</sup> is the probability of transitioning to state s'
+                after taking action a in state s
+              </li>
+              <li>
+                v<sub>*</sub>(s') is the optimal value of the next state s'
+              </li>
+              <li>
+                The sum Σ<sub>s'∈S</sub> accounts for all possible next states
+                weighted by their transition probabilities
+              </li>
+            </ul>
+            <p className="mb-4">
+              <strong>Chess analogy:</strong> To evaluate q*(s, move knight to
+              e5), you look at: (1) whether this move immediately captures
+              material or improves position (the reward r), plus (2) the optimal
+              value of the board position that results after the move,
+              accounting for your opponent's possible responses (the Σ P
+              <sub>ss'</sub>
+              <sup>a</sup> v*(s') term). Even if the move itself doesn't win
+              material, it might lead to a position with very high v*(s'),
+              making it the best move overall.
+            </p>
           </section>
         </main>
       </div>
