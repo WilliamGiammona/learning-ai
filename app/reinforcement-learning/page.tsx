@@ -2301,10 +2301,12 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               <br />
-              <img
+              <Image
                 src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-v-star.png"
                 alt="Bellman Optimality for v*"
-                className="mx-auto mb-4"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
               />
               <span className="block font-mono text-center mb-4">
                 v<sub>*</sub>(s) = max<sub>a</sub> q<sub>*</sub>(s, a)
@@ -2331,10 +2333,12 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               <br />
-              <img
+              <Image
                 src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-q-star.png"
                 alt="Bellman Optimality for q*"
-                className="mx-auto mb-4"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
               />
               <span className="block font-mono text-center mb-4">
                 q<sub>*</sub>(s, a) = R<sub>s</sub>
@@ -2372,6 +2376,7 @@ export default function ReinforcementLearningPage() {
                 weighted by their transition probabilities
               </li>
             </ul>
+
             <p className="mb-4">
               <strong>Chess analogy:</strong> To evaluate q*(s, move knight to
               e5), you look at: (1) whether this move immediately captures
@@ -2382,6 +2387,89 @@ export default function ReinforcementLearningPage() {
               <sup>a</sup> v*(s') term). Even if the move itself doesn't win
               material, it might lead to a position with very high v*(s'),
               making it the best move overall.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
+                The Complete Bellman Optimality Equations: Two Step Lookahead
+              </strong>
+              Now let's see what happens when we combine both optimal value
+              functions into complete recursive equations. Just like with the
+              Bellman Expectation Equations, by substituting one equation into
+              the other, we can express each optimal value function entirely in
+              terms of itself!
+              <br />
+              <br />
+              <strong>Optimal State-Value Full Lookahead:</strong>
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-optimal-v-q-together.png"
+                alt="Complete Bellman Optimality for v*"
+                width={800}
+                height={600}
+                className="mx-auto mb-4"
+              />
+              <span className="block font-mono text-center mb-4">
+                v<sub>*</sub>(s) = max<sub>a</sub> (R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s'∈S</sub> P<sub>ss'</sub>
+                <sup>a</sup> v<sub>*</sub>(s'))
+              </span>
+              Starting from state s (top hollow circle), we consider all
+              possible actions we could take (middle dark circles), and for each
+              action, we look at all possible next states s' (bottom hollow
+              circles). But instead of averaging over a policy's action
+              probabilities like in the expectation equation, we MAX over
+              actions. This gives us:
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> To find the optimal value of your
+              position, you: (1) look at every possible move you could make, (2)
+              for each move, evaluate (immediate reward + discounted optimal
+              value of all resulting positions weighted by likelihood), and (3)
+              pick whichever move gives the highest total. This is a two-step
+              lookahead: position → your possible moves → opponent's responses
+              (which determine resulting positions).
+              <br />
+              <br />
+              <strong>Optimal Action-Value Full Lookahead:</strong>
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/mdp-bellman-optimal-q-v-together.png"
+                alt="Complete Bellman Optimality for q*"
+                width={800}
+                height={600}
+                className="mx-auto mb-4"
+              />
+              <span className="block font-mono text-center mb-4">
+                q<sub>*</sub>(s, a) = R<sub>s</sub>
+                <sup>a</sup> + γ Σ<sub>s'∈S</sub> P<sub>ss'</sub>
+                <sup>a</sup> max<sub>a'</sub> q<sub>*</sub>(s', a')
+              </span>
+              Starting from state-action pair (s,a) where we've committed to
+              action a (top dark circle), the environment transitions us to
+              possible next states s' (middle hollow circles), and then from
+              each s', we consider all possible next actions a' (bottom dark
+              circles) and MAX over them. This gives us:
+              <br />
+              <br />
+              <strong>Chess analogy:</strong> You've decided to move your knight
+              to e5. Your opponent responds, creating various positions. From
+              each resulting position, you evaluate the best move you could
+              make. The value of "knight to e5" is: (immediate reward) +
+              (average over opponent's responses of the best move you can make
+              in each resulting position). This is also a two-step lookahead:
+              your move → opponent's response → your optimal next move.
+              <br />
+              <br />
+              <strong>Key difference from Expectation Equations:</strong> Notice
+              the max operator instead of the Σ π(a|s) weighting. In the
+              expectation equations, we averaged over action probabilities
+              according to a specific policy π. In the optimality equations, we
+              simply choose the best action. This is what makes these equations
+              tell us about the BEST POSSIBLE performance rather than the
+              performance of a specific strategy.
             </p>
           </section>
         </main>
