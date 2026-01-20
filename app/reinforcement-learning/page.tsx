@@ -98,7 +98,7 @@ export default function ReinforcementLearningPage() {
               </li>
               <li>
                 <a
-                  href="#markov-decision-process"
+                  href="#ch-two-mdp"
                   className="text-blue-600 hover:text-blue-800 underline block font-medium"
                 >
                   Markov Decision Process
@@ -596,7 +596,7 @@ export default function ReinforcementLearningPage() {
               Processes in detail.
             </p>
 
-            <h1 className="text-3xl font-bold mb-6 text-center">
+            <h1 id="ch-two-mdp" className="text-3xl font-bold mb-6 text-center">
               Markov Decision Process
             </h1>
             <p className="mb-4">
