@@ -2180,7 +2180,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The <strong>optimal state-value function</strong> v<sub>*</sub>(s)
-              is the maximum value function over all policies:
+              is the maximum value function over all policies (you look at every
+              policy and choose the one gives you the highest total return at
+              every state):
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -2211,7 +2213,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The <strong>optimal action-value function</strong> q<sub>*</sub>
-              (s,a) is the maximum action-value function over all policies:
+              (s,a) is the maximum action-value function over all policies :
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -2232,10 +2234,10 @@ export default function ReinforcementLearningPage() {
               <strong>Why this matters:</strong> The optimal value function
               specifies the best possible performance in the MDP. Once we know q
               <sub>*</sub>, we&apos;ve essentially "solved" the MDP, i.e. we
-              know exactly how good each state-action can possibly be, and
+              know exactly how good each state-action pair can possibly be, and
               therefore we know exactly which action to take in any state in
-              order to maximize total reward. The challenge is computing these
-              optimal values, which we&apos;ll tackle with the Bellman
+              order to maximize our total reward. The challenge is computing
+              these optimal values, which we&apos;ll tackle with the Bellman
               Optimality Equation.
             </p>
 
@@ -2243,11 +2245,11 @@ export default function ReinforcementLearningPage() {
               <strong className="block text-center mb-4">
                 Bellman Optimality Equation for MDPs
               </strong>
-              The Bellman Expectation Equation told us how to evaluate a
-              specific policy π. But what if we want to find the BEST policy?
-              That's where the Bellman Optimality Equation comes in. Instead of
-              averaging over actions according to some policy π, we simply pick
-              the best action at each step.
+              The Bellman Expectation Equation told us how to EVALUATE a
+              specific policy π (how to find its value function), but what if we
+              want to FIND the BEST policy? That's where the Bellman Optimality
+              Equation comes in. Instead of averaging over actions according to
+              some policy π, we simply pick the best action at each step.
               <br />
               <br />
               <strong>For the optimal state-value function:</strong>
