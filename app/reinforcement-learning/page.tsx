@@ -602,9 +602,9 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               At a very high level, Reinforcement Learning is really about
               dealing with sequences of dependent events and wanting to learn
-              about them by using probability. There are two broad kinds of
-              sequences of events: the first is sequences of{" "}
-              <strong> independent events</strong>, things like coin flips or
+              useful information about these events by using probability. There
+              are two broad kinds of sequences of events: the first is sequences
+              of <strong> independent events</strong>, things like coin flips or
               dice rolls, where each outcome has nothing to do with the one
               before it. Classical probability theory (pre 1900) was built for
               this world, and it works beautifully there. The second kind are
