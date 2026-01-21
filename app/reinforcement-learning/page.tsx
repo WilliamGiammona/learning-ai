@@ -900,7 +900,9 @@ export default function ReinforcementLearningPage() {
               <br />• <strong>P</strong> is the state transition probability
               <br />
               <br />
-              The state transition probability matrix is formally written as:
+              The state transition probability function is formally written as:
+              <br />
+              <br />
               <span className="block font-mono text-center">
                 P<sub>ss'</sub> = P[S<sub>t+1</sub> = s' | S<sub>t</sub> = s]
               </span>
@@ -909,7 +911,7 @@ export default function ReinforcementLearningPage() {
               (where you'll be next) GIVEN that you're currently in state s."
             </p>
             <br />
-            <br />
+
             <p className="mb-4">
               In chess, the idea of a state (board position) is very intuitive.
               The current board position (where each piece currently is on the
@@ -1020,13 +1022,11 @@ export default function ReinforcementLearningPage() {
               don't have actions incorporated yet, that will come for MDPs in
               the next section, this is just laying the groundwork), so
               it&apos;s crucial that we have a way to model environment rewards
-              from states, not just states (but no reward associated with them)
-              and state transitions like we did for Markov Processes. However,
-              environment rewards in the future aren&apos;t worth as much as
-              those right now (just like how in finance a dollar today is worth
-              more than a dollar tomorrow), so we use a discount factor, γ
-              (gamma), for future rewards. These are all the ingredients we need
-              to model our environment.
+              from states. However, environment rewards in the future
+              aren&apos;t worth as much as those right now (just like how in
+              finance a dollar today is worth more than a dollar tomorrow), so
+              we use a discount factor, γ (gamma), for future rewards. These are
+              all the ingredients we need to model our environment.
             </p>
             <p className="mb-4">
               Formally, a <strong>Markov Reward Process</strong> is defined as a
