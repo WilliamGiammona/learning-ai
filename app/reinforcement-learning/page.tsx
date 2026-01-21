@@ -1025,8 +1025,9 @@ export default function ReinforcementLearningPage() {
               from states. However, environment rewards in the future
               aren&apos;t worth as much as those right now (just like how in
               finance a dollar today is worth more than a dollar tomorrow), so
-              we use a discount factor, γ (gamma), for future rewards. These are
-              all the ingredients we need to model our environment.
+              we use a discount factor, γ (gamma), to give less and less value
+              to rewards farther away from the present state. These are all the
+              ingredients we need to model our environment.
             </p>
             <p className="mb-4">
               Formally, a <strong>Markov Reward Process</strong> is defined as a
