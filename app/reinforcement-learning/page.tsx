@@ -1081,7 +1081,8 @@ export default function ReinforcementLearningPage() {
               there because rewards can be stochastic (random). You might not
               always get exactly the same reward from the same state. Sometimes
               you may get 10, sometimes 12. R<sub>s</sub> is simply the average
-              reward from a state.
+              reward from a state if you were to sample it over and over again
+              forever.
               <br />
               <br />
               Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
