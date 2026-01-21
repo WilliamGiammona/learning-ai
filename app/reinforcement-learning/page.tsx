@@ -788,59 +788,59 @@ export default function ReinforcementLearningPage() {
               transition probability for vowel to vowel as an example.
               <br />
               <br />
-              The probability of a vowel is .43 and the probability of 2
-              consecutive vowels was .06, so he divided .06 by .43 to get .13
-              Thus the probability of transitioning TO a vowel FROM a vowel is
-              13 percent (and hence 87 percent of going from a state of a vowel
-              to a state of a consonant). This was done for all the state
-              transitions where consonant to consanant was .33 and consonant to
-              vowel was .67. So this transition probability matrix tells me
-              about the probability of "chaining" vowel and consonant states
-              together, hence the name Markov chain.
+              How did Markov calculate the transition probability from vowel to
+              vowel? He looked at the actual text. The probability of any letter
+              being a vowel was 0.43. The probability of two consecutive vowels
+              was 0.06. He divided 0.06 by 0.43 to get 0.13. This tells us:
+              given that the current letter is a vowel, there's a 13% chance the
+              next letter is also a vowel (and therefore an 87% chance it's a
+              consonant). He did this for all possible stat etransitions:
+              consonant to consonant was 0.33, meaning consonant to vowel was
+              0.67. These state transition probabilities let him model how
+              states link together in a sequence, a chain of states, hence the
+              name Markov chain.
             </p>
 
             <p className="mb-4">
-              When you follow this transition matrix and start at a random
-              starting point in the poem, you initially get wildly different
-              ratios for the number of consonants and vowels you have (just like
-              with independent events like flipping a coin, you might initially
-              get 6 heads and 2 tails instead of the 50/50 split predicted).
-              However, given a long enough length of letters, you eventually
-              converge to .43 for Vowels and .57 for Consonants (just like how
-              with a large enough amount of coin flips you converge to a 50/50
-              split). Thus Markov had shown that the law of large numbers
-              applied to this dependent system, showing that Nekrasov was wrong
-              and that you cannot just assume if a system follows the law of
-              large numbers that it must be independent. This was groundbreaking
-              because it showed that dependent systems aren't just chaotic and
-              unpredictable, they can be modeled with mathematical structure and
-              have predictable long-term behavior. Before Markov, mathematicians
-              had no systematic way to handle dependent sequences of events,
-              they would need the ENTIRE history in order to make calculations.
+              When you follow these state transition probabilities and start at
+              a random starting point in the poem, you initially get wildly
+              different ratios for the number of consonants and vowels you have
+              (just like with independent events like flipping a coin, you might
+              initially get 6 heads and 2 tails instead of the 50/50 split
+              predicted). However, given a long enough length of letters, you
+              eventually converge to .43 for Vowels and .57 for Consonants (just
+              like how with a large enough amount of coin flips you converge to
+              a 50/50 split). Thus Markov had shown that the law of large
+              numbers applied to this dependent system, showing that Nekrasov
+              was wrong and that you cannot just assume if a system follows the
+              law of large numbers that it must be independent. This was
+              groundbreaking because it showed that dependent systems aren't
+              just chaotic and unpredictable, but that they can actually be
+              modeled with mathematical structure and have predictable long-term
+              behavior. Before Markov, mathematicians had no stable way to
+              handle dependent sequences of events, they would need the ENTIRE
+              history in order to make calculations.
               <br />
               <br />
               To recap, there is a mathematical object, the Markov Chain, which
-              has states (vowels and consonants) and a transition probability
-              matrix that tells you the probability of going from state one to
+              has states (vowels and consonants) and state transition
+              probabilites give you the probability of going from state one to
               state two (vowel to vowel, vowel to consonant, consonant to vowel,
               and consonant to consonant). Using this mathematical object, you
               can predict that the ratio of vowels and consonants to the total
               amount of letters will converge to a stable long term ratio (an
-              analogue of the law of large numbers for dependent processes) to a
-              ratio of .43 for vowels and .57 for consonants. Hence, Markov used
-              this Markov Chain to prove that dependent events also follow the
-              law of large numbers and that there were in fact mathematical
-              structures that could be used to model dependent systems apart
-              from the old way of needing the ENTIRE history to do anything
-              useful. In the 1950s American mathmetician Richard Bellman
-              extended Markov chains by adding decisions and rewards, giving
-              rise to Markov Decision Processes.
+              analogue of the law of large numbers for dependent processes) of
+              .43 for vowels and .57 for consonants. Hence, Markov used this
+              Markov Chain to prove that dependent events also follow the law of
+              large numbers and that there were in fact mathematical structures
+              that could be used to model dependent systems apart from the old
+              way of needing the ENTIRE history to do anything useful.
             </p>
             <p>
-              Fast forward to the 1950s: American mathematician Richard Bellman
-              looked at Markov Chains and thought "what if I add decisions and
-              rewards?" This expanded the notion of Markov Chains/Processes into
-              Markov Decision Processes, the mathematical foundation of
+              We then fast forward to the 1950s, where American mathematician
+              Richard Bellman looked at Markov Chains and thought "what if I add
+              decisions and rewards?" This expanded the notion of Markov Chains
+              into Markov Decision Processes, the mathematical foundation of
               reinforcement learning.
             </p>
 
