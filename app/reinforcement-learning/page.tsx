@@ -1127,13 +1127,13 @@ export default function ReinforcementLearningPage() {
               <strong>Example showing both conventions:</strong>
               <br />
               To clear up any confusion, here is an example for both
-              conventions. For convention 1 Suppose we have three states with
-              rewards: state s gives a reward of 5, state s' gives a reward of
-              -3, and terminal state s'' gives a reward of 0 (Terminal states
-              must give rewards of 0). For convention 2, with the same system,
-              we have three states with a reward of 5 for transitioning from
-              state s to state s' and a reward of -3 from transitioning from
-              state s' to state s''.
+              conventions. For Convention 1, suppose we have three states with
+              the following rewards: state s gives a reward of 5, state s' gives
+              a reward of -3, and terminal state s'' gives a reward of 0
+              (terminal states must <em>always</em> give rewards of 0 in this
+              convention). For Convention 2, with the same system, we have a
+              reward of 5 for the transition from state s to state s', and a
+              reward of -3 for the transition from state s' to state s''.
               <br />
               <br />
               <strong>Convention 1 (reward upon entering):</strong>
