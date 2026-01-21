@@ -857,7 +857,7 @@ export default function ReinforcementLearningPage() {
               Ok, enough history, now back to mathematics. One of the most
               central ideas of a Markov Process is that it follows the "Markov
               Property", which says that the future depends only on the present,
-              not on the entire past. In math form, it looks like this:
+              not on the entire past.
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -900,6 +900,7 @@ export default function ReinforcementLearningPage() {
               <br />• <strong>P</strong> is the state transition probability
               <br />
               <br />
+              The state transition probability is formally written as:
               <span className="block font-mono text-center">
                 P<sub>ss'</sub> = P[S<sub>t+1</sub> = s' | S<sub>t</sub> = s]
               </span>
