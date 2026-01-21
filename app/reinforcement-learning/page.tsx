@@ -1071,7 +1071,7 @@ export default function ReinforcementLearningPage() {
               <strong>
                 R<sub>s</sub>
               </strong>
-              : The reward associated with state s
+              : The expected reward associated with state s
               <br />• <strong>E[...]</strong>: Expected value (the average value
               you'll converge to as you increase the number of samples
               indefinitely)
@@ -1088,7 +1088,7 @@ export default function ReinforcementLearningPage() {
               : You're currently in state s at time t
               <br />
               <br />
-              Putting it together: The reward for state s equals the{" "}
+              Putting it together: The expected reward for state s equals the{" "}
               <em>expected</em> reward you'll receive at the next time step,
               given that you're currently in state s.
               <br />
