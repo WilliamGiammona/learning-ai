@@ -1201,7 +1201,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp/sine-arrow-pic.png"
+                src="/images/reinforcement-learning/mdp/sine-arrow.png"
                 alt="Intuition behind original name for sine as bowstring"
                 width={500}
                 height={300}
