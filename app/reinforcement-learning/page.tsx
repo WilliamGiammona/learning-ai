@@ -132,7 +132,7 @@ export default function ReinforcementLearningPage() {
                   </li>
                   <li>
                     <a
-                      href="#historical-precedent-bad-conventions"
+                      href="#historical-precedent-confusing-conventions"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
                       Historical Precedent of Bad Conventions
@@ -1126,10 +1126,10 @@ export default function ReinforcementLearningPage() {
               <br />
             </p>
             <p
-              id="historical-precedent-bad-conventions"
+              id="historical-precedent-confusing-conventions"
               className="mb-4 text-center"
             >
-              <strong>Historical Precedent of Bad Conventions</strong>
+              <strong>Historical Precedent of Confusing Conventions</strong>
             </p>
             <p className="mb-4">
               So, why would anyone use this R<sub>t+1</sub> | S<sub>t</sub>{" "}
@@ -1336,9 +1336,9 @@ export default function ReinforcementLearningPage() {
               <br />
               2) <strong>Mathematical convenience</strong>: Discounting ensures
               that infinite sums of rewards converge to a finite number, making
-              the math work better. Without the discount factor (unless you set
-              γ = 1), an infinite episode would have infinite return, making the
-              math more difficult to work with.
+              the math work better. Without γ (unless you set γ = 1), an
+              infinite episode would have infinite return, making the math more
+              difficult to work with.
               <br />
               <br />
               3) <strong>Models real preferences</strong>: In many scenarios,
