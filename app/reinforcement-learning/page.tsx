@@ -1097,9 +1097,9 @@ export default function ReinforcementLearningPage() {
               </strong>
               <br />
               You enter state s at time t and immediately receive the reward: R
-              <sub>t</sub>
-              = R(s), like in a video game where you step on a tile and
-              instantly get points.
+              <sub>t</sub>= R(s), like in a video game where you step on a tile
+              and instantly get points. For this convention the terminal (final)
+              state must <em>always</em> equal 0.
               <br />
               <br />
               <strong>
@@ -1121,53 +1121,40 @@ export default function ReinforcementLearningPage() {
               The key difference between the two conventions is timing:
               Convention 1 gives you the reward immediately upon entering a
               state, while Convention 2 gives it to you as you leave (indexed at
-              the next time step). But wait! For convention 2, if you only get
-              the reward after leaving a state, then for the last state in an
-              episode (the terminal state), you won&apos;t get the reward
-              because the episode will end before you ever leave that last state
-              (thus not getting the reward for the last state). Because of this,
-              the reward from convention 1 and convention 2 won&apos;t equal
-              eachother right?? No, not right. There is a special rule for
-              convention 2 that covers the case for terminal states (states that
-              are either at the end of an episode, or that you never leave
-              from). Convention 2 gives you the reward of the terminal state
-              immediately when entering it. Therefore the final reward will be
-              the reward for leaving the penultimate (one before the last one)
-              state ADDED to the reward you get when entering this special
-              terminal state where you don&apos;t have to leave it to get the
-              reward.
+              the next time step).
               <br />
               <br />
               <strong>Example showing both conventions:</strong>
               <br />
               To clear up any confusion, here is an example for both
               conventions. Suppose we have three states with rewards: state s
-              gives a reward of 5, state s' gives a reward of 10, and terminal
-              state s'' gives a reward of -4.
+              gives a reward of 5, state s' gives a reward of -3, and terminal
+              state s'' gives a reward of 0 (Terminal states must give rewards
+              of 0).
               <br />
               <br />
               <strong>Convention 1 (reward upon entering):</strong>
               <br />
-              - t=0: Enter state s → get reward 5
+              t=0: Enter state s → get reward 5
               <br />
-              - t=1: Transition to state s' → get reward 10
+              t=1: Transition to state s' → get reward -3
               <br />
-              - t=2: Transition to terminal state s'' → get reward -4
-              <br />- <strong>Total reward: 5 + 10 + (-4) = 11</strong>
+              t=2: Transition to terminal state s'' → get reward 0
+              <br />
+              <strong>Total reward: 5 + (-3) + 0 = 2</strong>
               <br />
               <br />
               <strong>Convention 2 (Sutton & Barto):</strong>
               <br />
-              - t=0: In state s → no reward yet
-              <br />- t=1: Transition to state s' → receive R<sub>1</sub> = 5
-              (the reward for having been in s)
-              <br />- t=2: Transition to terminal state s'' → receive R
-              <sub>2</sub> = 6 (this combines the reward for having been in s',
-              which is 10, AND the reward you immediately upon entering the
-              terminal state (because the terminal state is special) which is
-              -4, giving us the total reward for that timestep of: (10 - 4)
-              which is 6.
-              <br />- <strong>Total reward: 5 + 6 = 11</strong>
+              t=0: In state s → no reward yet
+              <br />
+              t=1: Transition to state s' → receive R<sub>1</sub> = 5 (the
+              reward for having been in s)
+              <br />
+              t=2: Transition to terminal state s'' → receive R<sub>2</sub> = -3
+              (the reward for having been in s')
+              <br />
+              <strong>Total reward: 5 + (-3) = 2</strong>
               <br />
             </p>
             <p className="mb-4">
