@@ -1196,6 +1196,19 @@ export default function ReinforcementLearningPage() {
               which is the word that ended up being used.
               <br />
               <br />
+              You can see a visual of the idea behind calling it a bowstring
+              here:
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/sine-arrow-pic.png"
+                alt="Intuition behind original name for sine as bowstring"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              <br />
               When 8th century Persian and Arab scholars translated these Indian
               mathematical texts, they transliterated jīvá into Arabic as{" "}
               <em>jiba</em> (جيب). Arabic is written without short vowels, so{" "}
@@ -1483,24 +1496,25 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Why the math is different:</strong>
-              <ul className="list-disc ml-8">
-                <li>
-                  G<sub>t</sub>: No expectation operator → describes ONE
-                  trajectory
-                </li>
-                <li>
-                  v(s): Has expectation operator E[...] → averages over ALL
-                  possible trajectories
-                </li>
-                <li>
-                  G<sub>t</sub>: Uses lowercase r (actual rewards received)
-                </li>
-                <li>
-                  v(s): Uses uppercase R in its definition because R<sub>s</sub>{" "}
-                  = E[r<sub>t+1</sub>] is already an expected immediate reward
-                </li>
-              </ul>
             </p>
+            <ul className="list-disc ml-8">
+              <li>
+                G<sub>t</sub>: No expectation operator → describes ONE
+                trajectory
+              </li>
+              <li>
+                v(s): Has expectation operator E[...] → averages over ALL
+                possible trajectories
+              </li>
+              <li>
+                G<sub>t</sub>: Uses lowercase r (actual rewards received)
+              </li>
+              <li>
+                v(s): Uses uppercase R in its definition because R<sub>s</sub> =
+                E[r<sub>t+1</sub>] is already an expected immediate reward
+              </li>
+            </ul>
+
             <p className="mb-4">
               To recap, a Markov Reward Process gives us a complete mathematical
               description of an environment by extending Markov Processes with
