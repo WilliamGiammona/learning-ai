@@ -1311,7 +1311,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <span className="block font-mono text-center">
-                G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
+                G<sub>t</sub> = R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
                 <sub>t+3</sub> + ...
               </span>
               <br />
