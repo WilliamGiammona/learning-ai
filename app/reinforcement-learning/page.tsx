@@ -617,10 +617,10 @@ export default function ReinforcementLearningPage() {
               events are not independent. One key idea is to compress all the
               relevant information from the past into a single object called the{" "}
               <strong>state</strong>. Once you do that, you can treat the future
-              as depending only on the present state, and probability becomes
-              usable again. So, if you have a problem that deals with sequences
-              of dependent events, and you want to apply probability theory to
-              them (like in RL), MDPs are the mathematics you need.
+              as depending only on the present state (instead of the entire
+              history). So, if you have a problem that deals with sequences of
+              dependent events, and you want to apply probability theory to them
+              (like in RL), MDPs are the mathematics you need.
             </p>
 
             <p className="mb-4">
