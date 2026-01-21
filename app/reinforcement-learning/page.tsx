@@ -900,7 +900,7 @@ export default function ReinforcementLearningPage() {
               <br />• <strong>P</strong> is the state transition probability
               <br />
               <br />
-              The state transition probability is formally written as:
+              The state transition probability matrix is formally written as:
               <span className="block font-mono text-center">
                 P<sub>ss'</sub> = P[S<sub>t+1</sub> = s' | S<sub>t</sub> = s]
               </span>
