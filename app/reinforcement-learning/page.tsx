@@ -1056,7 +1056,9 @@ export default function ReinforcementLearningPage() {
                 R<sub>s</sub>
               </strong>
               : The reward associated with state s
-              <br />• <strong>E[...]</strong>: Expected value (the average)
+              <br />• <strong>E[...]</strong>: Expected value (the average value
+              you'll converge to as you increase the number of samples
+              indefinitely)
               <br />•{" "}
               <strong>
                 R<sub>t+1</sub>
