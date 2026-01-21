@@ -1488,7 +1488,7 @@ export default function ReinforcementLearningPage() {
               <strong>Value function:</strong>
               <br />
               v(s) = E[G<sub>t</sub> | S<sub>t</sub> = s] = (0.5 × 10) + (0.5 ×
-              2) = (5) + (1) = 6
+              2) = (5) + (1) = 6 (this is the expected return from this state)
               <br />
               <br />
               <strong>Summary of Notation</strong>
@@ -1506,8 +1506,9 @@ export default function ReinforcementLearningPage() {
                 G<sub>t</sub>: Uses lowercase r (actual rewards received)
               </li>
               <li>
-                v(s): Uses uppercase R in its definition because R<sub>s</sub> =
-                E[r<sub>t+1</sub>] is already an expected immediate reward
+                v(s): Uses uppercase R in its definition because uppercase R is
+                already an EXPECTED immediate reward R<sub>s</sub> = E[ r
+                <sub>t+1</sub> | S<sub>t</sub> ]
               </li>
             </ul>
 
