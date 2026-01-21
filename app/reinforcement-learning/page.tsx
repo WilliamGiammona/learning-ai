@@ -1403,9 +1403,9 @@ export default function ReinforcementLearningPage() {
               <br />
               For example, imagine a state that gives you a small immediate
               reward of +1, but always transitions to terrible states that give
-              -10 rewards. That state has a high immediate reward but a low
+              -10 rewards. That state has a high immediate reward, but a low
               value function. Conversely, if a state gives you 0 immediate
-              reward but leads to a sequence of highly rewarding states, that
+              reward, but leads to a sequence of highly rewarding states, that
               state would have a high value function despite its low immediate
               reward. The value function captures this "looking ahead"
               perspective.
