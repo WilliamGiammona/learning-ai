@@ -1106,7 +1106,7 @@ export default function ReinforcementLearningPage() {
               <sub>t</sub>. You might expect that when you're in state s at time
               t, you would receive your reward (which is conditioned on being in
               that state) at that same time: i.e. R<sub>t</sub> | S<sub>t</sub>{" "}
-              , but you don't. You only get that reward in the next time-step
+              , but you don't. You only get that reward in the next time step
               once you transition to the next state.
               <br />
               <br />
