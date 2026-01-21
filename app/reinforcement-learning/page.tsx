@@ -1072,10 +1072,9 @@ export default function ReinforcementLearningPage() {
               : You're currently in state s at time t
               <br />
               <br />
-              Putting it together: "The reward for state s equals the{" "}
-              <em>expected</em>
-              reward you'll receive at the next time step, given that you're
-              currently in state s."
+              Putting it together: The reward for state s equals the{" "}
+              <em>expected</em> reward you'll receive at the next time step,
+              given that you're currently in state s.
               <br />
               <br />
               Two important notes: First, the expectation (average) E[...] is
