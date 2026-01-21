@@ -1085,87 +1085,39 @@ export default function ReinforcementLearningPage() {
               forever.
               <br />
               <br />
-              Second, notice it&apos;s R<sub>t+1</sub> (next time step), not R
-              <sub>t</sub> (current time step). Why this confusing notation
-              instead of just having R<sub>t</sub> (the reward come at time t)?
-              The answer is that there are actually two conventions, which are
-              mathematically equivalent, listed below:
+              Second, notice it&apos;s R<sub>t+1</sub> (next time step) | S
+              <sub>t</sub>, not R<sub>t</sub> (current time step) | S
+              <sub>t</sub>. You might expect that when you're in state s at time
+              t, you would receive your reward (which is conditioned on being in
+              that state) at that same time: i.e. R<sub>t</sub> | S<sub>t</sub>{" "}
+              , but you don't. You only get that reward in the next time-step
+              once you transition to the next state.
               <br />
               <br />
-              <strong>
-                Convention 1 (more intuitive): Reward is a property of states
-              </strong>
+              To clear up any confusion, here is an example: Suppose we have a
+              system which gives a reward of 5 for the transition from state s
+              to state s', and a reward of -3 for the transition from state s'
+              to state s''.
               <br />
-              You enter state s at time t and immediately receive the reward: R
-              <sub>t</sub>= R(s), like in a video game where you step on a tile
-              and instantly get points. For this convention the terminal (final)
-              state must <em>always</em> equal 0.
-              <br />
-              <br />
-              <strong>
-                Convention 2 (less intuitive): Reward happens "between" states
-              </strong>
-              <br />
-              You're in state s at time t, you transition to the next state, you
-              receive reward R<sub>t+1</sub>, and at the exact same time you're
-              in state s' at time t+1. This is the convention I&apos;m using
-              with the R<sub>t+1</sub> | S<sub>t</sub> = s notation.
-              <br />
-              <br />
-              Both conventions are mathematically equivalent. I&apos;m using
-              Convention 2 here because it&apos;s the standard notation used in
-              the main RL textbook, "Reinforcement Learning: An Introduction" by
-              Sutton and Barto.
-              <br />
-              <br />
-              The key difference between the two conventions is timing:
-              Convention 1 gives you the reward immediately upon entering a
-              state, while Convention 2 gives it to you as you leave (indexed at
-              the next time step).
-              <br />
-              <br />
-              <strong>Example showing both conventions:</strong>
-              <br />
-              To clear up any confusion, here is an example for both
-              conventions. For Convention 1, suppose we have three states with
-              the following rewards: state s gives a reward of 5, state s' gives
-              a reward of -3, and terminal state s'' gives a reward of 0
-              (terminal states must <em>always</em> give rewards of 0 in this
-              convention). For Convention 2, with the same system, we have a
-              reward of 5 for the transition from state s to state s', and a
-              reward of -3 for the transition from state s' to state s''.
-              <br />
-              <br />
-              <strong>Convention 1 (reward upon entering):</strong>
-              <br />
-              t=0: Enter state s → recieve reward 5
-              <br />
-              t=1: Transition to state s' → recieve reward -3
-              <br />
-              t=2: Transition to terminal state s'' → recieve reward 0
-              <br />
-              <strong>Total reward: 5 + (-3) + 0 = 2</strong>
-              <br />
-              <br />
-              <strong>Convention 2 (Sutton & Barto):</strong>
               <br />
               t=0: In state s → no reward yet
               <br />
-              t=1: Transition to state s' → receive R<sub>1</sub> = 5 (the
-              reward for having been in s)
+              t=1: Transition to state s' → receive R<sub>1</sub> = 5
               <br />
               t=2: Transition to terminal state s'' → receive R<sub>2</sub> = -3
-              (the reward for having been in s')
               <br />
               <strong>Total reward: 5 + (-3) = 2</strong>
               <br />
             </p>
             <p className="mb-4">
-              So, Why would anyone ever use convention 2 when convention 1 is so
-              much easier? People should just adopt convention 1 right? To
-              answer this, lets look at the history of how we came up with the
-              name sine and cosine, as well as why we use the ratio pi = 3.14...
-              when doing problems involving a radius instead of a diameter.
+              So, why would anyone use this R<sub>t+1</sub> | S<sub>t</sub>{" "}
+              convention when using the R<sub>t</sub> | S <sub>t</sub>{" "}
+              convention seems so much more natural? To answer this, let's look
+              at some parallels from mathematics: the history of how we came up
+              with the names sine and cosine, and the history of why we use the
+              number π when dealing with problems involving a circle&apos;s
+              radius. Many mathematical conventions persist not because they're
+              the most intuitive, but because of historical precedent.
             </p>
             <p className="mb-4">
               First, let&apos;s look at how we got the names sine and cosine
@@ -1192,8 +1144,7 @@ export default function ReinforcementLearningPage() {
               "bowstring," to describe what we now call the sine function. This
               made sense geometrically because the arc of a circle looks like a
               bow, and the chord (or half-chord) connecting its endpoints looks
-              like the bowstring. A common synonym of jyā was, <em>jīvá</em>,
-              which is the word that ended up being used.
+              like the bowstring.
               <br />
               <br />
               You can see a visual of the idea behind calling it a bowstring
@@ -1208,11 +1159,12 @@ export default function ReinforcementLearningPage() {
                 className="mx-auto my-4"
               />
               <br />
-              <br />
-              When 8th century Persian and Arab scholars translated these Indian
+              <br />A common synonym of jyā was, <em>jīvá</em>, which is the
+              word that ultimately ended up being used in India. When 8th
+              century Persian and Arab scholars translated these Indian
               mathematical texts, they transliterated jīvá into Arabic as{" "}
               <em>jiba</em> (جيب). Arabic is written without short vowels, so{" "}
-              <em>jiba</em> was written simply as the consonants "j-b" (جب).
+              <em>jiba</em> was written simply as the consonants "jb" (جب).
               <br />
               <br />
               In the 12th century, when European scholars translated Muhammad
@@ -1220,12 +1172,12 @@ export default function ReinforcementLearningPage() {
               Ḥisāb al-Jabr wal-Muqābalah (which is where we get algebra
               [al-Jabr] from), into Latin, they thought that jb referred to the
               arabic word jayb (جيب), which meant pocket, and so translated it
-              as the Latin word <em>sinus</em>, Latin for "pocket". Finally, in
-              1593, in his only known publication, Horologiographia, English
-              mathematician Thomas Fale converted the Latin <em>sinus</em> into
-              English as "sine", and that&apos;s the word we still use today,
-              instead of using the words bowstring and co-bowstring (which make
-              much more sense geometrically) because of centuries of convention.
+              as the Latin word <em>sinus</em>. Finally, in 1593, in his only
+              known publication, Horologiographia, English mathematician Thomas
+              Fale converted the Latin <em>sinus</em> into English as "sine",
+              and that&apos;s the word we still use today, instead of using the
+              words bowstring and co-bowstring (which make much more sense
+              geometrically), because of centuries of convention.
             </p>
             <p className="mb-4">
               Second, let&apos;s look at how the ratio of a circumference to its
@@ -1239,16 +1191,15 @@ export default function ReinforcementLearningPage() {
               should use π = 3.14... or τ (tau) = 6.28... as our fundamental
               circle constant. Many mathematicians argue that τ makes more sense
               because it represents the ratio of a circle&apos;s circumference
-              to its <em>radius</em> (C = τr), which would make many formulas
-              cleaner. A full unit circle would simply be τ radians instead of
-              2π radians, a quarter unit circle would be τ/4 instead of π/2, and
-              so on.
+              to its <em>radius</em> (C = τr [as oppused to the usual C = 2πr]),
+              which would make many formulas cleaner. A full unit circle would
+              simply be τ radians instead of 2π radians, a quarter unit circle
+              would be τ/4 instead of π/2, and so on.
               <br />
               <br />
-              So why do we use π = 3.14159... universally instead? The answer
-              lies with the greatest mathematician who ever lived, Leonhard
-              Euler. Euler used the greek letter π (pi) simply to stand for
-              perimeter,{" "}
+              So why do we use π = 3.14... universally instead? The answer lies
+              with the greatest mathematician who ever lived, Leonhard Euler.
+              Euler used the greek letter π (pi) simply to stand for perimeter,{" "}
               <strong>
                 but let its value vary depending on whether he was working on a
                 problem dealing with diameter or with radius.
@@ -1257,7 +1208,7 @@ export default function ReinforcementLearningPage() {
               <br />
               When Euler was working with problems involving{" "}
               <strong>diameter</strong>, he set π equal to 3.14...
-              (circumference to diameter ratio). When he was working with
+              (circumference to diameter ratio,). When he was working with
               problems involving <strong>radius</strong>, he set π equal to
               6.28... (circumference to radius ratio). This makes perfect sense,
               use whichever constant is most convenient for the problem at hand!
@@ -1278,25 +1229,26 @@ export default function ReinforcementLearningPage() {
               simply adopted the value for π as 3.14 regardless of the
               mathematical context because that was the value they had seen
               Euler use in this book. They stopped adjusting based on whether
-              they were working with radius or diameter. That&apos;s why
-              we&apos;re now stuck with the unit circle looking like this:
+              they were working with radius or diameter. That&apos;s why,
+              instead of having a unit circle like this:
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp/unit-circle-pi.png"
-                alt="Unit Circle using pi showing that the values are too large for the circle"
+                src="/images/reinforcement-learning/mdp/unit-circle-tau.png"
+                alt="Unit Circle using tau showing that the values fit the circle"
                 width={500}
                 height={300}
                 className="mx-auto my-4"
               />
               <br />
               <br />
-              instead of this:
+              where going around 1/12th of the circle is τ/12, 1/4 of the circle
+              is τ/4, 3/8ths of the circle is 3τ/8, etc, we have this:
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp/unit-circle-tau.png"
-                alt="Unit Circle using tau showing that the values fit the circle"
+                src="/images/reinforcement-learning/mdp/unit-circle-pi.png"
+                alt="Unit Circle using pi showing that the values are too large for the circle"
                 width={500}
                 height={300}
                 className="mx-auto my-4"
@@ -1314,22 +1266,24 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               I think you can see where I&apos;m going with this. There are many
               areas of mathematics where notation is used that is less intuitive
-              for learners simply because of convention. The reward at timestep
-              t+1 convention (Convention 2) is now standard in RL for similar
-              historical reasons, i.e. because it appeared in the most
-              influential RL textbook (Reinforcement Learning: An Introduction
-              by Sutton & Barto) in the 1998 and everyone adopted it.
+              for learners simply because of convention. The convention of
+              giving the reward at timestep t+1, even though its based of the
+              state at time t, is now standard in RL for similar historical
+              reasons: i.e. because it appeared in the most influential RL
+              textbook (Reinforcement Learning: An Introduction by Sutton &
+              Barto) in 1998 and everyone adopted it.
             </p>
             <p className="mb-4">
               Now we come to the final part in the Markov Reward Process, which
               is the discount factor.
               <br /> <br />• <strong>γ</strong> (gamma) is a discount factor,
-              where γ ∈ [0,1] (gamma is just a number between 0 and 1).
+              where γ ∈ [0,1] (gamma is just a number between [and including] 0
+              and 1).
               <br />
               <br />
               The discount factor, γ, determines how much we value future
               rewards relative to immediate rewards. When we calculate the total
-              sum of rewards from a given state (the return), G<sub>t</sub>, we
+              sum of rewards (the return) from a given state, G<sub>t</sub>, we
               don&apos;t just add up all future rewards equally (unless we set γ
               equal to 1), we discount them based on how far in the future they
               occur:
@@ -1338,12 +1292,6 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
                 <sub>t+3</sub> + ...
-              </span>
-              <br />
-              This can also be written more compactly in sigma notation as:
-              <span className="block font-mono text-center">
-                <br />G<sub>t</sub> = Σ<sub>k=0</sub>
-                <sup>∞</sup> γ<sup>k</sup>r<sub>t+k+1</sub>
               </span>
               <br />
               <br />
@@ -1356,15 +1304,16 @@ export default function ReinforcementLearningPage() {
               that can accurately predict the far future equally as well as the
               immediate future. Rewards far in the future are less certain to
               actually happen. A reward you might get in 100 steps is less
-              reliable than one you'll get in 1 step, so it should be weighted
-              less.
+              reliable than one you&apos;ll get in 50 steps which is less
+              reliable than one you&apos;ll get inone step, so they should each
+              be weighted less.
               <br />
               <br />
               2) <strong>Mathematical convenience</strong>: Discounting ensures
               that infinite sums of rewards converge to a finite number, making
-              the math work better. Without discounting (γ = 1), an infinite
-              episode would have infinite return, making the math more difficult
-              to work with.
+              the math work better. Without the discount factor (unless you set
+              γ = 1), an infinite episode would have infinite return, making the
+              math more difficult to work with.
               <br />
               <br />
               3) <strong>Models real preferences</strong>: In many scenarios,
@@ -1375,17 +1324,19 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>What does γ mean in practice?</strong>
-              <br />- If <strong>γ = 0</strong>: The agent only cares about
-              immediate rewards, completely ignoring the future (myopic)
-              <br />- If <strong>γ = 1</strong>: All future rewards count
-              equally, no matter how far away (far-sighted, only works for
-              finite episodes)
-              <br />- If <strong>γ = 0.5</strong>: A reward 4 steps away is
-              worth (0.5)<sup>4</sup> ≈ 0.0625 of what that same reward would be
-              worth right now
+              <br />
+              If <strong>γ = 0</strong>: The agent only cares about immediate
+              rewards, completely ignoring the future (myopic)
+              <br />
+              If <strong>γ = 1</strong>: All future rewards count equally, no
+              matter how far away (far-sighted, only works for finite episodes)
+              <br />
+              If <strong>γ = 0.5</strong>: A reward 4 steps away is worth (0.5)
+              <sup>4</sup> ≈ 0.0625 of what that same reward would be worth on
+              this step
               <br />
               <br />
-              The choice of γ is a design decision set by humans, that
+              The choice of γ is a design decision set by humans, which
               significantly affects what the agent learns to do. A higher γ
               makes the agent more patient and considerate of long-term
               consequences, while a lower γ does the opposite.
@@ -1489,7 +1440,7 @@ export default function ReinforcementLearningPage() {
             </ul>
             <p className="mb-4">
               But overall, the expected value (the average value you will get if
-              you did an infinite amount or random samples) is what v(s) will
+              you did an infinite amount of random samples) is what v(s) will
               be.
             </p>
             <p className="mb-4">
