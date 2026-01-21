@@ -132,6 +132,22 @@ export default function ReinforcementLearningPage() {
                   </li>
                   <li>
                     <a
+                      href="#historical-precedent-bad-conventions"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Historical Precedent of Bad Conventions
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#mrp-continued"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Markov Reward Process Continued
+                    </a>
+                  </li>
+                  <li>
+                    <a
                       href="#bellman-equation-introduction"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
@@ -1109,6 +1125,12 @@ export default function ReinforcementLearningPage() {
               <strong>Total reward: 5 + (-3) = 2</strong>
               <br />
             </p>
+            <p
+              id="historical-precedent-bad-conventions"
+              className="mb-4 text-center"
+            >
+              <strong>Historical Precedent of Bad Conventions</strong>
+            </p>
             <p className="mb-4">
               So, why would anyone use this R<sub>t+1</sub> | S<sub>t</sub>{" "}
               convention when using the R<sub>t</sub> | S <sub>t</sub>{" "}
@@ -1141,7 +1163,7 @@ export default function ReinforcementLearningPage() {
               of mistranslations across cultures. It began with Indian
               mathematicians around the 5th-6th century AD (like Aryabhata) who
               used the Sanskrit word <strong>jyā</strong> (ज्या), meaning
-              "bowstring," to describe what we now call the sine function. This
+              "bowstring", to describe what we now call the sine function. This
               made sense geometrically because the arc of a circle looks like a
               bow, and the chord (or half-chord) connecting its endpoints looks
               like the bowstring.
@@ -1272,6 +1294,10 @@ export default function ReinforcementLearningPage() {
               reasons: i.e. because it appeared in the most influential RL
               textbook (Reinforcement Learning: An Introduction by Sutton &
               Barto) in 1998 and everyone adopted it.
+            </p>
+
+            <p id="mrp-continued" className="mb-4 text-center">
+              <strong>Markov Reward Process Continued</strong>
             </p>
             <p className="mb-4">
               Now we come to the final part in the Markov Reward Process, which
