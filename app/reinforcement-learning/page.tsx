@@ -1392,9 +1392,8 @@ export default function ReinforcementLearningPage() {
               <br />
               Breaking this down: we're taking the expectation (average) of the
               return G<sub>t</sub> (remember, that's the sum of all discounted
-              future rewards: r<sub>t+1</sub> + γr
-              <sub>t+2</sub> + γ²r<sub>t+3</sub> + ...) given that we start in
-              state s.
+              future rewards: R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
+              <sub>t+3</sub> + ...) given that we start in state s.
               <br />
               <br />
               For example, imagine a state that gives you a small immediate
@@ -1422,17 +1421,17 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <span className="block font-mono text-center">
-                G<sub>t</sub> = r<sub>t+1</sub> + γr<sub>t+2</sub> + γ²r
+                G<sub>t</sub> = R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
                 <sub>t+3</sub> + ...
               </span>
               <br />
-              Notice the lowercase r's are the ACTUAL REWARDS you receive as you
-              move through the MRP. No expectation needed because this is
-              describing what literally happened: "I got reward r<sub>t+1</sub>,
-              then r<sub>t+2</sub>, then r<sub>t+3</sub>..." Each specific
-              return will probably be different every sample, but over MANY
-              samples, the average of these returns will converge to a stable
-              value due to the law of large numbers.
+              Notice the R's are the ACTUAL REWARDS you receive as you move
+              through the MRP. No expectation needed because this is describing
+              what literally happened: "I got reward R<sub>t+1</sub>, then R
+              <sub>t+2</sub>, then R<sub>t+3</sub>..." Each specific return will
+              probably be different every sample, but over MANY samples, the
+              average of these returns will converge to a stable value due to
+              the law of large numbers.
               <br />
               <br />
               <strong>v(s) (the value function)</strong> describes what you
@@ -1492,19 +1491,11 @@ export default function ReinforcementLearningPage() {
             <ul className="list-disc ml-8 mb-4">
               <li>
                 G<sub>t</sub>: No expectation operator → describes ONE
-                trajectory
+                trajectory, uses actual rewards received
               </li>
               <li>
                 v(s): Has expectation operator E[...] → averages over ALL
                 possible trajectories
-              </li>
-              <li>
-                G<sub>t</sub>: Uses lowercase r (actual rewards received)
-              </li>
-              <li>
-                v(s): Uses uppercase R in its definition because uppercase R is
-                already an EXPECTED immediate reward R<sub>s</sub> = E[ r
-                <sub>t+1</sub> | S<sub>t</sub> ]
               </li>
             </ul>
 
