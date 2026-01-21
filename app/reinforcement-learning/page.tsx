@@ -676,23 +676,29 @@ export default function ReinforcementLearningPage() {
               <br />
               The feud centered around the Law of Large Numbers (the average
               outcome of a large amount of independent trials converges to the
-              expected value), first proven by Jacob Bernouli in 1713. It was
-              the most important concept of probability theory until Andrey
-              Markov&apos;s. Bernouli had proved that the Law of Large Numbers
-              applied to INDEPENDENT events, but it was an open question as to
-              whether it also applied to DEPENDENT events. Nekrasov argued that
-              it didn&apos;t, and that if you observed the Law of Large Numbers,
-              you could infer that the underlying events MUST be independent.
-              Nekrasov looked at large amounts of data about marriage rates,
-              crime rates, and birth rates and saw that they seemed to follow
-              the law of large numbers. This data came from decisions to get
-              married, decisions to commit crime, and decisions to have
-              children. Thus because they followed the law of large numbers, the
-              decisions causing them MUST be independent (since he believed only
-              independent events could follow the Law of Large Numbers). Because
-              they were independent, they must be decisions of free will, and
-              hence free will existed and was something that could be measured
-              mathamatically using the Law of Large Numbers.
+              expected value), first proven by Jacob Bernouli in 1713. As an
+              example, we know that the probability of a coin flip landing on
+              heads is 50% and landing on tails is 50%, so even though after a
+              few coin flips (say 10) we might have 7 heads and only 3 tails, if
+              you keep increasing the amount of coin flips that you do, it will
+              eventually converge to 50% heads and 50% tails. The Law of Large
+              Numbers was the most important concept of probability theory until
+              Andrey Markov&apos;s Markov Process. Bernouli had proved that the
+              Law of Large Numbers applied to INDEPENDENT events, but it was an
+              open question as to whether it also applied to DEPENDENT events.
+              Nekrasov argued that it didn&apos;t, and that if you observed the
+              Law of Large Numbers, you could infer that the underlying events
+              MUST be independent. Nekrasov looked at large amounts of data
+              about marriage rates, crime rates, and birth rates and saw that
+              they seemed to follow the law of large numbers. This data came
+              from decisions to get married, decisions to commit crime, and
+              decisions to have children. Thus because they followed the law of
+              large numbers, the decisions causing them MUST be independent
+              (since he believed only independent events could follow the Law of
+              Large Numbers). Because they were independent, they must be
+              decisions of free will, and hence free will existed and was
+              something that could be measured mathamatically using the Law of
+              Large Numbers.
             </p>
 
             <p className="mb-4">
@@ -709,15 +715,15 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               The first thing Markov needed was a situation where one event was
               clearly dependent on a previous event. He settled on using a very
-              famous Russian poem, "Eugene Onegin", by early 19th century anti
-              Tsarist Russian poet (and father of modern Russian literature),
-              Alexander Pushkin. The idea was that the probability of the next
-              letter in the poem being a consonant or a vowel was clearly
-              dependent upon what the current letter in the poem was. Now he
-              just needed to prove that consonants and vowels in the poem
-              followed the law of large numbers, and that would show that
-              dependent events can also follow the law of large numbers (not
-              just independent events).
+              famous Russian poem, "Eugene Onegin", by the early 19th century
+              anti Tsarist Russian poet (and father of modern Russian
+              literature), Alexander Pushkin. The idea was that the probability
+              of the next letter in the poem being a consonant or a vowel was
+              clearly dependent upon what the current letter in the poem was.
+              Once he showed that, all he would need to prove is that consonants
+              and vowels in the poem followed the law of large numbers, and that
+              would show that dependent events can also follow the law of large
+              numbers (not just independent events).
             </p>
 
             <p className="mb-4">
@@ -762,14 +768,24 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               Now Markov needed to show that the law of large numbers was still
-              shown even though the letter was dependent on the previous letter
+              valid even though each letter was dependent on the previous letter
               in the sequence. To do this he created what is now known as a{" "}
-              <strong>Markov Chain</strong>. He had each letter be a state. He
-              then had an arrow from one letter to the next (one state to the
-              next). This arrow was his transition probability. Now he needed to
-              find the transition probabilities. How did he do this? Let&apos;s
-              take a look at the transition probability for vowel to vowel as an
-              example.
+              <strong>Markov Chain</strong>. He had each letter be a state and
+              found the transition probabilities between states. Transition
+              probabilities describe the likelihood of moving from one state to
+              another based only on the current state. For example, the
+              probability that a vowel is followed by another vowel is one
+              transition probability, while the probability that a vowel is
+              followed by a consonant is another. This was remarkable because it
+              meant that you could work with sequences of dependent events and
+              still get meaningful, predictable results without needing to track
+              the entire sequence. By calculating these probabilities, Markov
+              could prove that even with dependencies between letters, the
+              long-run frequencies still converge to predictable values (in this
+              case, the overall proportions of vowels (43%) and consonants (57%)
+              in the poem). Now he needed to find all the state transition
+              probabilities. How did he do this? Let's take a look at the
+              transition probability for vowel to vowel as an example.
               <br />
               <br />
               The probability of a vowel is .43 and the probability of 2
