@@ -1166,11 +1166,7 @@ export default function ReinforcementLearningPage() {
               "bowstring", to describe what we now call the sine function. This
               made sense geometrically because the arc of a circle looks like a
               bow, and the chord (or half-chord) connecting its endpoints looks
-              like the bowstring.
-              <br />
-              <br />
-              You can see a visual of the idea behind calling it a bowstring
-              here:
+              like the bowstring as shown here;
               <br />
               <br />
               <Image
