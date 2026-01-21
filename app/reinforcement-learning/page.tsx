@@ -1135,11 +1135,11 @@ export default function ReinforcementLearningPage() {
               <br />
               <strong>Convention 1 (reward upon entering):</strong>
               <br />
-              t=0: Enter state s → get reward 5
+              t=0: Enter state s → recieve reward 5
               <br />
-              t=1: Transition to state s' → get reward -3
+              t=1: Transition to state s' → recieve reward -3
               <br />
-              t=2: Transition to terminal state s'' → get reward 0
+              t=2: Transition to terminal state s'' → recieve reward 0
               <br />
               <strong>Total reward: 5 + (-3) + 0 = 2</strong>
               <br />
