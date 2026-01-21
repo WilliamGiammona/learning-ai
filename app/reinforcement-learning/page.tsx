@@ -1282,7 +1282,25 @@ export default function ReinforcementLearningPage() {
               we&apos;re now stuck with the unit circle looking like this:
               <br />
               <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/unit-circle-pi.png"
+                alt="Unit Circle using pi showing that the values are too large for the circle"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
+              <br />
+              <br />
               instead of this:
+              <br />
+              <br />
+              <Image
+                src="/images/reinforcement-learning/mdp/unit-circle-tau.png"
+                alt="Unit Circle using tau showing that the values fit the circle"
+                width={500}
+                height={300}
+                className="mx-auto my-4"
+              />
               <br />
               <br />
               along with many other confusing and inelegant complications when
@@ -1367,10 +1385,10 @@ export default function ReinforcementLearningPage() {
               worth right now
               <br />
               <br />
-              The choice of γ is a design decision that significantly affects
-              what the agent learns to do. A higher γ makes the agent more
-              patient and considerate of long-term consequences, while a lower γ
-              does the opposite.
+              The choice of γ is a design decision set by humans, that
+              significantly affects what the agent learns to do. A higher γ
+              makes the agent more patient and considerate of long-term
+              consequences, while a lower γ does the opposite.
               <br />
               <br />
             </p>
@@ -1439,7 +1457,10 @@ export default function ReinforcementLearningPage() {
               Notice the lowercase r's are the ACTUAL REWARDS you receive as you
               move through the MRP. No expectation needed because this is
               describing what literally happened: "I got reward r<sub>t+1</sub>,
-              then r<sub>t+2</sub>, then r<sub>t+3</sub>..."
+              then r<sub>t+2</sub>, then r<sub>t+3</sub>..." Each specific
+              return will probably be different every sample, but over MANY
+              samples, the average of these returns will converge to a stable
+              value due to the law of large numbers.
               <br />
               <br />
               <strong>v(s) (the value function)</strong> describes what you
@@ -1467,6 +1488,11 @@ export default function ReinforcementLearningPage() {
               </li>
             </ul>
             <p className="mb-4">
+              But overall, the expected value (the average value you will get if
+              you did an infinite amount or random samples) is what v(s) will
+              be.
+            </p>
+            <p className="mb-4">
               <strong>Example:</strong> You're in state s. From s, there's a 50%
               chance to go to state A (which gives reward +10) and 50% chance to
               go to state B (which gives reward +2). Let's say both A and B are
@@ -1489,15 +1515,9 @@ export default function ReinforcementLearningPage() {
               2) = (5) + (1) = 6
               <br />
               <br />
-              The value function is the <strong>average</strong> of all possible
-              returns weighted by their probabilities. G<sub>t</sub> is what you
-              get on any particular run. v(s) is what you expect on average if
-              you started from s many times.
-              <br />
-              <br />
-              <strong>Why the math is different:</strong>
+              <strong>Summary of Notation</strong>
             </p>
-            <ul className="list-disc ml-8">
+            <ul className="list-disc ml-8 mb-4">
               <li>
                 G<sub>t</sub>: No expectation operator → describes ONE
                 trajectory
@@ -1518,24 +1538,22 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               To recap, a Markov Reward Process gives us a complete mathematical
               description of an environment by extending Markov Processes with
-              rewards and a discount factor. It&apos;s defined by the tuple (S,
-              P, R, γ) where S captures all possible states the environment can
-              be in, P describes how the environment transitions between states,
-              R specifies the feedback (rewards or penalties) the environment
-              gives us for being in each state, and γ determines how we weight
-              future rewards versus immediate ones. Together, these four
-              components fully characterize the environment&apos;s structure.
-              The value function v(s) tells us the expected (we take the
-              weighted average if there are multiple possible transitions from a
-              state) total discounted return from state s (not just the
-              immediate reward, which is what the reward function tells us).
-              Later Markov Reward Processes will be extended to Markov Decision
-              Processes, where the agent is introduced that is able to take
-              actions in order to increase the likelihood of entering states
-              with higher returns. This will be the core idea of RL, building
-              the best algorithm for an agent to learn which actions give it the
-              highest likelihood of transitioning to states with the highest
-              return.
+              rewards and a discount factor. It's defined by the tuple (S, P, R,
+              γ) where S captures all possible states the environment can be in,
+              P describes how the environment transitions between states, R
+              specifies the expected feedback (rewards or penalties) the
+              environment will give us, and γ determines how we weight rewards
+              that occur farther and farther into the future. Together, these
+              four components fully characterize the environment's structure.
+              The value function v(s) tells us the expected total discounted
+              return from state s, not just the immediate reward (which is what
+              the reward function gives us), but the long-term value accounting
+              for all future rewards. Later, Markov Reward Processes will be
+              extended into Markov Decision Processes, where an agent can take
+              actions to influence which states it enters. This is the core idea
+              of RL: building algorithms that allow agents to learn which
+              actions maximize their chances of being in states with the highest
+              expected return.
               <br />
             </p>
             <p className="mb-4">
