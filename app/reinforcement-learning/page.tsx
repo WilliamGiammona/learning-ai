@@ -1330,7 +1330,7 @@ export default function ReinforcementLearningPage() {
               immediate future. Rewards far in the future are less certain to
               actually happen. A reward you might get in 100 steps is less
               reliable than one you&apos;ll get in 50 steps which is less
-              reliable than one you&apos;ll get inone step, so they should each
+              reliable than one you&apos;ll get in one step, so they should each
               be weighted less.
               <br />
               <br />
