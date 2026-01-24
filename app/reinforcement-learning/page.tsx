@@ -1803,10 +1803,10 @@ export default function ReinforcementLearningPage() {
               rewards for each state (instead of needing them for each action in
               a state). This allows us to use the MRP Bellman equation we saw
               earlier for evaluating a specific policy, because once you fix a
-              policy an MDP can be reduced to an MRP (you can derive values from
-              states only, instead of state-action pairs). However, usually we
-              don't want to compress MDPs into MRPs because we want to know the
-              state-action value pairs instead of just the state values. The
+              policy, an MDP can be reduced to an MRP (you can derive values
+              from states only, instead of state-action pairs). However, usually
+              we don't want to compress MDPs into MRPs because we want to know
+              the state-action value pairs instead of just the state values. The
               reasons why will be explained later.
             </p>
 
