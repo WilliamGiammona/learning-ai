@@ -1800,9 +1800,10 @@ export default function ReinforcementLearningPage() {
               state-only dynamics. The policy tells us the probability of each
               action from each state, so we can compute weighted averages over
               actions to get single transition probabilities and expected
-              rewards for each state. This is why we could use the MRP Bellman
-              equation earlier - once you fix a policy, an MDP reduces to an MRP
-              (You can derive values from states only, not state-action pairs).
+              rewards for each state. This allows us to use the MRP Bellman
+              equation we saw earlier for evaluating a specific policy, because
+              once you fix a policy an MDP can be reduced to an MRP (you can
+              derive values from states only, instead of state-action pairs).
               However, usually we want to know the state-action value pairs
               instead of just the state values, which will be explained later.
             </p>
