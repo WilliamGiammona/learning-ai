@@ -1601,9 +1601,11 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               <br />
-              This equation says: the value of state s equals the immediate
-              expected reward R<sub>s</sub> plus a weighted sum over all
-              possible next states. Here&apos;s how to compute it step by step:
+              This equation says: the value of state s, (v(s)), equals the
+              immediate expected reward, R<sub>s</sub>, plus a discounted (γ)
+              sum over all possible next states (v(s&apos;)) weighted by their
+              probability of occuring (P<sub>ss&apos;</sub>). Here&apos;s how to
+              compute it step by step:
               <br />
               <br />
               1) Look at the first possible next state, s&apos;, you can
