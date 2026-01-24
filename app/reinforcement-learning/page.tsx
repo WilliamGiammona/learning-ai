@@ -1786,17 +1786,25 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong>An important note:</strong> Once we fix a policy π, the
-              MDP behaves like an MRP. The transition probabilities become
-              policy-specific: P<sup>π</sup>
-              <sub>ss&apos;</sub> = Σ<sub>a</sub> π(a|s)P<sup>a</sup>
-              <sub>ss&apos;</sub>, and the rewards become policy-specific: R
+              MDP behaves exactly like an MRP. The transition probabilities
+              become policy-specific: P<sup>π</sup>
+              <sub>ss'</sub> = Σ<sub>a</sub> π(a|s)P<sup>a</sup>
+              <sub>ss'</sub>, and the rewards become policy-specific: R
               <sup>π</sup>
               <sub>s</sub> = Σ<sub>a</sub> π(a|s)R<sup>a</sup>
-              <sub>s</sub>. In other words, when the agent follows a specific
-              policy, the probabilities of transitioning between states and the
-              expected rewards are now determined by that policy combined with
-              the environment dynamics. This is why we could use the MRP Bellman
-              Equation earlier, once you fix a policy, an MDP reduces to an MRP!
+              <sub>s</sub>.
+              <br />
+              <br />
+              In other words, when the agent commits to following a specific
+              policy, we can collapse the state-action dynamics back into
+              state-only dynamics. The policy tells us the probability of each
+              action from each state, so we can compute weighted averages over
+              actions to get single transition probabilities and expected
+              rewards for each state. This is why we could use the MRP Bellman
+              equation earlier - once you fix a policy, an MDP reduces to an MRP
+              (You can derive values from states only, not state-action pairs).
+              However, usually we want to know the state-action value pairs
+              instead of just the state values, which will be explained later.
             </p>
 
             <p className="mb-4">
