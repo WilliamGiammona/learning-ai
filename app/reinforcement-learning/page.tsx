@@ -1602,8 +1602,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               This equation says: the value of state s equals the immediate
-              reward R<sub>s</sub> plus a weighted sum over all possible next
-              states. Here&apos;s how to compute it step by step:
+              expected reward R<sub>s</sub> plus a weighted sum over all
+              possible next states. Here&apos;s how to compute it step by step:
               <br />
               <br />
               1) Look at the first possible next state, s&apos;, you can
@@ -1618,8 +1618,8 @@ export default function ReinforcementLearningPage() {
               <br />
               5) Add all these weighted values together
               <br />
-              6) Finally, add the immediate reward R<sub>s</sub> you get from
-              being in state s
+              6) Finally, add the immediate expected reward R<sub>s</sub> you
+              get from being in state s
             </p>
             <p className="mb-4">
               The Bellman Equation becomes even more powerful when we express it
