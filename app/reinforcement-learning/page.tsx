@@ -1779,9 +1779,9 @@ export default function ReinforcementLearningPage() {
               <strong>stochastic policy</strong> assigns probabilities to
               different actions in each state, for example, π(a₁|s) = 0.7 and
               π(a₂|s) = 0.3 means there&apos;s a 70% chance of taking action a₁
-              and a 30% chance of taking action a₂ when in state s. The policy
-              is what we ultimately want to learn in RL—the best actions an
-              agent can take to maximize its expected total reward.
+              and a 30% chance of taking action a₂ when in state s. The optimal
+              policy is what we ultimately want to learn in RL, i.e. the best
+              actions an agent can take to maximize its expected total reward.
             </p>
 
             <p className="mb-4">
