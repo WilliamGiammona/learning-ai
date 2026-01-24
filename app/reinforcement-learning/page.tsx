@@ -1681,7 +1681,7 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               Now we are ready to talk about the full mathematical structure
-              that can describe reinforcement learning: the Markov Decision
+              that can describe reinforcement learning, the Markov Decision
               Process. With a Markov Reward Process we could fully describe the
               environment of RL, but there was still nothing to describe the
               agent. An agent doesn't just exist in an environment, it can
