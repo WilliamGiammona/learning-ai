@@ -1796,7 +1796,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               In other words, when the agent commits to following a specific
-              policy, we can collapse the state action dynamics back into state
+              policy, we can collapse the state-action dynamics back into state
               only dynamics. The policy tells us the probability of each action
               from each state, so we can compute weighted averages over actions
               to get a single set of transition probabilities and expected
