@@ -1796,17 +1796,17 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               In other words, when the agent commits to following a specific
-              policy, we can collapse the state-action dynamics back into
-              state-only dynamics. The policy tells us the probability of each
-              action from each state, so we can compute weighted averages over
-              actions to get single transition probabilities and expected
-              rewards for each state. This allows us to use the MRP Bellman
-              equation we saw earlier for evaluating a specific policy, because
-              once you fix a policy an MDP can be reduced to an MRP (you can
-              derive values from states only, instead of state-action pairs).
-              However, usually we don't want to compress MDPs into MRPs because
-              we want to know the state-action value pairs instead of just the
-              state values. The reasons why will be explained later.
+              policy, we can collapse the state action dynamics back into state
+              only dynamics. The policy tells us the probability of each action
+              from each state, so we can compute weighted averages over actions
+              to get single transition probabilities and expected rewards for
+              each state. This allows us to use the MRP Bellman equation we saw
+              earlier for evaluating a specific policy, because once you fix a
+              policy an MDP can be reduced to an MRP (you can derive values from
+              states only, instead of state-action pairs). However, usually we
+              don't want to compress MDPs into MRPs because we want to know the
+              state-action value pairs instead of just the state values. The
+              reasons why will be explained later.
             </p>
 
             <p className="mb-4">
