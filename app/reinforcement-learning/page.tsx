@@ -1579,22 +1579,7 @@ export default function ReinforcementLearningPage() {
               trusting that the value function at the next state has already
               done the rest of the work for us.
             </p>
-            <p className="mb-4">
-              This recursive formulation is enormously more efficient than
-              computing the full sum directly. If we tried to calculate v(s) by
-              literally summing all future rewards, we&apos;d need to count
-              every possible trajectory from state s all the way to the end
-              (which could be infinitely long), calculate the discounted return
-              for each trajectory, and then average them weighted by their
-              probabilities. This becomes near computationally impossible very
-              quickly, even for a simple environment with just 10 states. The
-              number of possible paths explodes exponentially with the length of
-              the episode. But with the Bellman Equation, we only need to know:
-              (1) the immediate reward distribution from the current state, (2)
-              the transition probabilities to next states, and (3) the values of
-              those next states. This transforms an exponentially complex
-              problem into a simple one step calculation.
-            </p>
+
             <p className="mb-4">
               <Image
                 src="/images/reinforcement-learning/mdp/bellman-mrp-model.png"
