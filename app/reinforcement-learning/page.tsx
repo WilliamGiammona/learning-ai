@@ -1773,8 +1773,8 @@ export default function ReinforcementLearningPage() {
               This reads as: "the probability that the agent takes action a
               given that it&apos;s currently in state s." It&apos;s important to
               note that the policy only depends on the state, and is not at all
-              dependent on the time (it's stationary). There are two types of
-              policies: deterministic policies and stochastic policies. A
+              dependent on the time (it&apos;s stationary). There are two types
+              of policies: deterministic policies and stochastic policies. A
               <strong> deterministic policy</strong> always chooses the same
               action in a given state, there is no randomness. π(a|s) equals 1
               for one specific action and 0 for all others. A{" "}
