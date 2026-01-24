@@ -1728,14 +1728,14 @@ export default function ReinforcementLearningPage() {
               the action taken, giving the agent control over the transition
               dynamics and rewards through its choice of actions. Remember,
               before P was entirely dependent on environment dynamics while in
-              state s, now it&apos;s a kind of combination with those dynamics
-              AND the action the agent takes. You can think of it as there
-              exists a separate matrix of transition probabilities for EACH
-              action you can take in a given state. Similarly, the reward R is
-              now dependent on both the state AND the action. Different actions
-              in the same state can yield different expected rewards (unlike
-              MRPs where the expected reward only depended on the current state
-              you were in).
+              state s, now it&apos;s a kind of combination with those
+              environment dynamics AND the action the agent takes. You can think
+              of it as there exists a separate matrix of transition
+              probabilities for EACH action you can take in a given state.
+              Similarly, the reward R is now dependent on both the state AND the
+              action. Different actions in the same state can yield different
+              expected rewards (unlike MRPs where the expected reward only
+              depended on the current state you were in).
             </p>
 
             <p className="mb-4">
