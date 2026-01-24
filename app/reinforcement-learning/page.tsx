@@ -1725,17 +1725,28 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The key difference from MRPs is that both P and R now depend on
-              the action taken, giving the agent control over the transition
-              dynamics and rewards through its choice of actions. Remember,
-              before P was entirely dependent on environment dynamics while in
-              state s, now it&apos;s a kind of combination with those
-              environment dynamics AND the action the agent takes. You can think
-              of it as there exists a separate matrix of transition
-              probabilities for EACH action you can take in a given state.
-              Similarly, the reward R is now dependent on both the state AND the
-              action. Different actions in the same state can yield different
-              expected rewards (unlike MRPs where the expected reward only
-              depended on the current state you were in).
+              the action taken, giving the agent control over transitions and
+              rewards. In MRPs, P was entirely determined by the environment
+              dynamics, but now it's a combination of the agent&apos;s action
+              AND the environment&apos;s transition dynamics.
+              <br />
+              <br />
+              For example, imagine a robot serving food at an outdoor cafe. If
+              the customer is to the right of the robot, the robot&apos;s action
+              to move itself to the right greatly increases the probability of
+              reaching the customer, but it's not guaranteed. A strong wind
+              might push the robot to the left instead. The new state depends on
+              both the agent&apos;s chosen action and environmental factors like
+              wind.
+              <br />
+              <br />
+              You can think of there being a separate set of transition
+              probabilities for each possible action in each state, (unlike MRPs
+              where there was only one set of transition probabilities per state
+              ). Similarly, rewards now depend on both state AND action as well.
+              Taking different actions in the same state can yield different
+              expected rewards (unlike MRPs where the reward only depended on
+              the current state).
             </p>
 
             <p className="mb-4">
