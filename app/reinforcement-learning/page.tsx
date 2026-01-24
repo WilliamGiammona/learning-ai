@@ -1880,7 +1880,7 @@ export default function ReinforcementLearningPage() {
               evaluating the position, you&apos;re evaluating a specific move
               from that position. The action-value function answers: "In the
               position I'm in, if I make this particular move (like moving my
-              knight to e5), and then follow my usual strategy afterwards,
+              knight to c3), and then follow my usual strategy afterwards,
               what&apos;s my expected outcome?" You might be in a good position
               overall (high state value), but one specific move could be
               terrible (low action value for that move) while another could be
@@ -1950,7 +1950,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> The value of moving your knight to
-              e5 equals: any immediate reward from that move (like attacking the
+              c3 equals: any immediate reward from that move (like attacking the
               queen) plus the discounted value of whatever move your strategy
               tells you to make in the resulting position. Notice we&apos;re
               looking ahead to the value of the <em>next move</em> (q at t+1) in
@@ -2037,7 +2037,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> You&apos;re evaluating moving your
-              knight to e5. After this move, your opponent has several possible
+              knight to c3. After this move, your opponent has several possible
               responses (different s&apos;). The value of your knight move
               equals any immediate reward (threatening pieces) plus the average
               value of the positions you&apos;ll face, weighted by how likely
@@ -2125,9 +2125,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> You&apos;ve decided to move your
-              knight to e5. Your opponent responds, creating various positions.
+              knight to c3. Your opponent responds, creating various positions.
               From each position, your strategy determines your next move. The
-              value of "knight to e5" is: (immediate reward) + (average over
+              value of "knight to c3" is: (immediate reward) + (average over
               opponent responses i.e. all the s' states, and then the value of
               your follow up moves in each of these hypothetical resulting
               position). This is also a two-step lookahead: your move →
@@ -2240,7 +2240,7 @@ export default function ReinforcementLearningPage() {
               value of playing a specific move in a position, s, assuming you
               play perfectly afterwards. It answers: "If I make this move, and
               then play optimally from the resulting position, what&apos;s my
-              expected outcome?" Even if moving your knight to e5 seems like a
+              expected outcome?" Even if moving your knight tc3 seems like a
               random choice, q<sub>*</sub> evaluates what happens if you make
               that move and then play like Bobby Fischer for the rest of the
               game.
@@ -2320,10 +2320,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> The optimal value of moving your
-              knight to e5 equals: the immediate reward from that move
+              knight to c3 equals: the immediate reward from that move
               (capturing material, improving position) plus the discounted value
               of making the BEST possible move in the resulting position. You
-              commit to knight to e5 now, but after your opponent responds,
+              commit to knight to c3 now, but after your opponent responds,
               you'll choose optimally from whatever position results.
               <br />
               <br />
@@ -2430,7 +2430,7 @@ export default function ReinforcementLearningPage() {
 
             <p className="mb-4">
               <strong>Chess analogy:</strong> To evaluate q*(s, move knight to
-              e5), you look at: (1) whether this move immediately captures
+              c3), you look at: (1) whether this move immediately captures
               material or improves position (the reward r), plus (2) the optimal
               value of the board position that results after the move,
               accounting for your opponent's possible responses (the Σ P
@@ -2506,9 +2506,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> You've decided to move your knight
-              to e5. Your opponent responds, creating various positions. From
+              to c3. Your opponent responds, creating various positions. From
               each resulting position, you evaluate the best move you could
-              make. The value of "knight to e5" is: (immediate reward) +
+              make. The value of "knight to c3" is: (immediate reward) +
               (average over opponent's responses of the best move you can make
               in each resulting position). This is also a two-step lookahead:
               your move → opponent's response → your optimal next move.
