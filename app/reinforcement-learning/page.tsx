@@ -2629,6 +2629,51 @@ export default function ReinforcementLearningPage() {
               isn't linear. Now we can&apos;t do our linear algebra tricks to
               solve the system.
             </p>
+            <p className="mb-4">
+              This brings us to a slightly uncomfortable conclusion.
+              <br />
+              <br />
+              The Bellman Optimality Equation is <em>non-linear</em>. Because of
+              the max operator, there is{" "}
+              <em>no general closed-form solution</em>. There is no magical
+              matrix inverse we can write down. There is no single algebraic
+              trick that takes us straight to v<sub>*</sub> or q<sub>*</sub> in
+              one shot.
+              <br />
+              <br />
+              So if we can&apos;t solve these equations directly… what do we do
+              instead?
+              <br />
+              <br />
+              Rather than solving the Bellman Optimality Equation outright, all
+              practical reinforcement-learning algorithms take the same basic
+              approach: they start with a guess for the value function and then
+              repeatedly update that guess until things settle down and stop
+              changing.
+              <br />
+              <br />
+              Over the years, people have come up with several different ways of
+              doing exactly this. The four most important ones, and the ones
+              you&apos;ll see over and over again in reinforcement learning,
+              are:
+              <br />
+              <br />
+              <strong>Value Iteration</strong>
+              <br />
+              <br />
+              <strong>Policy Iteration</strong>
+              <br />
+              <br />
+              <strong>Q-learning</strong>
+              <br />
+              <br />
+              <strong>SARSA</strong>
+              <br />
+              <br />
+              In the next sections, we&apos;ll go through each of these methods
+              slowly and carefully, and you&apos;ll see how they all fall out
+              naturally from the same Bellman equations you just met.
+            </p>
           </section>
         </main>
       </div>
