@@ -1876,28 +1876,23 @@ export default function ReinforcementLearningPage() {
               afterwards.
               <br />
               <br />
-              <strong>Chess analogy:</strong> Now you&apos;re not just
-              evaluating the position, you&apos;re evaluating a specific move
-              from that position. The action-value function answers: "In the
-              position I'm in, if I make this particular move (like moving my
-              knight to c3), and then follow my usual strategy afterwards,
-              what&apos;s my expected outcome?" You can then look at another
-              particular move <em>in the same position</em> (like moving my
-              bishop to g5) and evaluate the game from there in the same way.
-              With a state-value function, you only get one value per state, but
-              a state-action value function gives you each value for all the
-              actions you can take <em>from</em> a particular state. You might
-              be in a good position overall (high state value), but one specific
-              move could be terrible (low action value for that move) while
-              another could be excellent (high action value).
+              <strong>Chess analogy:</strong> Instead of just evaluating your
+              position, you're evaluating a specific move from that position.
+              The action-value function answers: "If I make this particular move
+              (like knight to c3) and then follow my usual strategy afterwards,
+              what's my expected outcome?" You can compare this to another move
+              from the same position (like bishop to g5) to see which is better.
               <br />
               <br />
-              <strong>Key difference:</strong> v<sub>π</sub>(s) tells you how
-              good a position is assuming you follow your policy, while q
-              <sub>π</sub>(s,a) tells you how good a specific move is from that
-              position, followed by your policy. In chess terms: state-value
-              evaluates positions, action-value evaluates moves in a given
-              position.
+              <strong>Key difference:</strong> v<sub>π</sub>(s) gives you one
+              number per state, the average value across all actions you might
+              take (weighted by your policy). But the action-value function q
+              <sub>π</sub>(s,a) gives you a separate value for each individual
+              action available in that state. You might be in a strong position
+              overall (high v<sub>π</sub>(s)), but one specific move could be
+              disastrous (q<sub>π</sub>(s,a<sub>1</sub>) for that action) while
+              another could be brilliant (q<sub>π</sub> (s,a<sub>2</sub>) for a
+              different action).
             </p>
 
             <p id="bellman-expectation-equation" className="mb-4">
