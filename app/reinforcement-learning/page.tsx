@@ -1881,11 +1881,15 @@ export default function ReinforcementLearningPage() {
               from that position. The action-value function answers: "In the
               position I'm in, if I make this particular move (like moving my
               knight to c3), and then follow my usual strategy afterwards,
-              what&apos;s my expected outcome?" You might be in a good position
-              overall (high state value), but one specific move could be
-              terrible (low action value for that move) while another could be
-              excellent (high action value). The action-value function helps you
-              compare different moves from the same position.
+              what&apos;s my expected outcome?" You can then look at another
+              particular move <em>in the same position</em> (like moving my
+              bishop to g5) and evaluate the game from there in the same way.
+              With a state-value function, you only get one value per state, but
+              a state-action value function gives you each value for all the
+              actions you can take <em>from</em> a particular state. You might
+              be in a good position overall (high state value), but one specific
+              move could be terrible (low action value for that move) while
+              another could be excellent (high action value).
               <br />
               <br />
               <strong>Key difference:</strong> v<sub>π</sub>(s) tells you how
