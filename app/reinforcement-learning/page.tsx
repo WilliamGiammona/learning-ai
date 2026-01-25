@@ -2863,10 +2863,10 @@ export default function ReinforcementLearningPage() {
               &quot;research&quot;, so Bellman needed a name that wouldn&apos;t
               immediately get his funding pulled. He chose <em>dynamic</em>{" "}
               because it was a way to describe something that changes over time
-              and has multiple stages, but that also had a positive,
-              technical-sounding connotation. He chose <em>programming</em>{" "}
-              because it sounded much more practical than &quot;research&quot;
-              and made it sound like he was actually solving real problems.
+              and has multiple stages, but that also had a positive connotation.
+              He chose <em>programming</em> because it sounded much more
+              practical than &quot;research&quot; and made it sound like he was
+              actually solving real problems.
               <br />
               <br />
               So <em>dynamic programming</em> is really just a fancy way of
