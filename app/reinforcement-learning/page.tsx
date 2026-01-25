@@ -2584,9 +2584,6 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              <strong className="block text-center mb-4">
-                The Tempting Linear-Algebra Trick (and Why It Fails)
-              </strong>
               At this point, if you&apos;re feeling clever, you might think:
               &quot;Wait a second. Haven&apos;t we seen something like this
               before?&quot;
@@ -2600,7 +2597,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <span className="block font-mono text-center mb-4">
-                v<sub>π</sub> = r<sub>π</sub> + γ P<sub>π</sub> v<sub>π</sub>
+                Iv<sub>π</sub> = r<sub>π</sub> + γ P<sub>π</sub> v<sub>π</sub>
               </span>
               Which we could rearrange into:
               <br />
@@ -2614,8 +2611,6 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center mb-4">
                 v<sub>π</sub> = (I − γP<sub>π</sub>)<sup>−1</sup> r<sub>π</sub>
               </span>
-              Ingredients go in. Matrix multiplication happens. A value function
-              comes out. Blender in, smoothie out.
               <br />
               <br />
               So naturally, your brain now tries to pull the exact same stunt
@@ -2628,58 +2623,11 @@ export default function ReinforcementLearningPage() {
               matrix, and go home early. Right?
               <br />
               <br />
-              Unfortunately… no.
-              <br />
-              <br />
-              Here&apos;s the problem: the moment we replaced &quot;average over
-              actions using a policy&quot; with &quot;take the max over
-              actions,&quot; the whole equation stopped being linear.
-              <br />
-              <br />
-              In the expectation case, everything behaves politely. The value
-              function only ever shows up multiplied by numbers and added
-              together. That&apos;s exactly the kind of structure linear algebra
-              loves. You can always rearrange things into something that looks
-              like:
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                (I − γP) v = r
-              </span>
-              And then solve it with a matrix inverse.
-              <br />
-              <br />
-              But the max operator is not just another kind of multiplication or
-              addition. It&apos;s a completely different beast. It doesn&apos;t
-              distribute. You can&apos;t pull it through sums or matrices. And,
-              most importantly, you can&apos;t rearrange an equation with a max
-              in it into the form:
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                (I − γP) q = r
-              </span>
-              <br />
-              and then solve for q by inverting a matrix.
-              <br />
-              <br />
-              Same ingredients. Same kitchen. Totally different appliance.
-              <br />
-              <br />
-              The Bellman Expectation Equation is a linear blender: pour in
-              numbers, spin the blades, and out comes a value function.
-              <br />
-              <br />
-              The Bellman Optimality Equation is a nonlinear blender with a
-              giant &quot;pick the biggest chunk&quot; switch on it. Linear
-              algebra takes one look at that switch and quietly backs out of the
-              room.
-              <br />
-              <br />
-              So even though the optimality equations look almost identical to
-              the expectation equations, that one tiny change — replacing an
-              average with a max — completely destroys the linear structure that
-              made the matrix trick possible in the first place.
+              WRONG! the moment we replaced &quot;average over actions using a
+              policy&quot; with &quot;take the max over actions,&quot; the whole
+              equation stopped being linear because the max operator itself
+              isn't linear. Now we can&apos;t do our linear algebra tricks to
+              solve the system.
             </p>
           </section>
         </main>
