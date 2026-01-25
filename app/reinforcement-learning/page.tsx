@@ -2884,9 +2884,10 @@ export default function ReinforcementLearningPage() {
               <em>exist</em>, but terrible at actually <em>computing</em> them.
               <br />
               <br />
-              Bellman&apos;s core insight was something he later called the
-              <strong> Principle of Optimality</strong>. In informal terms, it
-              says:
+              Bellman&apos;s two core insights were what he later called the
+              <strong> Principle of Optimality</strong>, and another idea now
+              called <strong>Overlapping Subproblems"</strong>. In informal
+              terms, it says:
               <br />
               <br />
               <em>
