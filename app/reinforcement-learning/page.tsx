@@ -2837,7 +2837,21 @@ export default function ReinforcementLearningPage() {
               named
               <strong> Richard Bellman</strong> in the late 1940s, while he was
               working as a consultant at the RAND Corporation on problems funded
-              by the U.S. Air Force.
+              by the U.S. Air Force. Much of what follows in this section is
+              informed by Bellman’s own account in his autobiography and
+              reflections on the origins of the method — you can read a
+              historical summary in the
+              <a
+                href="https://www.cs.uni.edu/~wallingf/teaching/cs3530/sessions/session27/bellman-dynamic-programming.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline"
+              >
+                RICHARD BELLMAN ON THE BIRTH OF DYNAMIC PROGRAMMING
+              </a>
+              (source for this narrative).
+              <br />
+              <br />
               <br />
               <br />
               Bellman wasn&apos;t thinking about robots, games, or machine
