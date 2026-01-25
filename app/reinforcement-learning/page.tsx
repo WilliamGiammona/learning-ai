@@ -2348,6 +2348,9 @@ export default function ReinforcementLearningPage() {
               characterizes the best possible policy.
               <br />
               <br />
+              <strong>For the optimal state-value function:</strong>
+              <br />
+              <br />
               <span className="block font-mono text-center mb-4">
                 v<sub>*</sub>(s) = max<sub>a</sub> E[R<sub>t+1</sub> + γv
                 <sub>*</sub>(S<sub>t+1</sub>) | S<sub>t</sub> = s, A<sub>t</sub>{" "}
@@ -2370,8 +2373,8 @@ export default function ReinforcementLearningPage() {
               perfectly from here onwards. To compute it, you look at ALL
               possible moves, evaluate the value of each move (immediate reward
               + discounted optimal value of resulting position), and take the
-              maximum. That maximum IS v<sub>*</sub>(s) - it's a number
-              representing "how good is this position with perfect play?"
+              maximum. That maximum IS v<sub>*</sub>(s), it&apos;s a number
+              representing "how good is this position with perfect play".
               <br />
               <br />
               The optimal POLICY π<sub>*</sub>(s) is the actual move that
@@ -2391,10 +2394,12 @@ export default function ReinforcementLearningPage() {
               </span>
               This says: the optimal value of taking action a in state s equals
               the expected immediate reward from that action plus the discounted
-              value of taking the BEST action in the next state. Notice the max
-              <sub>a'</sub> appears inside the expectation - after taking action
-              a and seeing where we land (S<sub>t+1</sub>), we then choose the
-              best next action a'.
+              value of taking the BEST action in the next state. Notice that the
+              max<sub>a'</sub> appears inside the expectation. Conceptually,
+              this means that for each possible next state S<sub>t+1</sub> the
+              environment might send us to, we assume we will choose the best
+              possible next action a', and then we average over all those
+              possible next states.
               <br />
               <br />
               <strong>Chess analogy:</strong> The optimal value of moving your
