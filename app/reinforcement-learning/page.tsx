@@ -2767,10 +2767,12 @@ export default function ReinforcementLearningPage() {
               like?&quot; to &quot;how do we actually find it?&quot;
               <br />
               <br />
-              The collection of techniques we&apos;ll start with is called
+              The collection of techniques we&apos;ll start with is called{" "}
               <strong>dynamic programming</strong>. These are algorithms that
-              solve MDPs by repeatedly applying the Bellman equations until the
-              value functions and policies settle down and stop changing.
+              solve MDPs by first breaking up the problem into easier to solve
+              subproblems, caching those results in a value function, and then
+              repeatedly applying the Bellman equations until the value
+              functions and policies settle down on their optimum values.
               <br />
               <br />
               In order to use dynamic programming for MDPs, we must assume that
