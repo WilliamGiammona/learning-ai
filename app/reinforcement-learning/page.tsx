@@ -2712,7 +2712,7 @@ export default function ReinforcementLearningPage() {
               We carefully formalized the reinforcement learning problem using a
               Markov Decision Process. We defined states, rewards, transition
               probabilities, and a discount factor, which are all the
-              ingredients that speicfy the environment itself, as well as the
+              ingredients that specify the environment itself, as well as the
               actions an agent can take to influence its environment.
               <br />
               <br />
