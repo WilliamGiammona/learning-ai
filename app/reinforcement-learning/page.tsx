@@ -611,8 +611,9 @@ export default function ReinforcementLearningPage() {
               diving into learning RL. Next, I will discuss Markov Decision
               Processes in detail.
             </p>
-
-            <h1 id="ch-two-mdp" className="text-3xl font-bold mb-6 text-center">
+          </section>
+          <section id="ch-two-mdp" className="mb-12">
+            <h1 className="text-3xl font-bold mb-6 text-center">
               Markov Decision Process
             </h1>
             <p className="mb-4">
