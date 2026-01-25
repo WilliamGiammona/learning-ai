@@ -2765,6 +2765,13 @@ export default function ReinforcementLearningPage() {
               value functions and policies settle down and stop changing.
               <br />
               <br />
+              In order to use dynamic programming for MDPs, we must assume that
+              we know the full structure of the MDP (we know the transition
+              dynamics and the rewards), and because of this it&apos;s actually
+              a "planning" problem. A full reinforcement learning problem
+              assumes that you don't have full knowledge of the MDP.
+              <br />
+              <br />
               This section is organized into seven parts:
               <br />
               <br />
