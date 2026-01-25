@@ -2217,26 +2217,37 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               <br />
-              <strong>Chess analogy:</strong> v<sub>*</sub>(s) tells you the
-              value of a position assuming you play <em>perfectly</em> from that
-              point onwards. It doesn&apos;t matter what strategy you were
-              following before, v<sub>*</sub> asks "what&apos;s the best I can
-              possibly do from here?" A position where you&apos;re up a queen
-              has a very high v<sub>*</sub> because even the best possible play
-              from your opponent probably can&apos;t stop you from winning. This
-              is different from the value functions we've been looking at
-              before, which are just the value functions with regard to a
-              specific policy (not necessarily the best policy). For example,
-              imagine a very difficult chess position where one move led to
-              victory, but EVERY other possible move led to certain defeat.
-              Imagine that finding the correct move was so difficult only Bobby
-              Fischer himself would be able to find it. The optimal state-value
-              function (the value function under the optimal policy) would give
-              this position a very high score for you because it assumes perfect
-              play (that's what optimal policy means), but under most policies
-              (people who aren't Bobby Fischer), it gives the exact same
-              position a low score because even though there exists a winning
-              move, most people won't find it (they have sub optimal policies).
+              <strong>Chess analogy:</strong> Think of Bobby Fischer&apos;s
+              strategy as an optimal policy π<sub>*</sub>, the best possible way
+              to play chess. When Fischer follows his strategy from any
+              position, he achieves the best possible outcome. The optimal
+              state-value function v<sub>*</sub>(s) tells us the value of any
+              position, if from that point forward we started following
+              Fischer&apos;s strategy. So if you're up a queen, v<sub>*</sub>(s)
+              is very high because even with perfect play from your opponent,
+              you'll probably win. If you're down material hopelessly, v
+              <sub>*</sub>(s) is low because even Fischer himself can't save
+              that position.
+              <br />
+              <br />
+              Here's the key distinction: π<sub>*</sub> (the optimal policy)
+              tells you <em>what moves to make</em>, while v<sub>*</sub>(s) (the
+              optimal value function) tells you{" "}
+              <em>how good the resulting position will be</em> when you follow
+              that optimal policy. They're related, but slightly different.
+              Optimal policy is the <em>best</em> strategy, while{" "}
+              <em>optimal value</em> is the value you get at each position after
+              following that strategy.
+              <br />
+              <br />
+              For example, imagine a very difficult position where one brilliant
+              move wins but every other move loses. Under Fischer's optimal
+              policy, v<sub>*</sub>(s) for this position is high because his
+              strategy (the optimal policy) would find the winning move. But
+              under a beginner's policy, v<sub>beginner</sub>(s) for the same
+              position would be low because their strategy (a suboptimal policy)
+              wouldn't find that move, they&apos;d play one of the losing
+              alternatives instead.
               <br />
               <br />
               The <strong>optimal action-value function</strong> q<sub>*</sub>
