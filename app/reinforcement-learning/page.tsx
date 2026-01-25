@@ -2696,6 +2696,7 @@ export default function ReinforcementLearningPage() {
               naturally from the same Bellman equations you just met.
             </p>
           </section>
+
           <section id="ch-three-dynamic-programming" className="mb-12">
             <h1 className="text-3xl font-bold mb-6 text-center">
               Dynamic Programming
@@ -2784,14 +2785,14 @@ export default function ReinforcementLearningPage() {
               <strong>4) Policy Iteration</strong>
               <br />
               How to alternate between evaluating a policy and improving it,
-              until the policy stops changing and becomes optimal.
+              until we find the optimal policy for an MDP.
               <br />
               <br />
               <strong>5) Value Iteration</strong>
               <br />
               How to skip explicit policies altogether and iteratively apply the
-              Bellman optimality update until the value function converges to v
-              <sub>*</sub>.
+              Bellman optimality update only on the value function until the
+              value function converges to the optimal value function.
               <br />
               <br />
               <strong>6) Extensions to Dynamic Programming</strong>
