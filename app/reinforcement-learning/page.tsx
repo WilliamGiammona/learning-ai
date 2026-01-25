@@ -2239,10 +2239,9 @@ export default function ReinforcementLearningPage() {
               value of playing a specific move in a position, s, assuming you
               play perfectly afterwards. It answers: "If I make this move, and
               then play optimally from the resulting position, what&apos;s my
-              expected outcome?" Even if moving your knight tc3 seems like a
-              random choice, q<sub>*</sub> evaluates what happens if you make
-              that move and then play like Bobby Fischer for the rest of the
-              game.
+              expected outcome?" Even if moving your knight to c3 is a bad
+              choice, q<sub>*</sub> evaluates what happens if you make that move
+              and then play like Bobby Fischer for the rest of the game.
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
