@@ -2885,10 +2885,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               Bellman&apos;s core insight was something he later called the
-              <strong> Principle of Optimality</strong>.
-              <br />
-              <br />
-              In informal terms, it says:
+              <strong> Principle of Optimality</strong>. In informal terms, it
+              says:
               <br />
               <br />
               <em>
@@ -2901,14 +2899,12 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               This sounds obvious in hindsight, but it&apos;s the entire logical
-              foundation of dynamic programming. It&apos;s exactly the idea that
-              lets you break a huge, complicated decision problem into smaller
-              subpieces and solve it backwards or forwards one stage at a time.
-              <br />
-              <br />
-              If that idea is starting to sound suspiciously like the Bellman
-              equations, that&apos;s not a coincidence, the Bellman equations
-              are just the mathematical expression of the Principle of
+              foundation of dynamic programming. It&apos;s this idea that lets
+              you break a huge, complicated decision problem into smaller
+              subproblems, and solve it backwards or forwards one stage at a
+              time. If that idea is starting to sound suspiciously like the
+              Bellman equations, that&apos;s not a coincidence, the Bellman
+              equations are just the mathematical expression of the Principle of
               Optimality.
               <br />
               <br />
@@ -2917,10 +2913,12 @@ export default function ReinforcementLearningPage() {
               problems using iterative numerical methods.
               <br />
               <br />
-              The philosophy was simple but radical for its time:
+              The philosophy was simple but radical for its time:{" "}
               <em>
                 Don&apos;t just prove that an optimal solution exists. Build an
-                algorithm that actually computes it.
+                algorithm that breaks up the problem into smaller easier to
+                digest problems, solve those, and iteratively work your way up
+                to actually finding the solution.
               </em>
               <br />
               <br />
