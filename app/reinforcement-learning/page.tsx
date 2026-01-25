@@ -206,6 +206,14 @@ export default function ReinforcementLearningPage() {
                       History of Dynamic Programming
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-policy-evaluation"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Policy Evaluation
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -3016,6 +3024,13 @@ export default function ReinforcementLearningPage() {
               long-horizon decision problem into smaller pieces, write down a
               consistency equation between stages, and solve it iteratively.
             </p>
+
+            <h2
+              id="dp-policy-evaluation"
+              className="text-2xl font-bold mb-6 text-center"
+            >
+              Policy Evaluation
+            </h2>
           </section>
         </main>
       </div>
