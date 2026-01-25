@@ -2696,10 +2696,12 @@ export default function ReinforcementLearningPage() {
               naturally from the same Bellman equations you just met.
             </p>
           </section>
-          <section
-            id="ch-three-dynamic-programming"
-            className="mb-12"
-          ></section>
+          <section id="ch-three-dynamic-programming" className="mb-12">
+            <h1 className="text-3xl font-bold mb-6 text-center">
+              Introduction to Reinforcement Learning
+            </h1>
+            <p className="mb-4">test</p>
+          </section>
         </main>
       </div>
     </div>
