@@ -2766,14 +2766,13 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               In order to use dynamic programming for MDPs, we must assume that
-              we know the full structure of the MDP (we know the transition
-              dynamics and the rewards), and because of this it&apos;s really a
-              "planning" problem rather than a full reinforcement-learning
-              problem. A full reinforcement learning problem assumes that you
-              don't have full knowledge of the MDP. Regardless, it&apos;s an
-              excellent place to begin because many of the concepts and ideas
-              used in dynamic programming are also used for reinforcement
-              learning.
+              we know the full structure of the MDP (the transition dynamics and
+              the rewards), and because of this it&apos;s really a "planning"
+              problem rather than a full reinforcement-learning problem. A full
+              reinforcement learning problem assumes that you don't have full
+              knowledge of the MDP. Regardless, it&apos;s an excellent place to
+              begin because many of the concepts and ideas used in dynamic
+              programming are also used for reinforcement learning.
               <br />
               <br />
               This section is organized into seven parts:
