@@ -14,7 +14,7 @@ export default function ReinforcementLearningPage() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="#reinforcement-learning-problem"
+                  href="#ch-one-reinforcement-learning-problem"
                   className="text-blue-600 hover:text-blue-800 underline block font-medium"
                 >
                   Introduction
@@ -180,13 +180,33 @@ export default function ReinforcementLearningPage() {
                   </li>
                 </ul>
               </li>
+              <li>
+                <a
+                  href="#ch-three-dynamic-programming"
+                  className="text-blue-600 hover:text-blue-800 underline block font-medium"
+                >
+                  Dynamic Programming
+                </a>
+
+                {/* Subsections */}
+                <ul className="mt-2 ml-4 space-y-1">
+                  <li>
+                    <a
+                      href="#mdp-history"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Test
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </nav>
         </aside>
 
         {/* Main Content */}
         <main className="flex-1 min-w-0">
-          <section id="reinforcement-learning-problem" className="mb-12">
+          <section id="ch-one-reinforcement-learning-problem" className="mb-12">
             <h1 className="text-3xl font-bold mb-6 text-center">
               Introduction to Reinforcement Learning
             </h1>
@@ -2676,6 +2696,10 @@ export default function ReinforcementLearningPage() {
               naturally from the same Bellman equations you just met.
             </p>
           </section>
+          <section
+            id="ch-three-dynamic-programming"
+            className="mb-12"
+          ></section>
         </main>
       </div>
     </div>
