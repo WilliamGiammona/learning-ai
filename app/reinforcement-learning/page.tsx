@@ -192,10 +192,10 @@ export default function ReinforcementLearningPage() {
                 <ul className="mt-2 ml-4 space-y-1">
                   <li>
                     <a
-                      href="#mdp-history"
+                      href="#dp-intro"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Test
+                      Introduction
                     </a>
                   </li>
                 </ul>
@@ -2700,7 +2700,109 @@ export default function ReinforcementLearningPage() {
             <h1 className="text-3xl font-bold mb-6 text-center">
               Dynamic Programming
             </h1>
-            <p className="mb-4"></p>
+            <strong id="dp-intro" className="block text-center">
+              Introduction
+            </strong>
+            <p className="mb-4">
+              In the last section, we did something important — but also a
+              little unsatisfying.
+              <br />
+              <br />
+              We carefully formalized the reinforcement learning problem using a
+              Markov Decision Process. We defined states, actions, rewards,
+              transition probabilities, policies, value functions, and Bellman
+              equations. In other words, we built a beautiful mathematical
+              description of what it means for an agent to interact with an
+              environment and try to maximize long-term reward.
+              <br />
+              <br />
+              But there was one small problem.
+              <br />
+              <br />
+              We never actually explained how to <em>solve</em> any of these
+              problems.
+              <br />
+              <br />
+              So far, everything has been descriptive. We know what an optimal
+              policy is. We know what v<sub>*</sub> and q<sub>*</sub> are
+              supposed to represent. We even wrote down equations that
+              characterize them. But none of that yet tells us how to build an
+              agent that can actually compute those quantities and act optimally
+              in a real environment.
+              <br />
+              <br />
+              That&apos;s what this section is about.
+              <br />
+              <br />
+              In this chapter (and the ones that follow it), we&apos;re going to
+              shift from <em>definitions</em> to <em>methods</em>. From
+              &quot;what does the optimal solution look like?&quot; to &quot;how
+              do we actually find it?&quot;
+              <br />
+              <br />
+              The collection of techniques we&apos;ll start with is called
+              <strong>dynamic programming</strong>. These are algorithms that
+              solve MDPs by repeatedly applying the Bellman equations until the
+              value functions and policies settle down and stop changing.
+              <br />
+              <br />
+              This section is organized into seven parts:
+              <br />
+              <br />
+              <strong>1) Introduction</strong>
+              <br />
+              A high-level overview of what dynamic programming is, why it
+              exists, and how it fits into the bigger reinforcement-learning
+              picture. (You are here.)
+              <br />
+              <br />
+              <strong>2) History of Dynamic Programming</strong>
+              <br />
+              A short detour into where all of this came from — who Richard
+              Bellman was, what problem he was trying to solve, why he invented
+              dynamic programming, and why he gave it such a strangely generic
+              name.
+              <br />
+              <br />
+              <strong>3) Policy Evaluation</strong>
+              <br />
+              Given a fixed policy π, how do we compute its value function v
+              <sub>π</sub>? This is the simplest dynamic-programming problem and
+              the foundation that everything else is built on.
+              <br />
+              <br />
+              <strong>4) Policy Iteration</strong>
+              <br />
+              How to alternate between evaluating a policy and improving it,
+              until the policy stops changing and becomes optimal.
+              <br />
+              <br />
+              <strong>5) Value Iteration</strong>
+              <br />
+              How to skip explicit policies altogether and iteratively apply the
+              Bellman optimality update until the value function converges to v
+              <sub>*</sub>.
+              <br />
+              <br />
+              <strong>6) Extensions to Dynamic Programming</strong>
+              <br />
+              Practical tweaks and variations that make these methods more
+              efficient or more flexible in real problems.
+              <br />
+              <br />
+              <strong>7) Contraction Mapping</strong>
+              <br />
+              The mathematical reason all of this actually works. This is where
+              we prove that the Bellman updates converge and that the fixed
+              points they converge to are unique.
+              <br />
+              <br />
+              By the end of this section, you&apos;ll have a complete,
+              end-to-end story for how to go from an abstract MDP to an actual
+              algorithm that computes optimal behavior — and you&apos;ll see how
+              all of the major reinforcement-learning methods are really just
+              different ways of iterating Bellman&apos;s equations.
+            </p>
           </section>
         </main>
       </div>
