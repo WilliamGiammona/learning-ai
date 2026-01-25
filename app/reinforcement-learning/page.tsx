@@ -2486,30 +2486,7 @@ export default function ReinforcementLearningPage() {
               value of taking action a in state s equals the immediate reward
               you get, plus the discounted expected optimal value of wherever
               you end up."
-              <br />
-              <br />
-              Breaking down the notation:
             </p>
-            <ul className="list-disc ml-8 mb-4">
-              <li>
-                R<sub>s</sub>
-                <sup>a</sup> is the expected immediate reward for taking action
-                a in state s
-              </li>
-              <li>γ is the discount factor</li>
-              <li>
-                P<sub>ss'</sub>
-                <sup>a</sup> is the probability of transitioning to state s'
-                after taking action a in state s
-              </li>
-              <li>
-                v<sub>*</sub>(s') is the optimal value of the next state s'
-              </li>
-              <li>
-                The sum Σ<sub>s'∈S</sub> accounts for all possible next states
-                weighted by their transition probabilities
-              </li>
-            </ul>
 
             <p className="mb-4">
               <strong>Chess analogy:</strong> To evaluate q*(s, move knight to
