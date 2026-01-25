@@ -2172,13 +2172,25 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               This definition of "better" leads us naturally to ask: is there a
-              policy that's better than or equal to ALL other policies?
-              Remarkably, the answer is yes! This brings us to optimal value
-              functions. (Please note you can have more than one optimal
-              policies that end up exactly equal to eachother at every state.
-              Think of some game where you need to pick up something and one
-              policy picks it up with your right hand and the other with your
-              left, both are equally good).
+              policy that's better than or equal to <em>all</em> other policies?
+              Remarkably, the answer is yes! We call such a policy an{" "}
+              <strong>optimal policy</strong>, denoted π<sub>*</sub>. An optimal
+              policy satisfies:
+              <br />
+              <br />
+              <span className="block font-mono text-center">
+                π<sub>*</sub> ≥ π for all policies π
+              </span>
+              <br />
+              <br />
+              In other words, v<sub>π*</sub>(s) ≥ v<sub>π</sub>(s) for every
+              state s and every other policy π. This optimal policy achieves the
+              maximum possible value in every state. (Note: there can be
+              multiple optimal policies that are equally good - think of a game
+              where picking up an object with your right hand versus your left
+              hand both lead to the same outcome).
+              <br />
+              <br />
             </p>
 
             <p className="mb-4">
@@ -2241,7 +2253,7 @@ export default function ReinforcementLearningPage() {
               then play optimally from the resulting position, what&apos;s my
               expected outcome?" Even if moving your knight to c3 is a bad
               choice, q<sub>*</sub> evaluates what happens if you make that move
-              and then play like Bobby Fischer for the rest of the game.
+              and then play perfectly for the rest of the game.
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
