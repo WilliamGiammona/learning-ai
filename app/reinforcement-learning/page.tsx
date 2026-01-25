@@ -2215,6 +2215,7 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 v<sub>*</sub>(s) = max<sub>π</sub> v<sub>π</sub>(s)
               </span>
+              <br />
               This says: the optimal value of being in state s equals the
               expected immediate reward plus the discounted optimal value of
               wherever you end up next, when taking the BEST action. The key
@@ -2267,12 +2268,13 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 q<sub>*</sub>(s, a) = max<sub>π</sub> q<sub>π</sub>(s, a)
               </span>
+              <br />
               This says: the optimal value of taking action a in state s equals
               the expected immediate reward from that action plus the discounted
-              value of taking the BEST action in the next state. Notice the max
-              <sub>a'</sub> appears inside the expectation - after taking action
-              a and seeing where we land (S<sub>t+1</sub>), we then choose the
-              best next action a'.
+              value of taking the BEST action in the next state. Again, we have
+              the same max, which means after taking action a and seeing where
+              we land (S<sub>t+1</sub>), we then choose the <em>best</em> next
+              action a' for all subsequent states.
               <br />
               <br />
               <strong>Chess analogy:</strong> While v<sub>*</sub>(s) tells you
