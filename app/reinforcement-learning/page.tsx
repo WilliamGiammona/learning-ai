@@ -2822,6 +2822,7 @@ export default function ReinforcementLearningPage() {
               all of the major reinforcement-learning methods are really just
               different ways of iterating Bellman&apos;s equations.
             </p>
+
             <h2 id="dp-history" className="text-2xl font-bold mb-6 text-center">
               History of Dynamic Programming
             </h2>
@@ -2851,6 +2852,27 @@ export default function ReinforcementLearningPage() {
               designed to capture.
               <br />
               <br />
+              The name is a bit mysterious, so let&apos;s demystify it by
+              looking at why it was chosen at all. At the time, the Secretary of
+              Defense was Charles Wilson, which meant he ultimately controlled
+              the funding for the U.S. Air Force, which in turn funded the RAND
+              Corporation, which was Bellman&apos;s employer.
+              <br />
+              <br />
+              Wilson hated the words &quot;mathematical&quot; and
+              &quot;research&quot;, so Bellman needed a name that wouldn&apos;t
+              immediately get his funding pulled. He chose <em>dynamic</em>{" "}
+              because it was a way to describe something that changes over time
+              and has multiple stages, but that also had a positive,
+              technical-sounding connotation. He chose <em>programming</em>{" "}
+              because it sounded much more practical than &quot;research&quot;
+              and made it sound like he was actually solving real problems.
+              <br />
+              <br />
+              So <em>dynamic programming</em> is really just a fancy way of
+              saying: a method for solving multistage decision problems.
+              <br />
+              <br />
               Examples of the kinds of things he cared about included how to
               best allocate resources over time, controlling engineering
               systems, planning production schedules, and deciding how to
@@ -2862,19 +2884,6 @@ export default function ReinforcementLearningPage() {
               <em>exist</em>, but terrible at actually <em>computing</em> them.
               <br />
               <br />
-              He didn&apos;t just want theorems that said: &quot;Yes, there is
-              an optimal strategy somewhere out there.&quot;
-              <br />
-              <br />
-              He wanted concrete numerical methods that would let you sit down
-              with a real problem, a real computer, and actually calculate what
-              the optimal decisions should be.
-              <br />
-              <br />
-              That shift in mindset — from pure analysis to explicit computation
-              — turned out to be the key move.
-              <br />
-              <br />
               Bellman&apos;s core insight was something he later called the
               <strong> Principle of Optimality</strong>.
               <br />
@@ -2883,9 +2892,11 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <em>
-                If a sequence of decisions is optimal, then no matter where you
-                are along the way, the remaining decisions must themselves form
-                an optimal sequence for the state you&apos;re currently in.
+                If every decision in a sequence of decisions are all optimal,
+                then no matter where you choose your starting point in the
+                sequence to be, the remaining decisions in the optimal sequence
+                must themselves form an optimal sequence for the state you
+                chose.
               </em>
               <br />
               <br />
@@ -2904,7 +2915,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               It&apos;s exactly the idea that lets you break a huge, complicated
-              decision problem into smaller pieces and solve it backwards or
+              decision problem into smaller subpieces and solve it backwards or
               forwards one stage at a time.
               <br />
               <br />
@@ -2914,33 +2925,6 @@ export default function ReinforcementLearningPage() {
               <br />
               The Bellman equations are just the mathematical expression of the
               Principle of Optimality.
-              <br />
-              <br />
-              There&apos;s also a fun historical detail about the name
-              <strong> &quot;dynamic programming&quot;</strong> itself.
-              <br />
-              <br />
-              Bellman didn&apos;t choose that name because it had anything to do
-              with computer programs.
-              <br />
-              <br />
-              At the time, the word <em>programming</em> meant something closer
-              to &quot;planning&quot; or &quot;scheduling a sequence of
-              actions,&quot; not writing code.
-              <br />
-              <br />
-              And the word <em>dynamic</em> was chosen partly because it sounded
-              technical and impressive in the physics sense, and partly because
-              Bellman wanted a name that wouldn&apos;t raise eyebrows with his
-              military sponsors.
-              <br />
-              <br />
-              In his own words, he later admitted that he picked the term
-              because it sounded harmless, respectable, and vaguely scientific —
-              not like risky or abstract mathematical research.
-              <br />
-              <br />
-              So the name stuck.
               <br />
               <br />
               Over the 1950s, Bellman and others developed dynamic programming
