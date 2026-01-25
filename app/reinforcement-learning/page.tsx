@@ -2832,9 +2832,7 @@ export default function ReinforcementLearningPage() {
               actually came from.
               <br />
               <br />
-              Dynamic programming wasn&apos;t invented as a clever trick for
-              computer science students. It was invented by a mathematician
-              named
+              Dynamic programming was invented by a mathematician named
               <strong> Richard Bellman</strong> in the late 1940s, while he was
               working as a consultant at the RAND Corporation on problems funded
               by the U.S. Air Force. Much of what follows in this section is
