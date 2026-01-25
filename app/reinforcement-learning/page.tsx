@@ -198,6 +198,14 @@ export default function ReinforcementLearningPage() {
                       Introduction
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-intro"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      History of Dynamic Programming
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -2813,6 +2821,150 @@ export default function ReinforcementLearningPage() {
               algorithm that computes optimal behavior, and you&apos;ll see how
               all of the major reinforcement-learning methods are really just
               different ways of iterating Bellman&apos;s equations.
+            </p>
+            <h2 id="dp-history" className="text-2xl font-bold mb-6 text-center">
+              History of Dynamic Programming
+            </h2>
+
+            <p className="mb-4">
+              Before we turn dynamic programming into algorithms and code,
+              it&apos;s worth taking a short detour into where all of this
+              actually came from.
+              <br />
+              <br />
+              Dynamic programming wasn&apos;t invented as a clever trick for
+              computer science students. It was invented by a mathematician
+              named
+              <strong> Richard Bellman</strong> in the late 1940s, while he was
+              working as a consultant at the RAND Corporation on problems funded
+              by the U.S. Air Force.
+              <br />
+              <br />
+              Bellman wasn&apos;t thinking about robots, games, or machine
+              learning. He was thinking about very practical{" "}
+              <em>multistage decision problems</em>: problems where a system
+              evolves over time, you make a sequence of decisions, and each
+              decision affects what options you have later.
+              <br />
+              <br />
+              Examples of the kinds of things he cared about included:
+              allocating resources over time, controlling engineering systems,
+              planning production schedules, and deciding how to operate complex
+              systems optimally over many steps into the future.
+              <br />
+              <br />
+              What frustrated Bellman was that the standard mathematical tools
+              of the time were great at proving that optimal solutions{" "}
+              <em>exist</em>, but terrible at actually <em>computing</em> them.
+              <br />
+              <br />
+              He didn&apos;t just want theorems that said: &quot;Yes, there is
+              an optimal strategy somewhere out there.&quot;
+              <br />
+              <br />
+              He wanted concrete numerical methods that would let you sit down
+              with a real problem, a real computer, and actually calculate what
+              the optimal decisions should be.
+              <br />
+              <br />
+              That shift in mindset — from pure analysis to explicit computation
+              — turned out to be the key move.
+              <br />
+              <br />
+              Bellman&apos;s core insight was something he later called the
+              <strong> Principle of Optimality</strong>.
+              <br />
+              <br />
+              In informal terms, it says:
+              <br />
+              <br />
+              <em>
+                If a sequence of decisions is optimal, then no matter where you
+                are along the way, the remaining decisions must themselves form
+                an optimal sequence for the state you&apos;re currently in.
+              </em>
+              <br />
+              <br />
+              Or, said more bluntly:
+              <br />
+              <br />
+              <em>
+                If you ever find yourself in a subproblem of an optimal
+                solution, you should still behave optimally from that point
+                onward.
+              </em>
+              <br />
+              <br />
+              This sounds obvious in hindsight, but it&apos;s the entire logical
+              foundation of dynamic programming.
+              <br />
+              <br />
+              It&apos;s exactly the idea that lets you break a huge, complicated
+              decision problem into smaller pieces and solve it backwards or
+              forwards one stage at a time.
+              <br />
+              <br />
+              If that idea is starting to sound suspiciously like the Bellman
+              equations, that&apos;s not a coincidence.
+              <br />
+              <br />
+              The Bellman equations are just the mathematical expression of the
+              Principle of Optimality.
+              <br />
+              <br />
+              There&apos;s also a fun historical detail about the name
+              <strong> &quot;dynamic programming&quot;</strong> itself.
+              <br />
+              <br />
+              Bellman didn&apos;t choose that name because it had anything to do
+              with computer programs.
+              <br />
+              <br />
+              At the time, the word <em>programming</em> meant something closer
+              to &quot;planning&quot; or &quot;scheduling a sequence of
+              actions,&quot; not writing code.
+              <br />
+              <br />
+              And the word <em>dynamic</em> was chosen partly because it sounded
+              technical and impressive in the physics sense, and partly because
+              Bellman wanted a name that wouldn&apos;t raise eyebrows with his
+              military sponsors.
+              <br />
+              <br />
+              In his own words, he later admitted that he picked the term
+              because it sounded harmless, respectable, and vaguely scientific —
+              not like risky or abstract mathematical research.
+              <br />
+              <br />
+              So the name stuck.
+              <br />
+              <br />
+              Over the 1950s, Bellman and others developed dynamic programming
+              into a systematic framework for solving multistage decision
+              problems using iterative numerical methods.
+              <br />
+              <br />
+              The philosophy was simple but radical for its time:
+              <br />
+              <br />
+              <em>
+                Don&apos;t just prove that an optimal solution exists. Build an
+                algorithm that actually computes it.
+              </em>
+              <br />
+              <br />
+              That philosophy is exactly what we&apos;re about to lean on in the
+              rest of this section.
+              <br />
+              <br />
+              Everything that follows — policy evaluation, policy iteration,
+              value iteration, Q-learning, and beyond — is just a modern
+              incarnation of Bellman&apos;s original idea:
+              <br />
+              <br />
+              break a long-horizon decision problem into smaller pieces, write
+              down a consistency equation between stages, and solve it by
+              iterating until nothing changes anymore.
             </p>
           </section>
         </main>
