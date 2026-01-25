@@ -2306,8 +2306,9 @@ export default function ReinforcementLearningPage() {
               Recall what the Bellman <em>Expectation</em> Equation does.
               It&apos;s a tool for <em>evaluating</em> a specific policy π. If
               you hand it a policy, it computes the value function for that
-              policy by taking a weighted average over actions, using π(a|s) as
-              the weights. In other words, it answers:
+              policy by taking a weighted average over actions, where each
+              action is weighted by how likely the policy is to choose it,
+              π(a|s). In other words, it answers:
               <br />
               <br />
               <em>
@@ -2317,7 +2318,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               But now we&apos;re after something more ambitious. We don&apos;t
-              want to evaluate a policy — we want to <em>find</em> the best one.
+              want to evaluate a policy, we want to <em>find</em> the best one.
               <br />
               <br />
               The Bellman Optimality Equation does that with one small but
