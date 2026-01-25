@@ -2679,16 +2679,16 @@ export default function ReinforcementLearningPage() {
               are:
               <br />
               <br />
-              <strong>Value Iteration</strong>
-              <br />
-              <br />
               <strong>Policy Iteration</strong>
               <br />
               <br />
-              <strong>Q-learning</strong>
+              <strong>Value Iteration</strong>
               <br />
               <br />
               <strong>SARSA</strong>
+              <br />
+              <br />
+              <strong>Q-learning</strong>
               <br />
               <br />
               In the next sections, we&apos;ll go through each of these methods
@@ -2698,9 +2698,9 @@ export default function ReinforcementLearningPage() {
           </section>
           <section id="ch-three-dynamic-programming" className="mb-12">
             <h1 className="text-3xl font-bold mb-6 text-center">
-              Introduction to Reinforcement Learning
+              Dynamic Programming
             </h1>
-            <p className="mb-4">test</p>
+            <p className="mb-4"></p>
           </section>
         </main>
       </div>
