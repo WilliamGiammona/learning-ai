@@ -2885,9 +2885,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               Bellman&apos;s core insight was something he later called the
-              <strong> Principle of Optimality</strong>. A second idea,
-              emphasized later in computer science, is what we now call{" "}
-              <strong>overlapping subproblems</strong>.
+              <strong> Principle of Optimality</strong>. From this, a second
+              important idea, emphasized later in computer science, is what we
+              now call <strong>overlapping subproblems</strong>. These two
+              concepts are the key to computing optimal solutions.
               <br />
               <br />
               In informal terms, the Principle of Optimality says:
