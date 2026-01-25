@@ -2884,39 +2884,99 @@ export default function ReinforcementLearningPage() {
               <em>exist</em>, but terrible at actually <em>computing</em> them.
               <br />
               <br />
-              Bellman&apos;s two core insights were what he later called the
-              <strong> Principle of Optimality</strong>, and another idea now
-              called <strong>Overlapping Subproblems"</strong>. In informal
-              terms, it says:
+              Bellman&apos;s core insight was something he later called the
+              <strong> Principle of Optimality</strong>. A second idea,
+              emphasized later in computer science, is what we now call{" "}
+              <strong>overlapping subproblems</strong>.
+              <br />
+              <br />
+              In informal terms, the Principle of Optimality says:
               <br />
               <br />
               <em>
-                If every decision in a sequence of decisions are all optimal,
-                then no matter where you choose your starting point in the
-                sequence to be, the remaining decisions in the optimal sequence
-                must themselves form an optimal sequence for the state you
-                chose.
+                If a sequence of decisions is optimal, then no matter where you
+                choose to start within that sequence, the remaining decisions
+                must themselves form an optimal sequence for the state you start
+                from.
               </em>
               <br />
               <br />
               This sounds obvious in hindsight, but it&apos;s the entire logical
-              foundation of dynamic programming. It&apos;s this idea that lets
-              you break a huge, complicated decision problem into smaller
-              subproblems, and solve it backwards or forwards one stage at a
-              time. If that idea is starting to sound suspiciously like the
-              Bellman equations, that&apos;s not a coincidence, the Bellman
-              equations are just the mathematical expression of the Principle of
+              foundation of dynamic programming.
+              <br />
+              <br />
+              Here&apos;s a simple intuition. Suppose your goal is to run a mile
+              in the shortest possible time. If your overall mile-long running
+              plan is truly optimal, then the way you run the last half-mile
+              must also be optimal for the state you&apos;re in at the halfway
+              point, and the way you run the last tenth of a mile, and so on,
+              all the way to the last step. If you could suddenly switch to a
+              better running strategy at any point, then your original mile-long
+              strategy wasn&apos;t actually optimal to begin with.
+              <br />
+              <br />
+              That&apos;s the Principle of Optimality in disguise.
+              <br />
+              <br />
+              The second idea, overlapping subproblems, is about what happens
+              when you try to turn this insight into an actual algorithm.
+              <br />
+              <br />
+              When you break a big multistage decision problem into smaller
+              subproblems, you don&apos;t just get a bunch of completely new
+              problems. You get the <em>same</em> subproblems over and over
+              again.
+              <br />
+              <br />
+              For example, different long-horizon plans might all require you to
+              solve the question: “What is the best way to behave from this
+              particular state onward?” If you naively recompute the answer to
+              that question every single time it comes up, your algorithm will
+              be hopelessly inefficient.
+              <br />
+              <br />
+              Overlapping subproblems just means that the subproblems you need
+              to solve keep repeating. So it&apos;s worth solving each one once
+              and reusing the result.
+              <br />
+              <br />
+              Put together, these two ideas explain why dynamic programming
+              works at all.
+              <br />
+              <br />
+              The Principle of Optimality tells you that optimal solutions can
+              be built out of optimal sub-solutions.
+              <br />
+              <br />
+              Overlapping subproblems tells you that those sub-solutions keep
+              reappearing, so you should store and reuse them instead of solving
+              the same thing again and again.
+              <br />
+              <br />
+              It&apos;s these two ideas that let you break a huge, complicated
+              decision problem into smaller subproblems and solve it backwards
+              or forwards one stage at a time.
+              <br />
+              <br />
+              If that idea is starting to sound suspiciously like the Bellman
+              equations, that&apos;s not a coincidence. The Bellman equations
+              are just the mathematical expression of the Principle of
               Optimality.
               <br />
               <br />
               Over the 1950s, Bellman and others developed dynamic programming
               into a systematic framework for solving multistage decision
-              problems using iterative numerical methods. The philosophy was
-              simple:{" "}
+              problems using iterative numerical methods.
+              <br />
+              <br />
+              The philosophy was simple:
+              <br />
+              <br />
               <em>
-                Build an algorithm that breaks up the problem into smaller
-                easier to digest subproblems, solve those, and iteratively work
-                your way up to actually finding the solution.
+                Build an algorithm that breaks a hard problem into smaller,
+                easier-to-digest subproblems, solves those, cache them to be
+                reused as frequently as possible, and then keep iterating toward
+                the full solution.
               </em>
               <br />
               <br />
@@ -2925,7 +2985,7 @@ export default function ReinforcementLearningPage() {
               policy iteration, value iteration, Q-learning, etc, is just a
               modern incarnation of Bellman&apos;s original idea: break a
               long-horizon decision problem into smaller pieces, write down a
-              consistency equation between stages, and solve it by iteration.
+              consistency equation between stages, and solve it iteratively.
             </p>
           </section>
         </main>
