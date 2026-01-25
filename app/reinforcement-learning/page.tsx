@@ -2829,31 +2829,26 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               Before we turn dynamic programming into algorithms and code,
               it&apos;s worth taking a short detour into where all of this
-              actually came from.
-              <br />
-              <br />
-              Dynamic programming was invented by a mathematician named
-              <strong> Richard Bellman</strong> in the late 1940s and early
-              1950s, while he was working as a consultant at the RAND
-              Corporation on problems funded by the U.S. Air Force. Much of what
-              follows in this section is comes from this article:{" "}
-              <a
+              actually came from. We will be using this article as our source :{" "}
+              <Link
                 href="https://www.cs.uni.edu/~wallingf/teaching/cs3530/sessions/session27/bellman-dynamic-programming.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline"
               >
-                RICHARD BELLMAN ON THE BIRTH OF DYNAMIC PROGRAMMING
-              </a>
+                Bellman Dynamic Programming PDF
+              </Link>{" "}
               <br />
               <br />
-              <br />
-              <br />
-              Bellman wasn&apos;t thinking about robots, games, or machine
-              learning. He was thinking about very practical{" "}
-              <em>multistage decision problems</em>: problems where a system
-              evolves over time, you make a sequence of decisions, and each
-              decision affects what options you have later.
+              Dynamic programming was invented by a mathematician named
+              <strong> Richard Bellman</strong> in the late 1940s and early
+              1950s, while he was working as a consultant at the RAND
+              Corporation on problems funded by the U.S. Air Force. His work
+              centered around <em>multistage decision problems</em>: problems
+              where a system evolves over time, you make a sequence of
+              decisions, and each decision affects what options you have later,
+              exactly the kind of structure that Markov Decision Processes are
+              designed to capture..
               <br />
               <br />
               Examples of the kinds of things he cared about included:
