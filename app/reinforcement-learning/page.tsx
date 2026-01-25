@@ -2215,6 +2215,16 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 v<sub>*</sub>(s) = max<sub>π</sub> v<sub>π</sub>(s)
               </span>
+              This says: the optimal value of being in state s equals the
+              expected immediate reward plus the discounted optimal value of
+              wherever you end up next, when taking the BEST action. The key
+              difference from the expectation equation is when now have the max
+              <sub>a</sub>, which means that instead of averaging over a
+              policy's action probabilities (giving certain actions some
+              probability of occurring even though they aren't the best), we're
+              now picking the action that maximizes the right-hand side of the
+              equation (any actions that are not considered the best will get a
+              probability of 0 now).
               <br />
               <br />
               <strong>Chess analogy:</strong> Think of Bobby Fischer&apos;s
@@ -2257,6 +2267,12 @@ export default function ReinforcementLearningPage() {
               <span className="block font-mono text-center">
                 q<sub>*</sub>(s, a) = max<sub>π</sub> q<sub>π</sub>(s, a)
               </span>
+              This says: the optimal value of taking action a in state s equals
+              the expected immediate reward from that action plus the discounted
+              value of taking the BEST action in the next state. Notice the max
+              <sub>a'</sub> appears inside the expectation - after taking action
+              a and seeing where we land (S<sub>t+1</sub>), we then choose the
+              best next action a'.
               <br />
               <br />
               <strong>Chess analogy:</strong> While v<sub>*</sub>(s) tells you
@@ -2331,81 +2347,6 @@ export default function ReinforcementLearningPage() {
                 &quot;In each state, assume I always make the best possible next
                 move.&quot;
               </em>
-              <br />
-              <br />
-              That single swap — from &quot;expected value under a policy&quot;
-              to &quot;maximum over actions&quot; — is what turns policy
-              evaluation into optimal control. And it&apos;s also the exact
-              reason the next step (solving it like a neat little matrix
-              equation) isn&apos;t going to work the way we&apos;d like.
-              <br />
-              <br />
-              <strong>For the optimal state-value function:</strong>
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                v<sub>*</sub>(s) = max<sub>a</sub> E[R<sub>t+1</sub> + γv
-                <sub>*</sub>(S<sub>t+1</sub>) | S<sub>t</sub> = s, A<sub>t</sub>{" "}
-                = a]
-              </span>
-              This says: the optimal value of being in state s equals the
-              expected immediate reward plus the discounted optimal value of
-              wherever you end up next, when taking the BEST action. The key
-              difference from the expectation equation is when now have the max
-              <sub>a</sub>, which means that instead of averaging over a
-              policy's action probabilities (giving certain actions some
-              probability of occurring even though they aren't the best), we're
-              now picking the action that maximizes the right-hand side of the
-              equation (any actions that are not considered the best will get a
-              probability of 0 now).
-              <br />
-              <br />
-              <strong>Chess analogy:</strong> The optimal value v<sub>*</sub>(s)
-              tells you how good your current position is assuming you play
-              perfectly from here onwards. To compute it, you look at ALL
-              possible moves, evaluate the value of each move (immediate reward
-              + discounted optimal value of resulting position), and take the
-              maximum. That maximum IS v<sub>*</sub>(s) - it's a number
-              representing "how good is this position with perfect play?"
-              <br />
-              <br />
-              The optimal POLICY π<sub>*</sub>(s) is the actual move that
-              achieves this maximum - it's the decision rule that says "in this
-              position, make THIS move." A suboptimal policy might tell you to
-              sacrifice your queen for no reason, giving you a low value. But π
-              <sub>*</sub> always picks the move that maximizes v<sub>*</sub>.
-              <br />
-              <br />
-              <strong>For the optimal action-value function:</strong>
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                q<sub>*</sub>(s, a) = E[R<sub>t+1</sub> + γ max<sub>a'</sub> q
-                <sub>*</sub>(S<sub>t+1</sub>, a') | S<sub>t</sub> = s, A
-                <sub>t</sub> = a]
-              </span>
-              This says: the optimal value of taking action a in state s equals
-              the expected immediate reward from that action plus the discounted
-              value of taking the BEST action in the next state. Notice the max
-              <sub>a'</sub> appears inside the expectation - after taking action
-              a and seeing where we land (S<sub>t+1</sub>), we then choose the
-              best next action a'.
-              <br />
-              <br />
-              <strong>Chess analogy:</strong> The optimal value of moving your
-              knight to c3 equals: the immediate reward from that move
-              (capturing material, improving position) plus the discounted value
-              of making the BEST possible move in the resulting position. You
-              commit to knight to c3 now, but after your opponent responds,
-              you'll choose optimally from whatever position results.
-              <br />
-              <br />
-              <strong>Important note:</strong> These are called "optimality"
-              equations because we're maximizing over actions rather than
-              following a specific policy. They tell us "what's the best
-              possible value achievable from this state?" The policy that
-              achieves these optimal values is called the optimal policy π
-              <sub>*</sub>.
             </p>
 
             <p className="mb-4">
