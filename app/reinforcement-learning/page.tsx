@@ -2709,9 +2709,9 @@ export default function ReinforcementLearningPage() {
             <h1 className="text-3xl font-bold mb-6 text-center">
               Dynamic Programming
             </h1>
-            <strong id="dp-intro" className="block text-center mb-12">
+            <h2 id="dp-intro" className="text-2xl font-bold mb-6 text-center">
               Introduction
-            </strong>
+            </h2>
             <p className="mb-4">
               In the last section, we did something important, but also a little
               unsatisfying.
