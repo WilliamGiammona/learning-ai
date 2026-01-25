@@ -2851,7 +2851,7 @@ export default function ReinforcementLearningPage() {
               designed to capture.
               <br />
               <br />
-              Examples of the kinds of things he cared about included: how to
+              Examples of the kinds of things he cared about included how to
               best allocate resources over time, controlling engineering
               systems, planning production schedules, and deciding how to
               operate complex systems optimally over many steps into the future.
