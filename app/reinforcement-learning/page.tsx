@@ -2833,12 +2833,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               Dynamic programming was invented by a mathematician named
-              <strong> Richard Bellman</strong> in the late 1940s, while he was
-              working as a consultant at the RAND Corporation on problems funded
-              by the U.S. Air Force. Much of what follows in this section is
-              informed by Bellman’s own account in his autobiography and
-              reflections on the origins of the method — you can read a
-              historical summary in the
+              <strong> Richard Bellman</strong> in the late 1940s and early
+              1950s, while he was working as a consultant at the RAND
+              Corporation on problems funded by the U.S. Air Force. Much of what
+              follows in this section is comes from this article:{" "}
               <a
                 href="https://www.cs.uni.edu/~wallingf/teaching/cs3530/sessions/session27/bellman-dynamic-programming.pdf"
                 target="_blank"
@@ -2847,7 +2845,6 @@ export default function ReinforcementLearningPage() {
               >
                 RICHARD BELLMAN ON THE BIRTH OF DYNAMIC PROGRAMMING
               </a>
-              (source for this narrative).
               <br />
               <br />
               <br />
