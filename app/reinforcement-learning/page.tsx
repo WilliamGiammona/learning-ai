@@ -2884,11 +2884,14 @@ export default function ReinforcementLearningPage() {
               <em>exist</em>, but terrible at actually <em>computing</em> them.
               <br />
               <br />
-              Bellman&apos;s core insight was something he later called the
-              <strong> Principle of Optimality</strong>. From this, a second
-              important idea, emphasized later in computer science, is what we
-              now call <strong>overlapping subproblems</strong>. These two
-              concepts are the key to computing optimal solutions.
+              Bellman&apos;s core insight was that many problems have
+              what&apos;s called "optimal substructure", which means that
+              something Bellman later called the
+              <strong> Principle of Optimality</strong> applies to them. From
+              this, a second important idea, emphasized later in computer
+              science, is what we now call{" "}
+              <strong>overlapping subproblems</strong>. These two concepts are
+              the key to computing optimal solutions.
               <br />
               <br />
               In informal terms, the Principle of Optimality says:
@@ -2920,10 +2923,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The second idea, overlapping subproblems, is about what happens
-              when you try to turn this insight into an actual algorithm.
-              <br />
-              <br />
-              When you break a big multistage decision problem into smaller
+              when you try to turn this insight into an actual algorithm. When
+              you break a big multistage decision problem into smaller
               subproblems, you don&apos;t just get a bunch of completely new
               problems. You get the <em>same</em> subproblems over and over
               again.
@@ -2946,23 +2947,40 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The Principle of Optimality tells you that optimal solutions can
-              be built out of optimal sub-solutions.
-              <br />
-              <br />
-              Overlapping subproblems tells you that those sub-solutions keep
-              reappearing, so you should store and reuse them instead of solving
-              the same thing again and again.
-              <br />
-              <br />
-              It&apos;s these two ideas that let you break a huge, complicated
-              decision problem into smaller subproblems and solve it backwards
-              or forwards one stage at a time.
+              be built out of optimal sub-solutions. Overlapping subproblems
+              tells you that those sub-solutions keep reappearing, so you should
+              store and reuse them instead of solving the same thing again and
+              again. It&apos;s these two ideas that let you break a huge,
+              complicated decision problem into smaller subproblems and solve it
+              backwards or forwards one stage at a time.
               <br />
               <br />
               If that idea is starting to sound suspiciously like the Bellman
-              equations, that&apos;s not a coincidence. The Bellman equations
-              are just the mathematical expression of the Principle of
-              Optimality.
+              Optimality Equation, that&apos;s not a coincidence.
+              <br />
+              <br />
+              MDPs have optimal substructure, so the Principle of Optimality
+              applies to them, and they also have overlapping subproblems, which
+              means that we can use dynamic programming to solve them.
+              <br />
+              <br />
+              The Bellman Optimality Equation is just the mathematical
+              expression of the Principle of Optimality being applied to solve
+              MDPs. It tells us how to break down the optimal value of any state
+              into two pieces: the optimal behavior (and associated reward) for
+              one step, followed by the optimal behavior (and associated
+              discounted rewards) after that step.
+              <br />
+              <br />
+              The reason we get overlapping subproblems is that the same
+              &quot;what&apos;s the best thing to do from this state
+              onward?&quot; question keeps coming up again and again along
+              different possible trajectories through the MDP.
+              <br />
+              <br />
+              The thing that lets us exploit this repetition is the value
+              function. You can think of the value function as a cache of all
+              the good information we have figured out so far about the MDP.
               <br />
               <br />
               Over the 1950s, Bellman and others developed dynamic programming
