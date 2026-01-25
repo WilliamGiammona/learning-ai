@@ -2910,10 +2910,8 @@ export default function ReinforcementLearningPage() {
               <br />
               Over the 1950s, Bellman and others developed dynamic programming
               into a systematic framework for solving multistage decision
-              problems using iterative numerical methods.
-              <br />
-              <br />
-              The philosophy was simple but radical for its time:{" "}
+              problems using iterative numerical methods. The philosophy was
+              simple but radical for its time:{" "}
               <em>
                 Don&apos;t just prove that an optimal solution exists. Build an
                 algorithm that breaks up the problem into smaller easier to
