@@ -2259,13 +2259,21 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               <br />
-              <strong>Chess analogy:</strong> q<sub>*</sub>(s,a) tells you the
-              value of playing a specific move in a position, s, assuming you
-              play perfectly afterwards. It answers: "If I make this move, and
-              then play optimally from the resulting position, what&apos;s my
-              expected outcome?" Even if moving your knight to c3 is a bad
-              choice, q<sub>*</sub> evaluates what happens if you make that move
-              and then play perfectly for the rest of the game.
+              <strong>Chess analogy:</strong> While v<sub>*</sub>(s) tells you
+              "how good is this position with perfect play", q<sub>*</sub>(s,a)
+              tells you "how good is this specific move, assuming perfect play
+              afterwards". The key difference is that v<sub>*</sub>(s) assumes
+              you make the best possible move immediately starting from a given
+              position, while q<sub>*</sub> (s,a) lets you evaluate ANY move
+              (even bad ones) from a given position and see what happens if you
+              play perfectly after that move. For example, from a given
+              position, moving your knight to c3 might be terrible, moving your
+              bishop to g5 might be brilliant. v<sub>*</sub>(s) only tells you
+              the value when you pick the best move (bishop to g5), but q
+              <sub>*</sub>(s,a) gives you separate values for BOTH moves: q
+              <sub>*</sub>(s, <em>knight to c3</em>) might be low, while q
+              <sub>*</sub>(s, <em>bishop to g5</em>) might be high. This lets
+              you compare different moves from the same position.
               <br />
               <br />
               <strong>Why this matters:</strong> The optimal value function
@@ -2375,7 +2383,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-v-star.png"
+                src="/images/reinforcement-learning/mdp/mdp-bellman-optimal-v-star.png"
                 alt="Bellman Optimality for v*"
                 width={500}
                 height={300}
@@ -2407,7 +2415,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <Image
-                src="/images/reinforcement-learning/mdp//mdp-bellman-optimal-q-star.png"
+                src="/images/reinforcement-learning/mdp/mdp-bellman-optimal-q-star.png"
                 alt="Bellman Optimality for q*"
                 width={500}
                 height={300}
