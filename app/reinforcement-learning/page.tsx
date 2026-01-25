@@ -2809,7 +2809,7 @@ export default function ReinforcementLearningPage() {
               <br />
               By the end of this section, you&apos;ll have a complete,
               end-to-end story for how to go from an abstract MDP to an actual
-              algorithm that computes optimal behavior — and you&apos;ll see how
+              algorithm that computes optimal behavior, and you&apos;ll see how
               all of the major reinforcement-learning methods are really just
               different ways of iterating Bellman&apos;s equations.
             </p>
