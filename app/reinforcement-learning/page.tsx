@@ -2700,20 +2700,30 @@ export default function ReinforcementLearningPage() {
             <h1 className="text-3xl font-bold mb-6 text-center">
               Dynamic Programming
             </h1>
-            <strong id="dp-intro" className="block text-center">
+            <strong id="dp-intro" className="block text-center mb-12">
               Introduction
             </strong>
             <p className="mb-4">
-              In the last section, we did something important — but also a
-              little unsatisfying.
+              In the last section, we did something important, but also a little
+              unsatisfying.
               <br />
               <br />
               We carefully formalized the reinforcement learning problem using a
-              Markov Decision Process. We defined states, actions, rewards,
-              transition probabilities, policies, value functions, and Bellman
-              equations. In other words, we built a beautiful mathematical
-              description of what it means for an agent to interact with an
-              environment and try to maximize long-term reward.
+              Markov Decision Process. We defined states, rewards, transition
+              probabilities, and a discount factor, which are all the
+              ingredients that speicfy the environment itself, as well as the
+              actions an agent can take to influence its environment.
+              <br />
+              <br />
+              On top of that, we introduced policies, value functions, and
+              Bellman equations, the mathematical tools that let us describe how
+              an agent behaves inside that environment and what it means for
+              that behavior to be bad, good or optimal.
+              <br />
+              <br />
+              In other words, we built a beautiful mathematical description of
+              both the world the agent lives in and the decision-making problem
+              the agent is trying to solve inside that world.
               <br />
               <br />
               But there was one small problem.
@@ -2726,18 +2736,18 @@ export default function ReinforcementLearningPage() {
               So far, everything has been descriptive. We know what an optimal
               policy is. We know what v<sub>*</sub> and q<sub>*</sub> are
               supposed to represent. We even wrote down equations that
-              characterize them. But none of that yet tells us how to build an
-              agent that can actually compute those quantities and act optimally
-              in a real environment.
+              characterize them. But none of that tells us how to build an agent
+              that can actually compute those quantities and act optimally in a
+              real environment.
               <br />
               <br />
               That&apos;s what this section is about.
               <br />
               <br />
               In this chapter (and the ones that follow it), we&apos;re going to
-              shift from <em>definitions</em> to <em>methods</em>. From
-              &quot;what does the optimal solution look like?&quot; to &quot;how
-              do we actually find it?&quot;
+              shift from <em>definitions</em> to <em>solution-methods</em>, i.e.
+              we will go from &quot;what does the optimal solution look
+              like?&quot; to &quot;how do we actually find it?&quot;
               <br />
               <br />
               The collection of techniques we&apos;ll start with is called
@@ -2758,7 +2768,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <strong>2) History of Dynamic Programming</strong>
               <br />
-              A short detour into where all of this came from — who Richard
+              A short detour into where all of this came from, who Richard
               Bellman was, what problem he was trying to solve, why he invented
               dynamic programming, and why he gave it such a strangely generic
               name.
