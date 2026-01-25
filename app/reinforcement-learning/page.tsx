@@ -2911,12 +2911,11 @@ export default function ReinforcementLearningPage() {
               Over the 1950s, Bellman and others developed dynamic programming
               into a systematic framework for solving multistage decision
               problems using iterative numerical methods. The philosophy was
-              simple but radical for its time:{" "}
+              simple:{" "}
               <em>
-                Don&apos;t just prove that an optimal solution exists. Build an
-                algorithm that breaks up the problem into smaller easier to
-                digest problems, solve those, and iteratively work your way up
-                to actually finding the solution.
+                Build an algorithm that breaks up the problem into smaller
+                easier to digest subproblems, solve those, and iteratively work
+                your way up to actually finding the solution.
               </em>
               <br />
               <br />
@@ -2925,8 +2924,7 @@ export default function ReinforcementLearningPage() {
               policy iteration, value iteration, Q-learning, etc, is just a
               modern incarnation of Bellman&apos;s original idea: break a
               long-horizon decision problem into smaller pieces, write down a
-              consistency equation between stages, and solve it by iterating
-              until nothing changes anymore.
+              consistency equation between stages, and solve it by iteration.
             </p>
           </section>
         </main>
