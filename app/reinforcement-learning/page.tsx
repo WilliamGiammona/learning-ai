@@ -2281,20 +2281,62 @@ export default function ReinforcementLearningPage() {
               <sub>*</sub>, we&apos;ve essentially "solved" the MDP, i.e. we
               know exactly how good each state-action pair can possibly be, and
               therefore we know exactly which action to take in any state in
-              order to maximize our total reward. The challenge is computing
-              these optimal values, which we&apos;ll tackle with the Bellman
-              Optimality Equation.
+              order to maximize our total reward (we know the optimal policy is
+              just choosing the action with the highest q<sub>*</sub>
+              every time). The challenge is computing these optimal values,
+              which we&apos;ll tackle with the Bellman Optimality Equation.
             </p>
 
             <p id="bellman-optimality-equation" className="mb-4">
               <strong className="block text-center mb-4">
                 Bellman Optimality Equation for MDPs
               </strong>
-              The Bellman Expectation Equation told us how to EVALUATE a
-              specific policy π (how to find its value function), but what if we
-              want to FIND the BEST policy? That's where the Bellman Optimality
-              Equation comes in. Instead of averaging over actions according to
-              some policy π, we simply pick the best action at each step.
+              We now know that if we somehow already had q<sub>*</sub>, finding
+              the optimal policy would be almost unfairly easy: in each state,
+              just pick the action with the highest q<sub>*</sub> value. Done.
+              <br />
+              <br />
+              So the real question is: how do we actually find q<sub>*</sub> in
+              the first place?
+              <br />
+              <br />
+              This is where the Bellman Optimality Equation enters the story.
+              <br />
+              <br />
+              Recall what the Bellman <em>Expectation</em> Equation does.
+              It&apos;s a tool for <em>evaluating</em> a specific policy π. If
+              you hand it a policy, it computes the value function for that
+              policy by taking a weighted average over actions, using π(a|s) as
+              the weights. In other words, it answers:
+              <br />
+              <br />
+              <em>
+                &quot;If I promise to behave according to this policy, how good
+                will my life be in each state?&quot;
+              </em>
+              <br />
+              <br />
+              But now we&apos;re after something more ambitious. We don&apos;t
+              want to evaluate a policy — we want to <em>find</em> the best one.
+              <br />
+              <br />
+              The Bellman Optimality Equation does that with one small but
+              profound change: instead of averaging over actions according to
+              some policy, it takes the <strong>maximum</strong> over all
+              possible actions. Conceptually, it&apos;s saying:
+              <br />
+              <br />
+              <em>
+                &quot;In each state, assume I always make the best possible next
+                move.&quot;
+              </em>
+              <br />
+              <br />
+              That single swap — from &quot;expected value under a policy&quot;
+              to &quot;maximum over actions&quot; — is what turns policy
+              evaluation into optimal control. And it&apos;s also the exact
+              reason the next step (solving it like a neat little matrix
+              equation) isn&apos;t going to work the way we&apos;d like.
               <br />
               <br />
               <strong>For the optimal state-value function:</strong>
