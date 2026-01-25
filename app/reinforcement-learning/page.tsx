@@ -2873,10 +2873,10 @@ export default function ReinforcementLearningPage() {
               saying: a method for solving multistage decision problems.
               <br />
               <br />
-              Examples of the kinds of things he cared about included how to
-              best allocate resources over time, controlling engineering
-              systems, planning production schedules, and deciding how to
-              operate complex systems optimally over many steps into the future.
+              Examples of the kinds of things he worked on included how to best
+              allocate resources over time, controlling engineering systems,
+              planning production schedules, and deciding how to operate complex
+              systems optimally over many steps into the future.
               <br />
               <br />
               What frustrated Bellman was that the standard mathematical tools
@@ -2900,31 +2900,16 @@ export default function ReinforcementLearningPage() {
               </em>
               <br />
               <br />
-              Or, said more bluntly:
-              <br />
-              <br />
-              <em>
-                If you ever find yourself in a subproblem of an optimal
-                solution, you should still behave optimally from that point
-                onward.
-              </em>
-              <br />
-              <br />
               This sounds obvious in hindsight, but it&apos;s the entire logical
-              foundation of dynamic programming.
-              <br />
-              <br />
-              It&apos;s exactly the idea that lets you break a huge, complicated
-              decision problem into smaller subpieces and solve it backwards or
-              forwards one stage at a time.
+              foundation of dynamic programming. It&apos;s exactly the idea that
+              lets you break a huge, complicated decision problem into smaller
+              subpieces and solve it backwards or forwards one stage at a time.
               <br />
               <br />
               If that idea is starting to sound suspiciously like the Bellman
-              equations, that&apos;s not a coincidence.
-              <br />
-              <br />
-              The Bellman equations are just the mathematical expression of the
-              Principle of Optimality.
+              equations, that&apos;s not a coincidence, the Bellman equations
+              are just the mathematical expression of the Principle of
+              Optimality.
               <br />
               <br />
               Over the 1950s, Bellman and others developed dynamic programming
@@ -2933,8 +2918,6 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The philosophy was simple but radical for its time:
-              <br />
-              <br />
               <em>
                 Don&apos;t just prove that an optimal solution exists. Build an
                 algorithm that actually computes it.
@@ -2942,17 +2925,12 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               That philosophy is exactly what we&apos;re about to lean on in the
-              rest of this section.
-              <br />
-              <br />
-              Everything that follows — policy evaluation, policy iteration,
-              value iteration, Q-learning, and beyond — is just a modern
-              incarnation of Bellman&apos;s original idea:
-              <br />
-              <br />
-              break a long-horizon decision problem into smaller pieces, write
-              down a consistency equation between stages, and solve it by
-              iterating until nothing changes anymore.
+              rest of this section. Everything that follows, policy evaluation,
+              policy iteration, value iteration, Q-learning, etc, is just a
+              modern incarnation of Bellman&apos;s original idea: break a
+              long-horizon decision problem into smaller pieces, write down a
+              consistency equation between stages, and solve it by iterating
+              until nothing changes anymore.
             </p>
           </section>
         </main>
