@@ -898,11 +898,11 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               The two fundamental objects in any Markov Process are:
               <br />
-              1) The state - a compression of all important dependent
-              information in the history up to that point (think of the weather
-              at any particular point in time during the day)
+              1) The state: a compression of all important dependent information
+              in the history up to that point (think of the weather at any
+              particular point in time during the day)
               <br />
-              2) The transition probability - represented as a matrix for
+              2) The transition probability: represented as a matrix for
               discrete states or a probability distribution for continuous
               states, that tells you the probability of going from one state to
               the next (Think of the likelihood it will continue being cloudy at
@@ -2186,7 +2186,7 @@ export default function ReinforcementLearningPage() {
               In other words, v<sub>π*</sub>(s) ≥ v<sub>π</sub>(s) for every
               state s and every other policy π. This optimal policy achieves the
               maximum possible value in every state. (Note: there can be
-              multiple optimal policies that are equally good - think of a game
+              multiple optimal policies that are equally good, think of a game
               where picking up an object with your right hand versus your left
               hand both lead to the same outcome).
               <br />
@@ -2378,10 +2378,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The optimal POLICY π<sub>*</sub>(s) is the actual move that
-              achieves this maximum - it's the decision rule that says "in this
-              position, make THIS move." A suboptimal policy might tell you to
-              sacrifice your queen for no reason, giving you a low value. But π
-              <sub>*</sub> always picks the move that maximizes v<sub>*</sub>.
+              achieves this maximum, it&apos;s the decision rule that says "in
+              this position, make THIS move." A suboptimal policy might tell you
+              to sacrifice your queen for no reason, giving you a low value. But
+              π<sub>*</sub> always picks the move that maximizes v<sub>*</sub>.
               <br />
               <br />
               <strong>For the optimal action-value function:</strong>
@@ -2455,10 +2455,10 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <strong>Chess analogy:</strong> If you're in a chess position and
-              want to know v*(s) - the value of that position with perfect play
-              - you look at all your possible moves (the filled circles),
-              evaluate each one assuming perfect play afterwards (each q*(s,a)),
-              and pick the best. That best move's value IS the position's value.
+              want to know v*(s), the value of that position with perfect play,
+              you look at all your possible moves (the filled circles), evaluate
+              each one assuming perfect play afterwards (each q*(s,a)), and pick
+              the best. That best move's value IS the position's value.
               <br />
               <br />
               <strong>
@@ -2604,6 +2604,105 @@ export default function ReinforcementLearningPage() {
               simply choose the best action. This is what makes these equations
               tell us about the BEST POSSIBLE performance rather than the
               performance of a specific strategy.
+            </p>
+
+            <p className="mb-4">
+              <strong className="block text-center mb-4">
+                The Tempting Linear-Algebra Trick (and Why It Fails)
+              </strong>
+              At this point, if you&apos;re feeling clever, you might think:
+              &quot;Wait a second. Haven&apos;t we seen something like this
+              before?&quot;
+              <br />
+              <br />
+              With the Bellman <em>Expectation</em> Equation, life was good.
+              Once we fixed a policy π, we could compress the whole MDP into a
+              simple Markov Reward Process. The actions disappeared (because we
+              averaged over them using π(a|s)), and we were left with a clean,
+              state-only equation:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>π</sub> = r<sub>π</sub> + γ P<sub>π</sub> v<sub>π</sub>
+              </span>
+              Which we could rearrange into:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                (I − γP<sub>π</sub>) v<sub>π</sub> = r<sub>π</sub>
+              </span>
+              And then solve in one glorious line of linear algebra:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>π</sub> = (I − γP<sub>π</sub>)<sup>−1</sup> r<sub>π</sub>
+              </span>
+              Ingredients go in. Matrix multiplication happens. A value function
+              comes out. Blender in, smoothie out.
+              <br />
+              <br />
+              So naturally, your brain now tries to pull the exact same stunt
+              here.
+              <br />
+              <br />
+              We have nice, tidy recursive equations for v<sub>*</sub> and q
+              <sub>*</sub>. Surely we can just stack all the values into a giant
+              vector, write down one massive system of equations, invert a
+              matrix, and go home early. Right?
+              <br />
+              <br />
+              Unfortunately… no.
+              <br />
+              <br />
+              Here&apos;s the problem: the moment we replaced &quot;average over
+              actions using a policy&quot; with &quot;take the max over
+              actions,&quot; the whole equation stopped being linear.
+              <br />
+              <br />
+              In the expectation case, everything behaves politely. The value
+              function only ever shows up multiplied by numbers and added
+              together. That&apos;s exactly the kind of structure linear algebra
+              loves. You can always rearrange things into something that looks
+              like:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                (I − γP) v = r
+              </span>
+              And then solve it with a matrix inverse.
+              <br />
+              <br />
+              But the max operator is not just another kind of multiplication or
+              addition. It&apos;s a completely different beast. It doesn&apos;t
+              distribute. You can&apos;t pull it through sums or matrices. And,
+              most importantly, you can&apos;t rearrange an equation with a max
+              in it into the form:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                (I − γP) q = r
+              </span>
+              <br />
+              and then solve for q by inverting a matrix.
+              <br />
+              <br />
+              Same ingredients. Same kitchen. Totally different appliance.
+              <br />
+              <br />
+              The Bellman Expectation Equation is a linear blender: pour in
+              numbers, spin the blades, and out comes a value function.
+              <br />
+              <br />
+              The Bellman Optimality Equation is a nonlinear blender with a
+              giant &quot;pick the biggest chunk&quot; switch on it. Linear
+              algebra takes one look at that switch and quietly backs out of the
+              room.
+              <br />
+              <br />
+              So even though the optimality equations look almost identical to
+              the expectation equations, that one tiny change — replacing an
+              average with a max — completely destroys the linear structure that
+              made the matrix trick possible in the first place.
             </p>
           </section>
         </main>
