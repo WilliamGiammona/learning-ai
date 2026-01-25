@@ -2829,7 +2829,7 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               Before we turn dynamic programming into algorithms and code,
               it&apos;s worth taking a short detour into where all of this
-              actually came from. We will be using this article as our source :{" "}
+              actually came from. We will be using this article as our source:{" "}
               <Link
                 href="https://www.cs.uni.edu/~wallingf/teaching/cs3530/sessions/session27/bellman-dynamic-programming.pdf"
                 target="_blank"
@@ -2848,7 +2848,7 @@ export default function ReinforcementLearningPage() {
               where a system evolves over time, you make a sequence of
               decisions, and each decision affects what options you have later,
               exactly the kind of structure that Markov Decision Processes are
-              designed to capture..
+              designed to capture.
               <br />
               <br />
               Examples of the kinds of things he cared about included: how to
