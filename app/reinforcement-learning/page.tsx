@@ -2333,7 +2333,19 @@ export default function ReinforcementLearningPage() {
               </em>
               <br />
               <br />
-              <strong>For the optimal state-value function:</strong>
+              <strong>
+                Recursive Structure For Bellman Optimality Equation
+              </strong>
+              <br />
+              <br />
+              Just like the Bellman Expectation Equation, the Bellman Optimality
+              Equation is recursive: q<sub>*</sub>(s, a) is defined in terms of
+              q<sub>*</sub>(s', a'). The structure is identical: immediate
+              reward plus discounted future value. The only difference is that
+              instead of taking a weighted average over actions (according to
+              policy π), we take the MAXIMUM over actions. which transforms the
+              equation about evaluating a given policy into an equation that
+              characterizes the best possible policy.
               <br />
               <br />
               <span className="block font-mono text-center mb-4">
