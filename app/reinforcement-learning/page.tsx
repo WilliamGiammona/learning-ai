@@ -3176,19 +3176,11 @@ export default function ReinforcementLearningPage() {
               <br />
               But just writing down the equation doesn&apos;t magically give us
               the value function. It tells us what v<sub>π</sub>{" "}
-              <em>must satisfy</em>, not how to actually compute it.
-              <br />
-              <br />
-              So instead of trying to solve that equation in one heroic
-              algebraic move, dynamic programming does something much more
-              humble.
-              <br />
-              <br />
-              It guesses.
-              <br />
-              <br />
-              We start with a completely arbitrary value function. Call it v
-              <sub>1</sub>.
+              <em>must satisfy</em>, not how to actually compute it. Instead of
+              trying to solve that equation in one heroic algebraic move,
+              dynamic programming does something much more humble, we make a
+              completely arbitrary guess for what we think the value function
+              is, called v<sub>1</sub>
               <br />
               <br />
               For example, we might say:
@@ -3196,20 +3188,18 @@ export default function ReinforcementLearningPage() {
               <br />
               <em>
                 &quot;I have no idea how good any state is, so I&apos;m just
-                going to pretend that every state has value 0.&quot;
+                going to pretend that every state has a value of 0.&quot;
               </em>
-              <br />
-              <br />
-              That gives us our first crude guess:
               <br />
               <br />
               <span className="block font-mono text-center mb-4">
                 v<sub>1</sub>(s) = 0 for all s ∈ S
               </span>
-              This value function is obviously wrong.
-              <br />
-              <br />
-              But that&apos;s okay.
+              This value function is almost certainly wrong, but that&apos;s
+              okay because the point isn't to have the correct value on the
+              first try, but just to have <em>a</em> starting point we can
+              iteratively improve until we get the true value function for our
+              given policy.
               <br />
               <br />
               Now we take this terrible guess and run it through the Bellman
