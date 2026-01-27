@@ -3140,11 +3140,9 @@ export default function ReinforcementLearningPage() {
               <br />
               This is not a control problem yet. We are <em>not</em> trying to
               find the best policy. We are not optimizing anything. We are not
-              doing anything clever.
-              <br />
-              <br />
-              Someone hands us a fully specified MDP ⟨S, A, P, R, γ⟩ and a fixed
-              policy π and asks a very simple question:
+              doing anything clever. All that&apos;s happening is someone hands
+              us a fully specified MDP ⟨S, A, P, R, γ⟩ and a fixed policy π, and
+              asks a very simple question:
               <br />
               <br />
               <em>
