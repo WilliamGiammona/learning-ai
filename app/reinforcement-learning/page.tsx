@@ -3681,6 +3681,243 @@ export default function ReinforcementLearningPage() {
               <br />
               And that&apos;s our first real control algorithm.
             </div>
+
+            <div className="mt-16 mb-4">
+              All of this still sounds a bit abstract, so let's make it concrete
+              with an example.
+              <br />
+              <br />
+              Consider an MDP with three states:
+              <br />
+              <br />
+              <div className="block font-mono text-center mb-4">
+                S = {"{A, B, C}"} , and C is terminal
+              </div>
+              There are two actions in states A and B:
+              <br />
+              <br />
+              <div className="block font-mono text-center mb-4">
+                A = {"{Left, Right}"}
+              </div>
+              State C is terminal, so once you hit it, the episode ends and{" "}
+              <InlineMath math="v(C)=0" />.
+              <br />
+              <br />
+              The dynamics are deterministic, and the rewards look like this:
+              <br />
+              <br />
+              <div className="block font-mono text-center mb-4">
+                From A:
+                <br />
+                Left: A → B with reward 0
+                <br />
+                Right: A → C with reward 1
+                <br />
+                <br />
+                From B:
+                <br />
+                Left: B → C with reward 2
+                <br />
+                Right: B → C with reward 0
+              </div>
+              Let&apos;s use a discount factor{" "}
+              <InlineMath math="\gamma = 0.9" />.
+              <br />
+              <br />
+              Now we start with a terrible initial policy{" "}
+              <InlineMath math="\pi_0" />:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi_0(A)=\\text{Right}, \\qquad \\pi_0(B)=\\text{Right}"
+                  }
+                />
+              </div>
+              In words: from A, go straight to C for reward 1. From B, choose
+              the useless action that still ends in C but gives reward 0.
+              <br />
+              <br />
+              <strong>Step 1: Policy Evaluation</strong>
+              <br />
+              <br />
+              Compute <InlineMath math="v_{\pi_0}" />.
+              <br />
+              <br />
+              Since <InlineMath math="C" /> is terminal:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{\\pi_0}(C)=0"} />
+              </div>
+              Under <InlineMath math="\pi_0" />, from B we take Right and go to
+              C with reward 0:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_{\\pi_0}(B)=0 + \\gamma\\,v_{\\pi_0}(C)=0"}
+                />
+              </div>
+              Under <InlineMath math="\pi_0" />, from A we take Right and go to
+              C with reward 1:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_{\\pi_0}(A)=1 + \\gamma\\,v_{\\pi_0}(C)=1"}
+                />
+              </div>
+              So policy evaluation tells us:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_{\\pi_0}(A)=1, \\qquad v_{\\pi_0}(B)=0, \\qquad v_{\\pi_0}(C)=0"
+                  }
+                />
+              </div>
+              <strong>Step 2: Policy Improvement</strong>
+              <br />
+              <br />
+              Now we ask, state by state: given these values, which action looks
+              best?
+              <br />
+              <br />
+              In state B:
+              <br />
+              <br />
+              • Left gives reward 2 then ends: return = <InlineMath math="2" />
+              <br />
+              • Right gives reward 0 then ends: return = <InlineMath math="0" />
+              <br />
+              <br />
+              So the greedy choice is Left:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"\\pi_1(B)=\\text{Left}"} />
+              </div>
+              In state A:
+              <br />
+              <br />• Left sends you to B with reward 0, then you get value{" "}
+              <InlineMath math="v_{\\pi_0}(B)=0" />:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"Q(A,\\text{Left}) = 0 + \\gamma\\,v_{\\pi_0}(B)=0"}
+                />
+              </div>
+              • Right sends you to C with reward 1:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"Q(A,\\text{Right}) = 1 + \\gamma\\,v_{\\pi_0}(C)=1"}
+                />
+              </div>
+              So A stays Right:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"\\pi_1(A)=\\text{Right}"} />
+              </div>
+              So after one full policy-iteration round, we upgraded the policy
+              to:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi_1(A)=\\text{Right}, \\qquad \\pi_1(B)=\\text{Left}"
+                  }
+                />
+              </div>
+              Now do the loop one more time.
+              <br />
+              <br />
+              <strong>Evaluate</strong> <InlineMath math="\\pi_1" />:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{\\pi_1}(C)=0"} />
+              </div>
+              From B we now take Left and get reward 2:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{\\pi_1}(B)=2 + \\gamma\\,0 = 2"} />
+              </div>
+              From A we still take Right and get reward 1:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{\\pi_1}(A)=1 + \\gamma\\,0 = 1"} />
+              </div>
+              Now <strong>improve</strong> again.
+              <br />
+              <br />
+              In state A:
+              <br />
+              <br />
+              • If we choose Left now, we go to B with reward 0, and B is worth
+              2:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "Q(A,\\text{Left}) = 0 + \\gamma\\,v_{\\pi_1}(B) = 0.9\\cdot 2 = 1.8"
+                  }
+                />
+              </div>
+              • If we choose Right, we go to C with reward 1:
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"Q(A,\\text{Right}) = 1 + \\gamma\\,0 = 1"} />
+              </div>
+              Now Left is better, so A flips:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"\\pi_2(A)=\\text{Left}"} />
+              </div>
+              B already chooses Left and won&apos;t change.
+              <br />
+              <br />
+              So the final improved policy is:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi^*(A)=\\text{Left}, \\qquad \\pi^*(B)=\\text{Left}"
+                  }
+                />
+              </div>
+              And now the agent does the sensible thing:
+              <br />
+              <br />
+              <div className="block font-mono text-center mb-4">
+                {"A --Left--> B --Left--> C"}
+              </div>
+              with total return:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v^*(A)=0 + 0.9\\cdot 2 = 1.8, \\qquad v^*(B)=2, \\qquad v^*(C)=0"
+                  }
+                />
+              </div>
+              That&apos;s policy iteration in one sentence:
+              <br />
+              <br />
+              <em>
+                Evaluate the policy to see where the gold is, then change the
+                policy to grab more of it, and repeat until there&apos;s nothing
+                left to improve.
+              </em>
+            </div>
           </section>
         </main>
       </div>
