@@ -2827,8 +2827,8 @@ export default function ReinforcementLearningPage() {
                 Input: ⟨S, A, P, R, γ⟩
               </span>
               <span className="block font-mono text-center mb-4">
-                Output: v<sub>*</sub>(s) or q<sub>*</sub>(s) and π<sub>*</sub>
-                (s)
+                Output: the optimal value function (v<sub>*</sub>(s) or q
+                <sub>*</sub>(s, a)) and the optimal policy π<sub>*</sub>(s)
               </span>
               In other words: you hand me a fully specified MDP, and I give you
               back both the optimal value function and the optimal policy.
@@ -2850,12 +2850,9 @@ export default function ReinforcementLearningPage() {
               Everything we do in this section assumes that the transition
               dynamics P and the reward function R are known. That&apos;s why
               dynamic programming is technically a planning method, not a full
-              reinforcement-learning method.
-              <br />
-              <br />
-              In a true reinforcement-learning problem, you don&apos;t get
-              handed the MDP tuple ⟨S, A, P, R, γ⟩, uou have to <em>learn</em> P
-              and R (or at least their effects) by interacting with the
+              reinforcement-learning method. In a true reinforcement-learning
+              problem, you don&apos;t get handed the MDP tuple ⟨S, A, P, R, γ⟩,
+              you have to <em>learn</em> P and R by interacting with the
               environment.
               <br />
               <br />
@@ -2874,7 +2871,10 @@ export default function ReinforcementLearningPage() {
               So we&apos;ll start in the clean, idealized world where the MDP is
               fully known, and later on, we&apos;ll relax that assumption and
               see how the same ideas survive in the real reinforcement-learning
-              setting. This section is organized into seven parts:
+              setting.
+              <br />
+              <br />
+              This section is organized into seven parts:
               <br />
               <br />
               <strong>1) Introduction</strong>
