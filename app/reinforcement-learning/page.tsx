@@ -3387,13 +3387,14 @@ export default function ReinforcementLearningPage() {
               Step 2: do one Bellman backup.
               <br />
               <br />
-              Using the update rule:
+              In this deterministic toy MDP, the backup is especially simple:
               <br />
               <br />
               <span className="block font-mono text-center mb-4">
-                v<sub>k+1</sub>(s) = R(s) + γ v<sub>k</sub>(s&apos;)
+                v<sub>k+1</sub>(s) = R + γ v<sub>k</sub>(s&apos;)
               </span>
-              where s&apos; is the state you deterministically transition to.
+              where s&apos; is the state you deterministically transition to and
+              R is the immediate reward on that transition.
               <br />
               <br />
               From C:
@@ -3452,26 +3453,16 @@ export default function ReinforcementLearningPage() {
                 <br />v<sub>3</sub>(B) = 2
                 <br />v<sub>3</sub>(C) = 0
               </span>
+              Notice what happened: B converged immediately, and then A
+              &quot;inherited&quot; B&apos;s value one iteration later.
+              <br />
+              <br />
               Step 4: do it one more time.
               <br />
               <br />
-              From C:
-              <br />
-              <br />
               <span className="block font-mono text-center mb-4">
-                v<sub>4</sub>(C) = 0
-              </span>
-              From B:
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                v<sub>4</sub>(B) = 2
-              </span>
-              From A:
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                v<sub>4</sub>(A) = 1 + 0.9 · 2 = 2.8
+                v<sub>4</sub>(A) = 2.8, v<sub>4</sub>(B) = 2, v<sub>4</sub>(C) =
+                0
               </span>
               At this point nothing changes anymore.
               <br />
@@ -3484,20 +3475,7 @@ export default function ReinforcementLearningPage() {
                 <br />v<sub>π</sub>(B) = 2
                 <br />v<sub>π</sub>(C) = 0
               </span>
-              And that&apos;s exactly what you would get if you solved the
-              Bellman equations directly:
-              <br />
-              <br />
-              <span className="block font-mono text-center mb-4">
-                v<sub>π</sub>(A) = 1 + 0.9 · (2 + 0.9 · 0) = 2.8
-                <br />v<sub>π</sub>(B) = 2 + 0.9 · 0 = 2
-                <br />v<sub>π</sub>(C) = 0
-              </span>
-              So in this example, policy evaluation converges in just a couple
-              of iterations.
-              <br />
-              <br />
-              That&apos;s policy evaluation, start with nonsense, apply the
+              That&apos;s policy evaluation: start with nonsense, apply the
               Bellman expectation backup, and keep repeating until the nonsense
               converges to the true value for each state.
             </p>
