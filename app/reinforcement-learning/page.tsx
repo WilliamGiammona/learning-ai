@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import "katex/dist/katex.min.css";
+import { InlineMath, BlockMath } from "react-katex";
 
 export default function ReinforcementLearningPage() {
   return (
@@ -3506,8 +3508,179 @@ export default function ReinforcementLearningPage() {
               <figcaption className="text-lg mt-2">Policy Iteration</figcaption>
             </figure>
           </section>
-
-          <p className="mb-4"></p>
+          <div className="mb-4">
+            Now we&apos;re finally ready to do something ambitious.
+            <br />
+            <br />
+            Up to now, all we knew how to do was <em>evaluate</em> a fixed
+            policy. Given a policy <InlineMath math="\pi" />, we could compute
+            its value function <InlineMath math="v_\pi" />, but we weren&apos;t
+            actually improving anything yet. We were just measuring how good (or
+            bad) a policy already was.
+            <br />
+            <br />
+            Policy iteration is the next step up the evolutionary ladder.
+            <br />
+            <br />
+            Instead of asking:
+            <br />
+            <br />
+            <em>
+              &quot;How good is this policy <InlineMath math="\pi" />
+              ?&quot;
+            </em>
+            <br />
+            <br />
+            we now ask:
+            <br />
+            <br />
+            <em>
+              &quot;How can I turn this policy <InlineMath math="\pi" /> into a
+              better one?&quot;
+            </em>
+            <br />
+            <br />
+            This is now a <strong>control</strong> problem, not just a
+            prediction problem. The goal is no longer to compute a value
+            function for a fixed policy, but to actually{" "}
+            <em>converge to the optimal policy</em> <InlineMath math="\pi^*" />.
+            <br />
+            <br />
+            In input–output terms, policy iteration looks like this:
+            <br />
+            <br />
+            <div className="block font-mono text-center mb-4">
+              Input: ⟨S, A, P, R, γ⟩ and a policy <InlineMath math="\pi" />
+            </div>
+            <div className="block font-mono text-center mb-4">
+              Output: a new policy <InlineMath math="\pi'" /> such that{" "}
+              <InlineMath math="\pi' \ge \pi" />
+            </div>
+            Here the symbol <InlineMath math="\pi' \ge \pi" /> just means: the
+            new policy is at least as good as the old one in every state (and
+            usually strictly better in at least one).
+            <br />
+            <br />
+            The key idea is to break the control problem into two simpler
+            subproblems and alternate between them:
+            <br />
+            <br />
+            <strong>1) Policy Evaluation</strong>
+            <br />
+            <br />
+            Given the current policy <InlineMath math="\pi" />, compute its
+            value function <InlineMath math="v_\pi" />.
+            <br />
+            <br />
+            This is exactly the prediction problem we just solved in the
+            previous section. We apply the Bellman expectation update repeatedly
+            until the value function converges:
+            <br />
+            <br />
+            <div className="text-center mb-4">
+              <BlockMath
+                math={
+                  "v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots \\;\\to\\; v_\\pi"
+                }
+              />
+            </div>
+            This step answers the question:
+            <br />
+            <br />
+            <em>
+              &quot;If I follow this policy <InlineMath math="\pi" /> forever,
+              how good is each state really?&quot;
+            </em>
+            <br />
+            <br />
+            <strong>2) Policy Improvement</strong>
+            <br />
+            <br />
+            Now comes the upgrade.
+            <br />
+            <br />
+            Once we know <InlineMath math="v_\pi" />, we construct a new policy{" "}
+            <InlineMath math="\pi'" /> by being <em>greedy</em> with respect to
+            that value function.
+            <br />
+            <br />
+            In each state <InlineMath math="s" />, we look at all possible
+            actions <InlineMath math="a" />, and pick the one that maximizes
+            expected return:
+            <br />
+            <br />
+            <div className="text-center mb-4">
+              <BlockMath
+                math={
+                  "\\pi'(s) \\,=\\, \\arg\\max_a \\Big[\\, R(s,a) \\, + \\, \\gamma \\sum_{s'} P(s' \\mid s,a)\\, v_\\pi(s')\\, \\Big]"
+                }
+              />
+            </div>
+            In words:
+            <br />
+            <br />
+            For each possible action, we add up:
+            <br />
+            <br />
+            • the immediate reward we would get
+            <br />
+            • plus the discounted value of where that action is expected to take
+            us
+            <br />
+            <br />
+            and then choose the action with the biggest total.
+            <br />
+            <br />
+            This gives us a brand-new policy <InlineMath math="\pi'" /> that is
+            guaranteed to be at least as good as <InlineMath math="\pi" />. This
+            is the famous <strong>policy improvement theorem</strong>.
+            <br />
+            <br />
+            Now we just loop these two steps forever (or until nothing changes
+            anymore):
+            <br />
+            <br />
+            <div className="text-center mb-4">
+              <BlockMath
+                math={
+                  "\\pi_1 \\;\\to\\; v_{\\pi_1} \\;\\to\\; \\pi_2 \\;\\to\\; v_{\\pi_2} \\;\\to\\; \\pi_3 \\;\\to\\; \\dots"
+                }
+              />
+            </div>
+            This is exactly what the picture above is showing.
+            <br />
+            <br />
+            Each <em>evaluation</em> step moves you onto the true value function
+            for the current policy.
+            <br />
+            Each <em>improvement</em> step swaps in a greedier (and therefore
+            better) policy.
+            <br />
+            <br />
+            The zig-zag keeps going until both things stop changing:
+            <br />
+            <br />
+            <div className="text-center mb-4">
+              <BlockMath math={"\\pi_k = \\pi^*, \\qquad v_{\\pi_k} = v^*"} />
+            </div>
+            At that point, you&apos;ve reached the optimal policy and the
+            optimal value function.
+            <br />
+            <br />
+            So policy iteration is nothing more than:
+            <br />
+            <br />
+            Start with a bad policy.
+            <br />
+            Figure out exactly how bad it is.
+            <br />
+            Make it a little better.
+            <br />
+            Repeat until there&apos;s nothing left to fix.
+            <br />
+            <br />
+            And that&apos;s our first real control algorithm.
+          </div>
         </main>
       </div>
     </div>
