@@ -2776,17 +2776,105 @@ export default function ReinforcementLearningPage() {
               the optimal policy.
               <br />
               <br />
-              In order to use dynamic programming for MDPs, we must assume that
-              we know the full structure of the MDP (the transition dynamics and
-              the rewards), and because of this it&apos;s really a "planning"
-              problem rather than a full reinforcement-learning problem. A full
-              reinforcement learning problem assumes that you don't have full
-              knowledge of the MDP. Regardless, it&apos;s an excellent place to
-              begin because many of the concepts and ideas used in dynamic
-              programming are also used for reinforcement learning.
+              Before we talk about specific algorithms, it helps to make one
+              more important distinction. In reinforcement learning (and in
+              planning more generally), there are really two different kinds of
+              problems you might want to solve:
               <br />
               <br />
-              This section is organized into seven parts:
+              <strong>1) Prediction</strong>
+              <br />
+              <strong>2) Control</strong>
+              <br />
+              <br />
+              They sound similar, but they are asking fundamentally different
+              questions.
+              <br />
+              <br />
+              <strong>Prediction</strong> means: given a fixed policy π, how
+              good is it? More precisely: if an agent follows a particular
+              policy π in an MDP, what long-term reward should it expect from
+              each state?
+              <br />
+              <br />
+              In input–output terms, the prediction problem looks like this:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                Input: ⟨S, A, P, R, γ⟩ and a policy π
+              </span>
+              <span className="block font-mono text-center mb-4">
+                Output: the value function (v<sub>π</sub>(s)) or (q<sub>π</sub>
+                (s, a)) depending on if you want the state-value or action-value
+                function.
+              </span>
+              In other words: you hand me a fully specified MDP and a policy,
+              and I tell you the value function for that policy. This is exactly
+              the problem solved by <em>policy evaluation</em>.
+              <br />
+              <br />
+              <strong>Control</strong> means: what is the best possible policy?
+              <br />
+              <br />
+              Here we are no longer satisfied with evaluating a policy someone
+              gives us. We want to <em>find</em> the optimal one.
+              <br />
+              <br />
+              In input–output terms, the control problem looks like this:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                Input: ⟨S, A, P, R, γ⟩
+              </span>
+              <span className="block font-mono text-center mb-4">
+                Output: v<sub>*</sub>(s) or q<sub>*</sub>(s) and π<sub>*</sub>
+                (s)
+              </span>
+              In other words: you hand me a fully specified MDP, and I give you
+              back both the optimal value function and the optimal policy.
+              <br />
+              <br />
+              So prediction takes an MDP and a policy as input and outputs a
+              value function while control takes just an MDP as input and
+              outputs both a value function and a policy.
+              <br />
+              <br />
+              Dynamic programming gives us solution methods for <em>both</em> of
+              these problems as long as we are in the planning setting where the
+              full MDP ⟨S, A, P, R, γ⟩ is known.
+              <br />
+              <br />
+              That last part is crucial.
+              <br />
+              <br />
+              Everything we do in this section assumes that the transition
+              dynamics P and the reward function R are known. That&apos;s why
+              dynamic programming is technically a planning method, not a full
+              reinforcement-learning method.
+              <br />
+              <br />
+              In a true reinforcement-learning problem, you don&apos;t get
+              handed the MDP tuple ⟨S, A, P, R, γ⟩, uou have to <em>learn</em> P
+              and R (or at least their effects) by interacting with the
+              environment.
+              <br />
+              <br />
+              But even though that assumption is unrealistic in many real
+              problems, dynamic programming is still the perfect place to start.
+              <br />
+              <br />
+              Why?
+              <br />
+              <br />
+              Because almost every reinforcement-learning algorithm you&apos;ll
+              ever see is just a noisy, data-driven, approximate version of the
+              dynamic programming ideas we&apos;re about to develop.
+              <br />
+              <br />
+              So we&apos;ll start in the clean, idealized world where the MDP is
+              fully known, and later on, we&apos;ll relax that assumption and
+              see how the same ideas survive in the real reinforcement-learning
+              setting. This section is organized into seven parts:
               <br />
               <br />
               <strong>1) Introduction</strong>
