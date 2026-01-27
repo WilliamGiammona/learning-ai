@@ -3309,6 +3309,198 @@ export default function ReinforcementLearningPage() {
               </em>{" "}
               problem next.
             </p>
+
+            <p className="mt-16 mb-4">
+              All of this still sounds a bit abstract, so let&apos;s make it
+              concrete with an example.
+              <br />
+              <br />
+              Imagine an MDP with just three states:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                S = {"{A, B, C}"}
+              </span>
+              State C is a <strong>terminal state</strong>. Once you get there,
+              the episode ends and there are no more rewards.
+              <br />
+              <br />
+              Suppose there is only one action available in each state, so the
+              policy π is completely trivial. There are no choices to make. The
+              agent just blindly follows the only action it has.
+              <br />
+              <br />
+              The environment behaves like this:
+              <br />
+              <br />
+              • From state A, you always go to state B and get a reward of +1
+              <br />
+              • From state B, you always go to state C and get a reward of +2
+              <br />
+              • From state C, the episode ends and you get no more reward
+              <br />
+              <br />
+              So every episode looks like this:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                A → B → C (terminal)
+              </span>
+              Let&apos;s also pick a discount factor:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">γ = 0.9</span>
+              Now here&apos;s the prediction problem:
+              <br />
+              <br />
+              <em>
+                &quot;If I follow this fixed policy forever, what is v
+                <sub>π</sub>(A), v<sub>π</sub>(B), and v<sub>π</sub>(C)?&quot;
+              </em>
+              <br />
+              <br />
+              We already know what the Bellman Expectation Equation says these
+              values must satisfy:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>π</sub>(A) = 1 + γ v<sub>π</sub>(B)
+                <br />v<sub>π</sub>(B) = 2 + γ v<sub>π</sub>(C)
+                <br />v<sub>π</sub>(C) = 0
+              </span>
+              The last line just says that the value of a terminal state is zero
+              because there are no future rewards left to collect.
+              <br />
+              <br />
+              But instead of solving these equations directly, we&apos;ll do
+              exactly what policy evaluation tells us to do.
+              <br />
+              <br />
+              Step 1: start with a terrible guess.
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>1</sub>(A) = 0
+                <br />v<sub>1</sub>(B) = 0
+                <br />v<sub>1</sub>(C) = 0
+              </span>
+              Step 2: do one Bellman backup.
+              <br />
+              <br />
+              Using the update rule:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>k+1</sub>(s) = R(s) + γ v<sub>k</sub>(s&apos;)
+              </span>
+              where s&apos; is the state you deterministically transition to.
+              <br />
+              <br />
+              From C:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>2</sub>(C) = 0
+              </span>
+              From B:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>2</sub>(B) = 2 + 0.9 · v<sub>1</sub>(C) = 2 + 0.9 · 0 = 2
+              </span>
+              From A:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>2</sub>(A) = 1 + 0.9 · v<sub>1</sub>(B) = 1 + 0.9 · 0 = 1
+              </span>
+              So after one iteration:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>2</sub>(A) = 1
+                <br />v<sub>2</sub>(B) = 2
+                <br />v<sub>2</sub>(C) = 0
+              </span>
+              Step 3: do another Bellman backup.
+              <br />
+              <br />
+              From C:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>3</sub>(C) = 0
+              </span>
+              From B:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>3</sub>(B) = 2 + 0.9 · v<sub>2</sub>(C) = 2
+              </span>
+              From A:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>3</sub>(A) = 1 + 0.9 · v<sub>2</sub>(B) = 1 + 0.9 · 2 =
+                2.8
+              </span>
+              So now:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>3</sub>(A) = 2.8
+                <br />v<sub>3</sub>(B) = 2
+                <br />v<sub>3</sub>(C) = 0
+              </span>
+              Step 4: do it one more time.
+              <br />
+              <br />
+              From C:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>4</sub>(C) = 0
+              </span>
+              From B:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>4</sub>(B) = 2
+              </span>
+              From A:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>4</sub>(A) = 1 + 0.9 · 2 = 2.8
+              </span>
+              At this point nothing changes anymore.
+              <br />
+              <br />
+              We&apos;ve converged to the true value function:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>π</sub>(A) = 2.8
+                <br />v<sub>π</sub>(B) = 2
+                <br />v<sub>π</sub>(C) = 0
+              </span>
+              And that&apos;s exactly what you would get if you solved the
+              Bellman equations directly:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>π</sub>(A) = 1 + 0.9 · (2 + 0.9 · 0) = 2.8
+                <br />v<sub>π</sub>(B) = 2 + 0.9 · 0 = 2
+                <br />v<sub>π</sub>(C) = 0
+              </span>
+              So in this example, policy evaluation converges in just a couple
+              of iterations.
+              <br />
+              <br />
+              That&apos;s policy, start with nonsense, apply the Bellman
+              expectation backup, and keep repeating until the nonsense
+              converges to the true value for each state.
+            </p>
           </section>
         </main>
       </div>
