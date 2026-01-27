@@ -3735,8 +3735,8 @@ export default function ReinforcementLearningPage() {
                   }
                 />
               </div>
-              In words: from A, go straight to C for reward 1. From B, choose
-              the useless action that still ends in C but gives reward 0.
+              In words: from A, go rigth in order to get to C for reward 1. From
+              B, go rigth in order to get to C for reward 0.
               <br />
               <br />
               <strong>Step 1: Policy Evaluation</strong>
@@ -3837,7 +3837,7 @@ export default function ReinforcementLearningPage() {
               Now do the loop one more time.
               <br />
               <br />
-              <strong>Evaluate</strong> <InlineMath math="\\pi_1" />:
+              <strong>Evaluate</strong> <InlineMath math="\pi_1" />:
               <br />
               <br />
               <div className="text-center mb-4">
