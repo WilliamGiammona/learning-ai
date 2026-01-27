@@ -3494,6 +3494,17 @@ export default function ReinforcementLearningPage() {
             >
               Policy Iteration
             </h2>
+
+            <figure className="text-center my-14">
+              <Image
+                src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-policy-iteration.png"
+                alt="Visual Of Policy Iteration"
+                width={500}
+                height={300}
+                className="mx-auto"
+              />
+              <figcaption className="text-lg mt-2">Policy Iteration</figcaption>
+            </figure>
           </section>
         </main>
       </div>
