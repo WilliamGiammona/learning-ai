@@ -2767,12 +2767,13 @@ export default function ReinforcementLearningPage() {
               like?&quot; to &quot;how do we actually find it?&quot;
               <br />
               <br />
-              The collection of techniques we&apos;ll start with is called{" "}
+              The collection of techniques we'll start with is called{" "}
               <strong>dynamic programming</strong>. These are algorithms that
-              solve MDPs by first breaking up the problem into easier to solve
-              subproblems, caching those results in a value function, and then
+              solve MDPs by breaking up the problem into easier-to-solve
+              subproblems, caching those results in value functions, and then
               repeatedly applying the Bellman equations until the value
-              functions and policies settle down on their optimum values.
+              functions converge to their optimal values and we can then find
+              the optimal policy.
               <br />
               <br />
               In order to use dynamic programming for MDPs, we must assume that
@@ -2846,6 +2847,16 @@ export default function ReinforcementLearningPage() {
             <h2 id="dp-history" className="text-2xl font-bold mb-6 text-center">
               History of Dynamic Programming
             </h2>
+            <figure className="text-center my-14">
+              <Image
+                src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-richard-bellman.png"
+                alt="Picture of Richard Bellman"
+                width={500}
+                height={300}
+                className="mx-auto"
+              />
+              <figcaption className="text-lg mt-2">Richard Bellman</figcaption>
+            </figure>
 
             <p className="mb-4">
               Before we turn dynamic programming into algorithms and code,
