@@ -3497,8 +3497,8 @@ export default function ReinforcementLearningPage() {
               of iterations.
               <br />
               <br />
-              That&apos;s policy, start with nonsense, apply the Bellman
-              expectation backup, and keep repeating until the nonsense
+              That&apos;s policy evaluation, start with nonsense, apply the
+              Bellman expectation backup, and keep repeating until the nonsense
               converges to the true value for each state.
             </p>
           </section>
