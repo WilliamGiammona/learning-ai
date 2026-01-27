@@ -3506,6 +3506,8 @@ export default function ReinforcementLearningPage() {
               <figcaption className="text-lg mt-2">Policy Iteration</figcaption>
             </figure>
           </section>
+
+          <p className="mb-4"></p>
         </main>
       </div>
     </div>
