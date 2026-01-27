@@ -3671,12 +3671,12 @@ export default function ReinforcementLearningPage() {
               Start with a bad policy, <InlineMath math="\pi" />
               <br />
               Figure out exactly how bad it is:{" "}
-              <InlineMath math="v_1 \rightarrow v_\pi" />
+              <InlineMath math="v_1 \to v_\pi" />
               <br />
               Make the policy a little better, <InlineMath math="\pi'" />
               <br />
-              Repeat until there's nothing left to fix:{" "}
-              <InlineMath math="\pi_*" /> and <InlineMath math="v_*" />
+              Repeat until there&apos;s nothing left to fix:{" "}
+              <InlineMath math="\pi^*" /> and <InlineMath math="v^*" />
               <br />
               <br />
               And that&apos;s our first real control algorithm.
