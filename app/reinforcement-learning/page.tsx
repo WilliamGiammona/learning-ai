@@ -214,6 +214,14 @@ export default function ReinforcementLearningPage() {
                       Policy Evaluation
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-policy-iteraton"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Policy Iteration
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -3479,6 +3487,13 @@ export default function ReinforcementLearningPage() {
               Bellman expectation backup, and keep repeating until the nonsense
               converges to the true value for each state.
             </p>
+
+            <h2
+              id="dp-policy-iteration"
+              className="text-2xl font-bold mb-6 text-center"
+            >
+              Policy Iteration
+            </h2>
           </section>
         </main>
       </div>
