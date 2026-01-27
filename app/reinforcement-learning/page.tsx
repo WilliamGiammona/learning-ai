@@ -3148,8 +3148,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <em>
-                &quot;If I follow this exact policy π forever, how good is it?
-                What long-term reward should I expect from each state?&quot;
+                &quot;If I follow this exact policy π forever, what is its value
+                function? What long-term reward should I expect from each
+                state?&quot;
               </em>
               <br />
               <br />
