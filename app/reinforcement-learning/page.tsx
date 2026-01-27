@@ -3248,9 +3248,6 @@ export default function ReinforcementLearningPage() {
               <sub>π</sub>.
               <br />
               <br />
-              This is exactly what the slide is summarizing:
-              <br />
-              <br />
               <em>
                 Problem: evaluate a given policy π
                 <br />
@@ -3270,10 +3267,12 @@ export default function ReinforcementLearningPage() {
               At iteration k + 1:
               <br />
               <br />
-              &nbsp;&nbsp;• We loop over all states s ∈ S
+              &nbsp;&nbsp;• We loop over all states s ∈ S (as opposed to only
+              doing fewer than every state each time which would be
+              asynchronous)
               <br />
               &nbsp;&nbsp;• We compute a new value v<sub>k+1</sub>(s) using only
-              values from v<sub>k</sub>(s&apos;)
+              values from the immediate reward and from v<sub>k</sub>(s&apos;)
               <br />
               &nbsp;&nbsp;• We don&apos;t mix old and new values inside the same
               iteration
