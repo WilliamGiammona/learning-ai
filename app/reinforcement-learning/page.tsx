@@ -3909,13 +3909,12 @@ export default function ReinforcementLearningPage() {
                   }
                 />
               </div>
-              That&apos;s policy iteration in one sentence:
+              That&apos;s all policy iteration in:
               <br />
               <br />
               <em>
-                Evaluate the policy to see where the gold is, then change the
-                policy to grab more of it, and repeat until there&apos;s nothing
-                left to improve.
+                Evaluate the policy, then change the policy to grab more total
+                reward, and repeat until there&apos;s nothing left to improve.
               </em>
             </div>
           </section>
