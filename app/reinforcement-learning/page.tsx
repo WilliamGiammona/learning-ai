@@ -3509,10 +3509,7 @@ export default function ReinforcementLearningPage() {
             </figure>
 
             <div className="mb-4">
-              Now we&apos;re finally ready to do something ambitious.
-              <br />
-              <br />
-              Up to now, all we knew how to do was <em>evaluate</em> a fixed
+              In the last section, we learned how to <em>evaluate</em> a fixed
               policy. Given a policy <InlineMath math="\pi" />, we could compute
               its value function <InlineMath math="v_\pi" />, but we
               weren&apos;t actually improving anything yet. We were just
