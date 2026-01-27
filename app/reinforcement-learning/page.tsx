@@ -3132,6 +3132,195 @@ export default function ReinforcementLearningPage() {
             >
               Policy Evaluation
             </h2>
+
+            <p className="mb-4">
+              We&apos;ll start with the easier of the two problems we talked
+              about in the introduction, <strong>prediction</strong>.
+              <br />
+              <br />
+              This is not a control problem yet. We are <em>not</em> trying to
+              find the best policy. We are not optimizing anything. We are not
+              doing anything clever.
+              <br />
+              <br />
+              Someone hands us a fully specified MDP ⟨S, A, P, R, γ⟩ and a fixed
+              policy π and asks a very simple question:
+              <br />
+              <br />
+              <em>
+                &quot;If I follow this exact policy π forever, how good is it?
+                What long-term reward should I expect from each state?&quot;
+              </em>
+              <br />
+              <br />
+              In other words, the input is:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                Input: ⟨S, A, P, R, γ⟩ and a fixed policy π
+              </span>
+              And the output we want is:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                Output: the value function v<sub>π</sub>(s)
+              </span>
+              This problem is called <strong>policy evaluation</strong>.
+              <br />
+              <br />
+              Now here&apos;s the slightly awkward part.
+              <br />
+              <br />
+              We already wrote down an equation that characterizes v<sub>π</sub>
+              (s): the Bellman Expectation Equation.
+              <br />
+              <br />
+              But just writing down the equation doesn&apos;t magically give us
+              the value function. It tells us what v<sub>π</sub>{" "}
+              <em>must satisfy</em>, not how to actually compute it.
+              <br />
+              <br />
+              So instead of trying to solve that equation in one heroic
+              algebraic move, dynamic programming does something much more
+              humble.
+              <br />
+              <br />
+              It guesses.
+              <br />
+              <br />
+              We start with a completely arbitrary value function. Call it v
+              <sub>1</sub>.
+              <br />
+              <br />
+              For example, we might say:
+              <br />
+              <br />
+              <em>
+                &quot;I have no idea how good any state is, so I&apos;m just
+                going to pretend that every state has value 0.&quot;
+              </em>
+              <br />
+              <br />
+              That gives us our first crude guess:
+              <br />
+              <br />
+              <span className="block font-mono text-center mb-4">
+                v<sub>1</sub>(s) = 0 for all s ∈ S
+              </span>
+              This value function is obviously wrong.
+              <br />
+              <br />
+              But that&apos;s okay.
+              <br />
+              <br />
+              Now we take this terrible guess and run it through the Bellman
+              Expectation Equation once. That gives us a slightly better guess,
+              which we&apos;ll call v<sub>2</sub>.
+              <br />
+              <br />
+              Conceptually, what we are doing is a{" "}
+              <strong>one-step lookahead</strong>:
+              <br />
+              <br />
+              For each state s:
+              <br />
+              <br />
+              &nbsp;&nbsp;• We look at what action the policy π would take in s
+              <br />
+              &nbsp;&nbsp;• We look at the immediate reward we would get
+              <br />
+              &nbsp;&nbsp;• We look at where we might land next
+              <br />
+              &nbsp;&nbsp;• And we plug in our current guess v<sub>1</sub>
+              (s&apos;) for the future value
+              <br />
+              <br />
+              That produces a new value for state s.
+              <br />
+              <br />
+              Doing this for every state gives us a new value function v
+              <sub>2</sub>.
+              <br />
+              <br />
+              Then we do the exact same thing again.
+              <br />
+              <br />
+              We take v<sub>2</sub>, plug it back into the Bellman Expectation
+              Equation, and get an even better guess v<sub>3</sub>.
+              <br />
+              <br />
+              And then:
+              <br />
+              <br />v<sub>1</sub> → v<sub>2</sub> → v<sub>3</sub> → v
+              <sub>4</sub> → …
+              <br />
+              <br />
+              Each step nudges the value function closer to the true v
+              <sub>π</sub>.
+              <br />
+              <br />
+              This is exactly what the slide is summarizing:
+              <br />
+              <br />
+              <em>
+                Problem: evaluate a given policy π
+                <br />
+                Solution: iterative application of the Bellman expectation
+                backup
+                <br />v<sub>1</sub> → v<sub>2</sub> → … → v<sub>π</sub>
+              </em>
+              <br />
+              <br />
+              In the version we&apos;ll use, the updates are{" "}
+              <strong>synchronous</strong>.
+              <br />
+              <br />
+              That just means:
+              <br />
+              <br />
+              At iteration k + 1:
+              <br />
+              <br />
+              &nbsp;&nbsp;• We loop over all states s ∈ S
+              <br />
+              &nbsp;&nbsp;• We compute a new value v<sub>k+1</sub>(s) using only
+              values from v<sub>k</sub>(s&apos;)
+              <br />
+              &nbsp;&nbsp;• We don&apos;t mix old and new values inside the same
+              iteration
+              <br />
+              <br />
+              So each iteration is a clean global &quot;Bellman backup
+              pass&quot; over the entire state space.
+              <br />
+              <br />
+              The slightly magical fact, which we&apos;ll justify later, is
+              this:
+              <br />
+              <br />
+              <em>
+                If you keep applying this update over and over again, these
+                guesses actually converge to the true value function v
+                <sub>π</sub>.
+              </em>
+              <br />
+              <br />
+              So policy evaluation is nothing more than:
+              <br />
+              <br />
+              Start with a bad guess. Improve it a tiny bit using one-step
+              lookahead. Repeat until it stops changing.
+              <br />
+              <br />
+              That&apos;s it.
+              <br />
+              <br />
+              And once we know how to do this for a fixed policy, we&apos;ll
+              have the main building block we need to solve the <em>
+                control
+              </em>{" "}
+              problem next.
+            </p>
           </section>
         </main>
       </div>
