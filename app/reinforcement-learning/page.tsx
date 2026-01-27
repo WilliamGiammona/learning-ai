@@ -3634,8 +3634,7 @@ export default function ReinforcementLearningPage() {
               This is the famous <strong>policy improvement theorem</strong>.
               <br />
               <br />
-              Now we just loop these two steps forever (or until nothing changes
-              anymore):
+              Now we just keep looping these two steps:
               <br />
               <br />
               <div className="text-center mb-4">
@@ -3645,7 +3644,8 @@ export default function ReinforcementLearningPage() {
                   }
                 />
               </div>
-              This is exactly what the picture above is showing.
+              This is exactly what the policy iteration picture at the start of
+              this section is showing.
               <br />
               <br />
               Each <em>evaluation</em> step moves you onto the true value
@@ -3668,13 +3668,15 @@ export default function ReinforcementLearningPage() {
               So policy iteration is nothing more than:
               <br />
               <br />
-              Start with a bad policy.
+              Start with a bad policy, <InlineMath math="\pi" />
               <br />
-              Figure out exactly how bad it is.
+              Figure out exactly how bad it is:{" "}
+              <InlineMath math="v_1 \rightarrow v_\pi" />
               <br />
-              Make it a little better.
+              Make the policy a little better, <InlineMath math="\pi'" />
               <br />
-              Repeat until there&apos;s nothing left to fix.
+              Repeat until there's nothing left to fix:{" "}
+              <InlineMath math="\pi_*" /> and <InlineMath math="v_*" />
               <br />
               <br />
               And that&apos;s our first real control algorithm.
