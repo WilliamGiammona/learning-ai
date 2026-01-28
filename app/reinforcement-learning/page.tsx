@@ -4460,8 +4460,8 @@ export default function ReinforcementLearningPage() {
               That wasn&apos;t an accident.
               <br />
               <br />
-              The classic dynamic programming algorithms are usually presented
-              using state values because they are:
+              Classic dynamic programming algorithms are usually presented using
+              state values because they are:
               <br />
               <br />
               • conceptually simpler
@@ -4471,7 +4471,7 @@ export default function ReinforcementLearningPage() {
               • and easier to visualize and reason about
               <br />
               <br />
-              When we work with state values, each Bellman backup asks:
+              When we work with state values, each Bellman backup is answering:
               <br />
               <br />
               <em>
@@ -4485,8 +4485,8 @@ export default function ReinforcementLearningPage() {
               inside a max (for control).
               <br />
               <br />
-              But everything we&apos;ve done could also be written in terms of{" "}
-              <em>action-value functions</em>.
+              But everything we&apos;ve done so far could also be written in
+              terms of <em>action-value functions</em>.
               <br />
               <br />
               Instead of:
@@ -4513,7 +4513,7 @@ export default function ReinforcementLearningPage() {
               </em>
               <br />
               <br />
-              The tradeoff is cost.
+              The tradeoff is computational cost.
               <br />
               <br />
               With <InlineMath math="n" /> states and <InlineMath math="m" />{" "}
