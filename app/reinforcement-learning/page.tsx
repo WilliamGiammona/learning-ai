@@ -4195,6 +4195,143 @@ export default function ReinforcementLearningPage() {
                 Repeat.&quot;
               </em>
             </div>
+
+            <div className="mb-4">
+              Let&apos;s make this concrete with a tiny example.
+              <br />
+              <br />
+              Imagine an MDP with just three states:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">
+                A &rarr; B &rarr; C
+              </div>
+              State <InlineMath math="C" /> is terminal.
+              <br />
+              <br />
+              The dynamics are simple:
+              <br />
+              <br />
+              • From <InlineMath math="A" />, you deterministically go to{" "}
+              <InlineMath math="B" /> and receive reward <InlineMath math="1" />
+              <br />
+              • From <InlineMath math="B" />, you deterministically go to{" "}
+              <InlineMath math="C" /> and receive reward <InlineMath math="2" />
+              <br />
+              • <InlineMath math="C" /> is terminal and gives no future reward
+              <br />
+              <br />
+              We&apos;ll use a discount factor <InlineMath math="\gamma = 1" />{" "}
+              just to keep the arithmetic boring (in a good way).
+              <br />
+              <br />
+              Now let&apos;s run value iteration.
+              <br />
+              <br />
+              We start with an arbitrary value function, usually all zeros:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_1(A) = 0, \\quad v_1(B) = 0, \\quad v_1(C) = 0"}
+                />
+              </div>
+              Nothing interesting yet. Everyone is equally worthless.
+              <br />
+              <br />
+              Now apply the Bellman optimality backup.
+              <br />
+              <br />
+              <strong>First update:</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_2(B) = 2 + 1 \\cdot v_1(C) = 2"} />
+              </div>
+              State <InlineMath math="B" /> suddenly realizes it&apos;s sitting
+              on a reward.
+              <br />
+              <br />
+              For <InlineMath math="A" />:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_2(A) = 1 + 1 \\cdot v_1(B) = 1"} />
+              </div>
+              So after one update, we have:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_2(A) = 1, \\quad v_2(B) = 2, \\quad v_2(C) = 0"}
+                />
+              </div>
+              Already, the future is starting to leak backward.
+              <br />
+              <br />
+              <strong>Second update:</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_3(A) = 1 + 1 \\cdot v_2(B) = 3"} />
+              </div>
+              Now <InlineMath math="A" /> finally understands what{" "}
+              <InlineMath math="B" /> knew all along.
+              <br />
+              <br />
+              The value function is now:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_3(A) = 3, \\quad v_3(B) = 2, \\quad v_3(C) = 0"}
+                />
+              </div>
+              Apply the backup again, and nothing changes.
+              <br />
+              <br />
+              We&apos;ve converged.
+              <br />
+              <br />
+              This is the optimal value function <InlineMath math="v^*" />.
+              <br />
+              <br />
+              Now extracting the optimal policy is trivial.
+              <br />
+              <br />
+              From <InlineMath math="A" />, go to <InlineMath math="B" />. From{" "}
+              <InlineMath math="B" />, go to <InlineMath math="C" />.
+              <br />
+              <br />
+              In one final greedy step, we recover:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"\\pi^*(A) = A \\to B, \\quad \\pi^*(B) = B \\to C"}
+                />
+              </div>
+              No policy evaluation. No policy improvement loops. Just values
+              marching steadily toward the truth.
+              <br />
+              <br />
+              Value iteration doesn&apos;t ask:
+              <br />
+              <br />
+              <em>&quot;What policy am I following right now?&quot;</em>
+              <br />
+              <br />
+              It asks:
+              <br />
+              <br />
+              <em>
+                &quot;If I were behaving optimally from here on out, how good
+                would this state be?&quot;
+              </em>
+              <br />
+              <br />
+              And it keeps asking that question until the answer stops changing.
+            </div>
           </section>
         </main>
       </div>
