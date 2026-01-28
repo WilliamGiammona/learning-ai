@@ -3932,6 +3932,127 @@ export default function ReinforcementLearningPage() {
             >
               Value Iteration
             </h2>
+
+            <div className="mb-4">
+              Up to now, policy iteration has been very… principled.
+              <br />
+              <br />
+              For each policy <InlineMath math="\pi" />, we carefully evaluated
+              it all the way to its true value function{" "}
+              <InlineMath math="v_\pi" />, and only then did we improve the
+              policy.
+              <br />
+              <br />
+              Conceptually, that&apos;s very clean.
+              <br />
+              Computationally, it can be very wasteful.
+              <br />
+              <br />
+              <em>
+                &quot;Do we really need to fully converge to{" "}
+                <InlineMath math="v_\pi" /> every single time before improving
+                the policy?&quot;
+              </em>
+              <br />
+              <br />
+              After all, the *entire point* of policy evaluation is just to get
+              enough information to make a better policy, And in practice, that
+              information often shows up very early.
+              <br />
+              <br />
+              Remember what iterative policy evaluation looks like:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots \\;\\to\\; v_\\pi"
+                  }
+                />
+              </div>
+              The first few updates already propagate rewards forward and start
+              revealing which actions are better than others.
+              <br />
+              <br />
+              By the time we&apos;ve reached, say, <InlineMath math="v_3" />, or{" "}
+              <InlineMath math="v_5" />, the value estimates are often *good
+              enough* to tell us which actions look promising.
+              <br />
+              <br />
+              So instead of insisting on this:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi \\;\\to\\; v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots \\;\\to\\; v_\\pi \\;\\to\\; \\pi'"
+                  }
+                />
+              </div>
+              we can do something more pragmatic:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi \\;\\to\\; v_1 \\;\\to\\; v_2 \\;\\to\\;v_k \\;\\to\\; \\pi' \\quad \\text{for some small } k"
+                  }
+                />
+              </div>
+              This idea is called <strong>modified policy iteration</strong>.
+              <br />
+              <br />
+              The algorithm is exactly the same as policy iteration, except for
+              one important change:
+              <br />
+              <br />
+              We <em>do not</em> fully evaluate the policy before improving it.
+              <br />
+              <br />
+              Instead, we:
+              <br />
+              <br />
+              • start policy evaluation
+              <br />
+              • stop early (after a fixed number of iterations or when changes
+              are small)
+              <br />
+              • treat the resulting value function as &quot;good enough&quot;
+              <br />
+              • improve the policy with respect to that partially finished value
+              function of the old policy
+              <br />
+              <br />
+              Why does this work?
+              <br />
+              <br />
+              Because policy improvement does not require a *perfect* value
+              function, it only needs a value function that is accurate enough
+              to rank actions correctly. As long as the approximate value
+              function points us toward better actions, the resulting policy is
+              guaranteed to be no worse than before. In fact, many classic
+              examples show that stopping policy evaluation after just a handful
+              of iterations is enough to reach the optimal policy.
+              <br />
+              <br />
+              So modified policy iteration trades precision for speed:
+              <br />
+              <br />
+              • less work per policy evaluation
+              <br />
+              • more frequent policy improvements
+              <br />
+              • faster convergence to the optimal policy
+              <br />
+              <br />
+              If we push this idea all the way to the extreme (if we stop policy
+              evaluation after <InlineMath math="k = 1" /> iteration) then
+              policy evaluation and policy improvement collapse into a single
+              update.
+              <br />
+              <br />
+              That limiting case is called <strong>value iteration</strong>.
+            </div>
           </section>
         </main>
       </div>
