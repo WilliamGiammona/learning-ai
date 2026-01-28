@@ -5403,8 +5403,16 @@ v(A) &\leftarrow 0 + v(B) = 10
               <InlineMath math="v^*" />.
               <br />
               <br />
-              No policy is being evaluated in the background, the value function
-              itself is being pulled toward the optimal one.
+              At first glance, this might look like we are simply doing policy
+              evaluation with the optimal policy <InlineMath math="\pi^*" />,
+              but that is <em>not</em> what is happening.
+              <br />
+              <br />
+              The key difference is that <InlineMath math="\pi^*" /> is{" "}
+              <em>not</em> known in advance, while for policy evaluation, the
+              policy <em>is</em> known in advance. No policy is being evaluated
+              in the background; the value function itself is being pulled
+              toward the unique optimal fixed point.
               <br />
               <br />
               <strong>Step 3: What could go wrong?</strong>
