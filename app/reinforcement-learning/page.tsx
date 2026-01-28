@@ -4559,6 +4559,201 @@ export default function ReinforcementLearningPage() {
               Extensions to Dynamic Programming
             </h2>
 
+            <div className="mb-4">
+              Up to now, all of our dynamic programming algorithms have shared
+              one quiet assumption.
+              <br />
+              <br />
+              They update <em>everything</em> at once.
+              <br />
+              <br />
+              More precisely, we&apos;ve been using{" "}
+              <strong>synchronous dynamic programming</strong>.
+              <br />
+              <br />
+              In synchronous DP, each iteration looks like this:
+              <br />
+              <br />
+              <em>
+                &quot;Pause the world. For <strong>every</strong> state{" "}
+                <InlineMath math="s \in S" />, compute a new value using the old
+                value function. Only when all states are updated do we move
+                on.&quot;
+              </em>
+              <br />
+              <br />
+              That&apos;s why value iteration is often written with two copies
+              of the value function:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_{\\text{new}}(s) \\,=\\, \\max_a \\Big[ R(s,a) + \\gamma \\sum_{s'} P(s' \\mid s,a) \\, v_{\\text{old}}(s') \\Big]"
+                  }
+                />
+              </div>
+              We compute <InlineMath math="v_{\\text{new}}" /> for <em>all</em>{" "}
+              states, and only then replace{" "}
+              <InlineMath math="v_{\\text{old}}" />.
+              <br />
+              <br />
+              This is clean.
+              <br />
+              It&apos;s parallel.
+              <br />
+              It&apos;s easy to reason about.
+              <br />
+              <br />
+              But it&apos;s also a little… rigid.
+              <br />
+              <br />
+              In many problems, updating every state on every iteration is
+              unnecessary. Some states barely change. Others are far more
+              important. And sometimes we already have <em>fresh</em>{" "}
+              information that we could use immediately instead of waiting for
+              the next global sweep.
+              <br />
+              <br />
+              That motivates a different idea:
+              <br />
+              <br />
+              <strong>Asynchronous dynamic programming</strong>.
+              <br />
+              <br />
+              In asynchronous DP, we stop insisting that all states be updated
+              together. Instead:
+              <br />
+              <br />
+              • states are backed up one at a time • in any order • using the
+              most recently available values
+              <br />
+              <br />
+              As long as every state continues to get updated infinitely often,
+              these methods are still guaranteed to converge to the correct
+              solution.
+              <br />
+              <br />
+              The difference isn&apos;t <em>what</em> update we apply, it&apos;s{" "}
+              <em>when</em>
+              and <em>where</em> we apply it.
+              <br />
+              <br />
+              Let&apos;s look at three simple but powerful ways to do this.
+              <br />
+              <br />
+              <strong>1) In-Place Dynamic Programming</strong>
+              <br />
+              <br />
+              The simplest change is to throw away the second copy of the value
+              function.
+              <br />
+              <br />
+              Instead of computing a whole new table and swapping it in at the
+              end, we update values <em>in place</em>, immediately overwriting
+              old ones:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v(s) \\,\\leftarrow\\, \\max_a \\Big[ R(s,a) + \\gamma \\sum_{s'} P(s' \\mid s,a) \\, v(s') \\Big]"
+                  }
+                />
+              </div>
+              Now, when we update the next state, it can already benefit from
+              the most recent changes.
+              <br />
+              <br />
+              This often propagates information faster, uses less memory, and
+              converges in fewer iterations, even though the update itself is
+              identical.
+              <br />
+              <br />
+              <strong>2) Prioritized Sweeping</strong>
+              <br />
+              <br />
+              Not all states deserve equal attention.
+              <br />
+              <br />
+              Some states have values that are wildly wrong. Others are already
+              basically correct.
+              <br />
+              <br />
+              Prioritized sweeping formalizes this intuition.
+              <br />
+              <br />
+              For each state, we track how badly it violates the Bellman
+              equation, its
+              <em>Bellman error</em>:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\left| \\max_a \\Big[ R(s,a) + \\gamma \\sum_{s'} P(s' \\mid s,a) \\, v(s') \\Big] - v(s) \\right|"
+                  }
+                />
+              </div>
+              We then:
+              <br />
+              <br />
+              • update the state with the largest remaining error • update the
+              errors of states affected by that change • repeat
+              <br />
+              <br />
+              This focuses computation exactly where it matters most and can
+              dramatically reduce the total amount of work.
+              <br />
+              <br />
+              The catch is that it requires knowing which states can lead to
+              which other states, the reverse dynamics, so it&apos;s a bit more
+              involved.
+              <br />
+              <br />
+              <strong>3) Real-Time Dynamic Programming</strong>
+              <br />
+              <br />
+              The most extreme version of asynchrony is to only update states
+              you actually visit.
+              <br />
+              <br />
+              In real-time dynamic programming, the agent interacts with the
+              environment, and after each transition:
+              <br />
+              <br />
+              <InlineMath math="S_t, A_t, R_{t+1}" />
+              <br />
+              <br />
+              we immediately back up the value of the current state:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v(S_t) \\,\\leftarrow\\, \\max_a \\Big[ R(S_t,a) + \\gamma \\sum_{s'} P(s' \\mid S_t,a) \\, v(s') \\Big]"
+                  }
+                />
+              </div>
+              Only states that are relevant to the agent&apos;s actual
+              experience get updated.
+              <br />
+              <br />
+              This idea forms a conceptual bridge between classic planning
+              methods and modern reinforcement learning algorithms that learn
+              online from experience.
+              <br />
+              <br />
+              So the big picture is:
+              <br />
+              <br />
+              • synchronous DP updates everything, whether it needs it or not •
+              asynchronous DP updates what matters, when it matters
+              <br />
+              <br />
+              Same equations. Same guarantees. Much more flexibility.
+            </div>
+
             <h2
               id="dp-contraction-mapping"
               className="text-2xl font-bold mb-6 text-center"
