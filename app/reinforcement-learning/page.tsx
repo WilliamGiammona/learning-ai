@@ -5285,12 +5285,12 @@ v(A) &\leftarrow 0 + v(B) = 10
                 />
               </div>
               <div className="text-sm text-gray-600 italic mb-4">
-                Quick notation note: <InlineMath math="|S|" /> just means "the
-                number of states in set <InlineMath math="S" />
-                ." If <InlineMath math="S = \{s_1, s_2, s_3\}" />, then{" "}
-                <InlineMath math="|S| = 3" />. Those vertical bars are the "how
-                many things are in this set" operator. Same deal with{" "}
-                <InlineMath math="|A|" /> (number of actions), etc.
+                Quick notation note: <InlineMath math="|S|" /> just means
+                &quot;the number of states in set <InlineMath math="S" />
+                .&quot; If <InlineMath math="S = \\{s_1, s_2, s_3\\}" />, then{" "}
+                <InlineMath math="|S| = 3" />. Those vertical bars are the
+                &quot;how many things are in this set&quot; operator. Same deal
+                with <InlineMath math="|A|" /> (number of actions), etc.
               </div>
               That&apos;s it.
               <br />
@@ -5326,7 +5326,11 @@ v(A) &\leftarrow 0 + v(B) = 10
               So when we write:
               <br />
               <br />
-              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots \to v_\pi" />
+              <InlineMath
+                math={
+                  "v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots \\to v_\\pi"
+                }
+              />
               <br />
               <br />
               We&apos;re describing a <strong>sequence of points</strong> in
@@ -5340,7 +5344,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               The sequence
               <br />
               <br />
-              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots" />
+              <InlineMath
+                math={"v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots"}
+              />
               <br />
               <br />
               is just a list of successive value functions, each one replacing
@@ -5362,13 +5368,15 @@ v(A) &\leftarrow 0 + v(B) = 10
               <strong>Policy evaluation</strong>
               <br />
               <br />
-              Here, the policy <InlineMath math="\pi" /> is fixed.
+              Here, the policy <InlineMath math="\\pi" /> is fixed.
               <br />
               <br />
               The sequence
               <br />
               <br />
-              <InlineMath math="v_1 \;\to\; v_2 \;\to\; \dots \;\to\; v_\pi" />
+              <InlineMath
+                math={"v_1 \\;\\to\\; v_2 \\;\\to\\; \\dots \\;\\to\\; v_\\pi"}
+              />
               <br />
               <br />
               is a sequence of better and better <em>approximations</em> to the
@@ -5390,8 +5398,8 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               So across the full algorithm, we see many short sequences of{" "}
               <InlineMath math="v_1, v_2, v_3" />, each one converging to a
-              different <InlineMath math="v_\pi" />, until the policy itself
-              converges to <InlineMath math="\pi^*" />.
+              different <InlineMath math="v_\\pi" />, until the policy itself
+              converges to <InlineMath math="\\pi^*" />.
               <br />
               <br />
               <strong>Value iteration</strong>
@@ -5404,7 +5412,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               directly, so the sequence
               <br />
               <br />
-              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots" />
+              <InlineMath
+                math={"v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots"}
+              />
               <br />
               <br />
               is a single sequence of points converging straight toward{" "}
@@ -5412,11 +5422,11 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               At first glance, this might look like we are simply doing policy
-              evaluation with the optimal policy <InlineMath math="\pi^*" />,
+              evaluation with the optimal policy <InlineMath math="\\pi^*" />,
               but that is <em>not</em> what is happening.
               <br />
               <br />
-              The key difference is that <InlineMath math="\pi^*" /> is{" "}
+              The key difference is that <InlineMath math="\\pi^*" /> is{" "}
               <em>not</em> known in advance, while for policy evaluation, the
               policy <em>is</em> known in advance. No policy is being evaluated
               in the background; the value function itself is being pulled
@@ -5449,7 +5459,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • value iteration might converge to the wrong value function
               <br />• policy iteration might stall before reaching{" "}
-              <InlineMath math="\pi^*" />
+              <InlineMath math="\\pi^*" />
               <br />
               <br />
               Fortunately for us,{" "}
@@ -5506,8 +5516,8 @@ v(A) &\leftarrow 0 + v(B) = 10
                 <em>Wait, i forgot that formula and now it looks scary.</em>
                 <br />
                 <br />
-                If you&apos;re feeling a mild sense of dread looking at
-                <InlineMath math="\lVert u - v \rVert_{\infty}" /> good. That
+                If you&apos;re feeling a mild sense of dread looking at{" "}
+                <InlineMath math="\\lVert u - v \\rVert_{\\infty}" /> good. That
                 means you&apos;re paying attention.
                 <br />
                 <br />
@@ -5530,7 +5540,7 @@ v(A) &\leftarrow 0 + v(B) = 10
                 the other way?
                 <br />
                 <br />
-                Now Imagine a very anxious auditor from Ernst & Young is
+                Now imagine a very anxious auditor from Ernst & Young is
                 inspecting your value function. They don&apos;t care about
                 averages. They don&apos;t care about overall performance. They
                 don&apos;t even care if you&apos;re right almost everywhere.
@@ -5607,21 +5617,17 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • taking expectations (weighted averages)
               <br />
-              • multiplying by <InlineMath math="\gamma" />
+              • multiplying by <InlineMath math="\\gamma" />
               <br />
               <br />
               If two value functions differ by at most 10 anywhere, then after
-              you multiply that difference by <InlineMath math="\gamma = 0.9" />
-              , the difference becomes at most 9.
+              you multiply that difference by{" "}
+              <InlineMath math="\\gamma = 0.9" />, the difference becomes at
+              most 9.
               <br />
               <br />
               That &quot;shrinking&quot; behavior is what we&apos;re going to
               formalize as a <strong>contraction</strong>.
-              <br />
-              <br />
-              Next up: we&apos;ll define what a contraction is, and then show
-              that the Bellman operator is a contraction, meaning it can&apos;t
-              help but march toward a single fixed point.
             </div>
 
             <div className="mb-4">
@@ -5663,15 +5669,15 @@ v(A) &\leftarrow 0 + v(B) = 10
               </em>
               <br />
               <br />
-              That number is usually called <InlineMath math="\gamma" />, and it
-              plays the role of a universal shrink-ray.
+              That number is usually called <InlineMath math="\\gamma" />, and
+              it plays the role of a universal shrink-ray.
               <br />
               <br />
               If two inputs start out 10 units apart, and after applying the
               operation they are at most:
               <br />
               <br />
-              <InlineMath math="\gamma \times 10" />
+              <InlineMath math="\\gamma \\times 10" />
               <br />
               <br />
               units apart, then the operation is squeezing space.
@@ -5680,14 +5686,14 @@ v(A) &\leftarrow 0 + v(B) = 10
               Apply it again?
               <br />
               <br />
-              Now they&apos;re at most <InlineMath math="\gamma^2 \times 10" />{" "}
-              apart.
+              Now they&apos;re at most{" "}
+              <InlineMath math="\\gamma^2 \\times 10" /> apart.
               <br />
               <br />
               Apply it again?
               <br />
               <br />
-              <InlineMath math="\gamma^3 \times 10" />.
+              <InlineMath math="\\gamma^3 \\times 10" />.
               <br />
               <br />
               When distances keep shrinking like this, there is only one
@@ -5725,9 +5731,12 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               Bellman updates are built from:
               <br />
-              <br />• rewards (which don&apos;t depend on your guess)
-              <br />• expectations (which average things out)
-              <br /> • and a discount factor <InlineMath math="\gamma" /> (which
+              <br />
+              • rewards (which don&apos;t depend on your guess)
+              <br />
+              • expectations (which average things out)
+              <br />
+              • and a discount factor <InlineMath math="\\gamma" /> (which
               shrinks numbers)
               <br />
               <br />
@@ -5735,15 +5744,15 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               Whatever disagreement two value functions have about the future,
-              Bellman backups multiply it by <InlineMath math="\gamma" /> before
-              passing it along.
+              Bellman backups multiply it by <InlineMath math="\\gamma" />{" "}
+              before passing it along.
               <br />
               <br />
               So if two value functions differ by at most 10 anywhere, then
               after one Bellman update they differ by at most:
               <br />
               <br />
-              <InlineMath math="\gamma \times 10" />.
+              <InlineMath math="\\gamma \\times 10" />.
               <br />
               <br />
               That is the definition of a contraction.
@@ -5782,8 +5791,6 @@ v(A) &\leftarrow 0 + v(B) = 10
                 you can&apos;t keep shrinking distances and never settle
                 somewhere.
               </em>
-              <br />
-              <br />
             </div>
 
             <div className="mb-4">
@@ -5793,14 +5800,14 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               So far we&apos;ve established that because Bellman backups are a
-              contraction, they converge to a uniwue fixed point.
+              contraction, they converge to a unique fixed point.
               <br />
               <br />
               Now we want to know how quickly we get to that fixed point.
               <br />
               <br />
               The answer depends almost entirely on one{" "}
-              <InlineMath math="\gamma" />.
+              <InlineMath math="\\gamma" />.
               <br />
               <br />
               Remember what a contraction does.
@@ -5810,31 +5817,27 @@ v(A) &\leftarrow 0 + v(B) = 10
               Bellman update they differ by at most:
               <br />
               <br />
-              <InlineMath math="\gamma \times 10" />.
+              <InlineMath math="\\gamma \\times 10" />.
               <br />
               <br />
               After two updates?
               <br />
               <br />
-              <InlineMath math="\gamma^2 \times 10" />.
+              <InlineMath math="\\gamma^2 \\times 10" />.
               <br />
               <br />
               After <InlineMath math="k" /> updates?
               <br />
               <br />
-              <InlineMath math="\gamma^k \times 10" />.
+              <InlineMath math="\\gamma^k \\times 10" />.
               <br />
               <br />
-              • If <InlineMath math="\gamma" /> is small, errors collapse
+              • If <InlineMath math="\\gamma" /> is small, errors collapse
               quickly
               <br />
-              • If <InlineMath math="\gamma" /> is close to 1, errors shrink
+              • If <InlineMath math="\\gamma" /> is close to 1, errors shrink
               very slowly
             </div>
-            {/* =========================
-    ADD/REPLACE FROM HERE DOWN
-    (This inserts the missing “slide math” + Tim-Urban explanations)
-   ========================= */}
 
             <div className="mb-4">
               <strong>
@@ -5850,7 +5853,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               For a <em>fixed policy</em> <InlineMath math="\\pi" />, the
-              Bellman <em>expectation</em> backup is an operator
+              Bellman <em>expectation</em> backup is an operator{" "}
               <InlineMath math="T^\\pi" /> that takes in a value function{" "}
               <InlineMath math="v" /> and spits out a new one.
               <br />
