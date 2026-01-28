@@ -4439,7 +4439,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               • combine expectation updates with greedy improvements (policy
-              iteration), or
+              iteration)
               <br />• apply optimality updates directly to values (value
               iteration).
             </div>
