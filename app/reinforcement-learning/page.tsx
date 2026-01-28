@@ -224,6 +224,14 @@ export default function ReinforcementLearningPage() {
                       Policy Iteration
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-value-iteration"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Value Iteration
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -3917,6 +3925,13 @@ export default function ReinforcementLearningPage() {
                 reward, and repeat until there&apos;s nothing left to improve.
               </em>
             </div>
+
+            <h2
+              id="dp-value-iteration"
+              className="text-2xl font-bold mb-6 text-center"
+            >
+              Value Iteration
+            </h2>
           </section>
         </main>
       </div>
