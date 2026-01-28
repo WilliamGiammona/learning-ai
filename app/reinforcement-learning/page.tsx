@@ -5391,7 +5391,8 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               They don&apos;t &quot;climb a hill&quot;, follow gradients, depend
-              on initialization, etc. Instead, they do something much stronger:
+              on your initial values, etc. Instead, they do something much
+              stronger:
               <br />
               <br />
               <strong>
