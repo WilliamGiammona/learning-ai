@@ -4443,6 +4443,106 @@ export default function ReinforcementLearningPage() {
               <br />• apply optimality updates directly to values (value
               iteration).
             </div>
+
+            <div className="mb-4">
+              One last subtle but important point before we move on.
+              <br />
+              <br />
+              Throughout this entire dynamic programming section, we&apos;ve
+              framed everything in terms of <em>state-value functions</em>:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_\\pi(s) \\quad \\text{and} \\quad v^*(s)"}
+                />
+              </div>
+              That wasn&apos;t an accident.
+              <br />
+              <br />
+              The classic dynamic programming algorithms are usually presented
+              using state values because they are:
+              <br />
+              <br />
+              • conceptually simpler • cheaper to compute per iteration • and
+              easier to visualize and reason about
+              <br />
+              <br />
+              When we work with state values, each Bellman backup asks:
+              <br />
+              <br />
+              <em>
+                &quot;If I&apos;m in state <InlineMath math="s" />, what&apos;s
+                the best long-term return I can expect from here?&quot;
+              </em>
+              <br />
+              <br />
+              That keeps the focus on states, and the policy only shows up
+              implicitly, either inside an expectation (for prediction) or
+              inside a max (for control).
+              <br />
+              <br />
+              But everything we&apos;ve done could also be written in terms of
+              <em>action-value functions</em>.
+              <br />
+              <br />
+              Instead of:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_\\pi(s)"} />
+              </div>
+              we could work with:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"q_\\pi(s,a) \\quad \\text{or} \\quad q^*(s,a)"}
+                />
+              </div>
+              In that world, Bellman backups answer a slightly more detailed
+              question:
+              <br />
+              <br />
+              <em>
+                &quot;If I&apos;m in state <InlineMath math="s" /> and take
+                action <InlineMath math="a" />, how good is that choice
+                really?&quot;
+              </em>
+              <br />
+              <br />
+              The tradeoff is cost.
+              <br />
+              <br />
+              With <InlineMath math="n" /> states and <InlineMath math="m" />{" "}
+              actions:
+              <br />
+              <br />
+              • state-value updates cost <InlineMath math="O(mn^2)" /> per
+              iteration • action-value updates cost{" "}
+              <InlineMath math="O(m^2 n^2)" /> per iteration
+              <br />
+              <br />
+              You pay extra because you&apos;re now keeping track of values for
+              every state–action pair instead of just every state.
+              <br />
+              <br />
+              So for teaching, intuition, and clean theory, state-value
+              functions are the natural starting point.
+              <br />
+              <br />
+              Later on, when we move into model-free reinforcement learning, the
+              story flips.
+              <br />
+              <br />
+              We&apos;ll often prefer action-value functions, because they let
+              us act greedily <em>without</em> ever needing a model of the
+              transition dynamics.
+              <br />
+              <br />
+              Same ideas. Same Bellman logic. Just a different place to hang the
+              numbers.
+            </div>
           </section>
         </main>
       </div>
