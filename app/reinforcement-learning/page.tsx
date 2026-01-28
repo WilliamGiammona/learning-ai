@@ -4196,7 +4196,7 @@ export default function ReinforcementLearningPage() {
               </em>
             </div>
 
-            <div className="mb-4">
+            <div className="mt-16 mb-4">
               Let&apos;s make this concrete with a tiny example.
               <br />
               <br />
@@ -4311,10 +4311,6 @@ export default function ReinforcementLearningPage() {
                   math={"\\pi^*(A) = A \\to B, \\quad \\pi^*(B) = B \\to C"}
                 />
               </div>
-              No policy evaluation. No policy improvement loops. Just values
-              marching steadily toward the truth.
-              <br />
-              <br />
               Value iteration doesn&apos;t ask:
               <br />
               <br />
@@ -4330,7 +4326,7 @@ export default function ReinforcementLearningPage() {
               </em>
               <br />
               <br />
-              And it keeps asking that question until the answer stops changing.
+              And it keeps asking that question until convergence.
             </div>
           </section>
         </main>
