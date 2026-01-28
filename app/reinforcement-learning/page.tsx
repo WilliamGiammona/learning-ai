@@ -5456,13 +5456,172 @@ v(A) &\leftarrow 0 + v(B) = 10
               <em>Bellman backups don&apos;t have local optima.</em>
               <br />
               <br />
-              <strong>
+              <em>
                 They pull all value functions closer together, no matter where
                 they start.
+              </em>
+            </div>
+
+            <div className="mb-4">
+              <strong>
+                Step 4: If value functions are &quot;points&quot;, how do we
+                measure distance?
               </strong>
               <br />
               <br />
-              Let&apos;s now make that statement precise.
+              Saying &quot;Bellman backups pull value functions closer
+              together&quot; sounds nice, but it&apos;s also not very precise.
+              To increase its precision, we need one more ingredient:
+              <br />
+              <br />
+              <em>A way to measure how far apart two value functions are.</em>
+              <br />
+              <br />
+              Imagine you have two different guesses for the value function:
+              <br />
+              <br />
+              <InlineMath math="u" /> and <InlineMath math="v" />
+              <br />
+              <br />
+              Since both are just lists of numbers over states, comparing them
+              means asking:
+              <br />
+              <br />
+              &quot;Across all states, what&apos;s the biggest
+              disagreement?&quot;
+              <br />
+              <br />
+              That &quot;biggest disagreement&quot; is the famous{" "}
+              <em>infinity norm</em> (also called the <em>sup norm</em>).
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\lVert u - v \\rVert_{\\infty} \\,=\\, \\max_{s \\in S} \\big|u(s) - v(s)\\big|"
+                  }
+                />
+              </div>
+              <div className="mb-4">
+                <em>Wait, i forgot that formula and now it looks scary.</em>
+                <br />
+                <br />
+                If you&apos;re feeling a mild sense of dread looking at
+                <InlineMath math="\lVert u - v \rVert_{\infty}" /> good. That
+                means you&apos;re paying attention.
+                <br />
+                <br />
+                The infinity norm is just saying:
+                <br />
+                <br />
+                <em>
+                  &quot;What is the single worst mistake I am making, anywhere,
+                  across all states?&quot;
+                </em>
+                <br />
+                <br />
+                Imagine a very anxious auditor from Arthur Anderson is
+                inspecting your value function. They don&apos;t care about
+                averages. They don&apos;t care about overall performance. They
+                don&apos;t even care if you&apos;re right almost everywhere.
+                <br />
+                <br />
+                They only ask one question: how much is Enron paying me to look
+                the other way?
+                <br />
+                <br />
+                Now Imagine a very anxious auditor from Ernst & Young is
+                inspecting your value function. They don&apos;t care about
+                averages. They don&apos;t care about overall performance. They
+                don&apos;t even care if you&apos;re right almost everywhere.
+                <br />
+                <br />
+                They only ask one question:
+                <br />
+                <br />
+                <em>&quot;Where are you the most wrong?&quot;</em>
+                <br />
+                <br />
+                If there exists even <em>one</em> state where your estimate is
+                off by 10, then as far as this norm is concerned:
+                <br />
+                <br />
+                You are off by 10.
+                <br />
+                <br />
+                That&apos;s why the formula looks like a max:
+                <br />
+                <br />
+                • look at all states
+                <br />
+                • compute the error at each one
+                <br />
+                • take the largest error
+                <br />
+                <br />
+                And importantly:
+                <br />
+                <br />
+                <em>This norm does not let errors hide.</em>
+                <br />
+                <br />
+                You can&apos;t cancel a huge mistake in one state with tiny
+                mistakes elsewhere. If something is badly broken anywhere, the
+                infinity norm will find it.
+                <br />
+                <br />
+                This turns out to be exactly the behavior we want when analyzing
+                Bellman updates. because if Bellman backups reduce the{" "}
+                <em>worst</em> possible error every time…
+                <br />
+                <br />
+                then they reduce <em>all</em> errors.
+              </div>
+              So if your MDP has 100 states, you&apos;re basically doing:
+              <br />
+              <br />
+              • compare <InlineMath math="u(s_1)" /> vs{" "}
+              <InlineMath math="v(s_1)" />
+              <br />
+              • compare <InlineMath math="u(s_2)" /> vs{" "}
+              <InlineMath math="v(s_2)" />
+              <br />
+              • …
+              <br />
+              • take the largest gap you find
+              <br />
+              <br />
+              <em>
+                It doesn&apos;t care if you&apos;re great in 99 states, if
+                you&apos;re wildly wrong in one state, you&apos;re still far
+                away.
+              </em>
+              <br />
+              <br />
+              <strong>Why this norm?</strong>
+              <br />
+              <br />
+              Because Bellman backups are built from two operations that behave
+              really nicely under the infinity norm:
+              <br />
+              <br />
+              • taking expectations (weighted averages)
+              <br />
+              • multiplying by <InlineMath math="\gamma" />
+              <br />
+              <br />
+              If two value functions differ by at most 10 anywhere, then after
+              you multiply that difference by <InlineMath math="\gamma = 0.9" />
+              , the difference becomes at most 9.
+              <br />
+              <br />
+              That &quot;shrinking&quot; behavior is what we&apos;re going to
+              formalize as a <strong>contraction</strong>.
+              <br />
+              <br />
+              Next up: we&apos;ll define what a contraction is, and then show
+              that the Bellman operator is a contraction, meaning it can&apos;t
+              help but march toward a single fixed point.
             </div>
           </section>
         </main>
