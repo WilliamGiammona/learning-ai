@@ -11,7 +11,7 @@ export default function ReinforcementLearningPage() {
       <div className="flex gap-8">
         {/* Sticky Sidebar TOC */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
-          <nav className="sticky top-8 p-4 bg-gray-50 rounded-lg border">
+          <nav className="sticky top-8 p-4 bg-gray-50 rounded-lg border overflow-y-auto max-h-[calc(100vh-4rem)]">
             <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
             <ul className="space-y-2 text-sm">
               <li>
