@@ -4521,29 +4521,19 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               • state-value updates cost is <InlineMath math="O(mn^2)" /> per
-              iteration • action-value updates cost{" "}
-              <InlineMath math="O(m^2 n^2)" /> per iteration
+              iteration
+              <br />• action-value updates cost <InlineMath math="O(m^2 n^2)" />{" "}
+              per iteration
               <br />
               <br />
               You pay extra because you&apos;re now keeping track of values for
               every state–action pair instead of just every state.
               <br />
               <br />
-              So for teaching, intuition, and clean theory, state-value
-              functions are the natural starting point.
-              <br />
-              <br />
-              Later on, when we move into model-free reinforcement learning, the
-              story flips.
-              <br />
-              <br />
-              We&apos;ll often prefer action-value functions, because they let
+              Later on, when we move into model-free reinforcement learning,
+              we&apos;ll often prefer action-value functions, because they let
               us act greedily <em>without</em> ever needing a model of the
               transition dynamics.
-              <br />
-              <br />
-              Same ideas. Same Bellman logic. Just a different place to hang the
-              numbers.
             </div>
           </section>
         </main>
