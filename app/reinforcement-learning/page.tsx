@@ -4326,7 +4326,9 @@ export default function ReinforcementLearningPage() {
               </em>
               <br />
               <br />
-              And it keeps asking that question until convergence.
+              And it keeps asking that question until convergence. That was a
+              lot of information, let&apos;s summarize what we've learned from
+              this section so far:
             </div>
 
             <figure className="text-center my-14">
@@ -4338,17 +4340,11 @@ export default function ReinforcementLearningPage() {
                 className="mx-auto"
               />
               <figcaption className="text-lg mt-2">
-                How Bellman equations turn into algorithms
+                Summary of Iterative Methods
               </figcaption>
             </figure>
 
             <div className="mb-4">
-              At this point, we&apos;ve seen a few different algorithms, a few
-              different Bellman equations, and a few different ways of iterating
-              toward an answer. It&apos;s time to step back and organize the
-              chaos.
-              <br />
-              <br />
               The table above summarizes the entire dynamic programming story.
               <br />
               <br />
@@ -4356,9 +4352,11 @@ export default function ReinforcementLearningPage() {
               questions:
               <br />
               <br />
-              • What problem are we trying to solve? • Which Bellman equation
-              are we using? • What algorithm falls out of repeatedly applying
-              that equation?
+              • What problem are we trying to solve?
+              <br />
+              • Which Bellman equation are we using?
+              <br />
+              • What algorithm falls out of repeatedly applying that equation?
               <br />
               <br />
               Let&apos;s walk through each row.
@@ -4378,15 +4376,9 @@ export default function ReinforcementLearningPage() {
               <br />
               The right tool is the Bellman <em>expectation</em> equation,
               because the policy is fixed and we&apos;re just averaging over
-              what it does.
-              <br />
-              <br />
-              Repeatedly applying that equation gives us
+              what it does. Repeatedly applying that equation gives us{" "}
               <strong>iterative policy evaluation</strong>, which converges to
               the value function <InlineMath math="v_\pi" /> for that policy.
-              <br />
-              <br />
-              No optimization. No policy changes. Just measurement.
               <br />
               <br />
               <strong>Control via Policy Iteration</strong>
@@ -4407,16 +4399,15 @@ export default function ReinforcementLearningPage() {
               We alternate between:
               <br />
               <br />
-              • evaluating the current policy using the expectation equation •
-              improving the policy by acting greedily with respect to its value
+              • evaluating the current policy using the Bellman expectation
+              equation
+              <br />
+              •improving the policy by acting greedily with respect to its value
               function
               <br />
               <br />
               This loop of evaluation and improvement steadily climbs toward the
-              optimal policy <InlineMath math="\pi^*" />.
-              <br />
-              <br />
-              Conceptually elegant. Sometimes computationally heavy.
+              optimal policy, <InlineMath math="\pi^*" />.
               <br />
               <br />
               <strong>Control via Value Iteration</strong>
@@ -4432,15 +4423,10 @@ export default function ReinforcementLearningPage() {
               <br />
               Each update assumes optimal behavior from the next step onward and
               pushes the value function closer to <InlineMath math="v^*" />.
-              <br />
-              <br />
-              There&apos;s no explicit policy during the process. Policies are
+              There&apos;s no explicit policy during the process, policies are
               ignored until the very end, when we extract{" "}
-              <InlineMath math="\pi^*" /> greedily from the converged value
-              function.
-              <br />
-              <br />
-              Faster, simpler, and often the algorithm of choice.
+              <InlineMath math="\pi^*" /> greedily from{" "}
+              <InlineMath math="v^*" />.
               <br />
               <br />
               So the big picture is this:
@@ -4453,15 +4439,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               • combine expectation updates with greedy improvements (policy
-              iteration), or • apply optimality updates directly to values
-              (value iteration).
-              <br />
-              <br />
-              Different equations. Different loops. Same destination.
-              <br />
-              <br />
-              Dynamic programming is just Bellman&apos;s equations plus
-              iteration, arranged in slightly different ways.
+              iteration), or
+              <br />• apply optimality updates directly to values (value
+              iteration).
             </div>
           </section>
         </main>
