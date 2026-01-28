@@ -232,6 +232,14 @@ export default function ReinforcementLearningPage() {
                       Value Iteration
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-extensions"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Extensions to Dynamic Programming
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -4535,6 +4543,13 @@ export default function ReinforcementLearningPage() {
               us act greedily <em>without</em> ever needing a model of the
               transition dynamics.
             </div>
+
+            <h2
+              id="dp-extensions"
+              className="text-2xl font-bold mb-6 text-center"
+            >
+              Extensions to Dynamic Programming
+            </h2>
           </section>
         </main>
       </div>
