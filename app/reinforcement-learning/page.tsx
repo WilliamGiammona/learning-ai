@@ -4788,16 +4788,104 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               For each state, we track how badly it violates the Bellman
-              equation, its <em>Bellman error</em>:
+              equation, its <em>Bellman error</em>. The idea is way simpler than
+              the formula makes it look. For every state <InlineMath math="s" />
+              , there are really only two numbers we care about:
+              <br />
+              <br />•{" "}
+              <strong>
+                What our current value function claims the value of state s is
+              </strong>
+              : <InlineMath math="v(s)" />
+              <br />•{" "}
+              <strong>
+                What one Bellman backup says the value of state s should be
+              </strong>
+              : <InlineMath math="v'(s)" />
+              <br />
+              <br />
+              So the Bellman error is just:
+              <br />
+              <br />
+              <em>
+                How far off is our current guess, <InlineMath math="v(s)" />,
+                from our updated value estimate after one Bellman backup,{" "}
+                <InlineMath math="v'(s)" />.
+              </em>
               <br />
               <br />
               <div className="text-center mb-4">
                 <BlockMath
                   math={
-                    "\\left| \\max_a \\Big[ R(s,a) + \\gamma \\sum_{s'} P(s' \\mid s,a) \\, v(s') \\Big] - v(s) \\right|"
+                    "\\text{Bellman error at } s \\;=\\; \\big|\\; v'(s) \\; - \\; v(s) \\;\\big|"
                   }
                 />
               </div>
+              We take the absolute value to keep the error positive in order to
+              make the math work nicely.
+              <br />
+              <br />
+              Now we can write that &quot;backup target&quot; explicitly.
+              It&apos;s just:
+              <br />
+              <br />
+              • try each action <InlineMath math="a" />
+              <br />
+              • take the immediate reward
+              <br />
+              • add the discounted expected value of where you&apos;ll land next
+              <br />• and pick the best action (that&apos;s the{" "}
+              <InlineMath math="\max" />)
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\delta(s) \\,=\\, \\left|\\; \\underbrace{\\max_a \\Big[ R(s,a) + \\gamma \\sum_{s'} P(s' \\mid s,a) \\, v(s') \\Big]}_{\\text{what Bellman thinks } v(s) \\text{ should be}} \\, -\\, \\underbrace{v(s)}_{\\text{what we currently think}} \\;\\right|"
+                  }
+                />
+              </div>
+              The symbol <InlineMath math="\delta" /> (delta) doesn&apos;t mean
+              anything fancy here, it&apos;s just the traditional way
+              mathematicians say:
+              <br />
+              <br />
+              <em>&quot;This is a difference.&quot;</em>
+              <br />
+              <br />
+              Any time you see a <InlineMath math="\delta" />, you should
+              mentally read it as:
+              <br />
+              <br />
+              <em>&quot;How much did this thing change?&quot;</em>
+              <br />
+              <br />
+              So <InlineMath math="\delta(s)" /> is literally just:
+              <br />
+              <br />
+              <em>
+                &quot;How far apart are <InlineMath math="v'(s)" /> and{" "}
+                <InlineMath math="v(s)" />
+                ?&quot;
+              </em>
+              <br />
+              <br />
+              If the difference is tiny, the value estimate for state{" "}
+              <InlineMath math="s" /> is basically fine.
+              <br />
+              If the difference is huge, the value estimate is way off and needs
+              attention.
+              <br />
+              So when <InlineMath math="\delta(s)" /> is big, state{" "}
+              <InlineMath math="s" /> is basically waving a red flag:
+              <br />
+              <br />
+              <em>
+                &quot;Hey! My value estimate is still nonsense. Please update
+                me.&quot;
+              </em>
+              <br />
+              <br />
               We then:
               <br />
               <br />
@@ -4810,187 +4898,223 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               This focuses computation exactly where it matters most and can
               dramatically reduce the total amount of work. The catch is that it
-              requires knowing which states can lead to which other states, the
-              reverse dynamics, so it&apos;s a bit more involved.
+              requires knowing which states can lead to which other states (the
+              reverse dynamics), so it&apos;s a bit more involved.
               <br />
               <br />
               {/* Example: Prioritized Sweeping */}
-              <div className="mt-8">
-                <strong>Example: Prioritized Sweeping in a tiny chain</strong>
-                <br />
-                <br />
-                Let&apos;s use a slightly more interesting MDP than the baby
-                ones.
-                <br />
-                <br />
-                We have four states in a line:
-                <br />
-                <br />
-                <div className="text-center mb-4 font-mono">
-                  A &rarr; B &rarr; C &rarr; D
-                </div>
-                <InlineMath math="D" /> is terminal.
-                <br />
-                <br />
-                There&apos;s only one action everywhere (so the{" "}
-                <InlineMath math="\max_a" /> is boring), and transitions are
-                deterministic:
-                <br />
-                <br />
-                • <InlineMath math="A \to B" /> with reward{" "}
-                <InlineMath math="0" />
-                <br />
-                • <InlineMath math="B \to C" /> with reward{" "}
-                <InlineMath math="0" />
-                <br />
-                • <InlineMath math="C \to D" /> with reward{" "}
-                <InlineMath math="10" />
-                <br />
-                • <InlineMath math="D" /> terminal
-                <br />
-                <br />
-                Use <InlineMath math="\gamma = 1" />.
-                <br />
-                <br />
-                The Bellman optimality backup (no choice of actions) is:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath math={String.raw`v(s) \leftarrow R(s) + v(s')`} />
-                </div>
-                The Bellman error for state <InlineMath math="s" /> is:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`\delta(s) \;=\; \left| \big(R(s) + v(s')\big) - v(s) \right|`}
-                  />
-                </div>
-                <strong>Step 0: start with garbage values</strong>
-                <br />
-                <br />
-                Start with all zeros:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`v(A)=0,\; v(B)=0,\; v(C)=0,\; v(D)=0`}
-                  />
-                </div>
-                Now compute Bellman errors:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`\begin{aligned}
-\delta(C) &= |(10 + v(D)) - v(C)| = |(10+0)-0| = 10 \\
-\delta(B) &= |(0 + v(C)) - v(B)| = |(0+0)-0| = 0 \\
-\delta(A) &= |(0 + v(B)) - v(A)| = |(0+0)-0| = 0
-\end{aligned}`}
-                  />
-                </div>
-                So the priority queue basically screams:
-                <br />
-                <br />
-                <div className="text-center mb-4 font-mono">
-                  C (10) &gt;&gt; B (0) = A (0)
-                </div>
-                <strong>Step 1: update the worst offender</strong>
-                <br />
-                <br />
-                Update <InlineMath math="C" /> (because it has the largest
-                error):
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`v(C) \leftarrow 10 + v(D) = 10`}
-                  />
-                </div>
-                Now here&apos;s the key prioritized sweeping move:
-                <br />
-                <br />
-                We don&apos;t recompute errors for every state. We only update
-                errors for
-                <em>predecessors</em> of <InlineMath math="C" />.
-                <br />
-                <br />
-                In this chain, the predecessor of <InlineMath math="C" /> is{" "}
-                <InlineMath math="B" />
-                (because <InlineMath math="B \to C" />
-                ).
-                <br />
-                <br />
-                Recompute <InlineMath math="\delta(B)" />:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`\delta(B) = |(0 + v(C)) - v(B)| = |(0 + 10) - 0| = 10`}
-                  />
-                </div>
-                Priority queue now:
-                <br />
-                <br />
-                <div className="text-center mb-4 font-mono">
-                  B (10) &gt;&gt; A (0)
-                </div>
-                <strong>Step 2: update the new worst offender</strong>
-                <br />
-                <br />
-                Update <InlineMath math="B" />:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath math={String.raw`v(B) \leftarrow 0 + v(C) = 10`} />
-                </div>
-                Update errors for predecessors of <InlineMath math="B" />. In
-                this chain, that&apos;s <InlineMath math="A" />.
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`\delta(A) = |(0 + v(B)) - v(A)| = |(0 + 10) - 0| = 10`}
-                  />
-                </div>
-                Priority queue now:
-                <br />
-                <br />
-                <div className="text-center mb-4 font-mono">A (10)</div>
-                <strong>Step 3: update A</strong>
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath math={String.raw`v(A) \leftarrow 0 + v(B) = 10`} />
-                </div>
-                At this point, everything has snapped into place:
-                <br />
-                <br />
-                <div className="text-center mb-4">
-                  <BlockMath
-                    math={String.raw`v(A)=10,\; v(B)=10,\; v(C)=10,\; v(D)=0`}
-                  />
-                </div>
-                Now all Bellman errors are <InlineMath math="0" /> and the queue
-                goes quiet.
-                <br />
-                <br />
-                <strong>What just happened?</strong>
-                <br />
-                <br />
-                Synchronous sweeps would update every state every iteration,
-                even the ones with error <InlineMath math="0" /> (aka: the
-                states doing fine, minding their business).
-                <br />
-                <br />
-                Prioritized sweeping did the opposite: it chased the error wave
-                backward, updating only the states that were currently wrong.
-                <br />
-                <br />
-                It&apos;s like fixing a rumor in a group chat by starting with
-                the one person who definitely has the wrong info, and then only
-                messaging the people who got the rumor from them.
+              <strong>Example: Prioritized Sweeping</strong>
+              <br />
+              <br />
+              Let&apos;s use the same four-state chain, but we&apos;ll
+              deliberately make one transition reward huge so prioritized
+              sweeping has something to obsess over.
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">
+                A &rarr; B &rarr; C &rarr; D
               </div>
+              <InlineMath math="D" /> is terminal.
+              <br />
+              <br />
+              Rewards:
+              <br />
+              <br />
+              • <InlineMath math="A \to B" /> with reward{" "}
+              <InlineMath math="1" />
+              <br />
+              • <InlineMath math="B \to C" /> with reward{" "}
+              <InlineMath math="20" /> <strong>(big reward)</strong>
+              <br />
+              • <InlineMath math="C \to D" /> with reward{" "}
+              <InlineMath math="1" />
+              <br />
+              • <InlineMath math="D" /> terminal
+              <br />
+              <br />
+              Use <InlineMath math="\gamma = 0.9" />.
+              <br />
+              <br />
+              Because there&apos;s only one action, the Bellman optimality
+              backup is:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(s) \leftarrow R(s) + \gamma\, v(s')`}
+                />
+              </div>
+              And the Bellman error is:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\delta(s)=\left|\big(R(s)+\gamma\,v(s')\big)-v(s)\right|`}
+                />
+              </div>
+              <strong>
+                Step 0: start with the usual &quot;everyone is worthless&quot;
+                initialization
+              </strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(A)=0,\; v(B)=0,\; v(C)=0,\; v(D)=0`}
+                />
+              </div>
+              Compute initial Bellman errors (one-step lookahead minus our
+              current guess):
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\begin{aligned}
+\delta(C) &= \left|(1 + 0.9\,v(D)) - v(C)\right|
+= |(1+0)-0| = 1 \\
+\delta(B) &= \left|(20 + 0.9\,v(C)) - v(B)\right|
+= |(20+0)-0| = 20 \\
+\delta(A) &= \left|(1 + 0.9\,v(B)) - v(A)\right|
+= |(1+0)-0| = 1
+\end{aligned}`}
+                />
+              </div>
+              So the priority queue (largest error first) is:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">
+                B (20) &gt; C (1) = A (1)
+              </div>
+              <strong>Step 1: pop the biggest error and update it</strong>
+              <br />
+              <br />
+              Update <InlineMath math="B" />:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(B) \leftarrow 20 + 0.9\,v(C) = 20 + 0.9\cdot 0 = 20`}
+                />
+              </div>
+              Now we only update errors for states that can lead into{" "}
+              <InlineMath math="B" />. The predecessor of{" "}
+              <InlineMath math="B" /> is <InlineMath math="A" /> (because{" "}
+              <InlineMath math="A\to B" />
+              ).
+              <br />
+              <br />
+              Recompute <InlineMath math="\delta(A)" />:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\delta(A)=\left|(1+0.9\,v(B)) - v(A)\right|
+=\left|(1+0.9\cdot 20)-0\right|
+=\left|1+18\right|=19`}
+                />
+              </div>
+              Queue is now basically:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">
+                A (19) &gt;&gt; C (1)
+              </div>
+              <strong>Step 2: pop A and update it</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(A) \leftarrow 1 + 0.9\,v(B) = 1 + 0.9\cdot 20 = 19`}
+                />
+              </div>
+              Update errors only for predecessors of <InlineMath math="A" />.
+              There aren&apos;t any (A is the start), so nothing else gets
+              bumped.
+              <br />
+              <br />
+              Queue now:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">C (1)</div>
+              <strong>Step 3: pop C and update it</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(C) \leftarrow 1 + 0.9\,v(D) = 1`}
+                />
+              </div>
+              Now we update predecessors of <InlineMath math="C" />, which is{" "}
+              <InlineMath math="B" />. Recompute <InlineMath math="\delta(B)" />{" "}
+              (because B depends on C):
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\delta(B)=\left|(20+0.9\,v(C)) - v(B)\right|
+=\left|(20+0.9\cdot 1)-20\right|
+=\left|20.9-20\right|=0.9`}
+                />
+              </div>
+              So B wasn&apos;t perfectly done after all, because once C changed,
+              B&apos;s backup target changed too. Queue becomes:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">B (0.9)</div>
+              <strong>Step 4: pop B again and update it</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(B) \leftarrow 20 + 0.9\,v(C) = 20 + 0.9\cdot 1 = 20.9`}
+                />
+              </div>
+              Update predecessors of <InlineMath math="B" /> (that&apos;s A):
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\delta(A)=\left|(1+0.9\,v(B)) - v(A)\right|
+=\left|(1+0.9\cdot 20.9)-19\right|
+=\left|(1+18.81)-19\right|
+=\left|19.81-19\right|=0.81`}
+                />
+              </div>
+              Queue:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">A (0.81)</div>
+              <strong>Step 5: pop A again and update it</strong>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(A) \leftarrow 1 + 0.9\,v(B) = 1 + 0.9\cdot 20.9 = 19.81`}
+                />
+              </div>
+              Now we&apos;re at:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`v(A)=19.81,\; v(B)=20.9,\; v(C)=1,\; v(D)=0`}
+                />
+              </div>
+              <strong>What prioritized sweeping did (in one sentence)</strong>
+              <br />
+              <br />
+              It didn&apos;t waste time doing full sweeps. It kept chasing the
+              big error and then fixing the states upstream that depended on it:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`B \;\Rightarrow\; A \quad \text{(then)} \quad C \Rightarrow B \Rightarrow A`}
+                />
+              </div>
+              Because in prioritized sweeping, the moment one value changes, you
+              only go poke the states that actually <em>care</em> about that
+              change.
               <br />
               <br />
               <strong>3) Real-Time Dynamic Programming</strong>
@@ -5018,7 +5142,8 @@ v(A) &\leftarrow 0 + v(B) = 10
                 />
               </div>
               Only states that are relevant to the agent&apos;s actual
-              experience get updated.
+              experience get updated. However, everystate must eventually be
+              visited in order for everything to converge correctly.
               <br />
               <br />
               This idea forms a conceptual bridge between classic planning
@@ -5029,11 +5154,16 @@ v(A) &\leftarrow 0 + v(B) = 10
               So the big picture is:
               <br />
               <br />
-              • synchronous DP updates everything, whether it needs it or not •
-              asynchronous DP updates what matters, when it matters
+              • synchronous dynamic programming updates everything at the same
+              time, whether it needs it or not
+              <br />
+              • asynchronous dynamic programming updates what matters, when it
+              matters
               <br />
               <br />
-              Same equations. Same guarantees. Much more flexibility.
+              The asynchronous dynamic programming updates must reach every
+              state eventually, just like for synchronous dynamic programming,
+              in order for everything to converge correctly.
             </div>
 
             <h2
