@@ -4328,6 +4328,141 @@ export default function ReinforcementLearningPage() {
               <br />
               And it keeps asking that question until convergence.
             </div>
+
+            <figure className="text-center my-14">
+              <Image
+                src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-iterative-methods-summary.png"
+                alt="Summary of iterative dynamic programming methods"
+                width={700}
+                height={400}
+                className="mx-auto"
+              />
+              <figcaption className="text-lg mt-2">
+                How Bellman equations turn into algorithms
+              </figcaption>
+            </figure>
+
+            <div className="mb-4">
+              At this point, we&apos;ve seen a few different algorithms, a few
+              different Bellman equations, and a few different ways of iterating
+              toward an answer. It&apos;s time to step back and organize the
+              chaos.
+              <br />
+              <br />
+              The table above summarizes the entire dynamic programming story.
+              <br />
+              <br />
+              Everything we&apos;ve done can be understood by answering three
+              questions:
+              <br />
+              <br />
+              • What problem are we trying to solve? • Which Bellman equation
+              are we using? • What algorithm falls out of repeatedly applying
+              that equation?
+              <br />
+              <br />
+              Let&apos;s walk through each row.
+              <br />
+              <br />
+              <strong>Prediction</strong>
+              <br />
+              <br />
+              Here the problem is simple:
+              <br />
+              <br />
+              <em>
+                &quot;Given a fixed policy <InlineMath math="\pi" />, how good
+                is it?&quot;
+              </em>
+              <br />
+              <br />
+              The right tool is the Bellman <em>expectation</em> equation,
+              because the policy is fixed and we&apos;re just averaging over
+              what it does.
+              <br />
+              <br />
+              Repeatedly applying that equation gives us
+              <strong>iterative policy evaluation</strong>, which converges to
+              the value function <InlineMath math="v_\pi" /> for that policy.
+              <br />
+              <br />
+              No optimization. No policy changes. Just measurement.
+              <br />
+              <br />
+              <strong>Control via Policy Iteration</strong>
+              <br />
+              <br />
+              Now the question changes:
+              <br />
+              <br />
+              <em>
+                &quot;How do we turn a bad policy into a better one?&quot;
+              </em>
+              <br />
+              <br />
+              Policy iteration still uses the Bellman <em>expectation</em>{" "}
+              equation, but with a twist.
+              <br />
+              <br />
+              We alternate between:
+              <br />
+              <br />
+              • evaluating the current policy using the expectation equation •
+              improving the policy by acting greedily with respect to its value
+              function
+              <br />
+              <br />
+              This loop of evaluation and improvement steadily climbs toward the
+              optimal policy <InlineMath math="\pi^*" />.
+              <br />
+              <br />
+              Conceptually elegant. Sometimes computationally heavy.
+              <br />
+              <br />
+              <strong>Control via Value Iteration</strong>
+              <br />
+              <br />
+              Value iteration takes a more aggressive stance.
+              <br />
+              <br />
+              Instead of evaluating policies and improving them in turns, it
+              jumps straight to the Bellman <em>optimality</em> equation and
+              applies it over and over.
+              <br />
+              <br />
+              Each update assumes optimal behavior from the next step onward and
+              pushes the value function closer to <InlineMath math="v^*" />.
+              <br />
+              <br />
+              There&apos;s no explicit policy during the process. Policies are
+              ignored until the very end, when we extract{" "}
+              <InlineMath math="\pi^*" /> greedily from the converged value
+              function.
+              <br />
+              <br />
+              Faster, simpler, and often the algorithm of choice.
+              <br />
+              <br />
+              So the big picture is this:
+              <br />
+              <br />
+              Prediction problems use the Bellman expectation equation to
+              evaluate policies.
+              <br />
+              Control problems either:
+              <br />
+              <br />
+              • combine expectation updates with greedy improvements (policy
+              iteration), or • apply optimality updates directly to values
+              (value iteration).
+              <br />
+              <br />
+              Different equations. Different loops. Same destination.
+              <br />
+              <br />
+              Dynamic programming is just Bellman&apos;s equations plus
+              iteration, arranged in slightly different ways.
+            </div>
           </section>
         </main>
       </div>
