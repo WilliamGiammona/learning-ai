@@ -5698,6 +5698,139 @@ v(A) &\leftarrow 0 + v(B) = 10
               That point is called a <strong>fixed point</strong>, a place where
               applying the operation doesn&apos;t move you anymore.
             </div>
+
+            <div className="mb-4">
+              <strong>So why does this matter for dynamic programming?</strong>
+              <br />
+              <br />
+              Because Bellman backups do exactly what a contraction does.
+              <br />
+              <br />
+              Take any two value functions. When you apply a Bellman update to
+              both of them, something remarkable happens:
+              <br />
+              <br />
+              <em>the distance between them shrinks.</em>
+              <br />
+              <br />
+              Not sometimes.
+              <br />
+              Not on average.
+              <br />
+              <em>Every single time.</em>
+              <br />
+              <br />
+              The reason is hiding in plain sight.
+              <br />
+              <br />
+              Bellman updates are built from:
+              <br />
+              <br />• rewards (which don&apos;t depend on your guess)
+              <br />• expectations (which average things out)
+              <br /> • and a discount factor <InlineMath math="\gamma" /> (which
+              shrinks numbers)
+              <br />
+              <br />
+              That discount factor is doing enormous invisible work.
+              <br />
+              <br />
+              Whatever disagreement two value functions have about the future,
+              Bellman backups multiply it by <InlineMath math="\gamma" /> before
+              passing it along.
+              <br />
+              <br />
+              So if two value functions differ by at most 10 anywhere, then
+              after one Bellman update they differ by at most:
+              <br />
+              <br />
+              <InlineMath math="\gamma \times 10" />.
+              <br />
+              <br />
+              That is the definition of a contraction.
+            </div>
+
+            <div className="mb-4">
+              <strong>
+                Once you have a contraction, you have three guarantees.
+              </strong>
+              <br />
+              <br />
+              <strong>First: the solution is unique.</strong>
+              <br />
+              <br />A contraction can only have <em>one</em> fixed point. If two
+              different fixed points existed, the contraction would be forced to
+              pull them closer together, which is impossible if neither one
+              moves.
+              <br />
+              <br />
+              <strong>Second: where you start does not matter.</strong>
+              <br />
+              <br />
+              Every Bellman update pulls all value functions closer together, so
+              the initial numbers you choose will affect the path you take, but
+              not the final destination.
+              <br />
+              <br />
+              <strong>Third: oscillation is impossible.</strong>
+              <br />
+              <br />
+              Every update strictly reduces the maximum possible disagreement
+              because:
+              <br />
+              <br />
+              <em>
+                you can&apos;t keep shrinking distances and never settle
+                somewhere.
+              </em>
+              <br />
+              <br />
+            </div>
+
+            <div className="mb-4">
+              <strong>
+                One last question: how fast does all of this converge?
+              </strong>
+              <br />
+              <br />
+              So far we&apos;ve established that because Bellman backups are a
+              contraction, they converge to a uniwue fixed point.
+              <br />
+              <br />
+              Now we want to know how quickly we get to that fixed point.
+              <br />
+              <br />
+              The answer depends almost entirely on one{" "}
+              <InlineMath math="\gamma" />.
+              <br />
+              <br />
+              Remember what a contraction does.
+              <br />
+              <br />
+              If two value functions differ by at most 10, then after one
+              Bellman update they differ by at most:
+              <br />
+              <br />
+              <InlineMath math="\gamma \times 10" />.
+              <br />
+              <br />
+              After two updates?
+              <br />
+              <br />
+              <InlineMath math="\gamma^2 \times 10" />.
+              <br />
+              <br />
+              After <InlineMath math="k" /> updates?
+              <br />
+              <br />
+              <InlineMath math="\gamma^k \times 10" />.
+              <br />
+              <br />
+              • If <InlineMath math="\gamma" /> is small, errors collapse
+              quickly
+              <br />
+              • If <InlineMath math="\gamma" /> is close to 1, errors shrink
+              very slowly
+            </div>
           </section>
         </main>
       </div>
