@@ -5252,7 +5252,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               After all:
               <br />
               <br />
-              • a value function depends on a policy
+              • a value function often depends on a policy
               <br />
               • there are infinitely many policies
               <br />
@@ -5268,8 +5268,8 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               <strong>
-                Once a policy is fixed, a value function is just a list of
-                numbers.
+                A value function (for any policy, or even none) is just a list
+                of numbers.
               </strong>
               <br />
               <br />
