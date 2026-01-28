@@ -567,7 +567,7 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               <strong id="model" className="block text-center">
-                The Agent's Model
+                The Agent&apos;s Model
               </strong>
               <br />
               So far, our agent has been reacting to the world: see state, pick
@@ -871,7 +871,7 @@ export default function ReinforcementLearningPage() {
               long-run frequencies still converge to predictable values (in this
               case, the overall proportions of vowels (43%) and consonants (57%)
               in the poem). Now he needed to find all the state transition
-              probabilities. How did he do this? Let's take a look at the
+              probabilities. How did he do this? Let&apos;s take a look at the
               transition probability for vowel to vowel as an example.
               <br />
               <br />
@@ -879,13 +879,13 @@ export default function ReinforcementLearningPage() {
               vowel? He looked at the actual text. The probability of any letter
               being a vowel was 0.43. The probability of two consecutive vowels
               was 0.06. He divided 0.06 by 0.43 to get 0.13. This tells us:
-              given that the current letter is a vowel, there's a 13% chance the
-              next letter is also a vowel (and therefore an 87% chance it's a
-              consonant). He did this for all possible stat etransitions:
-              consonant to consonant was 0.33, meaning consonant to vowel was
-              0.67. These state transition probabilities let him model how
-              states link together in a sequence, a chain of states, hence the
-              name Markov chain.
+              given that the current letter is a vowel, there&apos;s a 13%
+              chance the next letter is also a vowel (and therefore an 87%
+              chance it&apos;s a consonant). He did this for all possible stat
+              etransitions: consonant to consonant was 0.33, meaning consonant
+              to vowel was 0.67. These state transition probabilities let him
+              model how states link together in a sequence, a chain of states,
+              hence the name Markov chain.
             </p>
 
             <p className="mb-4">
@@ -1205,12 +1205,13 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               So, why would anyone use this R<sub>t+1</sub> | S<sub>t</sub>{" "}
               convention when using the R<sub>t</sub> | S <sub>t</sub>{" "}
-              convention seems so much more natural? To answer this, let's look
-              at some parallels from mathematics: the history of how we came up
-              with the names sine and cosine, and the history of why we use the
-              number π when dealing with problems involving a circle&apos;s
-              radius. Many mathematical conventions persist not because they're
-              the most intuitive, but because of historical precedent.
+              convention seems so much more natural? To answer this, let&apos;s
+              look at some parallels from mathematics: the history of how we
+              came up with the names sine and cosine, and the history of why we
+              use the number π when dealing with problems involving a
+              circle&apos;s radius. Many mathematical conventions persist not
+              because they're the most intuitive, but because of historical
+              precedent.
             </p>
             <p className="mb-4">
               First, let&apos;s look at how we got the names sine and cosine
@@ -1257,7 +1258,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               In the 12th century, when European scholars translated Muhammad
-              ibn Musa al-Khwarizmi's famous work, al-Kitāb al-Mukhtaṣar fī
+              ibn Musa al-Khwarizmi&apos;s famous work, al-Kitāb al-Mukhtaṣar fī
               Ḥisāb al-Jabr wal-Muqābalah (which is where we get algebra
               [al-Jabr] from), into Latin, they thought that jb referred to the
               arabic word jayb (جيب), which meant pocket, and so translated it
@@ -1462,8 +1463,9 @@ export default function ReinforcementLearningPage() {
               </span>
               <br />
               Breaking this down: we're taking the expectation (average) of the
-              return G<sub>t</sub> (remember, that's the sum of all discounted
-              future rewards: R<sub>t+1</sub> + γR<sub>t+2</sub> + γ²R
+              return G<sub>t</sub> (remember, that&apos;s the sum of all
+              discounted future rewards: R<sub>t+1</sub> + γR<sub>t+2</sub> +
+              γ²R
               <sub>t+3</sub> + ...) given that we start in state s.
               <br />
               <br />
@@ -1478,11 +1480,11 @@ export default function ReinforcementLearningPage() {
             </p>
             <p className="mb-4">
               <strong className="block text-center">
-                Return vs Expected Return: What's the Difference?
+                Return vs Expected Return: What&apos;s the Difference?
               </strong>
               <br />
-              This is a subtle but crucial distinction. Let's break down why G
-              <sub>t</sub> and v(s) look different mathematically.
+              This is a subtle but crucial distinction. Let&apos;s break down
+              why G<sub>t</sub> and v(s) look different mathematically.
               <br />
               <br />
               <strong>
@@ -1496,7 +1498,7 @@ export default function ReinforcementLearningPage() {
                 <sub>t+3</sub> + ...
               </span>
               <br />
-              Notice the R's are the ACTUAL REWARDS you receive as you move
+              Notice the R&apos;s are the ACTUAL REWARDS you receive as you move
               through the MRP. No expectation needed because this is describing
               what literally happened: "I got reward R<sub>t+1</sub>, then R
               <sub>t+2</sub>, then R<sub>t+3</sub>..." Each specific return will
@@ -1535,10 +1537,10 @@ export default function ReinforcementLearningPage() {
               be.
             </p>
             <p className="mb-4">
-              <strong>Example:</strong> You're in state s. From s, there's a 50%
-              chance to go to state A (which gives reward +10) and 50% chance to
-              go to state B (which gives reward +2). Let's say both A and B are
-              terminal states.
+              <strong>Example:</strong> You're in state s. From s, there&apos;s
+              a 50% chance to go to state A (which gives reward +10) and 50%
+              chance to go to state B (which gives reward +2). Let&apos;s say
+              both A and B are terminal states.
               <br />
               <br />
               <strong>Trajectory 1:</strong> s → A
@@ -1573,22 +1575,22 @@ export default function ReinforcementLearningPage() {
             <p className="mb-4">
               To recap, a Markov Reward Process gives us a complete mathematical
               description of an environment by extending Markov Processes with
-              rewards and a discount factor. It's defined by the tuple (S, P, R,
-              γ) where S captures all possible states the environment can be in,
-              P describes how the environment transitions between states, R
-              specifies the expected feedback (rewards or penalties) the
+              rewards and a discount factor. It&apos;s defined by the tuple (S,
+              P, R, γ) where S captures all possible states the environment can
+              be in, P describes how the environment transitions between states,
+              R specifies the expected feedback (rewards or penalties) the
               environment will give us, and γ determines how we weight rewards
               that occur farther and farther into the future. Together, these
-              four components fully characterize the environment's structure.
-              The value function v(s) tells us the expected total discounted
-              return from state s, not just the immediate reward (which is what
-              the reward function gives us), but the long-term value accounting
-              for all future rewards. Later, Markov Reward Processes will be
-              extended into Markov Decision Processes, where an agent can take
-              actions to influence which states it enters. This is the core idea
-              of RL: building algorithms that allow agents to learn which
-              actions maximize their chances of being in states with the highest
-              expected return.
+              four components fully characterize the environment&apos;s
+              structure. The value function v(s) tells us the expected total
+              discounted return from state s, not just the immediate reward
+              (which is what the reward function gives us), but the long-term
+              value accounting for all future rewards. Later, Markov Reward
+              Processes will be extended into Markov Decision Processes, where
+              an agent can take actions to influence which states it enters.
+              This is the core idea of RL: building algorithms that allow agents
+              to learn which actions maximize their chances of being in states
+              with the highest expected return.
               <br />
             </p>
             <p className="mb-4">
@@ -1798,14 +1800,14 @@ export default function ReinforcementLearningPage() {
               The key difference from MRPs is that both P and R now depend on
               the action taken, giving the agent control over transitions and
               rewards. In MRPs, P was entirely determined by the environment
-              dynamics, but now it's a combination of the agent&apos;s action
-              AND the environment&apos;s transition dynamics.
+              dynamics, but now it&apos;s a combination of the agent&apos;s
+              action AND the environment&apos;s transition dynamics.
               <br />
               <br />
               For example, imagine a robot serving food at an outdoor cafe. If
               the customer is to the right of the robot, the robot&apos;s action
               to move itself to the right greatly increases the probability of
-              reaching the customer, but it's not guaranteed. A strong wind
+              reaching the customer, but it&apos;s not guaranteed. A strong wind
               might push the robot to the left instead. The new state depends on
               both the agent&apos;s chosen action and environmental factors like
               wind.
@@ -1882,23 +1884,23 @@ export default function ReinforcementLearningPage() {
             </p>
 
             <p className="mb-4">
-              If the policy is the agent's “what should I do in this state?”
-              mechanism, then the value function is its “how good is this
-              state?” mechanism. The value function is the agent's prediction of
-              how much total reward it expects to collect in the future,
-              starting from a particular state. I already discussed value
-              functions for MRPs in the MRP section, but there was no way for
-              the agent to make any decisions to affect the likelihood of
+              If the policy is the agent&apos;s “what should I do in this
+              state?” mechanism, then the value function is its “how good is
+              this state?” mechanism. The value function is the agent&apos;s
+              prediction of how much total reward it expects to collect in the
+              future, starting from a particular state. I already discussed
+              value functions for MRPs in the MRP section, but there was no way
+              for the agent to make any decisions to affect the likelihood of
               transitioning to different states (thereby affecting overall
               reward). With MDPs, the value function is now entirely dependent
-              on the agent's policy because your future reward given on a state
-              DEPENDS on what moves you are likely to make in future states.
-              Bobby Fischer would likely have a very different value function in
-              a given chess position than someone who just learned how to play
-              chess because Fischer is very likely to make different moves than
-              the person who just learned chess. Therefore instead of v(s) as we
-              wrote for the MRP, we now write v<sub>π</sub>(s), where π is the
-              policy.
+              on the agent&apos;s policy because your future reward given on a
+              state DEPENDS on what moves you are likely to make in future
+              states. Bobby Fischer would likely have a very different value
+              function in a given chess position than someone who just learned
+              how to play chess because Fischer is very likely to make different
+              moves than the person who just learned chess. Therefore instead of
+              v(s) as we wrote for the MRP, we now write v<sub>π</sub>(s), where
+              π is the policy.
             </p>
 
             <p className="mb-4">
@@ -1951,8 +1953,9 @@ export default function ReinforcementLearningPage() {
               position, you're evaluating a specific move from that position.
               The action-value function answers: "If I make this particular move
               (like knight to c3) and then follow my usual strategy afterwards,
-              what's my expected outcome?" You can compare this to another move
-              from the same position (like bishop to g5) to see which is better.
+              what&apos;s my expected outcome?" You can compare this to another
+              move from the same position (like bishop to g5) to see which is
+              better.
               <br />
               <br />
               <strong>Key difference:</strong> v<sub>π</sub>(s) gives you one
@@ -2211,8 +2214,8 @@ export default function ReinforcementLearningPage() {
               Before we talk about finding the <em>best</em> policy, we need to
               define what "better" even means. In reinforcement learning, we say
               that one policy π is better than or equal to another policy π' if
-              its value function is greater than or equal to the other policy's
-              value function FOR ALL STATES:
+              its value function is greater than or equal to the other
+              policy&apos;s value function FOR ALL STATES:
               <br />
               <br />
               <span className="block font-mono text-center">
@@ -2229,7 +2232,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <strong>Chess analogy:</strong> Think of Bobby Fischer versus
               inferior chess players (Soviet Grand Masters for instance).
-              Fischer's policy (his chess strategy) is better because from{" "}
+              Fischer&apos;s policy (his chess strategy) is better because from{" "}
               <em>any</em> board position you give him, he'll achieve an equal
               or better expected outcome than the Soviet Grand Master. It
               doesn't matter if the position is a complex middlegame, an endgame
@@ -2243,8 +2246,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               This definition of "better" leads us naturally to ask: is there a
-              policy that's better than or equal to <em>all</em> other policies?
-              Remarkably, the answer is yes! We call such a policy an{" "}
+              policy that&apos;s better than or equal to <em>all</em> other
+              policies? Remarkably, the answer is yes! We call such a policy an{" "}
               <strong>optimal policy</strong>, denoted π<sub>*</sub>. An optimal
               policy satisfies:
               <br />
@@ -2301,9 +2304,9 @@ export default function ReinforcementLearningPage() {
               that position.
               <br />
               <br />
-              Here's the key distinction: π<sub>*</sub> (the optimal policy)
-              tells you <em>what moves to make</em>, while v<sub>*</sub>(s) (the
-              optimal value function) tells you{" "}
+              Here&apos;s the key distinction: π<sub>*</sub> (the optimal
+              policy) tells you <em>what moves to make</em>, while v<sub>*</sub>
+              (s) (the optimal value function) tells you{" "}
               <em>how good the resulting position will be</em> when you follow
               that optimal policy. They're related, but slightly different.
               Optimal policy is the <em>best</em> strategy, while{" "}
@@ -2312,13 +2315,13 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               For example, imagine a very difficult position where one brilliant
-              move wins but every other move loses. Under Fischer's optimal
+              move wins but every other move loses. Under Fischer&apos;s optimal
               policy, v<sub>*</sub>(s) for this position is high because his
               strategy (the optimal policy) would find the winning move. But
-              under a beginner's policy, v<sub>beginner</sub>(s) for the same
-              position would be low because their strategy (a suboptimal policy)
-              wouldn't find that move, they&apos;d play one of the losing
-              alternatives instead.
+              under a beginner&apos;s policy, v<sub>beginner</sub>(s) for the
+              same position would be low because their strategy (a suboptimal
+              policy) wouldn't find that move, they&apos;d play one of the
+              losing alternatives instead.
               <br />
               <br />
               The <strong>optimal action-value function</strong> q<sub>*</sub>
@@ -2432,7 +2435,7 @@ export default function ReinforcementLearningPage() {
               wherever you end up next, when taking the BEST action. The key
               difference from the expectation equation is when now have the max
               <sub>a</sub>, which means that instead of averaging over a
-              policy's action probabilities (giving certain actions some
+              policy&apos;s action probabilities (giving certain actions some
               probability of occurring even though they aren't the best), we're
               now picking the action that maximizes the right-hand side of the
               equation (any actions that are not considered the best will get a
@@ -2483,7 +2486,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <strong>Important note:</strong> These are called "optimality"
               equations because we're maximizing over actions rather than
-              following a specific policy. They tell us "what's the best
+              following a specific policy. They tell us "what&apos;s the best
               possible value achievable from this state?" The policy that
               achieves these optimal values is called the optimal policy π
               <sub>*</sub>.
@@ -2493,10 +2496,10 @@ export default function ReinforcementLearningPage() {
               <strong className="block text-center mb-4">
                 The Bellman Optimality Equations: A Visual Breakdown
               </strong>
-              Now let's see how the optimal value functions relate to each other
-              through what's called the Bellman Optimality Equations. These
-              equations give us a recursive way to compute optimal values by
-              breaking them down into immediate rewards and future optimal
+              Now let&apos;s see how the optimal value functions relate to each
+              other through what&apos;s called the Bellman Optimality Equations.
+              These equations give us a recursive way to compute optimal values
+              by breaking them down into immediate rewards and future optimal
               values.
               <br />
               <br />
@@ -2529,7 +2532,8 @@ export default function ReinforcementLearningPage() {
               want to know v*(s), the value of that position with perfect play,
               you look at all your possible moves (the filled circles), evaluate
               each one assuming perfect play afterwards (each q*(s,a)), and pick
-              the best. That best move's value IS the position's value.
+              the best. That best move&apos;s value IS the position&apos;s
+              value.
               <br />
               <br />
               <strong>
@@ -2564,7 +2568,7 @@ export default function ReinforcementLearningPage() {
               c3), you look at: (1) whether this move immediately captures
               material or improves position (the reward r), plus (2) the optimal
               value of the board position that results after the move,
-              accounting for your opponent's possible responses (the Σ P
+              accounting for your opponent&apos;s possible responses (the Σ P
               <sub>ss'</sub>
               <sup>a</sup> v*(s') term). Even if the move itself doesn't win
               material, it might lead to a position with very high v*(s'),
@@ -2575,7 +2579,7 @@ export default function ReinforcementLearningPage() {
               <strong className="block text-center mb-4">
                 The Complete Bellman Optimality Equations: Two Step Lookahead
               </strong>
-              Now let's see what happens when we combine both optimal value
+              Now let&apos;s see what happens when we combine both optimal value
               functions into complete recursive equations. Just like with the
               Bellman Expectation Equations, by substituting one equation into
               the other, we can express each optimal value function entirely in
@@ -2600,7 +2604,7 @@ export default function ReinforcementLearningPage() {
               Starting from state s (top hollow circle), we consider all
               possible actions we could take (middle dark circles), and for each
               action, we look at all possible next states s' (bottom hollow
-              circles). But instead of averaging over a policy's action
+              circles). But instead of averaging over a policy&apos;s action
               probabilities like in the expectation equation, we MAX over
               actions. This gives us:
               <br />
@@ -2610,8 +2614,8 @@ export default function ReinforcementLearningPage() {
               for each move, evaluate (immediate reward + discounted optimal
               value of all resulting positions weighted by likelihood), and (3)
               pick whichever move gives the highest total. This is a two-step
-              lookahead: position → your possible moves → opponent's responses
-              (which determine resulting positions).
+              lookahead: position → your possible moves → opponent&apos;s
+              responses (which determine resulting positions).
               <br />
               <br />
               <strong>Optimal Action-Value Full Lookahead:</strong>
@@ -2640,9 +2644,10 @@ export default function ReinforcementLearningPage() {
               to c3. Your opponent responds, creating various positions. From
               each resulting position, you evaluate the best move you could
               make. The value of "knight to c3" is: (immediate reward) +
-              (average over opponent's responses of the best move you can make
-              in each resulting position). This is also a two-step lookahead:
-              your move → opponent's response → your optimal next move.
+              (average over opponent&apos;s responses of the best move you can
+              make in each resulting position). This is also a two-step
+              lookahead: your move → opponent&apos;s response → your optimal
+              next move.
               <br />
               <br />
               <strong>Key difference from Expectation Equations:</strong> Notice
@@ -3707,8 +3712,8 @@ export default function ReinforcementLearningPage() {
             </div>
 
             <div className="mt-16 mb-4">
-              All of this still sounds a bit abstract, so let's make it concrete
-              with an example.
+              All of this still sounds a bit abstract, so let&apos;s make it
+              concrete with an example.
               <br />
               <br />
               Consider an MDP with three states:
@@ -5141,9 +5146,9 @@ v(A) &\leftarrow 0 + v(B) = 10
                   }
                 />
               </div>
-              Only states that are relevant to the agent's actual experience get
-              updated. However, every state must eventually be visited in order
-              for everything to converge correctly.
+              Only states that are relevant to the agent&apos;s actual
+              experience get updated. However, every state must eventually be
+              visited in order for everything to converge correctly.
               <br />
               <br />
               This idea forms a conceptual bridge between classic planning
@@ -5333,8 +5338,10 @@ v(A) &\leftarrow 0 + v(B) = 10
               Yes, and that&apos;s completely fine.
               <br />
               <br />
-              Each value function <InlineMath math="v_\pi" /> corresponds to
-              exactly one policy <InlineMath math="\pi" />.
+              Each policy <InlineMath math="\pi" /> induces exactly one value
+              function <InlineMath math="v_\pi" /> (but multiple policies can
+              sometimes share the same <InlineMath math="v_\pi" />
+              ).
               <br />
               <br />
               So the space we&apos;re working in contains:
