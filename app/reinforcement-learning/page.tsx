@@ -4464,8 +4464,11 @@ export default function ReinforcementLearningPage() {
               using state values because they are:
               <br />
               <br />
-              • conceptually simpler • cheaper to compute per iteration • and
-              easier to visualize and reason about
+              • conceptually simpler
+              <br />
+              • cheaper to compute per iteration
+              <br />
+              • and easier to visualize and reason about
               <br />
               <br />
               When we work with state values, each Bellman backup asks:
@@ -4482,7 +4485,7 @@ export default function ReinforcementLearningPage() {
               inside a max (for control).
               <br />
               <br />
-              But everything we&apos;ve done could also be written in terms of
+              But everything we&apos;ve done could also be written in terms of{" "}
               <em>action-value functions</em>.
               <br />
               <br />
@@ -4497,7 +4500,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <div className="text-center mb-4">
                 <BlockMath
-                  math={"q_\\pi(s,a) \\quad \\text{or} \\quad q^*(s,a)"}
+                  math={"q_\\pi(s,a) \\quad \\text{and} \\quad q^*(s,a)"}
                 />
               </div>
               In that world, Bellman backups answer a slightly more detailed
@@ -4505,9 +4508,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <em>
-                &quot;If I&apos;m in state <InlineMath math="s" /> and take
-                action <InlineMath math="a" />, how good is that choice
-                really?&quot;
+                If I&apos;m in state <InlineMath math="s" /> and take action{" "}
+                <InlineMath math="a" />, how good is that choice?
               </em>
               <br />
               <br />
@@ -4518,7 +4520,7 @@ export default function ReinforcementLearningPage() {
               actions:
               <br />
               <br />
-              • state-value updates cost <InlineMath math="O(mn^2)" /> per
+              • state-value updates cost is <InlineMath math="O(mn^2)" /> per
               iteration • action-value updates cost{" "}
               <InlineMath math="O(m^2 n^2)" /> per iteration
               <br />
