@@ -4764,7 +4764,8 @@ v(A) &\leftarrow 0 + v(B) = 10
               In one pass, the reward propagates all the way back to{" "}
               <InlineMath math="A" />, because we can use C&apos;s updated value
               on the first sweep to update B, and B&apos;s updated value on the
-              first sweep to update A.
+              first sweep to update A. We don't need to wait until the second
+              and third sweep to update C and B.
               <br />
               <br />
               The only difference is <em>when</em> updated values are allowed to
