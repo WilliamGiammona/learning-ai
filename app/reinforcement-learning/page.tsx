@@ -3949,15 +3949,15 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               <em>
-                &quot;Do we really need to fully converge to{" "}
+                Do we really need to fully converge to{" "}
                 <InlineMath math="v_\pi" /> every single time before improving
-                the policy?&quot;
+                the policy?
               </em>
               <br />
               <br />
-              After all, the *entire point* of policy evaluation is just to get
-              enough information to make a better policy, And in practice, that
-              information often shows up very early.
+              After all, the <em>entire point </em>of policy evaluation is just
+              to get enough information to make a better policy, And in
+              practice, that information often shows up very early.
               <br />
               <br />
               Remember what iterative policy evaluation looks like:
@@ -3975,8 +3975,8 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               By the time we&apos;ve reached, say, <InlineMath math="v_3" />, or{" "}
-              <InlineMath math="v_5" />, the value estimates are often *good
-              enough* to tell us which actions look promising.
+              <InlineMath math="v_5" />, the value estimates are often{" "}
+              <em>good enough</em>to tell us which actions look promising.
               <br />
               <br />
               So instead of insisting on this:
@@ -4052,6 +4052,148 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               That limiting case is called <strong>value iteration</strong>.
+            </div>
+
+            <div className="mb-4">
+              Let&apos;s restate the problem one last time:
+              <br />
+              <br />
+              <em>
+                &quot;Given a fully known MDP ⟨S, A, P, R, γ⟩, how do we find
+                the optimal policy <InlineMath math="\pi^*" />
+                ?&quot;
+              </em>
+              <br />
+              <br />
+              Policy iteration answered this by alternating between:
+              <br />
+              • evaluating a policy
+              <br />
+              • improving the policy
+              <br />
+              <br />
+              Value iteration takes a more direct route. Instead of maintaining
+              an explicit policy at every step, value iteration focuses entirely
+              on the <em>optimal value function</em> <InlineMath math="v^*" />.
+              <br />
+              <br />
+              The idea is simple:
+              <br />
+              <br />
+              If we knew <InlineMath math="v^*" />, then extracting the optimal
+              policy would be easy , we&apos;d just act greedily with respect to
+              it.
+              <br />
+              <br />
+              So value iteration asks:
+              <br />
+              <br />
+              <em>
+                &quot;Can we compute <InlineMath math="v^*" /> directly, without
+                explicitly iterating over policies?&quot;
+              </em>
+              <br />
+              <br />
+              The answer is yes.
+              <br />
+              <br />
+              Instead of the Bellman <em>expectation</em> equation used for
+              policy evaluation, value iteration repeatedly applies the Bellman{" "}
+              <em>optimality</em> equation:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_{k+1}(s) \\,=\\, \\max_a \\Big[\\, R(s,a) \\, + \\, \\gamma \\sum_{s'} P(s' \\mid s,a)\\, v_k(s') \\,\\Big]"
+                  }
+                />
+              </div>
+              This update does two things at once:
+              <br />
+              <br />
+              • it looks one step ahead
+              <br />
+              • it assumes that from the next state onward, we&apos;ll behave
+              optimally
+              <br />
+              <br />
+              In other words, value iteration combines policy evaluation and
+              policy improvement into a <em>single</em> operation.
+              <br />
+              <br />
+              Just like before, we start with a completely arbitrary value
+              function:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"v_1(s) = 0 \\quad \\text{for all } s \\in S"}
+                />
+              </div>
+              But instead of trying to spend time finding progressively better
+              policies before arriving at the optimal policy:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi \\;\\to\\; v_1 \\;\\to\\; v_2 \\;\\to\\; \\dots \\;\\to\\; v_\\pi \\;\\to\\; \\pi' \\;\\to\\; v'_1 \\;\\to\\; v'_2 \\;\\to\\; \\dots \\;\\to\\; v_{\\pi'} \\;\\to\\; \\pi^*"
+                  }
+                />
+              </div>
+              We instead repeatedly apply the Bellman optimality backup:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_1 \\;\\to\\; v_2 \\;\\to\\; v_3 \\;\\to\\; \\dots \\;\\to\\; v^* \\;\\to\\; \\pi^*"
+                  }
+                />
+              </div>
+              Each update pushes the value function closer to the optimal value
+              function. Unlike policy iteration, there is no explicit policy
+              during this process. In fact, the intermediate value functions{" "}
+              <InlineMath math="v_k" /> may not correspond to <em>any</em>{" "}
+              policy at all, which is fine because they&apos;re just stepping
+              stones on the way to <InlineMath math="v^*" />.
+              <br />
+              <br />
+              Once the value function converges, we extract the optimal policy
+              in one final greedy step:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\pi^*(s) \\,=\\, \\arg\\max_a \\Big[\\, R(s,a) \\, + \\, \\gamma \\sum_{s'} P(s' \\mid s,a)\\, v^*(s') \\,\\Big]"
+                  }
+                />
+              </div>
+              And that&apos;s it.
+              <br />
+              <br />
+              So value iteration can be summarized as:
+              <br />
+              <br />• ignore policies for now
+              <br />
+              • repeatedly apply the Bellman optimality backup
+              <br />• let the value function converge to{" "}
+              <InlineMath math="v^*" />
+              <br />
+              • extract <InlineMath math="\pi^*" /> at the very end
+              <br />
+              <br />
+              If policy iteration is a careful back-and-forth conversation
+              between values and policies, value iteration is a blunt but
+              effective monologue:
+              <br />
+              <br />
+              <em>
+                &quot;Assume optimal behavior everywhere. Update values.
+                Repeat.&quot;
+              </em>
             </div>
           </section>
         </main>
