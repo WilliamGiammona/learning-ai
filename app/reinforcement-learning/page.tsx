@@ -5186,11 +5186,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               • value iteration converges to <InlineMath math="v^*" />
-              <br />
-              • iterative policy evaluation converges to{" "}
+              <br />• iterative policy evaluation converges to{" "}
               <InlineMath math="v_\pi" />
-              <br />• policy iteration converges to the optimal policy{" "}
-              <InlineMath math="\pi^*" />
+              <br />• policy iteration converges to <InlineMath math="\pi^*" />
               <br />
               <br />
               But… why?
@@ -5225,8 +5223,6 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • Is the solution unique?
               <br />
-              • Does every starting point lead to the same answer?
-              <br />
               • How fast do these algorithms converge?
               <br />
               <br />
@@ -5243,8 +5239,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               <strong>Step 1: What is a value function, really?</strong>
               <br />
               <br />
-              At first glance, calling a value function a <em>point</em> sounds
-              suspicious.
+              Instead of thinking of a value function as a formula, let’s think
+              of it as a point. At first glance, calling a value function a{" "}
+              <em>point</em> sounds suspicious.
               <br />
               <br />
               After all:
@@ -5271,14 +5268,14 @@ v(A) &\leftarrow 0 + v(B) = 10
               </strong>
               <br />
               <br />
-              If your MDP has <InlineMath math="|S|" /> states, then a value
+              If your MDP has <InlineMath math="S" /> states, then a value
               function is literally:
               <br />
               <br />
               <div className="text-center mb-4">
                 <BlockMath
                   math={
-                    "v = \\big(v(s_1),\\, v(s_2),\\, \\dots,\\, v(s_{|S|})\\big)"
+                    "v = \\big(v(s_1),\\, v(s_2),\\, \\dots,\\, v(s_{S})\\big)"
                   }
                 />
               </div>
@@ -5295,7 +5292,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <strong>
                 Each value function is a single point in a{" "}
-                <InlineMath math="|S|" />
+                <InlineMath math="S" />
                 -dimensional space.
               </strong>
               <br />
@@ -5316,10 +5313,10 @@ v(A) &\leftarrow 0 + v(B) = 10
               So when we write:
               <br />
               <br />
-              <InlineMath math="v_1, v_2, v_3, \\dots" />
+              <InlineMath math="v_1, v_2, v_3, \dots" />
               <br />
               <br />
-              we&apos;re not writing different formulas — we&apos;re watching a
+              we&apos;re not writing different formulas, we&apos;re watching a
               single point move around in <em>value-function space</em>.
               <br />
               <br />
@@ -5333,19 +5330,18 @@ v(A) &\leftarrow 0 + v(B) = 10
               infinitely many value functions?
               <br />
               <br />
-              Yes — and that&apos;s completely fine.
+              Yes, and that&apos;s completely fine.
               <br />
               <br />
-              Each policy <InlineMath math="\\pi" /> corresponds to exactly one
-              value function <InlineMath math="v_\\pi" />.
+              Each value function <InlineMath math="v_\pi" /> corresponds to
+              exactly one policy <InlineMath math="\pi" />.
               <br />
               <br />
               So the space we&apos;re working in contains:
               <br />
               <br />
-              • all <InlineMath math="v_\\pi" />
-              <br />
-              • plus <InlineMath math="v^*" />
+              • all <InlineMath math="v_\pi" />
+              &apos;s (including <InlineMath math="v^*" />)
               <br />
               • plus many other value functions that don&apos;t correspond to
               any policy at all
@@ -5355,13 +5351,10 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               During value iteration, we happily pass through value functions
-              that don&apos;t correspond to any policy whatsoever — and
-              that&apos;s totally allowed.
-              <br />
-              <br />
-              We&apos;re not walking on a &quot;policy surface&quot;.
-              <br />
-              We&apos;re moving freely through value-function space.
+              that don&apos;t correspond to any policy whatsoever, and
+              that&apos;s completely allowed. We&apos;re not walking on a
+              &quot;policy surface&quot; inside value-function space, we&apos;re
+              moving freely through value-function space itself.
               <br />
               <br />
               <strong>Step 3: What could go wrong?</strong>
