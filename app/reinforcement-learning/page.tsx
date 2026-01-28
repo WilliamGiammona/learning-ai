@@ -5128,10 +5128,10 @@ v(A) &\leftarrow 0 + v(B) = 10
               environment, and after each transition:
               <br />
               <br />
-              <InlineMath math="S_t, A_t, R_{t+1}" />
+              <InlineMath math="S_t, A_t, R_{t+1}, S_{t+1}" />
               <br />
               <br />
-              we immediately back up the value of the current state:
+              we immediately back up the value of the state we just visited:
               <br />
               <br />
               <div className="text-center mb-4">
@@ -5141,29 +5141,29 @@ v(A) &\leftarrow 0 + v(B) = 10
                   }
                 />
               </div>
-              Only states that are relevant to the agent&apos;s actual
-              experience get updated. However, everystate must eventually be
-              visited in order for everything to converge correctly.
+              Only states that are relevant to the agent's actual experience get
+              updated. However, every state must eventually be visited in order
+              for everything to converge correctly.
               <br />
               <br />
               This idea forms a conceptual bridge between classic planning
               methods and modern reinforcement learning algorithms that learn
-              online from experience.
+              online from experience, which we will explore in future sections.
               <br />
               <br />
               So the big picture is:
               <br />
               <br />
               • synchronous dynamic programming updates everything at the same
-              time, whether it needs it or not
+              time, whether it needs it or not.
               <br />
               • asynchronous dynamic programming updates what matters, when it
-              matters
+              matters.
               <br />
               <br />
-              The asynchronous dynamic programming updates must reach every
-              state eventually, just like for synchronous dynamic programming,
-              in order for everything to converge correctly.
+              Note, The asynchronous dynamic programming updates must reach
+              every state eventually, just like for synchronous dynamic
+              programming, in order for everything to converge correctly.
             </div>
 
             <h2
@@ -5172,6 +5172,252 @@ v(A) &\leftarrow 0 + v(B) = 10
             >
               Contraction Mappimg
             </h2>
+
+            <div className="mb-4">
+              Before we move on, there&apos;s a big question we&apos;ve been
+              quietly ignoring:
+              <br />
+              <br />
+              <strong>Why does any of this actually work?</strong>
+              <br />
+              <br />
+              So far, we&apos;ve been happily applying Bellman backups over and
+              over, trusting that:
+              <br />
+              <br />
+              • value iteration converges to <InlineMath math="v^*" />
+              <br />
+              • iterative policy evaluation converges to{" "}
+              <InlineMath math="v_\pi" />
+              <br />• policy iteration converges to the optimal policy{" "}
+              <InlineMath math="\pi^*" />
+              <br />
+              <br />
+              But… why?
+              <br />
+              <br />
+              Why don&apos;t these updates:
+              <br />
+              <br />
+              • oscillate forever
+              <br />
+              • drift around aimlessly
+              <br />
+              • or converge to the wrong answer, like a local maximum instead of
+              the true optimal value
+              <br />
+              <br />
+              After all, in many optimization problems, where you end up{" "}
+              <em>does</em> depend on where you start.
+              <br />
+              Gradient ascent gets stuck.
+              <br />
+              Hill climbing plateaus.
+              <br />
+              Local optima are everywhere.
+              <br />
+              <br />
+              So why doesn&apos;t value iteration suffer from the same fate?
+              <br />
+              <br />
+              And while we&apos;re at it:
+              <br />
+              <br />
+              • Is the solution unique?
+              <br />
+              • Does every starting point lead to the same answer?
+              <br />
+              • How fast do these algorithms converge?
+              <br />
+              <br />
+              All of these questions are answered by <em>one</em> idea:
+              <br />
+              <br />
+              <strong>The contraction mapping theorem</strong>
+              <br />
+              <br />
+              But before we touch the theorem itself, we need to slow way down
+              and set the stage properly.
+              <br />
+              <br />
+              <strong>Step 1: What is a value function, really?</strong>
+              <br />
+              <br />
+              At first glance, calling a value function a <em>point</em> sounds
+              suspicious.
+              <br />
+              <br />
+              After all:
+              <br />
+              <br />
+              • a value function depends on a policy
+              <br />
+              • there are infinitely many policies
+              <br />
+              • each state&apos;s value is a real number
+              <br />
+              • and the value function is defined over states, not coordinates
+              <br />
+              <br />
+              So how can this possibly be a &quot;point&quot;?
+              <br />
+              <br />
+              Here&apos;s the key idea:
+              <br />
+              <br />
+              <strong>
+                Once a policy is fixed, a value function is just a list of
+                numbers.
+              </strong>
+              <br />
+              <br />
+              If your MDP has <InlineMath math="|S|" /> states, then a value
+              function is literally:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v = \\big(v(s_1),\\, v(s_2),\\, \\dots,\\, v(s_{|S|})\\big)"
+                  }
+                />
+              </div>
+              That&apos;s it.
+              <br />
+              <br />
+              Yes, each entry is a real number.
+              <br />
+              Yes, there are infinitely many possible value functions.
+              <br />
+              <br />
+              But mathematically, that just means:
+              <br />
+              <br />
+              <strong>
+                Each value function is a single point in a{" "}
+                <InlineMath math="|S|" />
+                -dimensional space.
+              </strong>
+              <br />
+              <br />
+              Think of it like this:
+              <br />
+              <br />
+              • 2 states → a point in the plane
+              <br />
+              • 3 states → a point in 3D space
+              <br />
+              • 100 states → a point in 100D space
+              <br />
+              <br />
+              Each coordinate corresponds to one state&apos;s value.
+              <br />
+              <br />
+              So when we write:
+              <br />
+              <br />
+              <InlineMath math="v_1, v_2, v_3, \\dots" />
+              <br />
+              <br />
+              we&apos;re not writing different formulas — we&apos;re watching a
+              single point move around in <em>value-function space</em>.
+              <br />
+              <br />
+              <strong>Step 2: Where do policies fit in?</strong>
+              <br />
+              <br />
+              Another subtle point:
+              <br />
+              <br />
+              If there are infinitely many policies, doesn&apos;t that mean
+              infinitely many value functions?
+              <br />
+              <br />
+              Yes — and that&apos;s completely fine.
+              <br />
+              <br />
+              Each policy <InlineMath math="\\pi" /> corresponds to exactly one
+              value function <InlineMath math="v_\\pi" />.
+              <br />
+              <br />
+              So the space we&apos;re working in contains:
+              <br />
+              <br />
+              • all <InlineMath math="v_\\pi" />
+              <br />
+              • plus <InlineMath math="v^*" />
+              <br />
+              • plus many other value functions that don&apos;t correspond to
+              any policy at all
+              <br />
+              <br />
+              That last part is important.
+              <br />
+              <br />
+              During value iteration, we happily pass through value functions
+              that don&apos;t correspond to any policy whatsoever — and
+              that&apos;s totally allowed.
+              <br />
+              <br />
+              We&apos;re not walking on a &quot;policy surface&quot;.
+              <br />
+              We&apos;re moving freely through value-function space.
+              <br />
+              <br />
+              <strong>Step 3: What could go wrong?</strong>
+              <br />
+              <br />
+              At this point, a very reasonable fear is:
+              <br />
+              <br />
+              <strong>
+                What if Bellman backups pull us toward the wrong place?
+              </strong>
+              <br />
+              <br />
+              In many optimization problems:
+              <br />
+              <br />
+              • different starting points → different answers
+              <br />
+              • updates get stuck in local maxima
+              <br />
+              • the landscape is messy
+              <br />
+              <br />
+              If Bellman backups behaved like that, then:
+              <br />
+              <br />
+              • value iteration might converge to the wrong value function
+              <br />• policy iteration might stall before reaching{" "}
+              <InlineMath math="\\pi^*" />
+              <br />
+              <br />
+              But here&apos;s the miracle:
+              <br />
+              <br />
+              <strong>Bellman backups don&apos;t have local optima.</strong>
+              <br />
+              <br />
+              They don&apos;t &quot;climb a hill&quot;.
+              <br />
+              They don&apos;t follow gradients.
+              <br />
+              They don&apos;t depend on initialization.
+              <br />
+              <br />
+              Instead, they do something much stronger:
+              <br />
+              <br />
+              <strong>
+                They pull all value functions closer together, no matter where
+                they start.
+              </strong>
+              <br />
+              <br />
+              Once we make that precise, convergence stops being mysterious and
+              starts being inevitable.
+            </div>
           </section>
         </main>
       </div>
