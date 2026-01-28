@@ -240,6 +240,14 @@ export default function ReinforcementLearningPage() {
                       Extensions to Dynamic Programming
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#dp-contraction-mapping"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Contraction Mapping
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -4549,6 +4557,13 @@ export default function ReinforcementLearningPage() {
               className="text-2xl font-bold mb-6 text-center"
             >
               Extensions to Dynamic Programming
+            </h2>
+
+            <h2
+              id="dp-contraction-mapping"
+              className="text-2xl font-bold mb-6 text-center"
+            >
+              Contraction Mappimg
             </h2>
           </section>
         </main>
