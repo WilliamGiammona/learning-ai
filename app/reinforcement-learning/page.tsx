@@ -5284,6 +5284,14 @@ v(A) &\leftarrow 0 + v(B) = 10
                   }
                 />
               </div>
+              <div className="text-sm text-gray-600 italic mb-4">
+                Quick notation note: <InlineMath math="|S|" /> just means "the
+                number of states in set <InlineMath math="S" />
+                ." If <InlineMath math="S = \{s_1, s_2, s_3\}" />, then{" "}
+                <InlineMath math="|S| = 3" />. Those vertical bars are the "how
+                many things are in this set" operator. Same deal with{" "}
+                <InlineMath math="|A|" /> (number of actions), etc.
+              </div>
               That&apos;s it.
               <br />
               <br />
@@ -5381,9 +5389,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               So across the full algorithm, we see many short sequences of{" "}
-              <InlineMath math="v_1, v_2, v_3" />, each one chasing a different{" "}
-              <InlineMath math="v_\pi" />, until the policy itself converges to{" "}
-              <InlineMath math="\pi^*" />.
+              <InlineMath math="v_1, v_2, v_3" />, each one converging to a
+              different <InlineMath math="v_\pi" />, until the policy itself
+              converges to <InlineMath math="\pi^*" />.
               <br />
               <br />
               <strong>Value iteration</strong>
