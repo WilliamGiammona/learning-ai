@@ -4571,14 +4571,15 @@ export default function ReinforcementLearningPage() {
               <strong>synchronous dynamic programming</strong>.
               <br />
               <br />
-              In synchronous DP, each iteration looks like this:
+              In synchronous dynamic programming, each iteration looks like
+              this:
               <br />
               <br />
               <em>
-                &quot;Pause the world. For <strong>every</strong> state{" "}
+                Pause the world. For <em>every</em> state{" "}
                 <InlineMath math="s \in S" />, compute a new value using the old
-                value function. Only when all states are updated do we move
-                on.&quot;
+                value function. Only when all states are updated do we unpause
+                the world and move on.
               </em>
               <br />
               <br />
@@ -4593,50 +4594,29 @@ export default function ReinforcementLearningPage() {
                   }
                 />
               </div>
-              We compute <InlineMath math="v_{\\text{new}}" /> for <em>all</em>{" "}
-              states, and only then replace{" "}
-              <InlineMath math="v_{\\text{old}}" />.
-              <br />
-              <br />
-              This is clean.
-              <br />
-              It&apos;s parallel.
-              <br />
-              It&apos;s easy to reason about.
-              <br />
-              <br />
-              But it&apos;s also a little… rigid.
+              We compute <InlineMath math="v_{\text{new}}" /> for <em>all</em>{" "}
+              states, and only then replace <InlineMath math="v_{\text{old}}" />
+              .
               <br />
               <br />
               In many problems, updating every state on every iteration is
-              unnecessary. Some states barely change. Others are far more
-              important. And sometimes we already have <em>fresh</em>{" "}
-              information that we could use immediately instead of waiting for
-              the next global sweep.
+              unnecessary. Some states barely change, some are far more
+              important than others, and sometimes we already have{" "}
+              <em>fresh</em> information that we could use immediately instead
+              of waiting for the next global sweep.
               <br />
               <br />
-              That motivates a different idea:
+              This leads us to <strong>Asynchronous dynamic programming</strong>
+              .
               <br />
               <br />
-              <strong>Asynchronous dynamic programming</strong>.
-              <br />
-              <br />
-              In asynchronous DP, we stop insisting that all states be updated
-              together. Instead:
-              <br />
-              <br />
-              • states are backed up one at a time • in any order • using the
-              most recently available values
-              <br />
-              <br />
-              As long as every state continues to get updated infinitely often,
+              In asynchronous dynamic programming, we stop insisting that all
+              states be updated together. Instead, states are backed up one at a
+              time in any order, using the most recently available values As
+              long as every state continues to get updated infinitely often,
               these methods are still guaranteed to converge to the correct
-              solution.
-              <br />
-              <br />
-              The difference isn&apos;t <em>what</em> update we apply, it&apos;s{" "}
-              <em>when</em>
-              and <em>where</em> we apply it.
+              solution. The difference isn&apos;t <em>what</em> update we apply,
+              it&apos;s <em>when</em> and <em>where</em> we apply it.
               <br />
               <br />
               Let&apos;s look at three simple but powerful ways to do this.
@@ -4646,12 +4626,9 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               The simplest change is to throw away the second copy of the value
-              function.
-              <br />
-              <br />
-              Instead of computing a whole new table and swapping it in at the
-              end, we update values <em>in place</em>, immediately overwriting
-              old ones:
+              function. Instead of computing a whole new table and swapping it
+              in at the end, we update values <em>in place</em>, immediately
+              overwriting old ones:
               <br />
               <br />
               <div className="text-center mb-4">
@@ -4670,6 +4647,42 @@ export default function ReinforcementLearningPage() {
               identical.
               <br />
               <br />
+              To see the difference, consider a tiny chain:
+              <br />
+              <br />
+              <div className="text-center mb-4 font-mono">
+                A &rarr; B &rarr; C
+              </div>
+              State <InlineMath math="C" /> is terminal, and rewards flow
+              backward.
+              <br />
+              <br />
+              In <em>synchronous</em> value iteration, we would compute:
+              <br />
+              <br />
+              <em>
+                &quot;Use the old values of <InlineMath math="A" />,
+                <InlineMath math="B" />, and <InlineMath math="C" /> to compute
+                all new values at once.&quot;
+              </em>
+              <br />
+              <br />
+              So even if <InlineMath math="B" /> just learned something useful,
+              <InlineMath math="A" /> has to wait until the next full sweep to
+              benefit.
+              <br />
+              <br />
+              With <em>in-place</em> updates, we do this instead:
+              <br />
+              <br />
+              • update <InlineMath math="B" /> using the current value of{" "}
+              <InlineMath math="C" />
+              <br />• immediately use that new value when updating{" "}
+              <InlineMath math="A" />
+              <br />
+              <br />
+              Information flows backward as soon as it&apos;s discovered, rather
+              than waiting in line for the next iteration.
               <strong>2) Prioritized Sweeping</strong>
               <br />
               <br />
