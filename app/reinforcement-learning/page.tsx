@@ -4160,8 +4160,8 @@ export default function ReinforcementLearningPage() {
               stones on the way to <InlineMath math="v^*" />.
               <br />
               <br />
-              Once the value function converges, we extract the optimal policy
-              in one final greedy step:
+              Once the value function converges to <InlineMath math="v^*" />, we
+              extract the optimal policy in one final greedy step:
               <br />
               <br />
               <div className="text-center mb-4">
