@@ -5571,7 +5571,7 @@ v(A) &\leftarrow 0 + v(B) = 10
                 <br />
                 <br />
                 This turns out to be exactly the behavior we want when analyzing
-                Bellman updates. because if Bellman backups reduce the{" "}
+                Bellman updates, because if Bellman backups reduce the{" "}
                 <em>worst</em> possible error every time…
                 <br />
                 <br />
@@ -5622,6 +5622,81 @@ v(A) &\leftarrow 0 + v(B) = 10
               Next up: we&apos;ll define what a contraction is, and then show
               that the Bellman operator is a contraction, meaning it can&apos;t
               help but march toward a single fixed point.
+            </div>
+
+            <div className="mb-4">
+              <strong>
+                Step 5: What does &quot;contraction&quot; actually mean?
+              </strong>
+              <br />
+              <br />
+              The word &quot;contraction&quot; sounds technical, but the idea
+              behind it is simple. A contraction is just a process that does one
+              very specific thing:
+              <br />
+              <br />
+              <em>
+                No matter where you start, it pulls things closer together every
+                time you apply it.
+              </em>
+              <br />
+              <br />
+              Imagine you have two points far apart in space. You apply some
+              operation to both of them. If, after applying the operation, the
+              distance between them is smaller than before, then something
+              interesting just happened. If this keeps happening every time you
+              apply the operation…
+              <br />
+              <br />
+              <em>the points don&apos;t get to choose where they end up.</em>
+              <br />
+              <br />
+              They are being herded closer and closer together.
+              <br />
+              <br />
+              Here&apos;s the key rule that makes an operation a contraction:
+              <br />
+              <br />
+              <em>
+                There exists a number less than 1 that limits how far apart
+                things can be after the update.
+              </em>
+              <br />
+              <br />
+              That number is usually called <InlineMath math="\gamma" />, and it
+              plays the role of a universal shrink-ray.
+              <br />
+              <br />
+              If two inputs start out 10 units apart, and after applying the
+              operation they are at most:
+              <br />
+              <br />
+              <InlineMath math="\gamma \times 10" />
+              <br />
+              <br />
+              units apart, then the operation is squeezing space.
+              <br />
+              <br />
+              Apply it again?
+              <br />
+              <br />
+              Now they&apos;re at most <InlineMath math="\gamma^2 \times 10" />{" "}
+              apart.
+              <br />
+              <br />
+              Apply it again?
+              <br />
+              <br />
+              <InlineMath math="\gamma^3 \times 10" />.
+              <br />
+              <br />
+              When distances keep shrinking like this, there is only one
+              possible place left to end up because everything gets dragged
+              toward a single point.
+              <br />
+              <br />
+              That point is called a <strong>fixed point</strong>, a place where
+              applying the operation doesn&apos;t move you anymore.
             </div>
           </section>
         </main>
