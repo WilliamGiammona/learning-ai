@@ -5831,6 +5831,303 @@ v(A) &\leftarrow 0 + v(B) = 10
               • If <InlineMath math="\gamma" /> is close to 1, errors shrink
               very slowly
             </div>
+            {/* =========================
+    ADD/REPLACE FROM HERE DOWN
+    (This inserts the missing “slide math” + Tim-Urban explanations)
+   ========================= */}
+
+            <div className="mb-4">
+              <strong>
+                Okay. Enough vibes. Show me the actual Bellman operator.
+              </strong>
+              <br />
+              <br />
+              Up to now, we&apos;ve been talking about &quot;Bellman
+              backups&quot; like they&apos;re a magical spell.
+              <br />
+              <br />
+              Let&apos;s write the spell down.
+              <br />
+              <br />
+              For a <em>fixed policy</em> <InlineMath math="\\pi" />, the
+              Bellman <em>expectation</em> backup is an operator
+              <InlineMath math="T^\\pi" /> that takes in a value function{" "}
+              <InlineMath math="v" /> and spits out a new one.
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={"T^\\pi(v) \\,=\\, R^\\pi \\, + \\, \\gamma P^\\pi v"}
+                />
+              </div>
+              This looks intimidating, but it&apos;s basically:{" "}
+              <em>
+                &quot;reward now + discounted value of what comes next.&quot;
+              </em>
+              <br />
+              <br />
+              Here&apos;s what the pieces mean (still in plain English):
+              <br />
+              <br />
+              • <InlineMath math="R^\\pi" /> is the vector of expected immediate
+              rewards under policy <InlineMath math="\\pi" />
+              <br />
+              • <InlineMath math="P^\\pi" /> is the transition matrix under
+              policy <InlineMath math="\\pi" /> (it encodes how likely you are
+              to go to each next state)
+              <br />
+              • <InlineMath math="P^\\pi v" /> is just: &quot;take the
+              expectation of the next state&apos;s value&quot;
+              <br />
+              • <InlineMath math="\\gamma" /> is the discount factor that
+              shrinks the future
+              <br />
+              <br />
+              Now we can finally prove the sentence we&apos;ve been repeating:
+              <br />
+              <br />
+              <em>
+                &quot;Bellman backups pull value functions closer
+                together.&quot;
+              </em>
+            </div>
+
+            <div className="mb-4">
+              <strong>Bellman expectation backup is a contraction</strong>
+              <br />
+              <br />
+              Take two value functions, <InlineMath math="u" /> and{" "}
+              <InlineMath math="v" />. Apply the Bellman expectation operator to
+              both. Then measure how far apart they are using the infinity norm.
+              <br />
+              <br />
+              Here is the whole contraction proof (this is basically the slide,
+              but with commentary):
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\begin{aligned}\n" +
+                    "\\lVert T^\\pi(u) - T^\\pi(v) \\rVert_\\infty\n" +
+                    "&= \\left\\lVert \\big(R^\\pi + \\gamma P^\\pi u\\big) - \\big(R^\\pi + \\gamma P^\\pi v\\big) \\right\\rVert_\\infty \\\\\n" +
+                    "&= \\left\\lVert \\gamma P^\\pi (u - v) \\right\\rVert_\\infty \\\\\n" +
+                    "&\\le \\gamma \\; \\lVert u - v \\rVert_\\infty\n" +
+                    "\\end{aligned}"
+                  }
+                />
+              </div>
+              <strong>What just happened in each line?</strong>
+              <br />
+              <br />
+              <em>Line 1 → Line 2:</em> the <InlineMath math="R^\\pi" /> terms
+              cancel.
+              <br />
+              Because rewards don&apos;t depend on your guess{" "}
+              <InlineMath math="u" /> vs <InlineMath math="v" />.
+              <br />
+              The only disagreement lives in the future-value part.
+              <br />
+              <br />
+              <em>Line 2 → Line 3:</em> factor out <InlineMath math="\\gamma" />{" "}
+              and group <InlineMath math="u-v" />. This is just algebra.
+              <br />
+              <br />
+              <em>The inequality:</em> this is the only &quot;real&quot; idea:
+              <br />
+              <br />
+              <strong>
+                Multiplying by <InlineMath math="P^\\pi" /> cannot increase your
+                worst-case error.
+              </strong>
+              <br />
+              <br />
+              Why? Because each component of <InlineMath math="P^\\pi (u-v)" />{" "}
+              is a weighted average of the components of{" "}
+              <InlineMath math="u-v" />, and a weighted average can&apos;t
+              exceed the biggest value it&apos;s averaging.
+              <br />
+              <br />
+              So the transition step can&apos;t amplify the maximum mistake — it
+              can only smear it around.
+              <br />
+              <br />
+              Then <InlineMath math="\\gamma" /> multiplies whatever remains by
+              something less than 1.
+              <br />
+              <br />
+              <strong>
+                Result: <InlineMath math="T^\\pi" /> is a{" "}
+                <InlineMath math="\\gamma" />
+                -contraction in the infinity norm.
+              </strong>
+            </div>
+
+            <div className="mb-4">
+              <strong>Now we unleash the Contraction Mapping Theorem</strong>
+              <br />
+              <br />
+              This is the big theorem the slides are pointing at. It says:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\textbf{Contraction Mapping Theorem:}\\;\\;\\text{If }T\\text{ is a }\\gamma\\text{-contraction on a complete metric space, then:}"
+                  }
+                />
+              </div>
+              • <InlineMath math="T" /> has a <strong>unique</strong> fixed
+              point
+              <br />
+              • repeated application <InlineMath math="v_{k+1} = T(v_k)" />{" "}
+              converges to that fixed point
+              <br />• and it converges at a <strong>linear rate</strong>{" "}
+              controlled by <InlineMath math="\\gamma" />
+              <br />
+              <br />
+              In other words:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\lVert v_k - v_* \\rVert_\\infty \\;\\le\\; \\gamma^k \\lVert v_0 - v_* \\rVert_\\infty"
+                  }
+                />
+              </div>
+              That inequality is basically a receipt. It tells you exactly how
+              fast the worst-case error is shrinking.
+            </div>
+
+            <div className="mb-4">
+              <strong>
+                Convergence of iterative policy evaluation and policy iteration
+              </strong>
+              <br />
+              <br />
+              Now the slide bullets become inevitable.
+              <br />
+              <br />
+              The Bellman expectation operator <InlineMath math="T^\\pi" /> has
+              a unique fixed point. And that fixed point is exactly{" "}
+              <InlineMath math="v_\\pi" /> (because <InlineMath math="v_\\pi" />{" "}
+              satisfies the Bellman expectation equation).
+              <br />
+              <br />
+              So if we run iterative policy evaluation:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{k+1} \\,=\\, T^\\pi(v_k)"} />
+              </div>
+              then by the contraction mapping theorem, the sequence converges to{" "}
+              <InlineMath math="v_\\pi" />.
+              <br />
+              <br />
+              That covers policy evaluation.
+              <br />
+              <br />
+              Policy iteration then piggybacks on this:
+              <br />
+              <br />
+              • evaluation gives you the true <InlineMath math="v_{\\pi}" /> (or
+              an increasingly accurate approximation)
+              <br />
+              • improvement makes the policy strictly better unless it&apos;s
+              already optimal
+              <br />
+              • there are only finitely many policies in a finite MDP
+              <br />
+              <br />
+              So policy iteration can&apos;t improve forever. It must eventually
+              land on <InlineMath math="\\pi^*" />, and therefore on{" "}
+              <InlineMath math="v^*" />.
+            </div>
+
+            <div className="mb-4">
+              <strong>Bellman optimality backup is also a contraction</strong>
+              <br />
+              <br />
+              Value iteration uses a different operator: the Bellman{" "}
+              <em>optimality</em> backup.
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "T^*(v) \\,=\\, \\max_{a \\in A}\\;\\Big(R^a + \\gamma P^a v\\Big)"
+                  }
+                />
+              </div>
+              This says: instead of following a fixed policy, look at every
+              action and take the best one.
+              <br />
+              <br />
+              And yes — even with that scary <InlineMath math="\\max" /> —
+              it&apos;s still a contraction in the infinity norm.
+              <br />
+              <br />
+              The punchline inequality (matching the slide) is:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\lVert T^*(u) - T^*(v) \\rVert_\\infty \\;\\le\\; \\gamma\\,\\lVert u - v \\rVert_\\infty"
+                  }
+                />
+              </div>
+              Intuition (no drama):
+              <br />
+              <br />
+              • each action-specific backup{" "}
+              <InlineMath math="R^a + \\gamma P^a v" /> is a contraction for the
+              same reason as before
+              <br />
+              • taking a max over actions cannot make the worst-case difference
+              bigger than the worst-case difference among the candidates
+              <br />
+              • then <InlineMath math="\\gamma" /> shrinks it
+            </div>
+
+            <div className="mb-4">
+              <strong>Convergence of value iteration</strong>
+              <br />
+              <br />
+              Since <InlineMath math="T^*" /> is a contraction, it has a unique
+              fixed point.
+              <br />
+              <br />
+              That fixed point is <InlineMath math="v^*" /> (because{" "}
+              <InlineMath math="v^*" /> satisfies the Bellman optimality
+              equation).
+              <br />
+              <br />
+              Therefore value iteration:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath math={"v_{k+1} \\,=\\, T^*(v_k)"} />
+              </div>
+              converges to <InlineMath math="v^*" />.
+              <br />
+              <br />
+              And the speed is controlled by <InlineMath math="\\gamma" /> in
+              the same way:
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "\\lVert v_k - v^* \\rVert_\\infty \\;\\le\\; \\gamma^k\\,\\lVert v_0 - v^* \\rVert_\\infty"
+                  }
+                />
+              </div>
+              So if <InlineMath math="\\gamma" /> is close to 1, you get slow,
+              stubborn convergence. If <InlineMath math="\\gamma" /> is smaller,
+              convergence is much faster.
+            </div>
           </section>
         </main>
       </div>
