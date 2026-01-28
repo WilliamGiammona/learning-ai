@@ -5383,23 +5383,15 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • value iteration might converge to the wrong value function
               <br />• policy iteration might stall before reaching{" "}
-              <InlineMath math="\\pi^*" />
+              <InlineMath math="\pi^*" />
               <br />
               <br />
-              But here&apos;s the miracle:
+              Fortunately for us,{" "}
+              <em>Bellman backups don&apos;t have local optima.</em>
               <br />
               <br />
-              <strong>Bellman backups don&apos;t have local optima.</strong>
-              <br />
-              <br />
-              They don&apos;t &quot;climb a hill&quot;.
-              <br />
-              They don&apos;t follow gradients.
-              <br />
-              They don&apos;t depend on initialization.
-              <br />
-              <br />
-              Instead, they do something much stronger:
+              They don&apos;t &quot;climb a hill&quot;, follow gradients, depend
+              on initialization, etc. Instead, they do something much stronger:
               <br />
               <br />
               <strong>
@@ -5408,8 +5400,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               </strong>
               <br />
               <br />
-              Once we make that precise, convergence stops being mysterious and
-              starts being inevitable.
+              Let&apos;s explain that in a very precise way.
             </div>
           </section>
         </main>
