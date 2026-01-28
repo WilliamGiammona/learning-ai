@@ -5206,7 +5206,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • drift around aimlessly
               <br />
-              • or converge to the wrong answer, like a local maximum instead of
+              • converge to the wrong answer, like a local maximum instead of
               the true optimal value
               <br />
               <br />
@@ -5244,9 +5244,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               <strong>Step 1: What is a value function, really?</strong>
               <br />
               <br />
-              Instead of thinking of a value function as a formula, let’s think
-              of it as a point. At first glance, calling a value function a{" "}
-              <em>point</em> sounds suspicious.
+              Instead of thinking of a value function as a formula, let&apos;s
+              think of it as a point. At first glance, calling a value function
+              a <em>point</em> sounds suspicious.
               <br />
               <br />
               After all:
@@ -5273,31 +5273,31 @@ v(A) &\leftarrow 0 + v(B) = 10
               </strong>
               <br />
               <br />
-              If your MDP has <InlineMath math="S" /> states, then a value
+              If your MDP has <InlineMath math="|S|" /> states, then a value
               function is literally:
               <br />
               <br />
               <div className="text-center mb-4">
                 <BlockMath
                   math={
-                    "v = \\big(v(s_1),\\, v(s_2),\\, \\dots,\\, v(s_{S})\\big)"
+                    "v = \\big(v(s_1),\\, v(s_2),\\, \\dots,\\, v(s_{|S|})\\big)"
                   }
                 />
               </div>
               That&apos;s it.
               <br />
               <br />
-              Yes, each entry is a real number.
+              • Each entry is a real number.
               <br />
-              Yes, there are infinitely many possible value functions.
+              • There are infinitely many possible value functions.
               <br />
               <br />
               But mathematically, that just means:
               <br />
               <br />
               <strong>
-                Each value function is a single point in a{" "}
-                <InlineMath math="S" />
+                Each value function is a single point in an{" "}
+                <InlineMath math="|S|" />
                 -dimensional space.
               </strong>
               <br />
@@ -5318,50 +5318,93 @@ v(A) &\leftarrow 0 + v(B) = 10
               So when we write:
               <br />
               <br />
-              <InlineMath math="v_1, v_2, v_3, \dots" />
+              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots \to v_\pi" />
               <br />
               <br />
-              we&apos;re not writing different formulas, we&apos;re watching a
-              single point move around in <em>value-function space</em>.
+              We&apos;re describing a <strong>sequence of points</strong> in
+              value-function space.
               <br />
               <br />
-              <strong>Step 2: Where do policies fit in?</strong>
+              Each Bellman update produces a <em>new</em> value function, which
+              corresponds to a <em>different point</em> in this space.
               <br />
               <br />
-              Another subtle point:
+              The sequence
               <br />
               <br />
-              If there are infinitely many policies, doesn&apos;t that mean
-              infinitely many value functions?
+              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots" />
               <br />
               <br />
-              Yes, and that&apos;s completely fine.
+              is just a list of successive value functions, each one replacing
+              the last.
               <br />
               <br />
-              Each policy <InlineMath math="\pi" /> induces exactly one value
-              function <InlineMath math="v_\pi" /> (but multiple policies can
-              sometimes share the same <InlineMath math="v_\pi" />
-              ).
+              <strong>
+                Step 2: What do these sequences mean in our algorithms?
+              </strong>
               <br />
               <br />
-              So the space we&apos;re working in contains:
+              This is crucial.
               <br />
               <br />
-              • all <InlineMath math="v_\pi" />
-              &apos;s (including <InlineMath math="v^*" />)
-              <br />
-              • plus many other value functions that don&apos;t correspond to
-              any policy at all
+              The symbols <InlineMath math="v_1, v_2, v_3" /> mean slightly
+              different things depending on the algorithm:
               <br />
               <br />
-              That last part is important.
+              <strong>Policy evaluation</strong>
               <br />
               <br />
-              During value iteration, we happily pass through value functions
-              that don&apos;t correspond to any policy whatsoever, and
-              that&apos;s completely allowed. We&apos;re not walking on a
-              &quot;policy surface&quot; inside value-function space, we&apos;re
-              moving freely through value-function space itself.
+              Here, the policy <InlineMath math="\pi" /> is fixed.
+              <br />
+              <br />
+              The sequence
+              <br />
+              <br />
+              <InlineMath math="v_1 \;\to\; v_2 \;\to\; \dots \;\to\; v_\pi" />
+              <br />
+              <br />
+              is a sequence of better and better <em>approximations</em> to the
+              true value function of that same policy. The target never changes,
+              only our estimate improves.
+              <br />
+              <br />
+              <strong>Policy iteration</strong>
+              <br />
+              <br />
+              Policy evaluation still produces sequences like the one above, but
+              only temporarily.
+              <br />
+              <br />
+              We evaluate a policy for a while, then we{" "}
+              <em>change the policy</em>, which changes the target value
+              function.
+              <br />
+              <br />
+              So across the full algorithm, we see many short sequences of{" "}
+              <InlineMath math="v_1, v_2, v_3" />, each one chasing a different{" "}
+              <InlineMath math="v_\pi" />, until the policy itself converges to{" "}
+              <InlineMath math="\pi^*" />.
+              <br />
+              <br />
+              <strong>Value iteration</strong>
+              <br />
+              <br />
+              Here, there is no fixed policy at all.
+              <br />
+              <br />
+              Each update applies the Bellman <em>optimality</em> operator
+              directly, so the sequence
+              <br />
+              <br />
+              <InlineMath math="v_1 \;\to\; v_2 \;\to\; v_3 \;\to\; \dots" />
+              <br />
+              <br />
+              is a single sequence of points converging straight toward{" "}
+              <InlineMath math="v^*" />.
+              <br />
+              <br />
+              No policy is being evaluated in the background, the value function
+              itself is being pulled toward the optimal one.
               <br />
               <br />
               <strong>Step 3: What could go wrong?</strong>
@@ -5397,18 +5440,13 @@ v(A) &\leftarrow 0 + v(B) = 10
               <em>Bellman backups don&apos;t have local optima.</em>
               <br />
               <br />
-              They don&apos;t &quot;climb a hill&quot;, follow gradients, depend
-              on your initial values, etc. Instead, they do something much
-              stronger:
-              <br />
-              <br />
               <strong>
                 They pull all value functions closer together, no matter where
                 they start.
               </strong>
               <br />
               <br />
-              Let&apos;s explain that in a very precise way.
+              Let&apos;s now make that statement precise.
             </div>
           </section>
         </main>
