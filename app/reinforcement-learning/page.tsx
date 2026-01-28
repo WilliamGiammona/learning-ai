@@ -4647,43 +4647,133 @@ export default function ReinforcementLearningPage() {
               identical.
               <br />
               <br />
-              To see the difference, consider a tiny chain:
+              Let&apos;s see this happen in detail on a slightly richer MDP.
+              <br />
+              <br />
+              Consider the following deterministic environment:
               <br />
               <br />
               <div className="text-center mb-4 font-mono">
-                A &rarr; B &rarr; C
+                A &rarr; B &rarr; C &rarr; D
               </div>
-              State <InlineMath math="C" /> is terminal, and rewards flow
-              backward.
+              State <InlineMath math="D" /> is terminal.
               <br />
               <br />
-              In <em>synchronous</em> value iteration, we would compute:
+              Rewards:
               <br />
               <br />
-              <em>
-                &quot;Use the old values of <InlineMath math="A" />,
-                <InlineMath math="B" />, and <InlineMath math="C" /> to compute
-                all new values at once.&quot;
-              </em>
+              • <InlineMath math="A \to B" /> gives reward{" "}
+              <InlineMath math="0" />
+              <br />
+              • <InlineMath math="B \to C" /> gives reward{" "}
+              <InlineMath math="0" />
+              <br />
+              • <InlineMath math="C \to D" /> gives reward{" "}
+              <InlineMath math="10" />
               <br />
               <br />
-              So even if <InlineMath math="B" /> just learned something useful,
-              <InlineMath math="A" /> has to wait until the next full sweep to
-              benefit.
+              We&apos;ll use <InlineMath math="\gamma = 1" /> to keep things
+              clean.
               <br />
               <br />
-              With <em>in-place</em> updates, we do this instead:
+              We start with all values initialized to zero:
               <br />
               <br />
-              • update <InlineMath math="B" /> using the current value of{" "}
-              <InlineMath math="C" />
-              <br />• immediately use that new value when updating{" "}
-              <InlineMath math="A" />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={
+                    "v_0(A) = 0, \\quad v_0(B) = 0, \\quad v_0(C) = 0, \\quad v_0(D) = 0"
+                  }
+                />
+              </div>
+              <strong>Synchronous value iteration</strong>
               <br />
               <br />
-              Information flows backward as soon as it&apos;s discovered, rather
-              than waiting in line for the next iteration.
-              <strong>2) Prioritized Sweeping</strong>
+              In synchronous updates, every state uses the <em>old</em> value
+              function.
+              <br />
+              <br />
+              <em>Iteration 1:</em>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\begin{aligned}
+v_1(C) &= 10 + v_0(D) = 10 \\
+v_1(B) &= 0 + v_0(C) = 0 \\
+v_1(A) &= 0 + v_0(B) = 0
+\end{aligned}`}
+                />
+              </div>
+              The reward reaches <InlineMath math="C" />, but stops there.
+              <br />
+              <br />
+              <em>Iteration 2:</em>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\begin{aligned}
+v_2(C) &= 10 \\
+v_2(B) &= 0 + v_1(C) = 10 \\
+v_2(A) &= 0 + v_1(B) = 0
+\end{aligned}`}
+                />
+              </div>
+              Now the reward reaches <InlineMath math="B" />.
+              <br />
+              <br />
+              <em>Iteration 3:</em>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\begin{aligned}
+v_3(C) &= 10 \\
+v_3(B) &= 10 \\
+v_3(A) &= 0 + v_2(B) = 10
+\end{aligned}`}
+                />
+              </div>
+              It takes <em>three full sweeps</em> for the reward to reach{" "}
+              <InlineMath math="A" />.
+              <br />
+              <br />
+              <strong>In-place value iteration</strong>
+              <br />
+              <br />
+              Now we update states one by one, immediately overwriting old
+              values.
+              <br />
+              <br />
+              Suppose we sweep in the order <InlineMath math="C \to B \to A" />.
+              <br />
+              <br />
+              <em>Single sweep:</em>
+              <br />
+              <br />
+              <div className="text-center mb-4">
+                <BlockMath
+                  math={String.raw`\begin{aligned}
+v(C) &\leftarrow 10 + v(D) = 10 \\
+v(B) &\leftarrow 0 + v(C) = 10 \\
+v(A) &\leftarrow 0 + v(B) = 10
+\end{aligned}`}
+                />
+              </div>
+              In one pass, the reward propagates all the way back to{" "}
+              <InlineMath math="A" />, because we can use C&apos;s updated value
+              on the first sweep to update B, and B&apos;s updated value on the
+              first sweep to update A.
+              <br />
+              <br />
+              The only difference is <em>when</em> updated values are allowed to
+              influence other states.
+              <strong>
+                <br />
+                <br />
+                2) Prioritized Sweeping
+              </strong>
               <br />
               <br />
               Not all states deserve equal attention.
