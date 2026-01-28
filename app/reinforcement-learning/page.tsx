@@ -4081,7 +4081,7 @@ export default function ReinforcementLearningPage() {
               <br />
               <br />
               If we knew <InlineMath math="v^*" />, then extracting the optimal
-              policy would be easy , we&apos;d just act greedily with respect to
+              policy would be easy, we&apos;d just act greedily with respect to
               it.
               <br />
               <br />
