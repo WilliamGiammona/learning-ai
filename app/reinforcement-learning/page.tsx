@@ -5183,17 +5183,20 @@ v(A) &\leftarrow 0 + v(B) = 10
               quietly ignoring:
               <br />
               <br />
-              <strong>Why does any of this actually work?</strong>
+              <em>Why does any of this actually work?</em>
               <br />
               <br />
-              So far, we&apos;ve been happily applying Bellman backups over and
-              over, trusting that:
+              So far, we&apos;ve been applying Bellman backups over and over,
+              trusting that:
               <br />
-              <br />
-              • value iteration converges to <InlineMath math="v^*" />
               <br />• iterative policy evaluation converges to{" "}
               <InlineMath math="v_\pi" />
-              <br />• policy iteration converges to <InlineMath math="\pi^*" />
+              <br />
+              • value iteration converges to <InlineMath math="v^*" /> (and{" "}
+              <InlineMath math="\pi^*" />)
+              <br />
+              • policy iteration converges to <InlineMath math="v^*" /> (and{" "}
+              <InlineMath math="\pi^*" />)
               <br />
               <br />
               But… why?
@@ -6083,8 +6086,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               </div>
               Intuition (no drama):
               <br />
-              <br />
-              • each action-specific backup{" "}
+              <br />• each action-specific backup{" "}
               <InlineMath math="R^a + \\gamma P^a v" /> is a contraction for the
               same reason as before
               <br />
