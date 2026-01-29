@@ -5436,12 +5436,9 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               Fortunately for us,{" "}
-              <em>Bellman backups don&apos;t have local optima.</em>
-              <br />
-              <br />
               <em>
-                They pull all value functions closer together, no matter where
-                they start.
+                Bellman backups don&apos;t have local optima, they pull all
+                value functions closer together, no matter where they start.
               </em>
             </div>
 
@@ -5454,7 +5451,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               Saying &quot;Bellman backups pull value functions closer
               together&quot; sounds nice, but it&apos;s also not very precise.
-              To increase its precision, we need one more ingredient:
+              To fully understand what this means, we need one more ingredient:
               <br />
               <br />
               <em>A way to measure how far apart two value functions are.</em>
