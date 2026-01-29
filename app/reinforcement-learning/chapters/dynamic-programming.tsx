@@ -2406,6 +2406,563 @@ export default function DynamicProgramming() {
         applies here, we need to slow way down and carefully build the machinery
         it relies on.
       </div>
+
+      <div className="mb-4">
+        <strong>
+          Step 2: The value function space (aka where all the action happens)
+        </strong>
+        <br />
+        <br />
+        In this part we are going to introduce complicated mathematical jargon
+        like <em>metric spaces</em>.
+        <br />
+        <br />
+        But before we do that, we need to slow way down and talk about something
+        much simpler.
+        <br />
+        <br />
+        <strong>Points.</strong>
+        <br />
+        <br />
+        A point is just a place in space.
+        <br />
+        <br />
+        And a place in space can be described using a list of numbers.
+        <br />
+        <br />
+        For example, in a 2D x–y plane, a point is written as:
+        <br />
+        <br />
+        <InlineMath math="(x, y)" />
+        <br />
+        <br />
+        If I say the point is at:
+        <br />
+        <br />
+        <InlineMath math="(2, 5)" />
+        <br />
+        <br />
+        that means:
+        <br />
+        <br />
+        • go 2 units to the right
+        <br />
+        • go 5 units up
+        <br />
+        <br />
+        That list of numbers tells you exactly where you are.
+        <br />
+        <br />
+        So in 2D space, a list of two numbers specifies a point.
+        <br />
+        <br />
+        In 3D space, you&apos;d need three numbers.
+        <br />
+        <br />
+        In general, a list of numbers specifies a location in N-dimensional
+        space.
+        <br />
+        <br />
+        Now that we&apos;re comfortable with points, we&apos;re ready for a
+        slightly more abstract, but still very simple idea.
+        <br />
+        <br />
+        <strong>Vectors.</strong>
+        <br />
+        <br />
+        Just like points, a vector can also be written as a list of numbers.
+        <br />
+        <br />
+        For example:
+        <br />
+        <br />
+        <InlineMath math="(2, 5)" />
+        <br />
+        <br />
+        or
+        <br />
+        <br />
+        <InlineMath math="(10, -3, 7)" />
+        <br />
+        <br />
+        But here&apos;s the key difference:
+        <br />
+        <br />
+        A vector is not a place.
+        <br />
+        <br />A vector describes a <em>movement</em>.
+        <br />
+        <br />
+        In the same 2D x–y plane, the vector:
+        <br />
+        <br />
+        <InlineMath math="(2, 5)" />
+        <br />
+        <br />
+        means:
+        <br />
+        <br />
+        • move 2 units to the right
+        <br />
+        • move 5 units up
+        <br />
+        <br />
+        So while points and vectors are both written as lists of numbers, they
+        answer different questions:
+        <br />
+        <br />• a point tells you <em>where you are</em>
+        <br />• a vector tells you <em>how to move</em>
+        <br />
+        <br />
+        Now we&apos;re ready for something a bit more abstract.
+        <br />
+        <br />
+        Not as simple as points.
+        <br />
+        Not as concrete as individual vectors.
+        <br />
+        <br />
+        But still very manageable.
+        <br />
+        <br />
+        <strong>Vector spaces.</strong>
+        <br />
+        <br />
+        A vector space is not a new kind of object.
+        <br />
+        <br />
+        It&apos;s a <em>collection</em> of vectors, together with a set of rules
+        about how those vectors are allowed to behave.
+        <br />
+        <br />
+        If a bunch of vectors obey these rules, then congratulations —
+        you&apos;re officially in a vector space.
+        <br />
+        <br />
+        Let&apos;s go through the rules.
+        <br />
+        <br />
+        <strong>Rule 1: Vector addition is associative</strong>
+        <br />
+        <br />
+        This rule says that when you add several vectors together, the grouping
+        doesn&apos;t matter.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        It doesn&apos;t matter which pairs you add first — you end up in the
+        same place.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="u + (v + w) = (u + v) + w" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        <InlineMath math="(1, 0) + ((2, 3) + (4, 5)) = ((1, 0) + (2, 3)) + (4, 5)" />
+        <br />
+        <br />
+        Different parentheses.
+        <br />
+        Same final movement.
+        <br />
+        <br />
+        <strong>Rule 2: Vector addition is commutative</strong>
+        <br />
+        <br />
+        This one says that order doesn&apos;t matter when adding vectors.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        Doing movement A then movement B is the same as doing B then A.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="u + v = v + u" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        <InlineMath math="(2, 5) + (-1, 3) = (-1, 3) + (2, 5)" />
+        <br />
+        <br />
+        Different order.
+        <br />
+        Same net result.
+        <br />
+        <br />
+        <strong>Rule 3: There is a zero vector</strong>
+        <br />
+        <br />
+        Every vector space has a special vector that does absolutely nothing.
+        <br />
+        <br />
+        This is the zero vector.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        It&apos;s the &quot;don&apos;t move&quot; movement.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="v + 0 = v" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        <InlineMath math="(2, 5) + (0, 0) = (2, 5)" />
+        <br />
+        <br />
+        Add nothing.
+        <br />
+        Nothing changes.
+        <br />
+        <br />
+        <strong>Rule 4: Every vector has an inverse</strong>
+        <br />
+        <br />
+        For every movement, there must be a way to undo it.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        Every vector has an opposite movement that brings you back.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="v + (-v) = 0" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        <InlineMath math="(2, 5) + (-2, -5) = (0, 0)" />
+        <br />
+        <br />
+        Move forward.
+        <br />
+        Undo the move.
+        <br />
+        Back where you started.
+        <br />
+        <br />
+        <strong>Rule 5: Vectors can be scaled</strong>
+        <br />
+        <br />
+        Vector spaces don&apos;t just let you add movements — they also let you
+        stretch or flip them.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        You can do the same movement multiple times, partially, or in reverse.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="a \cdot v \in V" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        <InlineMath math="2 \cdot (2, 5) = (4, 10)" />
+        <br />
+        <br />
+        <InlineMath math="-1 \cdot (2, 5) = (-2, -5)" />
+        <br />
+        <br />
+        Same movement idea.
+        <br />
+        Different amount or direction.
+        <br />
+        <br />
+        <strong>Rule 6: Scaling behaves nicely with addition</strong>
+        <br />
+        <br />
+        This rule says that scaling and adding vectors don&apos;t fight each
+        other.
+        <br />
+        <br />
+        In human terms:
+        <br />
+        <br />
+        Whether you scale first or add first, everything stays consistent.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="a(u + v) = au + av" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        Scaling the combined movement gives the same result as scaling each
+        movement separately.
+        <br />
+        <br />
+        <strong>Putting it all together</strong>
+        <br />
+        <br />
+        If a collection of vectors:
+        <br />
+        <br />
+        • can be added
+        <br />
+        • can be scaled
+        <br />
+        • has a zero vector
+        <br />
+        • has inverses
+        <br />
+        • and all these operations behave nicely
+        <br />
+        <br />
+        then you&apos;re working inside a vector space.
+        <br />
+        <br />
+        And once you&apos;re inside a vector space, you can start talking about
+        structure, geometry, and — eventually — distance. Now here&apos;s why
+        this matters for reinforcement learning.
+        <br />
+        <br />
+        A value function is also just a list of numbers.
+        <br />
+        <br />
+        One number per state.
+        <br />
+        <br />
+        So if your MDP has states <InlineMath math="s_1, s_2, \dots, s_{|S|}" />
+        , then the value function can be written as:
+        <br />
+        <br />
+        <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
+        <br />
+        <span className="text-sm text-blue-400">
+          (Tiny note: <InlineMath math="|S|" /> means the total number of states
+          in the MDP.)
+        </span>
+        <br />
+        <br />
+        This means a value function is naturally a <em>vector</em>.
+        <br />
+        <br />
+        And once we see value functions as vectors, we can also think of them as
+        <em>points</em> in a very high-dimensional space.
+        <br />
+        <br />
+        Each value function is one point.
+        <br />
+        <br />
+        Different value functions are different points.
+        <br />
+        <br />
+        And Bellman updates move us from one point to another.
+        <br />
+        <br />
+        <strong>Vectors are also lists of numbers.</strong>
+        <br />
+        <br />
+        For example:
+        <br />
+        <br />
+        <InlineMath math="(2, 5)" />
+        <br />
+        <br />
+        But conceptually, a vector is not a location.
+        <br />
+        <br />A vector is a <em>movement</em>.
+        <br />
+        <br />
+        It tells you how to move:
+        <br />
+        <br />
+        • move 2 units to the right
+        <br />
+        • move 5 units up
+        <br />
+        <br />
+        So even though points and vectors can be written using the same numbers,
+        they are answering different questions:
+        <br />
+        <br />• a point says <em>where you are</em>
+        <br />• a vector says <em>how to move</em>
+        <br />
+        <br />
+        Now let&apos;s bring this back to reinforcement learning.
+        <br />
+        <br />
+        A value function is also just a list of numbers.
+        <br />
+        <br />
+        One number per state.
+        <br />
+        <br />
+        So if your MDP has states <InlineMath math="s_1, s_2, \dots, s_{|S|}" />
+        , then the value function can be written as:
+        <br />
+        <br />
+        <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
+        <br />
+        <span className="text-sm text-blue-400">
+          (Tiny note: <InlineMath math="|S|" /> means the total number of states
+          in the MDP.)
+        </span>
+        <br />
+        <br />
+        This means a value function is naturally a <em>vector</em>.
+        <br />
+        <br />
+        And once we see value functions as vectors, we can also think of them as
+        <em>points</em> in a high-dimensional space.
+        <br />
+        <br />
+        Each value function is one point.
+        <br />
+        <br />
+        Different value functions are different points.
+        <br />
+        <br />
+        And Bellman updates move us from one point to another. This is why
+        people say things like:
+        <br />
+        <br />
+        &quot;Consider the space of value functions.&quot;
+        <br />
+        <br />
+        Because once you see <InlineMath math="v" /> as a vector, you can
+        imagine each value function as a <em>point</em> sitting somewhere in a
+        big space.
+        <br />
+        <br />
+        And the list of numbers tells you where that point is.
+        <br />
+        <br />
+        <strong>Quick analogy: 2D space</strong>
+        <br />
+        <br />
+        In 2D, a location is described by an <InlineMath math="(x, y)" /> pair.
+        <br />
+        <br />
+        For example, the point at <InlineMath math="(2, 5)" /> means:
+        <br />
+        <br />
+        • go 2 units in the x direction
+        <br />
+        • go 5 units in the y direction
+        <br />
+        <br />
+        That ordered pair <InlineMath math="(2, 5)" /> is a list of numbers…
+        <br />
+        <br />
+        …and that list uniquely specifies a point in the plane.
+        <br />
+        <br />
+        Now just do the exact same mental move, but with{" "}
+        <InlineMath math="|S|" /> numbers instead of 2.
+        <br />
+        <br />A value function is a point in a <InlineMath math="|S|" />
+        -dimensional space.
+        <br />
+        <br />
+        <span className="text-sm text-gray-400">
+          (Tiny note: <InlineMath math="|S|" /> means the number of states in
+          the MDP. So &quot;|S|-dimensional&quot; literally means &quot;one
+          coordinate per state&quot;.)
+        </span>
+        <br />
+        <br />
+        That whole space is what we call <InlineMath math="\\mathcal{V}" />:
+        <br />
+        <br />
+        the set of all possible value functions.
+        <br />
+        <br />
+        Every point in <InlineMath math="\\mathcal{V}" /> is one complete
+        assignment of values to states.
+        <br />
+        <br />
+        <strong>Ok but are vectors and points actually the same thing?</strong>
+        <br />
+        <br />
+        Subtle answer: <em>they can look identical in coordinates</em>, but they
+        are conceptually different objects.
+        <br />
+        <br />• A <em>point</em> is a location (a place).
+        <br />• A <em>vector</em> is a displacement (an arrow you can add to a
+        point to move it).
+        <br />
+        <br />
+        In proper math language, points live in an <em>affine space</em>, while
+        vectors live in a <em>vector space</em>.
+        <br />
+        <br />
+        The key relationship is:
+        <br />
+        <br />
+        • you can subtract two points to get a vector (a displacement)
+        <br />• and you can add a vector to a point to get another point
+        <br />
+        <br />
+        But in everyday ML / RL writing, we usually pick an origin and then
+        conveniently identify points with their coordinate vectors.
+        <br />
+        <br />
+        So you&apos;ll see people casually treat a value function as both:
+        <br />
+        <br />• a point in space (a location in{" "}
+        <InlineMath math="\\mathcal{V}" />)
+        <br />• and a vector of coordinates{" "}
+        <InlineMath math="(v(s_1), \\dots, v(s_{|S|}))" />
+        <br />
+        <br />
+        It&apos;s the same numbers either way.
+        <br />
+        <br />
+        The difference is what story you&apos;re telling about them.
+        <br />
+        <br />
+        And now we can finally ask the slide&apos;s big question:
+        <br />
+        <br />
+        <em>What does a Bellman backup do to points in this space?</em>
+        <br />
+        <br />
+        Does it move points in a way that tends to pull them together?
+        <br />
+        <br />
+        Because if it does, then convergence isn&apos;t magic.
+        <br />
+        <br />
+        It&apos;s geometry.
+        <br />
+        <br />
+        But to make the word &quot;pull together&quot; mathematically real, we
+        need one more ingredient.
+      </div>
     </section>
   );
 }
