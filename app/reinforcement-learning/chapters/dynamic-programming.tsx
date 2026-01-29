@@ -2517,12 +2517,8 @@ export default function DynamicProgramming() {
         Now we&apos;re ready for something a bit more abstract.
         <br />
         <br />
-        Not as simple as points.
-        <br />
-        Not as concrete as individual vectors.
-        <br />
-        <br />
-        But still very manageable.
+        Not as simple or concrete as points and individual vectors, but still
+        very manageable.
         <br />
         <br />
         <strong>Vector spaces.</strong>
@@ -2535,11 +2531,16 @@ export default function DynamicProgramming() {
         about how those vectors are allowed to behave.
         <br />
         <br />
-        If a bunch of vectors obey these rules, then congratulations —
+        If a bunch of vectors obey these rules, then congratulations,
         you&apos;re officially in a vector space.
         <br />
         <br />
-        Let&apos;s go through the rules.
+        Before we go through the formal rules below (it&apos;s ok if you
+        don&apos; memorize them), think of a vector space as a place where
+        vectors follow normal rules of adition and multiplication.
+        <br />
+        <br />
+        Ok, let&apos;s go through the rules.
         <br />
         <br />
         <strong>Rule 1: Vector addition is associative</strong>
@@ -2549,11 +2550,11 @@ export default function DynamicProgramming() {
         doesn&apos;t matter.
         <br />
         <br />
-        In human terms:
+        In normal terms:
         <br />
         <br />
-        It doesn&apos;t matter which pairs you add first — you end up in the
-        same place.
+        It doesn&apos;t matter which pairs you add first, you end up in the same
+        place.
         <br />
         <br />
         Formally:
@@ -2568,18 +2569,13 @@ export default function DynamicProgramming() {
         <InlineMath math="(1, 0) + ((2, 3) + (4, 5)) = ((1, 0) + (2, 3)) + (4, 5)" />
         <br />
         <br />
-        Different parentheses.
-        <br />
-        Same final movement.
-        <br />
-        <br />
         <strong>Rule 2: Vector addition is commutative</strong>
         <br />
         <br />
         This one says that order doesn&apos;t matter when adding vectors.
         <br />
         <br />
-        In human terms:
+        In normal terms:
         <br />
         <br />
         Doing movement A then movement B is the same as doing B then A.
@@ -2597,11 +2593,6 @@ export default function DynamicProgramming() {
         <InlineMath math="(2, 5) + (-1, 3) = (-1, 3) + (2, 5)" />
         <br />
         <br />
-        Different order.
-        <br />
-        Same net result.
-        <br />
-        <br />
         <strong>Rule 3: There is a zero vector</strong>
         <br />
         <br />
@@ -2611,7 +2602,7 @@ export default function DynamicProgramming() {
         This is the zero vector.
         <br />
         <br />
-        In human terms:
+        In normal terms:
         <br />
         <br />
         It&apos;s the &quot;don&apos;t move&quot; movement.
@@ -2629,18 +2620,13 @@ export default function DynamicProgramming() {
         <InlineMath math="(2, 5) + (0, 0) = (2, 5)" />
         <br />
         <br />
-        Add nothing.
-        <br />
-        Nothing changes.
-        <br />
-        <br />
         <strong>Rule 4: Every vector has an inverse</strong>
         <br />
         <br />
         For every movement, there must be a way to undo it.
         <br />
         <br />
-        In human terms:
+        In normal terms:
         <br />
         <br />
         Every vector has an opposite movement that brings you back.
@@ -2658,70 +2644,85 @@ export default function DynamicProgramming() {
         <InlineMath math="(2, 5) + (-2, -5) = (0, 0)" />
         <br />
         <br />
-        Move forward.
-        <br />
-        Undo the move.
-        <br />
-        Back where you started.
-        <br />
-        <br />
-        <strong>Rule 5: Vectors can be scaled</strong>
+        <strong>
+          Rule 5: Compatibility of scalar multiplication with field
+          multiplication
+        </strong>
         <br />
         <br />
-        Vector spaces don&apos;t just let you add movements — they also let you
-        stretch or flip them.
+        This rule says that when you scale a vector multiple times, the order in
+        which you apply the scalars doesn&apos;t matter.
         <br />
         <br />
-        In human terms:
-        <br />
-        <br />
-        You can do the same movement multiple times, partially, or in reverse.
+        If you multiply a vector by one number, and then multiply the result by
+        another number, that&apos;s the same as multiplying the vector once by
+        the product of those two numbers.
         <br />
         <br />
         Formally:
         <br />
         <br />
-        <InlineMath math="a \cdot v \in V" />
+        <InlineMath math="a(bv) = (ab)v" />
         <br />
         <br />
         Example:
         <br />
         <br />
-        <InlineMath math="2 \cdot (2, 5) = (4, 10)" />
+        Let <InlineMath math="v = (1, 2)" />, <InlineMath math="a = 2" />,{" "}
+        <InlineMath math="b = 3" />.
         <br />
         <br />
-        <InlineMath math="-1 \cdot (2, 5) = (-2, -5)" />
+        First apply <InlineMath math="b" />:
         <br />
         <br />
-        Same movement idea.
-        <br />
-        Different amount or direction.
+        <InlineMath math="bv = 3(1, 2) = (3, 6)" />
         <br />
         <br />
-        <strong>Rule 6: Scaling behaves nicely with addition</strong>
+        Then apply <InlineMath math="a" />:
         <br />
         <br />
-        This rule says that scaling and adding vectors don&apos;t fight each
-        other.
+        <InlineMath math="a(bv) = 2(3, 6) = (6, 12)" />
         <br />
         <br />
-        In human terms:
+        Now apply the product <InlineMath math="ab = 6" /> in one step:
         <br />
         <br />
-        Whether you scale first or add first, everything stays consistent.
+        <InlineMath math="(ab)v = 6(1, 2) = (6, 12)" />
+        <br />
+        <br />
+        <strong>Rule 6: Identity element of scalar multiplication</strong>
+        <br />
+        <br />
+        This rule says that there is a special number that leaves every vector
+        unchanged when you multiply by it.
+        <br />
+        <br />
+        That number is 1.
+        <br />
+        <br />
+        Multiplying a vector by 1 does absolutely nothing.
         <br />
         <br />
         Formally:
         <br />
         <br />
-        <InlineMath math="a(u + v) = au + av" />
+        <InlineMath math="1v = v" />
         <br />
         <br />
         Example:
         <br />
         <br />
-        Scaling the combined movement gives the same result as scaling each
-        movement separately.
+        Let <InlineMath math="v = (4, -1)" />.
+        <br />
+        <br />
+        Multiplying by 1 gives:
+        <br />
+        <br />
+        <InlineMath math="1 \cdot (4, -1) = (4, -1)" />
+        <br />
+        <br />
+        This rule guarantees that scalar multiplication has a neutral element,
+        just like how adding zero leaves a vector unchanged.
         <br />
         <br />
         <strong>Putting it all together</strong>
