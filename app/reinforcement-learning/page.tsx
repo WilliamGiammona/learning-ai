@@ -5199,9 +5199,6 @@ v(A) &\leftarrow 0 + v(B) = 10
               <InlineMath math="\pi^*" />)
               <br />
               <br />
-              But… why?
-              <br />
-              <br />
               Why don&apos;t these updates:
               <br />
               <br />
@@ -5215,12 +5212,6 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               After all, in many optimization problems, where you end up{" "}
               <em>does</em> depend on where you start.
-              <br />
-              Gradient ascent gets stuck.
-              <br />
-              Hill climbing plateaus.
-              <br />
-              Local optima are everywhere.
               <br />
               <br />
               So why doesn&apos;t value iteration suffer from the same fate?
@@ -5237,7 +5228,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               All of these questions are answered by <em>one</em> idea:
               <br />
               <br />
-              <strong>The contraction mapping theorem</strong>
+              <strong>The Contraction Mapping Theorem</strong>
               <br />
               <br />
               But before we touch the theorem itself, we need to slow way down
@@ -5248,32 +5239,12 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               <br />
               Instead of thinking of a value function as a formula, let&apos;s
-              think of it as a point. At first glance, calling a value function
-              a <em>point</em> sounds suspicious.
+              think of it as a <em>point</em>. At first glance, calling a value
+              function a point sounds suspicious.
               <br />
               <br />
-              After all:
-              <br />
-              <br />
-              • a value function often depends on a policy
-              <br />
-              • there are infinitely many policies
-              <br />
-              • each state&apos;s value is a real number
-              <br />
-              • and the value function is defined over states, not coordinates
-              <br />
-              <br />
-              So how can this possibly be a &quot;point&quot;?
-              <br />
-              <br />
-              Here&apos;s the key idea:
-              <br />
-              <br />
-              <strong>
-                A value function (for any policy, or even none) is just a list
-                of numbers.
-              </strong>
+              If you think about it though, A value function is really just a
+              list of numbers.
               <br />
               <br />
               If your MDP has <InlineMath math="|S|" /> states, then a value
@@ -5316,14 +5287,12 @@ v(A) &\leftarrow 0 + v(B) = 10
               Think of it like this:
               <br />
               <br />
-              • 2 states → a point in the plane
-              <br />
-              • 3 states → a point in 3D space
-              <br />
-              • 100 states → a point in 100D space
-              <br />
-              <br />
-              Each coordinate corresponds to one state&apos;s value.
+              If I have a point in 2-dimensional space, I need a list of two
+              numbers to describe it (the X coordinate and the Y coordinate). In
+              the same way, the list of <InlineMath math="|S|" /> numbers that
+              make up a value function, describe a point in{" "}
+              <InlineMath math="|S|" />
+              -dimensional space.
               <br />
               <br />
               So when we write:
@@ -5352,16 +5321,13 @@ v(A) &\leftarrow 0 + v(B) = 10
               />
               <br />
               <br />
-              is just a list of successive value functions, each one replacing
-              the last.
+              is just a list of successive value functions (points in space),
+              each one replacing the last.
               <br />
               <br />
               <strong>
                 Step 2: What do these sequences mean in our algorithms?
               </strong>
-              <br />
-              <br />
-              This is crucial.
               <br />
               <br />
               The symbols <InlineMath math="v_1, v_2, v_3" /> mean slightly
@@ -5371,7 +5337,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <strong>Policy evaluation</strong>
               <br />
               <br />
-              Here, the policy <InlineMath math="\\pi" /> is fixed.
+              Here, the policy <InlineMath math="\pi" /> is fixed.
               <br />
               <br />
               The sequence
@@ -5382,9 +5348,10 @@ v(A) &\leftarrow 0 + v(B) = 10
               />
               <br />
               <br />
-              is a sequence of better and better <em>approximations</em> to the
-              true value function of that same policy. The target never changes,
-              only our estimate improves.
+              is a sequence of points that get closer and closer to the true
+              value function, <InlineMath math="v_\pi" /> (which itself is a
+              point) of that same policy. The target never changes, only our
+              estimate improves.
               <br />
               <br />
               <strong>Policy iteration</strong>
@@ -5396,13 +5363,14 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               We evaluate a policy for a while, then we{" "}
               <em>change the policy</em>, which changes the target value
-              function.
+              function (the point we are trying to get closer to).
               <br />
               <br />
               So across the full algorithm, we see many short sequences of{" "}
               <InlineMath math="v_1, v_2, v_3" />, each one converging to a
-              different <InlineMath math="v_\\pi" />, until the policy itself
-              converges to <InlineMath math="\\pi^*" />.
+              different point in space, <InlineMath math="v_\pi" />, until we
+              eventually converge to the point <InlineMath math="v^*" />, and
+              from there we can extract <InlineMath math="\pi^*" />.
               <br />
               <br />
               <strong>Value iteration</strong>
@@ -5420,20 +5388,22 @@ v(A) &\leftarrow 0 + v(B) = 10
               />
               <br />
               <br />
-              is a single sequence of points converging straight toward{" "}
-              <InlineMath math="v^*" />.
+              is a single sequence of points converging straight towards the
+              point <InlineMath math="v^*" /> (no intermediate value functions
+              along the way), and from there we can extract{" "}
+              <InlineMath math="\pi^*" />.
               <br />
               <br />
               At first glance, this might look like we are simply doing policy
-              evaluation with the optimal policy <InlineMath math="\\pi^*" />,
+              evaluation with the optimal policy <InlineMath math="\pi^*" />,
               but that is <em>not</em> what is happening.
               <br />
               <br />
-              The key difference is that <InlineMath math="\\pi^*" /> is{" "}
+              The key difference is that <InlineMath math="\pi^*" /> is{" "}
               <em>not</em> known in advance, while for policy evaluation, the
               policy <em>is</em> known in advance. No policy is being evaluated
               in the background; the value function itself is being pulled
-              toward the unique optimal fixed point.
+              toward the unique optimal fixed point, <InlineMath math="v^*" />.
               <br />
               <br />
               <strong>Step 3: What could go wrong?</strong>
@@ -5462,7 +5432,7 @@ v(A) &\leftarrow 0 + v(B) = 10
               <br />
               • value iteration might converge to the wrong value function
               <br />• policy iteration might stall before reaching{" "}
-              <InlineMath math="\\pi^*" />
+              <InlineMath math="\pi^*" />
               <br />
               <br />
               Fortunately for us,{" "}
