@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
+import Chapter4 from "./chapters/chapter4";
 
 export default function ReinforcementLearningPage() {
   return (
@@ -246,6 +247,27 @@ export default function ReinforcementLearningPage() {
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
                       Contraction Mapping
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <a
+                  href="#ch-four-model-free-prediction"
+                  className="text-blue-600 hover:text-blue-800 underline block font-medium"
+                >
+                  Model Fre Prediction
+                </a>
+
+                {/* Subsections */}
+                <ul className="mt-2 ml-4 space-y-1">
+                  <li>
+                    <a
+                      href="#mfp-intro"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Introduction
                     </a>
                   </li>
                 </ul>
@@ -5180,6 +5202,7 @@ v(A) &\leftarrow 0 + v(B) = 10
 
             <div className="mb-4">Under construction</div>
           </section>
+          <Chapter4 />
         </main>
       </div>
     </div>
