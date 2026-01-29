@@ -5849,11 +5849,11 @@ v(A) &\leftarrow 0 + v(B) = 10
                 .
                 <br />
                 <br />
-                It does not care where the error lives — only how much of it
+                It does not care where the error lives, only how much of it
                 exists in total.
                 <br />
                 <br />
-                That sounds reasonable… until you remember what Bellman updates
+                That sounds reasonable until you remember what Bellman updates
                 actually do.
                 <br />
                 <br />
@@ -5897,7 +5897,7 @@ v(A) &\leftarrow 0 + v(B) = 10
                 <InlineMath math="x' = (2.5, 2.5, 2.5, 2.5)" />.
                 <br />
                 <br />
-                What happened to the <InlineMath math="\\ell_1" /> norm?
+                What happened to the <InlineMath math="\ell_1" /> norm?
                 <br />
                 <br />
                 <InlineMath math="\lVert x' \rVert_1 = 2.5 + 2.5 + 2.5 + 2.5 = 10" />
