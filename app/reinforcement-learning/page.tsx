@@ -5482,81 +5482,673 @@ v(A) &\leftarrow 0 + v(B) = 10
                   }
                 />
               </div>
+              {/* NEW: what a norm is, why there are different ones, what Lp is, and why L-infinity */}
               <div className="mb-4">
-                <em>Wait, i forgot that formula and now it looks scary.</em>
+                <strong>A quick refresher on what a "norm" is</strong>
                 <br />
                 <br />
-                If you&apos;re feeling a mild sense of dread looking at{" "}
-                <InlineMath math="\\lVert u - v \\rVert_{\\infty}" /> good. That
-                means you&apos;re paying attention.
+                A norm is just a rule for turning a whole vector of numbers into
+                a single nonnegative number that behaves like a
+                &quot;length.&quot;
                 <br />
                 <br />
-                The infinity norm is just saying:
+                In our case, a value function is a vector:
+                <br />
+                <br />
+                <InlineMath math="v = (v(s_1),\dots,v(s_{|S|}))" />
+                <br />
+                <br />
+                So the difference (<InlineMath math="u-v" />) is also a vector.
+                It tells you, state-by-state, how wrong you are.
+                <br />
+                <br />
+                A norm is the thing that looks at that whole error-vector and
+                says:
                 <br />
                 <br />
                 <em>
-                  &quot;What is the single worst mistake I am making, anywhere,
-                  across all states?&quot;
+                  &quot;How big is this mess, overall? Give me one number.&quot;
+                </em>
+              </div>
+              <div className="mb-4">
+                <strong>Why are there different norms?</strong>
+                <br />
+                <br />
+                There are many different "norms" because there are many
+                different ways to summarize a mess.
+                <br />
+                <br />
+                This is like asking: &quot;How bad was that exam?&quot;
+                <br />
+                <br />
+                Do you mean:
+                <br />
+                <br />• your <em>average</em> mistake?
+                <br />• your <em>total</em> mistake?
+                <br />• your <em>worst</em> mistake?
+                <br />
+                <br />
+                All of these are valid questions. They just measure different
+                kinds of pain.
+                <br />
+                <br />
+                In the same way, &quot;distance&quot; depends on what you care
+                about.
+                <br />
+                <br />
+                If you&apos;re grading a class, you might care about averages.
+                <br />
+                If you&apos;re building a bridge, you care about the single
+                worst-case stress point.
+                <br />
+                If you&apos;re paying taxes, you care about totals.
+                <br />
+                <br />
+                Norms are just different ways of saying what matters.
+              </div>
+              <div className="mb-4">
+                <strong>
+                  The famous family: the <InlineMath math="L^p" /> norms
+                </strong>
+                <br />
+                <br />
+                The most common norms come in one big family called the{" "}
+                <InlineMath math="L^p" /> norms:
+                <br />
+                <br />
+                <div className="text-center mb-4">
+                  <BlockMath
+                    math={
+                      "\\lVert x \\rVert_p \\,=\\, \\sqrt[p]{|x_1|^p + |x_2|^p + \\dots + |x_n|^p}"
+                    }
+                  />
+                </div>
+                <br />
+                <br />
+                Here <InlineMath math="x" /> is just a vector of numbers (in our
+                case, the vector <InlineMath math="u - v" />
+                ):
+                <br />
+                <br />
+                <InlineMath math="x = (x_1, x_2, \dots, x_n)" />.
+                <br />
+                <br />
+                Each <InlineMath math="x_i" /> is one coordinate of that vector.
+                <br />
+                <br />
+                You can read this formula very literally, step by step:
+                <br />
+                <br />
+                • take the size of each coordinate <InlineMath math="x_i" />
+                <br />
+                • raise each one to the <InlineMath math="p" />
+                -th power
+                <br />
+                • add them all together
+                <br />
+                • then take the <InlineMath math="p" />
+                -th root of the result
+                <br />
+                <br />
+                Nothing mysterious is happening, it&apos;s just a way of turning
+                many numbers into one number.
+                <br />
+                <br />
+                The choice of <InlineMath math="p" /> controls what this single
+                number cares about:
+                <br />
+                <br />
+                • smaller <InlineMath math="p" /> spreads attention across many
+                coordinates
+                <br />
+                • larger <InlineMath math="p" /> makes large coordinates
+                dominate
+                <br />
+                <br />
+                As <InlineMath math="p" /> increases, the norm slowly stops
+                caring about &quot;typical&quot; coordinates and becomes more
+                and more obsessed with the largest one.
+                <br />
+                <br />
+                You can think of <InlineMath math="p" /> as a &quot;personality
+                setting&quot; for how dramatic the norm is:
+                <br />
+                <br />
+                • <InlineMath math="p=1" /> gives the <strong>p1 Norm</strong>:{" "}
+                <InlineMath math="\lVert x \rVert_1 = |x_1| + |x_2| + \cdots + |x_n|" />
+                <br />
+                <div className="text-sm text-gray-600 italic mb-3">
+                  Total error. It adds up all the absolute mistakes.
+                </div>
+                • <InlineMath math="p=2" /> gives the{" "}
+                <strong>Euclidean norm</strong>:{" "}
+                <InlineMath math="\lVert x \rVert_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}" />
+                <br />
+                <div className="text-sm text-gray-600 italic mb-3">
+                  The usual "distance" you learned in school. Big errors matter
+                  more because squaring makes them larger.
+                </div>
+                • As <InlineMath math="p" /> gets bigger, the norm becomes more
+                and more obsessed with the biggest coordinates.
+                <br />
+                <br />
+                And at the extreme:
+                <br />
+                <br />
+                <strong>
+                  when <InlineMath math="p \to \infty" />, the norm only really
+                  cares about the largest number.
+                </strong>
+                <br />
+                <br />
+                That limit is exactly the infinity norm:
+                <br />
+                <br />
+                <div className="text-center mb-4">
+                  <BlockMath
+                    math={"\\lVert x \\rVert_{\\infty} \\,=\\, \\max_i |x_i|"}
+                  />
+                </div>
+                For us, that becomes:
+                <br />
+                <br />
+                <InlineMath math="\lVert u-v \rVert_{\infty} = \max_{s\in S}|u(s)-v(s)|" />
+              </div>
+              <div className="mb-4">
+                <em>
+                  Okay, but why do we specifically use the infinity norm here
+                  instead of any other norm?
                 </em>
                 <br />
                 <br />
-                Imagine a very anxious auditor from Arthur Anderson is
-                inspecting your value function. They don&apos;t care about
-                averages. They don&apos;t care about overall performance. They
-                don&apos;t even care if you&apos;re right almost everywhere.
+                Because in this proof, we need a distance measure that plays
+                nicely with the two things a Bellman backup does:
+                <br />
+                <br />• it takes <strong>weighted averages</strong>{" "}
+                (expectations)
+                <br />• then it multiplies the future part by a discount factor{" "}
+                (<InlineMath math="\gamma" />)
                 <br />
                 <br />
-                They only ask one question: how much is Enron paying me to look
-                the other way?
-                <br />
-                <br />
-                Now imagine a very anxious auditor from Ernst & Young is
-                inspecting your value function. They don&apos;t care about
-                averages. They don&apos;t care about overall performance. They
-                don&apos;t even care if you&apos;re right almost everywhere.
-                <br />
-                <br />
-                They only ask one question:
-                <br />
-                <br />
-                <em>&quot;Where are you the most wrong?&quot;</em>
-                <br />
-                <br />
-                If there exists even <em>one</em> state where your estimate is
-                off by 10, then as far as this norm is concerned:
-                <br />
-                <br />
-                You are off by 10.
-                <br />
-                <br />
-                That&apos;s why the formula looks like a max:
-                <br />
-                <br />
-                • look at all states
-                <br />
-                • compute the error at each one
-                <br />
-                • take the largest error
-                <br />
-                <br />
-                And importantly:
-                <br />
-                <br />
-                <em>This norm does not let errors hide.</em>
-                <br />
-                <br />
-                You can&apos;t cancel a huge mistake in one state with tiny
-                mistakes elsewhere. If something is badly broken anywhere, the
-                infinity norm will find it.
-                <br />
-                <br />
-                This turns out to be exactly the behavior we want when analyzing
-                Bellman updates, because if Bellman backups reduce the{" "}
-                <em>worst</em> possible error every time…
-                <br />
-                <br />
-                then they reduce <em>all</em> errors.
+                And the infinity norm is basically custom-built for this.
               </div>
+              <div className="mb-4">
+                <strong>
+                  Why not use <InlineMath math="\ell_1" /> or{" "}
+                  <InlineMath math="\ell_2" />?
+                </strong>
+                <br />
+                <br />
+                This is a fair question. After all, <InlineMath math="\ell_1" />{" "}
+                and <InlineMath math="\ell_2" /> are perfectly respectable
+                norms. We use them all the time in math, statistics, and machine
+                learning.
+                <br />
+                <br />
+                So why do we suddenly become obsessed with{" "}
+                <InlineMath math="\ell_\infty" /> here?
+                <br />
+                <br />
+                The short answer is:
+                <br />
+                <br />
+                <em>
+                  dynamic programming is a worst-case game, and the infinity
+                  norm is the only one that refuses to look away from worst-case
+                  behavior.
+                </em>
+                <br />
+                <br />
+                Let&apos;s make that concrete.
+                <br />
+                <br />
+                <strong>Imagine three different ways to be wrong</strong>
+                <br />
+                <br />
+                Suppose your value function has errors across 100 states.
+                <br />
+                <br />
+                In 99 of them, you&apos;re off by 0.01.
+                <br />
+                In one unlucky state, you&apos;re off by 10.
+                <br />
+                <br />
+                <strong>
+                  What does <InlineMath math="\ell_1" /> see?
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\ell_1" /> adds everything up:
+                <br />
+                <br />
+                99 tiny mistakes + one huge mistake.
+                <br />
+                <br />
+                Depending on how many states you have, that single catastrophic
+                error can get diluted by lots of small ones.
+                <br />
+                <br />
+                <InlineMath math="\ell_1" /> is great if you care about{" "}
+                <em>total accumulated error</em>.
+                <br />
+                It is not great if one broken state can ruin everything
+                downstream.
+                <br />
+                <br />
+                <strong>
+                  What does <InlineMath math="\ell_2" /> see?
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\ell_2" /> squares the errors and then
+                averages them out.
+                <br />
+                <br />
+                Big mistakes matter more than small ones, but they still get
+                blended with the crowd.
+                <br />
+                <br />
+                You can be seriously wrong in a handful of states, and{" "}
+                <InlineMath math="\ell_2" /> will tell you things are
+                &quot;mostly fine.&quot;
+                <br />
+                <br />
+                <strong>
+                  What does <InlineMath math="\ell_\infty" /> see?
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\ell_\infty" /> ignores the crowd entirely.
+                <br />
+                <br />
+                It asks exactly one question:
+                <br />
+                <br />
+                <em>
+                  &quot;Where are you the most wrong, and by how much?&quot;
+                </em>
+                <br />
+                <br />
+                If there exists even a single state where your estimate is off
+                by 10, then as far as <InlineMath math="\ell_\infty" /> is
+                concerned:
+                <br />
+                <br />
+                <strong>you are off by 10.</strong>
+                <br />
+                <br />
+                <strong>Why this matters for Bellman backups</strong>
+                <br />
+                <br />
+                Bellman updates do two things over and over:
+                <br />
+                <br />
+                • they take expectations (weighted averages)
+                <br />• then they multiply the future part by a discount factor,{" "}
+                <InlineMath math="\gamma" />
+                <br />
+                <br />
+                Both of these operations have a very specific mathematical
+                personality.
+                <br />
+                <br />
+                <strong>Expectations smooth things out.</strong>
+                <br />
+                They average over possibilities.
+                <br />
+                They cannot create new extremes, they can only mix together what
+                already exists.
+                <br />
+                <br />
+                And this is where the choice of norm becomes important.
+                <br />
+                <br />
+                <strong>
+                  What expectation guarantees (and what it doesn&apos;t)
+                </strong>
+                <br />
+                <br />
+                Suppose you have a vector of errors:
+                <br />
+                <br />
+                <InlineMath math="x = (x_1, x_2, \dots, x_n)" />.
+                <br />
+                <br />
+                When Bellman applies the transition matrix{" "}
+                <InlineMath math="P" />, each new value is formed by taking a
+                weighted average of the previous values.
+                <br />
+                <br />
+                That means:
+                <br />
+                <br />
+                • no coordinate can become larger than the largest original
+                coordinate
+                <br />
+                • no new worst-case error can appear
+                <br />
+                <br />
+                This statement is <em>exactly</em> what the infinity norm
+                measures.
+                <br />
+                <br />
+                <InlineMath math="\ell_\infty" /> tracks the single largest
+                magnitude in the entire vector, the one thing averaging can
+                never make worse.
+                <br />
+                <br />
+                <strong>
+                  Why this fails for <InlineMath math="\ell_1" />
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\ell_1" /> measures <em>total error</em>:
+                <br />
+                <br />
+                <InlineMath math="\lVert x \rVert_1 = |x_1| + |x_2| + \dots + |x_n|" />
+                .
+                <br />
+                <br />
+                It does not care where the error lives — only how much of it
+                exists in total.
+                <br />
+                <br />
+                That sounds reasonable… until you remember what Bellman updates
+                actually do.
+                <br />
+                <br />
+                <strong>What expectation does to error</strong>
+                <br />
+                <br />
+                When Bellman applies the transition dynamics, it does not delete
+                error.
+                <br />
+                It <em>redistributes</em> it.
+                <br />
+                <br />
+                A single large error can be split into many smaller errors
+                across multiple next states.
+                <br />
+                <br />
+                Each individual error gets smaller — but there are now more of
+                them.
+                <br />
+                <br />
+                <strong>A concrete example</strong>
+                <br />
+                <br />
+                Suppose your error vector is:
+                <br />
+                <br />
+                <InlineMath math="x = (10, 0, 0, 0)" />.
+                <br />
+                <br />
+                The total error is:
+                <br />
+                <br />
+                <InlineMath math="\lVert x \rVert_1 = 10" />.
+                <br />
+                <br />
+                Now imagine a transition where that error gets evenly spread
+                across four states. After one Bellman expectation step, the
+                error might look like:
+                <br />
+                <br />
+                <InlineMath math="x' = (2.5, 2.5, 2.5, 2.5)" />.
+                <br />
+                <br />
+                What happened to the <InlineMath math="\\ell_1" /> norm?
+                <br />
+                <br />
+                <InlineMath math="\lVert x' \rVert_1 = 2.5 + 2.5 + 2.5 + 2.5 = 10" />
+                .
+                <br />
+                <br />
+                <strong>It didn&apos;t shrink at all.</strong>
+                <br />
+                <br />
+                Nothing went wrong numerically. Bellman did exactly what
+                it&apos;s supposed to do.
+                <br />
+                <br />
+                But from the perspective of <InlineMath math="\ell_1" />, there
+                is no progress.
+                <br />
+                <br />
+                <strong>Why this breaks the contraction argument</strong>
+                <br />
+                <br />
+                To prove a contraction, we need something stronger than:
+                <br />
+                <br />
+                <em>&quot;error doesn&apos;t explode.&quot;</em>
+                <br />
+                <br />
+                We need:
+                <br />
+                <br />
+                <em>
+                  &quot;every update strictly reduces the distance between any
+                  two value functions.&quot;
+                </em>
+                <br />
+                <br />
+                <InlineMath math="\ell_1" /> cannot guarantee that under
+                expectation.
+                <br />
+                <br />
+                Bellman updates can smear error across states without reducing
+                its total mass.
+                <br />
+                <br />
+                So in <InlineMath math="\ell_1" />, Bellman is not a contraction
+                in general.
+                <br />
+                <br />
+                And without a contraction, the fixed-point guarantees disappear.
+                <strong>
+                  Why this fails for <InlineMath math="\ell_2" />
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\\ell_2" /> measures something like
+                &quot;typical&quot; error:
+                <br />
+                <br />
+                <InlineMath math="\\lVert x \\rVert_2 = \\sqrt{x_1^2 + x_2^2 + \\dots + x_n^2}" />
+                .
+                <br />
+                <br />
+                Now consider a single large error getting split into several
+                medium ones.
+                <br />
+                <br />
+                Each squared term gets smaller — but there are more of them.
+                <br />
+                <br />
+                Depending on the transition structure, the total squared error
+                can stay flat or even increase.
+                <br />
+                <br />
+                Expectation does not guarantee contraction in{" "}
+                <InlineMath math="\\ell_2" />
+                unless you impose extra assumptions about the transition matrix.
+                <br />
+                <br />
+                Bellman doesn&apos;t promise those assumptions.
+                <br />
+                <br />
+                <strong>
+                  Why <InlineMath math="\\ell_\\infty" /> survives
+                </strong>
+                <br />
+                <br />
+                <InlineMath math="\\ell_\\infty" /> only asks:
+                <br />
+                <br />
+                <em>&quot;What is the single worst mistake anywhere?&quot;</em>
+                <br />
+                <br />
+                Expectation cannot make that number bigger.
+                <br />
+                Multiplying by <InlineMath math="\\gamma" /> strictly shrinks
+                it.
+                <br />
+                <br />
+                That gives us the inequality we need:
+                <br />
+                <br />
+                <InlineMath math="\\lVert T(u) - T(v) \\rVert_\\infty \\le \\gamma \\, \\lVert u - v \\rVert_\\infty" />
+                .
+                <br />
+                <br />
+                And that inequality is not cosmetic — it is the hinge on which
+                the entire convergence story swings.
+                <br />
+                <br />
+                <strong>The payoff</strong>
+                <br />
+                <br />
+                Using <InlineMath math="\\ell_\\infty" /> lets us say something
+                brutally strong:
+                <br />
+                <br />
+                <em>
+                  No matter how you initialize your value function, every
+                  Bellman backup reduces the worst-case error by a discount
+                  factor <InlineMath math="\gamma" />.
+                </em>
+                <br />
+                <br />
+                Once the worst-case error shrinks, everything else is forced to
+                follow.
+                <br />
+                <br />
+                Other norms can measure error.
+                <br />
+                <br />
+                <InlineMath math="\\ell_\\infty" /> is the one that lines up
+                perfectly with what Bellman updates actually do.
+              </div>
+              <div className="mb-4">
+                <strong>
+                  A weighted average can&apos;t be bigger than the biggest thing
+                  it&apos;s averaging.
+                </strong>
+                <br />
+                <br />
+                This is the whole story.
+                <br />
+                <br />
+                If the numbers you&apos;re averaging are all between -10 and 10,
+                then no amount of averaging magic can produce 37.2.
+                <br />
+                <br />
+                Averages are smoothing machines, not amplification machines.
+                <br />
+                <br />
+                And the infinity norm measures exactly the thing averaging
+                can&apos;t increase: the worst-case magnitude.
+                <br />
+                <br />
+                So when Bellman takes an expectation over next states, the
+                worst-case error can only stay the same or go down.
+                <br />
+                Then <InlineMath math="\gamma" /> comes in and shrinks it by a
+                factor less than 1.
+                <br />
+                <br />
+                That gives you the clean contraction inequality:
+                <br />
+                <br />
+                <div className="text-center mb-4">
+                  <BlockMath
+                    math={
+                      "\\lVert T(u) - T(v) \\rVert_{\\infty} \\;\\le\\; \\gamma\\,\\lVert u-v \\rVert_{\\infty}"
+                    }
+                  />
+                </div>
+                And that inequality is what unlocks the whole fixed-point
+                convergence story.
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <em>Wait, i forgot that formula and now it looks scary.</em>
+              <br />
+              <br />
+              If you&apos;re feeling a mild sense of dread looking at{" "}
+              <InlineMath math="\lVert u - v \rVert_{\infty}" /> good. That
+              means you&apos;re paying attention.
+              <br />
+              <br />
+              The infinity norm is just saying:
+              <br />
+              <br />
+              <em>
+                &quot;What is the single worst mistake I am making, anywhere,
+                across all states?&quot;
+              </em>
+              <br />
+              <br />
+              Imagine a very anxious auditor from Arthur Anderson is inspecting
+              your value function. They don&apos;t care about averages. They
+              don&apos;t care about overall performance. They don&apos;t even
+              care if you&apos;re right almost everywhere.
+              <br />
+              <br />
+              They only ask one question: how much is Enron paying me to look
+              the other way?
+              <br />
+              <br />
+              Now imagine a very anxious auditor from Ernst & Young is
+              inspecting your value function. They don&apos;t care about
+              averages. They don&apos;t care about overall performance. They
+              don&apos;t even care if you&apos;re right almost everywhere.
+              <br />
+              <br />
+              They only ask one question:
+              <br />
+              <br />
+              <em>&quot;Where are you the most wrong?&quot;</em>
+              <br />
+              <br />
+              If there exists even <em>one</em> state where your estimate is off
+              by 10, then as far as this norm is concerned:
+              <br />
+              <br />
+              You are off by 10.
+              <br />
+              <br />
+              That&apos;s why the formula looks like a max:
+              <br />
+              <br />
+              • look at all states
+              <br />
+              • compute the error at each one
+              <br />
+              • take the largest error
+              <br />
+              <br />
+              And importantly:
+              <br />
+              <br />
+              <em>This norm does not let errors hide.</em>
+              <br />
+              <br />
+              You can&apos;t cancel a huge mistake in one state with tiny
+              mistakes elsewhere. If something is badly broken anywhere, the
+              infinity norm will find it.
+              <br />
+              <br />
+              This turns out to be exactly the behavior we want when analyzing
+              Bellman updates, because if Bellman backups reduce the{" "}
+              <em>worst</em> possible error every time…
+              <br />
+              <br />
+              then they reduce <em>all</em> errors.
+            </div>
+            <div>
               So if your MDP has 100 states, you&apos;re basically doing:
               <br />
               <br />
