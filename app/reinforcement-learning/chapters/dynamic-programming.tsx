@@ -2366,9 +2366,8 @@ export default function DynamicProgramming() {
         Here are the questions we really want answered:
         <br />
         <br />• How do we know that iterative policy evaluation converges to{" "}
-        <InlineMath math="v_\\pi" /> for a fixed policy, and therefore that
-        policy iteration converges to <InlineMath math="\\pi^*" />?
-        <br />
+        <InlineMath math="v_\pi" /> for a fixed policy, and therefore that
+        policy iteration converges to <InlineMath math="v^*" />?
         <br />• How do we know that value iteration converges to{" "}
         <InlineMath math="v^*" />?
         <br />
@@ -2378,9 +2377,7 @@ export default function DynamicProgramming() {
         <br />
         • Is the solution unique?
         <br />
-        <br />
         • Could these updates oscillate forever?
-        <br />
         <br />
         • Could they converge to the wrong answer?
         <br />
@@ -2404,14 +2401,10 @@ export default function DynamicProgramming() {
         • How fast do these algorithms converge?
         <br />
         <br />
-        All of these questions are answered by <em>one</em> idea:
-        <br />
-        <br />
-        <strong>The contraction mapping theorem</strong>
-        <br />
-        <br />
-        But to understand why that theorem applies here, we need to slow way
-        down and carefully build the machinery it relies on.
+        All of these questions are answered by the{" "}
+        <em>Contraction Mapping Theorem</em>, but to understand why that theorem
+        applies here, we need to slow way down and carefully build the machinery
+        it relies on.
       </div>
     </section>
   );
