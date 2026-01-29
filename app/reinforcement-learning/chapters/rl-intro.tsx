@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import "katex/dist/katex.min.css";
+import { InlineMath, BlockMath } from "react-katex";
 
 export default function RlIntro() {
   return (
