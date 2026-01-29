@@ -2861,6 +2861,395 @@ export default function DynamicProgramming() {
         <br />
         then you&apos;re working inside a vector space.
       </div>
+
+      <div className="mb-4">
+        <strong>Step 3: Metric spaces</strong>
+        <br />
+        <br />
+        So far, our vectors have been living pretty modest lives.
+        <br />
+        <br />
+        They can:
+        <br />
+        <br />
+        • be added
+        <br />
+        • be scaled
+        <br />
+        • cancel each other out
+        <br />
+        <br />
+        But there&apos;s one very important thing they still can&apos;t do.
+        <br />
+        <br />
+        They can&apos;t measure distance.
+        <br />
+        <br />
+        They know how to combine.
+        <br />
+        They know how to stretch and shrink.
+        <br />
+        <br />
+        But they have no idea how far apart two vectors actually are.
+        <br />
+        <br />
+        This is where <em>metric spaces</em> enter the picture.
+        <br />
+        <br />
+        Metric spaces give you a notion of <em>distance.</em>
+        <br />
+        <br />
+        Formally, a metric space is any set of objects together with a function
+        that tells you how far apart two objects are.
+        <br />
+        <br />
+        That function is called a <em>metric</em>.
+        <br />
+        <br />
+        We usually write it as:
+        <br />
+        <br />
+        <InlineMath math="d(x, y)" />
+        <br />
+        <br />
+        which you can read as:
+        <br />
+        <br />
+        &quot;the distance between x and y&quot;.
+        <br />
+        <br />
+        But not just any function gets to call itself a distance.
+        <br />
+        <br />
+        To count as a metric, it has to behave nicely.
+        <br />
+        <br />
+        Here are the rules.
+        <br />
+        <br />
+        <strong>Rule 1: Distances are never negative</strong>
+        <br />
+        <br />
+        Distance can be zero.
+        <br />
+        It can be positive.
+        <br />
+        <br />
+        But it can&apos;t be negative.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="d(x, y) \ge 0" />
+        <br />
+        <br />
+        <strong>Rule 2: Zero distance means same point</strong>
+        <br />
+        <br />
+        If the distance between two things is zero, they must be the same thing.
+        <br />
+        <br />
+        And if they are the same thing, the distance is zero.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="d(x, y) = 0 \iff x = y" />
+        <br />
+        <br />
+        <strong>Rule 3: Distance doesn&apos;t depend on direction</strong>
+        <br />
+        <br />
+        The distance from x to y is the same as the distance from y to x.
+        <br />
+        <br />
+        No one-way streets.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="d(x, y) = d(y, x)" />
+        <br />
+        <br />
+        <strong>Rule 4: The triangle inequality</strong>
+        <br />
+        <br />
+        Going directly is never longer than taking a detour.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="d(x, z) \le d(x, y) + d(y, z)" />
+        <br />
+        <br />
+        If you&apos;ve ever walked somewhere instead of teleporting, you already
+        know this rule, a straight line from where you are to where you want to
+        go is shorter than taking some slanted route.
+        <br />
+        <br />
+        That&apos;s it.
+        <br />
+        <br />
+        A metric space is just:
+        <br />
+        <br />
+        • a set of objects
+        <br />• plus a sensible notion of distance
+      </div>
+
+      <div className="mb-4">
+        <strong>
+          Step 4: Norms (turning vectors into things we can measure)
+        </strong>
+        <br />
+        <br />
+        In the last step, we introduced metric spaces.
+        <br />
+        <br />
+        That gave us a way to talk about distance between objects.
+        <br />
+        <br />
+        But in our setting, the objects we care about are vectors.
+        <br />
+        <br />
+        And when your objects are vectors, there is a very convenient way to
+        define distance.
+        <br />
+        <br />
+        That tool is called a <em>norm</em>.
+        <br />
+        <br />
+        <strong>What is a norm?</strong>
+        <br />
+        <br />
+        A norm is a function that takes a vector and returns a non-negative
+        number.
+        <br />
+        <br />
+        You can think of it as answering the question:
+        <br />
+        <br />
+        &quot;How big is this vector?&quot;
+        <br />
+        <br />
+        We usually write a norm like this:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert" />
+        <br />
+        <br />
+        Once you have a norm, you automatically get a distance:
+        <br />
+        <br />
+        <InlineMath math="d(v, w) = \lVert v - w \rVert" />
+        <br />
+        <br />
+        So norms are not just about size.
+        <br />
+        <br />
+        They are how vector spaces turn into metric spaces. So with this new
+        mathematical object, the norm, I take my regular old vector space, and
+        turn it into a metric space too!
+        <br />
+        <br />
+        <strong>Norms have rules</strong>
+        <br />
+        <br />
+        For a function to count as a norm, it has to behave nicely.
+        <br />
+        <br />
+        Specifically:
+        <br />
+        <br />
+        • the norm is never negative
+        <br />
+        • the norm is zero only for the zero vector
+        <br />
+        • scaling a vector scales its norm
+        <br />
+        • the triangle inequality holds
+        <br />
+        <br />
+        (Yes, that triangle inequality again. It shows up everywhere.)
+        <br />
+        <br />
+        <strong>
+          The L<InlineMath math="p" /> norms
+        </strong>
+        <br />
+        <br />
+        There isn&apos;t just one way to measure the size of a vector.
+        <br />
+        <br />
+        In fact, there is a whole family of norms, called the{" "}
+        <InlineMath math="L^p" /> norms.
+        <br />
+        <br />
+        For a vector <InlineMath math="v = (v_1, v_2, \dots, v_n)" />, the{" "}
+        <InlineMath math="L^p" /> norm is defined as:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_p = \sqrt[p]{|v_1|^p + |v_2|^p + \cdots + |v_n|^p}" />
+        <br />
+        <br />
+        Different values of <InlineMath math="p" /> give you different ways of
+        measuring size.
+        <br />
+        <br />
+        Let&apos;s look at the three most important ones.
+        <br />
+        <br />
+        <strong>
+          The <InlineMath math="L_1" /> norm
+        </strong>
+        <br />
+        <br />
+        This one just adds up absolute values:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_1 = |v_1| + |v_2| + \cdots + |v_n|" />
+        <br />
+        <br />
+        <strong>Example</strong>
+        <br />
+        <br />
+        Let <InlineMath math="v = (2, -3)" />.
+        <br />
+        <br />
+        The <InlineMath math="L_1" /> norm is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_1 = |2| + |-3| = 2 + 3 = 5" />
+        <br />
+        <br />
+        <strong>
+          The <InlineMath math="L_2" /> norm
+        </strong>
+        <br />
+        <br />
+        This is the familiar Euclidean norm we are taught in school for how to
+        measure distance:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_2 = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}" />
+        <br />
+        <br />
+        Because it&apos;s squared, this norm cares more about larger components
+        in the vector than smaller ones, unlike the <InlineMath math="L_1" />,
+        where no component was given artificially more importance.
+        <br />
+        <br />
+        <strong>Example</strong>
+        <br />
+        <br />
+        Let <InlineMath math="v = (3, 4)" />.
+        <br />
+        <br />
+        The <InlineMath math="L_2" /> norm is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_2 = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = 5" />
+        <br />
+        <br />
+        In 2D, this is exactly the Pythagorean theorem we learn about in
+        geometry class.
+        <br />
+        <br />
+        The vector <InlineMath math="(3, 4)" /> forms a right triangle with
+        horizontal length 3 and vertical length 4, and the
+        <InlineMath math="L_2" /> norm is the length of the hypotenuse.
+        <br />
+        <br />
+        That&apos;s why this norm corresponds to the usual notion of distance in
+        the x–y plane.
+        <br />
+        <br />
+        <strong>
+          The <InlineMath math="L_\infty" /> norm
+        </strong>
+        <br />
+        <br />
+        Just like how we gave the larger components of the vector more
+        importance in <InlineMath math="L_2" /> than in{" "}
+        <InlineMath math="L_1" /> because we were squaring them, in{" "}
+        <InlineMath math="L_3" /> we give the larger components even{" "}
+        <em>more</em> importance because we are cubing them. As p becomes larger
+        and larger, we keep giving the bigger components more and more
+        importance. In the limit, as <InlineMath math="p \to \infty" />, we care
+        so much more about larger numbers, that we actually <em>only</em> care
+        about the largest component of the vector.
+        <br />
+        <br />
+        Thus, for the <InlineMath math="L_\infty" /> norm, instead of adding all
+        components, it only looks at the largest one:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_\infty = \max_i |v_i|" />
+        <br />
+        <br />
+        You can think of it as:
+        <br />
+        <br />
+        <em>What is the single biggest component of my vector?</em>
+        <br />
+        <br />
+        <strong>Example</strong>
+        <br />
+        <br />
+        Let <InlineMath math="v = (2, -5, 1, 3)" />.
+        <br />
+        <br />
+        The absolute values of the components are:
+        <br />
+        <br />
+        <InlineMath math="(|2|, |-5|, |1|, |3|) = (2, 5, 1, 3)" />
+        <br />
+        <br />
+        The largest component is 5.
+        <br />
+        <br />
+        So the L<InlineMath math="\infty" /> norm is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v \rVert_\infty = 5" />
+        <br />
+        <br />
+        All other components are ignored.
+        <br />
+        <br />
+        No averaging.
+        <br />
+        No summing.
+        <br />
+        Just the worst-case coordinate.
+        <strong>Why this matters</strong>
+        <br />
+        <br />
+        Once we choose a norm, we have chosen:
+        <br />
+        <br />
+        • how to measure the size of a vector
+        <br />
+        • how to measure distance between vectors
+        <br />
+        • what it means for two value functions to be &quot;close&quot;
+        <br />
+        <br />
+        And different norms answer different questions.
+        <br />
+        <br />
+        In the next step, we&apos;ll see that this choice is not cosmetic.
+        <br />
+        <br />
+        Some norms play very nicely with Bellman updates.
+        <br />
+        <br />
+        Others… do not.
+      </div>
     </section>
   );
 }
