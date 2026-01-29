@@ -9,6 +9,9 @@ export default function MarkovDecisionProcess() {
       <h1 className="text-3xl font-bold mb-6 text-center">
         Markov Decision Process
       </h1>
+      <h2 id="mdp-intro" className="text-2xl font-bold mb-6 text-center">
+        Introduction
+      </h2>
       <p className="mb-4">
         At a very high level, Reinforcement Learning is really about dealing
         with sequences of dependent events and wanting to learn useful
