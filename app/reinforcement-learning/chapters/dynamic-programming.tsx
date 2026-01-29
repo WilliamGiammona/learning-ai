@@ -3212,7 +3212,7 @@ export default function DynamicProgramming() {
         The largest component is 5.
         <br />
         <br />
-        So the L<InlineMath math="\infty" /> norm is:
+        So the <InlineMath math="L_\infty" /> norm is:
         <br />
         <br />
         <InlineMath math="\lVert v \rVert_\infty = 5" />
@@ -3221,11 +3221,6 @@ export default function DynamicProgramming() {
         All other components are ignored.
         <br />
         <br />
-        No averaging.
-        <br />
-        No summing.
-        <br />
-        Just the worst-case coordinate.
         <strong>Why this matters</strong>
         <br />
         <br />
