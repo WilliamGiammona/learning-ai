@@ -7,7 +7,7 @@ import { InlineMath, BlockMath } from "react-katex";
 import RlIntro from "./chapters/rl-intro";
 import MarkovDecisionProcess from "./chapters/markov-decision-processes";
 import DynamicProgramming from "./chapters/dynamic-programming";
-import Chapter4 from "./chapters/chapter4";
+import ModelFreePrediction from "./chapters/model-free-prediction";
 
 export default function ReinforcementLearningPage() {
   return (
@@ -284,7 +284,7 @@ export default function ReinforcementLearningPage() {
           <RlIntro />
           <MarkovDecisionProcess />
           <DynamicProgramming />
-          <Chapter4 />
+          <ModelFreePrediction />
         </main>
       </div>
     </div>
