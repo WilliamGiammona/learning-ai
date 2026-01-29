@@ -2340,7 +2340,79 @@ export default function DynamicProgramming() {
         Contraction Mappimg
       </h2>
 
-      <div className="mb-4">Under construction</div>
+      <div className="mb-4">
+        <strong>
+          Step 1: The technical questions we&apos;ve been sweeping under the rug
+        </strong>
+        <br />
+        <br />
+        Up to this point, we&apos;ve been doing a lot of things that{" "}
+        <em>work</em>, without really stopping to explain <em>why</em> they
+        work.
+        <br />
+        <br />
+        We apply Bellman updates.
+        <br />
+        We iterate.
+        <br />
+        We confidently claim that everything converges to the right answer.
+        <br />
+        <br />
+        We haven&apos;t actually justified why these iterative procedures behave
+        so nicely, or why they don&apos;t blow up, oscillate, or settle on the
+        wrong solution.
+        <br />
+        <br />
+        Here are the questions we really want answered:
+        <br />
+        <br />• How do we know that iterative policy evaluation converges to{" "}
+        <InlineMath math="v_\\pi" /> for a fixed policy, and therefore that
+        policy iteration converges to <InlineMath math="\\pi^*" />?
+        <br />
+        <br />• How do we know that value iteration converges to{" "}
+        <InlineMath math="v^*" />?
+        <br />
+        <br />
+        Even more fundamentally:
+        <br />
+        <br />
+        • Is the solution unique?
+        <br />
+        <br />
+        • Could these updates oscillate forever?
+        <br />
+        <br />
+        • Could they converge to the wrong answer?
+        <br />
+        <br />
+        In many optimization problems, these fears are completely justified.
+        <br />
+        <br />
+        In many settings, where you end up often depends on where you start.
+        <br />
+        <br />
+        So why isn&apos;t value iteration just another victim of this mess?
+        <br />
+        <br />
+        Why don&apos;t Bellman updates wander aimlessly through value-function
+        space?
+        <br />
+        <br />
+        And while we&apos;re at it:
+        <br />
+        <br />
+        • How fast do these algorithms converge?
+        <br />
+        <br />
+        All of these questions are answered by <em>one</em> idea:
+        <br />
+        <br />
+        <strong>The contraction mapping theorem</strong>
+        <br />
+        <br />
+        But to understand why that theorem applies here, we need to slow way
+        down and carefully build the machinery it relies on.
+      </div>
     </section>
   );
 }
