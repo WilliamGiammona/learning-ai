@@ -2243,9 +2243,9 @@ export default function DynamicProgramming() {
         <div className="text-center mb-4">
           <BlockMath
             math={String.raw`\delta(A)=\left|(1+0.9\,v(B)) - v(A)\right|
-   =\left|(1+0.9\cdot 20.9)-19\right|
-   =\left|(1+18.81)-19\right|
-   =\left|19.81-19\right|=0.81`}
+             =\left|(1+0.9\cdot 20.9)-19\right|
+            =\left|(1+18.81)-19\right|
+            =\left|19.81-19\right|=0.81`}
           />
         </div>
         Queue:
@@ -2725,6 +2725,123 @@ export default function DynamicProgramming() {
         just like how adding zero leaves a vector unchanged.
         <br />
         <br />
+        <strong>
+          Rule 7: Distributivity of scalar multiplication with respect to vector
+          addition
+        </strong>
+        <br />
+        <br />
+        This rule explains how multiplying by a number interacts with adding
+        vectors.
+        <br />
+        <br />
+        If you add two vectors and then multiply by a number, you get the same
+        result as multiplying each vector first and then adding them.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="a(u + v) = au + av" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        Let <InlineMath math="u = (1, 2)" />, <InlineMath math="v = (3, 4)" />,
+        and <InlineMath math="a = 2" />.
+        <br />
+        <br />
+        First add the vectors:
+        <br />
+        <br />
+        <InlineMath math="u + v = (1 + 3, 2 + 4) = (4, 6)" />
+        <br />
+        <br />
+        Now multiply by <InlineMath math="a" />:
+        <br />
+        <br />
+        <InlineMath math="2(u + v) = 2(4, 6) = (8, 12)" />
+        <br />
+        <br />
+        Now do it the other way around.
+        <br />
+        <br />
+        Multiply each vector first:
+        <br />
+        <br />
+        <InlineMath math="2u = (2, 4)" />, <InlineMath math="2v = (6, 8)" />
+        <br />
+        <br />
+        Then add:
+        <br />
+        <br />
+        <InlineMath math="2u + 2v = (2 + 6, 4 + 8) = (8, 12)" />
+        <br />
+        <br />
+        Same vector.
+        <br />
+        <br />
+        This rule guarantees that scaling and adding vectors are compatible
+        operations.
+        <br />
+        <br />
+        <strong>
+          Rule 8: Distributivity of scalar multiplication with respect to scalar
+          addition
+        </strong>
+        <br />
+        <br />
+        This rule explains how adding numbers interacts with multiplying a
+        vector.
+        <br />
+        <br />
+        If you add two numbers first and then multiply a vector, you get the
+        same result as multiplying the vector by each number separately and then
+        adding the vectors.
+        <br />
+        <br />
+        Formally:
+        <br />
+        <br />
+        <InlineMath math="(a + b)v = av + bv" />
+        <br />
+        <br />
+        Example:
+        <br />
+        <br />
+        Let <InlineMath math="v = (2, 1)" />, <InlineMath math="a = 2" />, and{" "}
+        <InlineMath math="b = 3" />.
+        <br />
+        <br />
+        First add the numbers:
+        <br />
+        <br />
+        <InlineMath math="(a + b)v = 5(2, 1) = (10, 5)" />
+        <br />
+        <br />
+        Now do it the other way around.
+        <br />
+        <br />
+        Multiply separately:
+        <br />
+        <br />
+        <InlineMath math="2v = (4, 2)" />, <InlineMath math="3v = (6, 3)" />
+        <br />
+        <br />
+        Then add the results:
+        <br />
+        <br />
+        <InlineMath math="2v + 3v = (4 + 6, 2 + 3) = (10, 5)" />
+        <br />
+        <br />
+        Same vector.
+        <br />
+        <br />
+        This rule guarantees that scalar addition and scalar multiplication fit
+        together consistently.
+        <br />
+        <br />
         <strong>Putting it all together</strong>
         <br />
         <br />
@@ -2739,230 +2856,10 @@ export default function DynamicProgramming() {
         <br />
         • has inverses
         <br />
-        • and all these operations behave nicely
+        • and all these addition and multiplication operations behave nicely
         <br />
         <br />
         then you&apos;re working inside a vector space.
-        <br />
-        <br />
-        And once you&apos;re inside a vector space, you can start talking about
-        structure, geometry, and — eventually — distance. Now here&apos;s why
-        this matters for reinforcement learning.
-        <br />
-        <br />
-        A value function is also just a list of numbers.
-        <br />
-        <br />
-        One number per state.
-        <br />
-        <br />
-        So if your MDP has states <InlineMath math="s_1, s_2, \dots, s_{|S|}" />
-        , then the value function can be written as:
-        <br />
-        <br />
-        <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
-        <br />
-        <span className="text-sm text-blue-400">
-          (Tiny note: <InlineMath math="|S|" /> means the total number of states
-          in the MDP.)
-        </span>
-        <br />
-        <br />
-        This means a value function is naturally a <em>vector</em>.
-        <br />
-        <br />
-        And once we see value functions as vectors, we can also think of them as
-        <em>points</em> in a very high-dimensional space.
-        <br />
-        <br />
-        Each value function is one point.
-        <br />
-        <br />
-        Different value functions are different points.
-        <br />
-        <br />
-        And Bellman updates move us from one point to another.
-        <br />
-        <br />
-        <strong>Vectors are also lists of numbers.</strong>
-        <br />
-        <br />
-        For example:
-        <br />
-        <br />
-        <InlineMath math="(2, 5)" />
-        <br />
-        <br />
-        But conceptually, a vector is not a location.
-        <br />
-        <br />A vector is a <em>movement</em>.
-        <br />
-        <br />
-        It tells you how to move:
-        <br />
-        <br />
-        • move 2 units to the right
-        <br />
-        • move 5 units up
-        <br />
-        <br />
-        So even though points and vectors can be written using the same numbers,
-        they are answering different questions:
-        <br />
-        <br />• a point says <em>where you are</em>
-        <br />• a vector says <em>how to move</em>
-        <br />
-        <br />
-        Now let&apos;s bring this back to reinforcement learning.
-        <br />
-        <br />
-        A value function is also just a list of numbers.
-        <br />
-        <br />
-        One number per state.
-        <br />
-        <br />
-        So if your MDP has states <InlineMath math="s_1, s_2, \dots, s_{|S|}" />
-        , then the value function can be written as:
-        <br />
-        <br />
-        <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
-        <br />
-        <span className="text-sm text-blue-400">
-          (Tiny note: <InlineMath math="|S|" /> means the total number of states
-          in the MDP.)
-        </span>
-        <br />
-        <br />
-        This means a value function is naturally a <em>vector</em>.
-        <br />
-        <br />
-        And once we see value functions as vectors, we can also think of them as
-        <em>points</em> in a high-dimensional space.
-        <br />
-        <br />
-        Each value function is one point.
-        <br />
-        <br />
-        Different value functions are different points.
-        <br />
-        <br />
-        And Bellman updates move us from one point to another. This is why
-        people say things like:
-        <br />
-        <br />
-        &quot;Consider the space of value functions.&quot;
-        <br />
-        <br />
-        Because once you see <InlineMath math="v" /> as a vector, you can
-        imagine each value function as a <em>point</em> sitting somewhere in a
-        big space.
-        <br />
-        <br />
-        And the list of numbers tells you where that point is.
-        <br />
-        <br />
-        <strong>Quick analogy: 2D space</strong>
-        <br />
-        <br />
-        In 2D, a location is described by an <InlineMath math="(x, y)" /> pair.
-        <br />
-        <br />
-        For example, the point at <InlineMath math="(2, 5)" /> means:
-        <br />
-        <br />
-        • go 2 units in the x direction
-        <br />
-        • go 5 units in the y direction
-        <br />
-        <br />
-        That ordered pair <InlineMath math="(2, 5)" /> is a list of numbers…
-        <br />
-        <br />
-        …and that list uniquely specifies a point in the plane.
-        <br />
-        <br />
-        Now just do the exact same mental move, but with{" "}
-        <InlineMath math="|S|" /> numbers instead of 2.
-        <br />
-        <br />A value function is a point in a <InlineMath math="|S|" />
-        -dimensional space.
-        <br />
-        <br />
-        <span className="text-sm text-gray-400">
-          (Tiny note: <InlineMath math="|S|" /> means the number of states in
-          the MDP. So &quot;|S|-dimensional&quot; literally means &quot;one
-          coordinate per state&quot;.)
-        </span>
-        <br />
-        <br />
-        That whole space is what we call <InlineMath math="\\mathcal{V}" />:
-        <br />
-        <br />
-        the set of all possible value functions.
-        <br />
-        <br />
-        Every point in <InlineMath math="\\mathcal{V}" /> is one complete
-        assignment of values to states.
-        <br />
-        <br />
-        <strong>Ok but are vectors and points actually the same thing?</strong>
-        <br />
-        <br />
-        Subtle answer: <em>they can look identical in coordinates</em>, but they
-        are conceptually different objects.
-        <br />
-        <br />• A <em>point</em> is a location (a place).
-        <br />• A <em>vector</em> is a displacement (an arrow you can add to a
-        point to move it).
-        <br />
-        <br />
-        In proper math language, points live in an <em>affine space</em>, while
-        vectors live in a <em>vector space</em>.
-        <br />
-        <br />
-        The key relationship is:
-        <br />
-        <br />
-        • you can subtract two points to get a vector (a displacement)
-        <br />• and you can add a vector to a point to get another point
-        <br />
-        <br />
-        But in everyday ML / RL writing, we usually pick an origin and then
-        conveniently identify points with their coordinate vectors.
-        <br />
-        <br />
-        So you&apos;ll see people casually treat a value function as both:
-        <br />
-        <br />• a point in space (a location in{" "}
-        <InlineMath math="\\mathcal{V}" />)
-        <br />• and a vector of coordinates{" "}
-        <InlineMath math="(v(s_1), \\dots, v(s_{|S|}))" />
-        <br />
-        <br />
-        It&apos;s the same numbers either way.
-        <br />
-        <br />
-        The difference is what story you&apos;re telling about them.
-        <br />
-        <br />
-        And now we can finally ask the slide&apos;s big question:
-        <br />
-        <br />
-        <em>What does a Bellman backup do to points in this space?</em>
-        <br />
-        <br />
-        Does it move points in a way that tends to pull them together?
-        <br />
-        <br />
-        Because if it does, then convergence isn&apos;t magic.
-        <br />
-        <br />
-        It&apos;s geometry.
-        <br />
-        <br />
-        But to make the word &quot;pull together&quot; mathematically real, we
-        need one more ingredient.
       </div>
     </section>
   );
