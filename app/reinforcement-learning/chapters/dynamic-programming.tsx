@@ -3590,12 +3590,9 @@ export default function DynamicProgramming() {
         point corresponding to <InlineMath math="v^*" /> every iteration.
         <br />
         <br />
-        That is exactly what it means for the Bellman operator to be a
-        <em>contraction</em>.
-        <br />
-        <br />
-        And once you have a contraction, convergence is guaranteed. That&apos;s
-        exactly what it means to be a <em>contraction</em>.
+        That is exactly what it means for the Bellman operator to be a{" "}
+        <em>contraction</em>, and once you have a contraction, convergence is
+        guaranteed.
         <br />
         <br />
         <strong>Why this matters</strong>
