@@ -3568,8 +3568,8 @@ export default function DynamicProgramming() {
         in the second state. Now it will be guaranteed that:
         <br />
         <br />
-        1) The distance between the second states will become closer (because
-        they are now the largest difference)
+        1) The values at the second state will become closer (because they now
+        have the largest difference)
         <br />
         2) The largest distance will be less than 1 because 1 was the largest
         difference in the previous iteration.
