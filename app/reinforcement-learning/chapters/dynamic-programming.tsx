@@ -4024,7 +4024,7 @@ export default function DynamicProgramming() {
         • Value functions as vectors living in value function space (a vector
         space that is also a metric space where value function vectors live)
         <br />
-        • The <InlineMath math="L_p" /> norm that measures distance between
+        • The <InlineMath math="L_\infty" /> norm that measures distance between
         these vectors
         <br />
         • Bellman operators that move these vectors around in value function
@@ -4107,9 +4107,6 @@ export default function DynamicProgramming() {
         <br />
         Every iteration pulls you closer by at least a factor of{" "}
         <InlineMath math="\gamma" />.
-        <br />
-        <br />
-        In symbols:
         <br />
         <br />
         <strong>Why this matters for reinforcement learning</strong>
