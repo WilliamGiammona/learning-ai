@@ -3230,20 +3230,7 @@ export default function DynamicProgramming() {
         • how to measure the size of a vector
         <br />
         • how to measure distance between vectors
-        <br />
-        • what it means for two value functions to be &quot;close&quot;
-        <br />
-        <br />
-        And different norms answer different questions.
-        <br />
-        <br />
-        In the next step, we&apos;ll see that this choice is not cosmetic.
-        <br />
-        <br />
-        Some norms play very nicely with Bellman updates.
-        <br />
-        <br />
-        Others… do not.
+        <br />• what it means for two value functions to be &quot;close&quot;
       </div>
     </section>
   );
