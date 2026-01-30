@@ -3786,22 +3786,28 @@ export default function DynamicProgramming() {
         <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
         <br />
         <br />
-        This is exactly the definition of a <em>\(\gamma\)-contraction</em>.
+        This is exactly the definition of a{" "}
+        <em>
+          <InlineMath math="\gamma" />
+          -contraction
+        </em>
+        .
         <br />
         <br />
         <strong>What this inequality really means</strong>
         <br />
         <br />
-        Each Bellman backup shrinks the worst-case error by at least a factor of
-        <InlineMath math="\gamma" />.
+        Each Bellman backup shrinks the largest difference by at least a factor
+        of <InlineMath math="\gamma" />, and since we defined gamma to be less
+        than one, the largest difference is always getting smaller every
+        iteration.
         <br />
         <br />
         No matter where you start.
         <br />
         No matter what your initial guess is.
         <br />
-        <br />
-        The biggest mistake always gets smaller.
+        The largest always gets smaller every iteration.
         <br />
         <br />
         <strong>The Contraction Mapping Theorem</strong>
