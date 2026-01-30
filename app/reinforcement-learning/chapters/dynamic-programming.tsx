@@ -3235,7 +3235,7 @@ export default function DynamicProgramming() {
         <br />
         <strong>
           The <InlineMath math="L_\infty" /> norm is the one we will choose to
-          measure distance going forward
+          use going forward.
         </strong>
       </div>
 
