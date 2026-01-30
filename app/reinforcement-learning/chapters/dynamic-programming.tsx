@@ -3231,6 +3231,203 @@ export default function DynamicProgramming() {
         <br />
         • how to measure distance between vectors
         <br />• what it means for two value functions to be &quot;close&quot;
+        <br />
+        <br />
+        <strong>
+          The <InlineMath math="L_\infty" /> norm is the one we will choose to
+          measure distance going forward
+        </strong>
+      </div>
+
+      <div className="mb-4">
+        <strong>
+          Step 5: The Value Function Space (where value functions live)
+        </strong>
+        <br />
+        <br />
+        Now we finally put everything together.
+        <br />
+        <br />
+        We have:
+        <br />
+        <br />
+        • vectors
+        <br />
+        • vector spaces
+        <br />
+        • norms
+        <br />
+        • distances
+        <br />
+        <br />
+        And we&apos;ve chosen a very specific norm:
+        <br />
+        <br />
+        the <InlineMath math="L_\infty" /> norm.
+        <br />
+        <br />
+        This choice turns out to be the key that makes dynamic programming work.
+        <br />
+        <br />
+        <strong>What are the vectors now?</strong>
+        <br />
+        <br />
+        Up until now, our vectors looked like:
+        <br />
+        <br />
+        <InlineMath math="(2, -3)" />, <InlineMath math="(3, 4)" />, etc.
+        <br />
+        <br />
+        But in reinforcement learning, the vectors we care about are different.
+        <br />
+        <br />
+        Each vector is a <em>value function</em>.
+        <br />
+        <br />
+        A value function assigns a number to every state:
+        <br />
+        <br />
+        <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
+        <br />
+        <br />
+        If there are <InlineMath math="|S|" /> states, then each value function
+        is a vector with <InlineMath math="|S|" /> components.
+        <br />
+        <br />
+        So mathematically:
+        <br />
+        <br />
+        • a value function is a vector • each coordinate corresponds to one
+        state
+        <br />
+        <br />
+        <strong>The Value Function Space</strong>
+        <br />
+        <br />
+        Now take <em>all possible</em> value functions.
+        <br />
+        <br />
+        Every possible assignment of numbers to states.
+        <br />
+        <br />
+        This collection forms a vector space.
+        <br />
+        <br />
+        We call it the <em>value function space</em>.
+        <br />
+        <br />
+        It has:
+        <br />
+        <br />
+        • vector addition (add values state by state) • scalar multiplication
+        (scale all state values) • a zero vector (all state values are zero)
+        <br />
+        <br />
+        And once we equip this space with a norm, it also becomes a metric
+        space.
+        <br />
+        <br />
+        <strong>
+          The chosen norm: <InlineMath math="L_\infty" />
+        </strong>
+        <br />
+        <br />
+        We measure distance between two value functions <InlineMath math="u" />{" "}
+        and
+        <InlineMath math="v" /> using:
+        <br />
+        <br />
+        <InlineMath math="\lVert u - v \rVert_\infty = \max_s |u(s) - v(s)|" />
+        <br />
+        <br />
+        This means:
+        <br />
+        <br />
+        &quot;How far apart are these two value functions at their worst
+        state?&quot;
+        <br />
+        <br />
+        If even one state has a big difference, the distance is big.
+        <br />
+        <br />
+        This is a <em>worst-case</em> notion of distance.
+        <br />
+        <br />
+        <strong>
+          Thinking geometrically (even if it&apos;s a bit of a lie)
+        </strong>
+        <br />
+        <br />
+        Technically, value functions are vectors, not points.
+        <br />
+        <br />
+        But it is extremely useful to <em>pretend</em> they are points.
+        <br />
+        <br />
+        Each value function corresponds to a single point in this enormous
+        space.
+        <br />
+        <br />
+        And because value functions can take infinitely many values, this space
+        is infinite.
+        <br />
+        <br />
+        Still, the picture is helpful:
+        <br />
+        <br />
+        • one point = one value function • distance between points = difference
+        between value functions
+        <br />
+        <br />
+        <strong>Bellman backups as movements in space</strong>
+        <br />
+        <br />
+        Now comes the crucial idea.
+        <br />
+        <br />
+        A Bellman backup takes one value function and produces another.
+        <br />
+        <br />
+        Geometrically:
+        <br />
+        <br />
+        It takes one point in value function space and moves it somewhere else.
+        <br />
+        <br />
+        And here&apos;s the punchline:
+        <br />
+        <br />
+        Under the <InlineMath math="L_\infty" /> norm, Bellman backups always
+        move value functions <em>closer together</em>.
+        <br />
+        <br />
+        In particular:
+        <br />
+        <br />
+        The distance between your current guess and the optimal value function
+        shrinks after every backup.
+        <br />
+        <br />
+        That&apos;s exactly what it means to be a <em>contraction</em>.
+        <br />
+        <br />
+        <strong>Why this matters</strong>
+        <br />
+        <br />
+        Once you see Bellman backups as contractions in a metric space:
+        <br />
+        <br />
+        • convergence is guaranteed • oscillations are impossible • the solution
+        is unique
+        <br />
+        <br />
+        Value iteration isn&apos;t magic.
+        <br />
+        <br />
+        It&apos;s geometry.
+        <br />
+        <br />
+        In the next step, we&apos;ll prove this contraction property explicitly.
       </div>
     </section>
   );
