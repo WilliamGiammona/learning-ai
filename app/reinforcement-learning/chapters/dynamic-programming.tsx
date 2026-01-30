@@ -3716,7 +3716,7 @@ export default function DynamicProgramming() {
         <br />
         <br />
         Applying <InlineMath math="T^\pi" /> brings value functions closer
-        together, by a fixed factor.
+        together, by at least a fixed factor, <InlineMath math="\gamma" />.
         <br />
         <br />
         Formally, we want:
@@ -3725,8 +3725,8 @@ export default function DynamicProgramming() {
         <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
         <br />
         <br />
-        with <InlineMath math="0 \le \gamma < 1" /> (gamma has to be less than
-        one for this to work).
+        with <InlineMath math="0 \le \gamma < 1" /> (
+        <InlineMath math="\gamma" /> has to be less than one for this to work).
         <br />
         <br />
         If this inequality holds, we&apos;re in contraction territory.
@@ -3807,13 +3807,15 @@ export default function DynamicProgramming() {
         <br />
         No matter what your initial guess is.
         <br />
-        The largest always gets smaller every iteration.
-        <br />
-        <br />
+        The largest difference between two value functions always gets smaller
+        every iteration.
+      </div>
+
+      <div className="mb-4">
         <strong>The Contraction Mapping Theorem</strong>
         <br />
         <br />
-        Now we bring in the heavy hitter.
+        Now we bring in the famous Contraction Mapping Theorem.
         <br />
         <br />
         The <em>Contraction Mapping Theorem</em> says:
