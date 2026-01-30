@@ -3759,13 +3759,139 @@ export default function DynamicProgramming() {
         <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty =  \lVert \gamma P^\pi (u - v) \rVert_\infty" />
         <br />
         <br />
-        Since <InlineMath math="= \gamma" /> is just a number, not a vector, we
+        Since <InlineMath math="\gamma" /> is just a number, not a vector, we
         can take it out of the norm to get:
         <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty =  \gamma \lVert P^\pi (u - v) \rVert_\infty" />
         <br />
         <br />
-        A transition matrix <InlineMath math="P^\pi" /> is an averaging
-        operator, it cannot increase the maximum absolute value of a vector.
+        <strong>
+          A transition matrix <InlineMath math="P^\pi" /> is an averaging
+          operator, so it cannot increase the maximum absolute value of a
+          vector.
+        </strong>
+        <br />
+        <br />
+        That sentence is doing a lot of work, so let&apos;s slow it down.
+        <br />
+        <br />
+        <strong>
+          Why <InlineMath math="P^\pi" /> is an averaging operator
+        </strong>
+        <br />
+        <br />
+        Each row of <InlineMath math="P^\pi" /> is a probability distribution.
+        <br />
+        <br />
+        That means:
+        <br />
+        <br />
+        • all entries are non-negative
+        <br />
+        • all entries sum to 1
+        <br />
+        <br />
+        So when we multiply <InlineMath math="P^\pi" /> by a vector, each
+        component of the result is a weighted average of the original
+        components.
+        <br />
+        <br />
+        <strong>A concrete example</strong>
+        <br />
+        <br />
+        Suppose we have a vector:
+        <br />
+        <br />
+        <InlineMath math="x = \begin{bmatrix} 2 \\ -4 \\ 1 \end{bmatrix}" />
+        <br />
+        <br />
+        The maximum absolute value is:
+        <br />
+        <br />
+        <InlineMath math="\|x\|_\infty = 4" />
+        <br />
+        <br />
+        Now take a row of <InlineMath math="P^\pi" />, for example:
+        <br />
+        <br />
+        <InlineMath math="[0.2,\; 0.5,\; 0.3]" />
+        <br />
+        <br />
+        The corresponding component of <InlineMath math="P^\pi x" /> is:
+        <br />
+        <br />
+        <InlineMath math="0.2(2) + 0.5(-4) + 0.3(1) = -1.3" />
+        <br />
+        <br />
+        Its absolute value is <InlineMath math="1.3" />, which is strictly less
+        than 4.
+        <br />
+        <br />
+        This isn&apos;t a coincidence.
+        <br />
+        <br />
+        An average of numbers can never be larger (in absolute value) than the
+        largest number being averaged.
+        <br />
+        <br />
+        So for every component:
+        <br />
+        <br />
+        <InlineMath math="|(P^\pi x)_i| \le \max_j |x_j|" />
+        <br />
+        <br />
+        Which gives:
+        <br />
+        <br />
+        <InlineMath math="\|P^\pi x\|_\infty \le \|x\|_\infty" />
+        <br />
+        <br />
+        <strong>
+          Why this forces the <InlineMath math="L_\infty" /> norm
+        </strong>
+        <br />
+        <br />
+        The Bellman backup replaces each state&apos;s value with a weighted
+        average of other states&apos; values.
+        <br />
+        <br />
+        That operation guarantees one thing and one thing only:
+        <br />
+        <br />
+        <strong>
+          no single state&apos;s difference from the target value state can
+          become larger than the maximum state&apos; difference that we already
+          had.
+        </strong>
+        <br />
+        <br />
+        The <InlineMath math="L_\infty" /> norm measures exactly that quantity:
+        <br />
+        <br />
+        • the largest difference across all states
+        <br />
+        <br />
+        Other <InlineMath math="L_p" /> norms measure something different.
+        <br />
+        <br />
+        • <InlineMath math="L_1" /> measures total error
+        <br />
+        • <InlineMath math="L_2" /> measures squared error mass
+        <br />
+        <br />
+        Averaging can spread one large difference into many smaller ones, which
+        may keep the total or squared difference the same, or even increase it
+        in particular iterations (even though after <em>many</em> iterations
+        every <InlineMath math="L_p" /> norm should converge, we want
+        convergence for <em>every</em> iteration).
+        <br />
+        <br />
+        But averaging can never increase the maximum error.
+        <br />
+        <br />
+        That is why the contraction proof works cleanly under{" "}
+        <InlineMath math="L_\infty" />, and not under the other{" "}
+        <InlineMath math="L_p" />
+        norms.
         <br />
         <br />
         So:
