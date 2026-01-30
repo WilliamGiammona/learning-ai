@@ -3938,63 +3938,223 @@ export default function DynamicProgramming() {
       </div>
 
       <div className="mb-4">
+        <strong>Stefan Banach</strong>
+        <br />
+        <br />
+        Before we continue onto the Contraction Mapping Theorem, it&apos;s
+        important to talk about the man who discovered it (as well as also
+        discovering normed vector spaces, which we talked about in a previous
+        section).
+        <br />
+        <br />
+        Stefan Banach. Stefan Banach was born on March 30, 1892, in Kraków,
+        which at the time was part of the Austro-Hungarian Empire.
+        <br />
+        <br />
+        His mother, Katarzyna Banach, was a domestic servant, and his father,
+        Stefan Greczek, was a soldier in the Austro-Hungarian army. Unusually,
+        Banach was given his mother&apos;s surname.
+        <br />
+        <br />
+        Shortly after his birth, his parents arranged for him to be raised by a
+        woman in Kraków, Francizka Plowa.
+        <br />
+        <br />
+        Banach attended local schools in Kraków and showed strong talent in
+        mathematics from an early age, becoming friends with future
+        mathematician, Witold Wilkosz.
+        <br />
+        <br />
+        After finishing secondary school, he enrolled at the Lwów Polytechnic to
+        study engineering instead of mathematics. Banach never completed a
+        formal degree in engineering, largely because World War I disrupted
+        academic life throughout the region.
+        <br />
+        <br />
+        During the war years, Banach supported himself by working as a tutor and
+        laborer. He continued to study mathematics independently, reading
+        advanced texts and thinking deeply about analysis on his own, without
+        institutional guidance.
+        <br />
+        <br />
+        In 1916, while sitting in a park in Kraków, Banach was discussing
+        mathematics with a friend, mathematician Otto Nikodym. At a nearby
+        bench, Hugo Steinhaus, an established mathematician, happened to
+        overhear them talking about Lebesgue integrals, which were relatively
+        unknown at the time.
+        <br />
+        <br />
+        Steinhaus introduced himself, and this chance encounter marked
+        Banach&apos;s true entry into the mathematical world. Steinhaus
+        recognized Banach&apos;s extraordinary ability and became his mentor and
+        collaborator.
+        <br />
+        <br />
+        Between 1916 and 1922, despite lacking a traditional academic
+        background, he produced mathematical work that helped define an entirely
+        new area of mathematics.
+        <br />
+        <br />
+        In 1922, Banach completed his doctoral thesis. In it, he formalized the
+        concept of normed vector spaces and proved what is now called the
+        <strong>contraction mapping theorem</strong>. You can read it (in its
+        original French) here:
+        <br />
+        <br />
+        <Link
+          href="http://matwbn.icm.edu.pl/ksiazki/or/or2/or215.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Stefan Banach&apos;s 1922 Doctoral Thesis
+        </Link>
+      </div>
+
+      <div className="mb-4">
         <strong>The Contraction Mapping Theorem</strong>
         <br />
         <br />
-        Now we bring in the famous Contraction Mapping Theorem.
+        At this point, all the pieces are on the table.
         <br />
         <br />
-        The <em>Contraction Mapping Theorem</em> says:
+        We have:
         <br />
         <br />
-        If you have:
+        • Value functions as vectors living in value function space (a vector
+        space that is also a metric space where value function vectors live)
+        <br />
+        • The <InlineMath math="L_p" /> norm that measures distance between
+        these vectors
+        <br />
+        • Bellman operators that move these vectors around in value function
+        space
         <br />
         <br />
-        • a complete metric space • an operator <InlineMath math="T" /> that is
-        a contraction
+        What we still need is a single statement that says:
         <br />
         <br />
-        then:
+        <em>
+          &apos;If you keep applying this kind of update, you&apos;re guaranteed
+          to end up in exactly one place.&apos;
+        </em>
         <br />
-        <br />• there exists a <em>unique</em> fixed point{" "}
-        <InlineMath math="v^*" />
-        • repeated application of <InlineMath math="T" /> converges to it •
-        convergence is geometric, at rate <InlineMath math="\gamma" />
+        <br />
+        That statement is the contraction mapping theorem.
+        <br />
+        <br />
+        Start with a space where distances make sense. Mathematically, that
+        means a <em>complete metric space</em>.
+        <br />
+        <br />
+        (Complete just means that if you keep getting closer and closer to
+        something, that something actually lives in the space.)
+        <br />
+        <br />
+        Call this space <InlineMath math="\mathcal{V}" />.
+        <br />
+        <br />
+        Now suppose we have an operator:
+        <br />
+        <br />
+        <InlineMath math="T : \mathcal{V} \to \mathcal{V}" />
+        <br />
+        <br />
+        that always pulls points closer together.
+        <br />
+        <br />
+        Specifically, assume there exists a number{" "}
+        <InlineMath math="0 \le \gamma < 1" /> such that for any two elements{" "}
+        <InlineMath math="u" /> and <InlineMath math="v" /> in the space:
+        <br />
+        <br />
+        <InlineMath math="\|T(u) - T(v)\| \le \gamma \|u - v\|" />
+        <br />
+        <br />
+        This is exactly what it means for <InlineMath math="T" /> to be a{" "}
+        <InlineMath math="\gamma" />
+        -contraction.
+        <br />
+        <br />
+        <strong>What the theorem says</strong>
+        <br />
+        <br />
+        Under those assumptions, Banach proved two powerful facts.
+        <br />
+        <br />
+        First:
+        <br />
+        <br />
+        <strong>
+          There exists a unique fixed point <InlineMath math="v" /> such that{" "}
+          <InlineMath math="T(v) = v" />.
+        </strong>
+        <br />
+        <br />
+        There is exactly one point in the space that doesn&apos;t move when the
+        operator is applied.
+        <br />
+        <br />
+        Second:
+        <br />
+        <br />
+        <strong>
+          If you start anywhere and repeatedly apply <InlineMath math="T" />,
+          you will converge to that fixed point at a linear convergence rate of{" "}
+          <InlineMath math="\gamma" />.
+        </strong>
+        <br />
+        <br />
+        Every iteration pulls you closer by at least a factor of{" "}
+        <InlineMath math="\gamma" />.
         <br />
         <br />
         In symbols:
         <br />
         <br />
-        <InlineMath math="v_{k+1} = T(v_k) \;\;\longrightarrow\;\; v^*" />
+        <strong>Why this matters for reinforcement learning</strong>
         <br />
         <br />
-        <strong>Why this finishes the story</strong>
+        Everything we&apos;ve shown about Bellman backups plugs directly into
+        this theorem.
         <br />
         <br />
-        We have:
+        • the space of value functions is complete
         <br />
-        <br />• a complete metric space (value functions with{" "}
-        <InlineMath math="L_\infty" />) • a contraction (
-        <InlineMath math="T^\pi" />)
+        • the <InlineMath math="L_\infty" /> norm measures distance
         <br />
-        <br />
-        Therefore:
+        • the Bellman operator is a <InlineMath math="\gamma" />
+        -contraction
         <br />
         <br />
-        • the Bellman expectation equation has a unique solution • value
-        iteration converges to it • convergence is guaranteed
+        So Banach&apos;s theorem immediately tells us:
         <br />
         <br />
-        No oscillations.
+        • the value function we&apos;re looking for exists
         <br />
-        No chaos.
+        • it&apos;s unique
+        <br />
+        • and value iteration must converge to it
+        <br />
+        <br />A contraction squeezing everything into one inevitable point. In
+        reinforcement learning, we want that point to be the optimal value
+        function.
         <br />
         <br />
-        Just steady, inevitable convergence.
+        For those who want the full proof and can&apos;t read Banach&apos;s
+        doctoral thesis that I posted because it&apos;s in French, here is the
+        English wikipedia full proof and explanation:
         <br />
         <br />
-        In the next step, we&apos;ll repeat this argument for the Bellman
-        <em>optimality</em> operator.
+        <Link
+          href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Wikipedia Contraction Mapping Theorem (also called the Banach
+          Fixed-Point Theorem)
+        </Link>
       </div>
     </section>
   );
