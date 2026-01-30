@@ -3611,6 +3611,257 @@ export default function DynamicProgramming() {
         <br />
         In the next step, we&apos;ll prove this contraction property explicitly.
       </div>
+
+      <div className="mb-4">
+        <strong>Step 6: Bellman Backups Are Contractions</strong>
+        <br />
+        <br />
+        Up to now, we&apos;ve been talking geometrically.
+        <br />
+        <br />
+        Value functions are vectors.
+        <br />
+        Value functions live in a metric space.
+        <br />
+        Bellman backups move value functions around in that space.
+        <br />
+        <br />
+        Now it&apos;s time to stop hand-waving and prove that these movements
+        are well-behaved.
+        <br />
+        <br />
+        To do that, we need one new idea.
+        <br />
+        <br />
+        <strong>Operators</strong>
+        <br />
+        <br />
+        An <em>operator</em> is just a function that takes a function as input
+        and outputs another function.
+        <br />
+        <br />
+        That&apos;s it.
+        <br />
+        <br />
+        If a normal function looks like:
+        <br />
+        <br />
+        <InlineMath math="f(x)" />
+        <br />
+        <br />
+        then our operator looks like:
+        <br />
+        <br />
+        <InlineMath math="T(v)" />
+        <br />
+        <br />
+        where:
+        <br />
+        <br />
+        • <InlineMath math="v" /> is a value function
+        <br />• <InlineMath math="T(v)" /> is a <em>new</em> value function
+        <br />
+        <br />
+        So our operator doesn&apos;t move numbers around, it moves{" "}
+        <em>entire value functions</em> around.
+        <br />
+        <br />
+        And that is exactly what Bellman backups do.
+        <br />
+        <br />
+        <strong>The Bellman Expectation Backup as an Operator</strong>
+        <br />
+        <br />
+        For a fixed policy <InlineMath math="\pi" />, define the Bellman
+        expectation backup operator <InlineMath math="T^\pi" /> by:
+        <br />
+        <br />
+        <InlineMath math="v_2 = T^\pi(v_1) = R^\pi + \gamma P^\pi v_1" />
+        <br />
+        <br />
+        Don&apos;t panic about the symbols.
+        <br />
+        <br />
+        Conceptually, this is the same thing we learned about when we looked at
+        the Bellman Expectation Equation:
+        <br />
+        <br />
+        • take your current value function <InlineMath math="v_1" />
+        <br />
+        • compute expected immediate rewards
+        <br />
+        • add discounted expected future values
+        <br />
+        <br />
+        The output is another value function, <InlineMath math="v_2" />.
+        <br />
+        <br />
+        So:
+        <br />
+        <br />
+        <InlineMath math="T^\pi : \text{value functions} \to \text{value functions}" />
+        <br />
+        <br />
+        This operator is the mathematical version of one Bellman backup step.
+        <br />
+        <br />
+        <strong>What we want to show</strong>
+        <br />
+        <br />
+        We want to prove that <InlineMath math="T^\pi" /> is a{" "}
+        <em>contraction</em> under the <InlineMath math="L_\infty" /> norm.
+        <br />
+        <br />
+        That means:
+        <br />
+        <br />
+        Applying <InlineMath math="T^\pi" /> brings value functions closer
+        together, by a fixed factor.
+        <br />
+        <br />
+        Formally, we want:
+        <br />
+        <br />
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
+        <br />
+        <br />
+        with <InlineMath math="0 \le \gamma < 1" /> (gamma has to be less than
+        one for this to work).
+        <br />
+        <br />
+        If this inequality holds, we&apos;re in contraction territory.
+        <br />
+        <br />
+        <strong>Proving the contraction</strong>
+        <br />
+        <br />
+        Start with the definition:
+        <br />
+        <br />
+        <InlineMath math="T^\pi(u) - T^\pi(v) = (R^\pi + \gamma P^\pi u) - (R^\pi + \gamma P^\pi v)" />
+        <br />
+        <br />
+        The reward terms cancel, and so the right hand side becomes:
+        <br />
+        <br />
+        <InlineMath math="= (\gamma P^\pi u) - (\gamma P^\pi v)" />
+        <br />
+        <br />
+        Which simplifies to this:
+        <br />
+        <br />
+        <InlineMath math="= \gamma P^\pi (u - v)" />
+        <br />
+        <br />
+        Now take the <InlineMath math="L_\infty" /> norm:
+        <br />
+        <br />
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty =  \lVert \gamma P^\pi (u - v) \rVert_\infty" />
+        <br />
+        <br />
+        Since <InlineMath math="= \gamma" /> is just a number, not a vector, we
+        can take it out of the norm to get:
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty =  \gamma \lVert P^\pi (u - v) \rVert_\infty" />
+        <br />
+        <br />
+        A transition matrix <InlineMath math="P^\pi" /> is an averaging
+        operator, it cannot increase the maximum absolute value of a vector.
+        <br />
+        <br />
+        So:
+        <br />
+        <br />
+        <InlineMath math="\lVert P^\pi (u - v) \rVert_\infty \le \lVert u - v \rVert_\infty" />
+        <br />
+        <br />
+        Putting it together:
+        <br />
+        <br />
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert P^\pi (u - v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
+        <br />
+        <br />
+        And so:
+        <br />
+        <br />
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
+        <br />
+        <br />
+        This is exactly the definition of a <em>\(\gamma\)-contraction</em>.
+        <br />
+        <br />
+        <strong>What this inequality really means</strong>
+        <br />
+        <br />
+        Each Bellman backup shrinks the worst-case error by at least a factor of
+        <InlineMath math="\gamma" />.
+        <br />
+        <br />
+        No matter where you start.
+        <br />
+        No matter what your initial guess is.
+        <br />
+        <br />
+        The biggest mistake always gets smaller.
+        <br />
+        <br />
+        <strong>The Contraction Mapping Theorem</strong>
+        <br />
+        <br />
+        Now we bring in the heavy hitter.
+        <br />
+        <br />
+        The <em>Contraction Mapping Theorem</em> says:
+        <br />
+        <br />
+        If you have:
+        <br />
+        <br />
+        • a complete metric space • an operator <InlineMath math="T" /> that is
+        a contraction
+        <br />
+        <br />
+        then:
+        <br />
+        <br />• there exists a <em>unique</em> fixed point{" "}
+        <InlineMath math="v^*" />
+        • repeated application of <InlineMath math="T" /> converges to it •
+        convergence is geometric, at rate <InlineMath math="\gamma" />
+        <br />
+        <br />
+        In symbols:
+        <br />
+        <br />
+        <InlineMath math="v_{k+1} = T(v_k) \;\;\longrightarrow\;\; v^*" />
+        <br />
+        <br />
+        <strong>Why this finishes the story</strong>
+        <br />
+        <br />
+        We have:
+        <br />
+        <br />• a complete metric space (value functions with{" "}
+        <InlineMath math="L_\infty" />) • a contraction (
+        <InlineMath math="T^\pi" />)
+        <br />
+        <br />
+        Therefore:
+        <br />
+        <br />
+        • the Bellman expectation equation has a unique solution • value
+        iteration converges to it • convergence is guaranteed
+        <br />
+        <br />
+        No oscillations.
+        <br />
+        No chaos.
+        <br />
+        <br />
+        Just steady, inevitable convergence.
+        <br />
+        <br />
+        In the next step, we&apos;ll repeat this argument for the Bellman
+        <em>optimality</em> operator.
+      </div>
     </section>
   );
 }
