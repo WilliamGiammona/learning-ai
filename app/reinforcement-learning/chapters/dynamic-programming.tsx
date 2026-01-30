@@ -3173,15 +3173,15 @@ export default function DynamicProgramming() {
         </strong>
         <br />
         <br />
-        Just like how we gave the larger components of the vector more
-        importance in <InlineMath math="L_2" /> than in{" "}
-        <InlineMath math="L_1" /> because we were squaring them, in{" "}
-        <InlineMath math="L_3" /> we give the larger components even{" "}
-        <em>more</em> importance because we are cubing them. As p becomes larger
-        and larger, we keep giving the bigger components more and more
-        importance. In the limit, as <InlineMath math="p \to \infty" />, we care
-        so much more about larger numbers, that we actually <em>only</em> care
-        about the largest component of the vector.
+        Just like how we gave the large components of the vector more importance
+        in <InlineMath math="L_2" /> than in <InlineMath math="L_1" /> because
+        we were squaring them, in <InlineMath math="L_3" /> we give the large
+        components even <em>more</em> importance because we are cubing them. As
+        p becomes larger, we're essentially raising components to higher and
+        higher powers, which makes large components exponentially more dominant
+        than small ones. In the limit, as <InlineMath math="p \to \infty" />, we
+        care so much more about large numbers, that we actually <em>only</em>{" "}
+        care about the largest component of the vector.
         <br />
         <br />
         Thus, for the <InlineMath math="L_\infty" /> norm, instead of adding all
