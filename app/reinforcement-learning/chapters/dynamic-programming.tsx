@@ -3903,7 +3903,7 @@ export default function DynamicProgramming() {
         Putting it together:
         <br />
         <br />
-        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty \le \gamma \lVert P^\pi (u - v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
+        <InlineMath math="\lVert T^\pi(u) - T^\pi(v) \rVert_\infty = \gamma \lVert P^\pi (u - v) \rVert_\infty \le \gamma \lVert u - v \rVert_\infty" />
         <br />
         <br />
         And so:
