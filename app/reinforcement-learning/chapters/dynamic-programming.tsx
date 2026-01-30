@@ -3272,22 +3272,19 @@ export default function DynamicProgramming() {
         <strong>What are the vectors now?</strong>
         <br />
         <br />
-        Up until now, our vectors looked like:
-        <br />
-        <br />
-        <InlineMath math="(2, -3)" />, <InlineMath math="(3, 4)" />, etc.
-        <br />
-        <br />
-        But in reinforcement learning, the vectors we care about are different.
-        <br />
-        <br />
         Each vector is a <em>value function</em>.
         <br />
         <br />
-        A value function assigns a number to every state:
+        A value function can be thought of as still a list of numbers like every
+        other vector, but each of those numbers assigns a value to a specific
+        state:
         <br />
         <br />
         <InlineMath math="v = (v(s_1), v(s_2), \dots, v(s_{|S|}))" />
+        <br />
+        <span className="text-sm text-blue-400">
+          <InlineMath math="|S|" /> just means the total number of states.
+        </span>
         <br />
         <br />
         If there are <InlineMath math="|S|" /> states, then each value function
@@ -3297,8 +3294,9 @@ export default function DynamicProgramming() {
         So mathematically:
         <br />
         <br />
-        • a value function is a vector • each coordinate corresponds to one
-        state
+        • a value function is a vector
+        <br />
+        • each coordinate corresponds to one state
         <br />
         <br />
         <strong>The Value Function Space</strong>
@@ -3319,12 +3317,17 @@ export default function DynamicProgramming() {
         It has:
         <br />
         <br />
-        • vector addition (add values state by state) • scalar multiplication
-        (scale all state values) • a zero vector (all state values are zero)
+        • vector addition (add values state by state)
+        <br />
+        • scalar multiplication (scale all state values)
+        <br />
+        • a zero vector (all state values are zero)
+        <br />
+        And all the other rules we previously listed for vector spaces
         <br />
         <br />
-        And once we equip this space with a norm, it also becomes a metric
-        space.
+        Once we equip this space with the <InlineMath math="L_\infty" /> norm,
+        it also becomes a metric space.
         <br />
         <br />
         <strong>
@@ -3333,24 +3336,75 @@ export default function DynamicProgramming() {
         <br />
         <br />
         We measure distance between two value functions <InlineMath math="u" />{" "}
-        and
-        <InlineMath math="v" /> using:
+        and <InlineMath math="v" /> using:
         <br />
         <br />
         <InlineMath math="\lVert u - v \rVert_\infty = \max_s |u(s) - v(s)|" />
         <br />
         <br />
-        This means:
+        This definition says:
         <br />
         <br />
-        &quot;How far apart are these two value functions at their worst
-        state?&quot;
+        We compare the two value functions state by state, and at each state, we
+        look at how different their values are.
         <br />
         <br />
-        If even one state has a big difference, the distance is big.
+        We then ignore all the differences <em>except for the largest one</em>.
         <br />
         <br />
-        This is a <em>worst-case</em> notion of distance.
+        That single largest discrepancy is the distance, and this distance
+        answers the question:
+        <br />
+        <br />
+        <em>
+          What is the biggest mistake u makes compared to v, across all states?
+        </em>
+        <br />
+        <br />
+        Even if the value functions are very close everywhere else, one badly
+        wrong state dominates the distance.
+        <br />
+        <br />
+        That&apos;s why this is called a <em>worst-case</em> notion of distance.
+        <br />
+        <br />
+        <strong>Example</strong>
+        <br />
+        <br />
+        Suppose we have three states:{" "}
+        <InlineMath math="S = \{s_1, s_2, s_3\}" />, and two value functions for
+        the same state, <InlineMath math="u" /> and <InlineMath math="v" />.
+        <br />
+        <br />
+        Let
+        <br />
+        <br />
+        <InlineMath math="u = (20, 5, 0)" />
+        <br />
+        <InlineMath math="v = (8, 6, 1)" />
+        <br />
+        <br />
+        Compute the differences state by state:
+        <br />
+        <br />
+        <InlineMath math="|u(s_1) - v(s_1)| = |20 - 8| = 12" />
+        <br />
+        <InlineMath math="|u(s_2) - v(s_2)| = |5 - 6| = 1" />
+        <br />
+        <InlineMath math="|u(s_3) - v(s_3)| = |0 - 1| = 1" />
+        <br />
+        <br />
+        The largest difference is 12.
+        <br />
+        <br />
+        So:
+        <br />
+        <br />
+        <InlineMath math="\lVert u - v \rVert_\infty = 12" />
+        <br />
+        <br />
+        Even though two states are only off by 1, the distance is determined
+        entirely by the largest difference.
         <br />
         <br />
         <strong>
@@ -3358,25 +3412,13 @@ export default function DynamicProgramming() {
         </strong>
         <br />
         <br />
-        Technically, value functions are vectors, not points.
+        Technically, value functions are vectors, not points, but it is
+        extremely useful to <em>pretend</em> they are points.
         <br />
         <br />
-        But it is extremely useful to <em>pretend</em> they are points.
-        <br />
-        <br />
-        Each value function corresponds to a single point in this enormous
-        space.
-        <br />
-        <br />
-        And because value functions can take infinitely many values, this space
-        is infinite.
-        <br />
-        <br />
-        Still, the picture is helpful:
-        <br />
-        <br />
-        • one point = one value function • distance between points = difference
-        between value functions
+        Think of each value function corresponding to a single point in this
+        enormous value function space, and because value functions can take
+        infinitely many values, this space is infinite.
         <br />
         <br />
         <strong>Bellman backups as movements in space</strong>
@@ -3388,43 +3430,186 @@ export default function DynamicProgramming() {
         A Bellman backup takes one value function and produces another.
         <br />
         <br />
-        Geometrically:
+        Geometrically, you can think of it like this:
         <br />
         <br />
-        It takes one point in value function space and moves it somewhere else.
+        Each value function is a point in value function space.
         <br />
         <br />
-        And here&apos;s the punchline:
+        Applying a Bellman backup takes your current point and moves it to a new
+        point.
         <br />
         <br />
-        Under the <InlineMath math="L_\infty" /> norm, Bellman backups always
-        move value functions <em>closer together</em>.
+        Now here&apos;s the important part.
         <br />
         <br />
-        In particular:
+        Under the <InlineMath math="L_\infty" /> norm, we do <em>not</em>{" "}
+        require that every component of our value function gets closer to every
+        component of the target value function at every iteration.
         <br />
         <br />
-        The distance between your current guess and the optimal value function
-        shrinks after every backup.
+        Some state values might:
         <br />
         <br />
-        That&apos;s exactly what it means to be a <em>contraction</em>.
+        • move closer
+        <br />
+        • stay the same
+        <br />
+        • or even move farther away for a few iterations
+        <br />
+        <br />
+        What the Bellman backup <em>does</em> guarantee is this:
+        <br />
+        <br />
+        The states with the <em>largest</em> error get closer every iteration.
+        <br />
+        <br />
+        Since the <InlineMath math="L_\infty" /> norm only cares about the
+        largest difference across states, this is enough.
+        <br />
+        <br />
+        As long as the biggest mistake shrinks every iteration, the distance
+        between value functions shrinks every iteration under the{" "}
+        <InlineMath math="L_\infty" /> norm.
+        <br />
+        <br />
+        <strong>Example</strong>
+        <br />
+        <br />
+        Suppose we have three states:
+        <br />
+        <br />
+        <InlineMath math="S = \{s_1, s_2, s_3\}" />
+        <br />
+        <br />
+        Assume the optimal value function is:
+        <br />
+        <br />
+        <InlineMath math="v^* = (10, 5, 0)" />
+        <br />
+        <br />
+        We start value iteration with a poor initial guess for our value
+        function:
+        <br />
+        <br />
+        <InlineMath math="v_1 = (0, 0, 0)" />
+        <br />
+        <br />
+        The state-by-state errors are:
+        <br />
+        <br />
+        <InlineMath math="|v_1 - v^*| = (10, 5, 0)" />
+        <br />
+        <br />
+        So the <InlineMath math="L_\infty" /> distance is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v_1 - v^* \rVert_\infty = 10" />
+        <br />
+        <br />
+        Now apply one Bellman backup.
+        <br />
+        <br />
+        Suppose we obtain:
+        <br />
+        <br />
+        <InlineMath math="v_2 = (6, 4, 1)" />
+        <br />
+        <br />
+        The new errors are:
+        <br />
+        <br />
+        <InlineMath math="|v_2 - v^*| = (4, 1, 1)" />
+        <br />
+        <br />
+        Notice what happened:
+        <br />
+        <br />
+        • the largest error went from 10 to 4
+        <br />
+        • one state (the third) actually got farther away from its target
+        component (it changed value from 0 to 1 which went from being a distance
+        of 0 away from its target value to a distance of 1 away)
+        <br />• but the state with the <em>largest</em> difference (the first
+        one) got closer to its target component (it changed value from 0 to 6
+        which went from being a distance of 10 away from its target value to a
+        distance of only 4 away).
+        <br />
+        <br />
+        The new distance is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v_2 - v^* \rVert_\infty = 4" />
+        <br />
+        <br />
+        Apply another Bellman backup.
+        <br />
+        <br />
+        Suppose we get:
+        <br />
+        <br />
+        <InlineMath math="v_3 = (10, 4, 0.5)" />
+        <br />
+        <br />
+        Now the errors are:
+        <br />
+        <br />
+        <InlineMath math="|v_3 - v^*| = (0, 1, 0.5)" />
+        <br />
+        <br />
+        And the distance is:
+        <br />
+        <br />
+        <InlineMath math="\lVert v_3 - v^* \rVert_\infty = 1" />
+        <br />
+        <br />
+        Now the biggest difference has shifted from being the values in the
+        first state, and the biggest difference is now with regard to the values
+        in the second state. Now it will be guaranteed that:
+        <br />
+        <br />
+        1) The distance between the second states will become closer (because
+        they are now the largest difference)
+        <br />
+        2) The largest distance will be less than 1 because 1 was the largest
+        difference in the previous iteration.
+        <br />
+        <br />
+        Each iteration pulls the <em>largest</em> discrepancy closer to zero.
+        <br />
+        <br />
+        Even though some smaller components may wobble along the way, the
+        largest distance under the <InlineMath math="L_\infty" /> norm keeps
+        shrinking, and eventually there will be no distance between any
+        component, <InlineMath math="v" /> and <InlineMath math="v^*" /> will
+        have converged.
+        <br />
+        <br />
+        Geometrically, the points corresponding to{" "}
+        <InlineMath math="v_1, v_2, v_3, \dots" /> move closer and closer to the
+        point corresponding to <InlineMath math="v^*" /> every iteration.
+        <br />
+        <br />
+        That is exactly what it means for the Bellman operator to be a
+        <em>contraction</em>.
+        <br />
+        <br />
+        And once you have a contraction, convergence is guaranteed. That&apos;s
+        exactly what it means to be a <em>contraction</em>.
         <br />
         <br />
         <strong>Why this matters</strong>
         <br />
         <br />
-        Once you see Bellman backups as contractions in a metric space:
+        Once you see Bellman backups as contractions in a metric space, it
+        follows all the rules of contractions which are:
         <br />
         <br />
-        • convergence is guaranteed • oscillations are impossible • the solution
-        is unique
+        • convergence is guaranteed
         <br />
+        • oscillations are impossible
         <br />
-        Value iteration isn&apos;t magic.
-        <br />
-        <br />
-        It&apos;s geometry.
+        • the solution is unique
         <br />
         <br />
         In the next step, we&apos;ll prove this contraction property explicitly.
