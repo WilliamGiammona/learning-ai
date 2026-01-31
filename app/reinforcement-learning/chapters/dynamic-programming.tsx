@@ -3939,7 +3939,8 @@ export default function DynamicProgramming() {
       </div>
 
       <div className="mb-4">
-        <figure className="text-center my-14">
+        <strong>Stefan Banach</strong>
+        <figure className="text-center my-8">
           <Image
             src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-banach-nikodym.png"
             alt="Picture of Banach and Nikodym discussing Lebesgue Integrals"
@@ -3951,7 +3952,6 @@ export default function DynamicProgramming() {
             Banach and Nikodym discussing Lebesgue Integrals
           </figcaption>
         </figure>
-        <strong>Stefan Banach</strong>
         <br />
         <br />
         Before we continue onto the Contraction Mapping Theorem, it&apos;s
