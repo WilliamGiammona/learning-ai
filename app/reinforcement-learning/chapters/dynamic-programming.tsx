@@ -220,6 +220,7 @@ export default function DynamicProgramming() {
       <h2 id="dp-history" className="text-2xl font-bold mb-6 text-center">
         History of Dynamic Programming
       </h2>
+
       <figure className="text-center my-14">
         <Image
           src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-richard-bellman.png"
@@ -3938,6 +3939,18 @@ export default function DynamicProgramming() {
       </div>
 
       <div className="mb-4">
+        <figure className="text-center my-14">
+          <Image
+            src="/images/reinforcement-learning/dynamic-programming/dynamic-programming-banach-nikodym.png"
+            alt="Picture of Banach and Nikodym discussing Lebesgue Integrals"
+            width={500}
+            height={300}
+            className="mx-auto"
+          />
+          <figcaption className="text-lg mt-2">
+            Banach and Nikodym discussing Lebesgue Integrals
+          </figcaption>
+        </figure>
         <strong>Stefan Banach</strong>
         <br />
         <br />
