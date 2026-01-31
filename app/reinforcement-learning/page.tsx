@@ -275,10 +275,10 @@ export default function ReinforcementLearningPage() {
                 <ul className="mt-2 ml-4 space-y-1">
                   <li>
                     <a
-                      href="#mfp-intro"
+                      href="#mfp-outline"
                       className="text-blue-600 hover:text-blue-800 underline block"
                     >
-                      Introduction
+                      Outline
                     </a>
                   </li>
                 </ul>
