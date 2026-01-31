@@ -27,7 +27,7 @@ export default function ModelFreePrediction() {
         <br />
         • you know the reward function
         <br />
-        • and you can compute expectations exactly
+        • you can compute expectations exactly
         <br />
         <br />
         In other words, you know how the environment works.
