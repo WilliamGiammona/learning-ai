@@ -90,6 +90,12 @@ export default function ModelFreePrediction() {
           not look at the structure of the MDP?
         </em>
       </div>
+
+      <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
+        Introduction
+      </h2>
+
+      <div className="mb-4"></div>
     </section>
   );
 }
