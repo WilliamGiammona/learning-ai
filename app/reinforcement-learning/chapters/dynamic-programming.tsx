@@ -3996,7 +3996,7 @@ export default function DynamicProgramming() {
         <br />
         <br />
         In 1922, Banach completed his doctoral thesis. In it, he formalized the
-        concept of normed vector spaces and proved what is now called the
+        concept of normed vector spaces and proved what is now called the{" "}
         <strong>contraction mapping theorem</strong>. You can read it (in its
         original French) here:
         <br />
