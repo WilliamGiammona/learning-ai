@@ -10,8 +10,8 @@ export default function ModelFreePrediction() {
         Model Free Prediction
       </h1>
 
-      <h2 id="mfp-outline" className="text-2xl font-bold mb-6 text-center">
-        Outline
+      <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
+        Introduction
       </h2>
 
       <div className="mb-4">
@@ -66,21 +66,19 @@ export default function ModelFreePrediction() {
         sampled experience only.
         <br />
         <br />
-        This section breaks model-free prediction into four parts:
+        This section breaks model-free prediction into three parts:
         <br />
         <br />
-        • Introduction
+        • Monte Carlo Learning
         <br />
-        • Monte Carlo learning
-        <br />
-        • Temporal Difference learning
+        • Temporal Difference Learning
         <br />
         • TD(
         <InlineMath math="\lambda" />)
       </div>
 
       <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
-        Introduction
+        Monte Carlo Learning
       </h2>
 
       <div className="mb-4"></div>
