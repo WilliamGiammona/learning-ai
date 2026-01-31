@@ -22,6 +22,7 @@ export default function ModelFreePrediction() {
         Planning is the version of reinforcement learning where you know the
         full structure of the MDP
         <br />
+        <br />
         • you know the transition dynamics
         <br />
         • you know the reward function
