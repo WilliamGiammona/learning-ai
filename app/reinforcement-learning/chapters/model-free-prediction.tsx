@@ -30,14 +30,10 @@ export default function ModelFreePrediction() {
         • you can compute expectations exactly
         <br />
         <br />
-        In other words, you know how the environment works.
-        <br />
-        <br />
-        That&apos;s why Bellman expectation backups were so clean.
-        <br />
-        <br />
-        You could look at a state, list out all possible next states, weight
-        them by their probabilities, and calmly compute the expected return.
+        In other words, you know how the environment works. That&apos;s why
+        Bellman expectation backups were so clean. You could look at a state,
+        list out all possible next states, weight them by their probabilities,
+        and calmly compute the expected return.
         <br />
         <br />
         In the real world, you don&apos;t get the structure of the MDP.
@@ -49,7 +45,7 @@ export default function ModelFreePrediction() {
         You don&apos;t know the reward function.
         <br />
         <br />
-        All you get is experience: Sequences of states, actions, and rewards,
+        All you get is experience: sequences of states, actions, and rewards,
         observed one step at a time.
         <br />
         <br />
@@ -60,8 +56,8 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         <em>
-          &apos;Given a fixed policy <InlineMath math="\pi" />, find its value
-          function.&apos;
+          Given a fixed policy <InlineMath math="\pi" />, find its value
+          function.
         </em>
         <br />
         <br />
@@ -81,15 +77,6 @@ export default function ModelFreePrediction() {
         <br />
         • TD(
         <InlineMath math="\lambda" />)
-        <br />
-        <br />
-        Each method answers the same question:
-        <br />
-        <br />
-        <em>
-          How do we estimate a value function when we can only watch the world,
-          not look at the structure of the MDP?
-        </em>
       </div>
 
       <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
