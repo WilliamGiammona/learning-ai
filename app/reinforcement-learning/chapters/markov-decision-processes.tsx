@@ -52,6 +52,16 @@ export default function MarkovDecisionProcess() {
       </p>
 
       <p className="mb-4">
+        <figure className="text-center my-14">
+          <Image
+            src="/images/reinforcement-learning/mdp/mdp-Andrey-Markov.png"
+            alt="Picture of Andrey Markov"
+            width={500}
+            height={300}
+            className="mx-auto"
+          />
+          <figcaption className="text-lg mt-2">Andrey Markov</figcaption>
+        </figure>
         <strong id="mdp-history" className="block text-center">
           A History of MDPs
         </strong>
