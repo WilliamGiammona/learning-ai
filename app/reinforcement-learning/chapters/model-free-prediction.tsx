@@ -83,7 +83,7 @@ export default function ModelFreePrediction() {
 
       <figure className="text-center my-14">
         <Image
-          src="/images/reinforcement-learning/model-free-prediction-monte-carlo-casino.png"
+          src="/images/reinforcement-learning/model-free-prediction/model-free-prediction-monte-carlo-casino.png"
           alt="Monte Carlo Casino"
           width={500}
           height={300}
