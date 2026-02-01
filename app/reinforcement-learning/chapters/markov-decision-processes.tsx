@@ -51,20 +51,22 @@ export default function MarkovDecisionProcess() {
         one writing this!
       </p>
 
+      <strong id="mdp-history" className="block text-center">
+        A History of MDPs
+      </strong>
+
+      <figure className="text-center my-14">
+        <Image
+          src="/images/reinforcement-learning/mdp/mdp-Andrey-Markov.png"
+          alt="Picture of Andrey Markov"
+          width={500}
+          height={300}
+          className="mx-auto"
+        />
+        <figcaption className="text-lg mt-2">Andrey Markov</figcaption>
+      </figure>
+
       <p className="mb-4">
-        <strong id="mdp-history" className="block text-center">
-          A History of MDPs
-        </strong>
-        <figure className="text-center my-14">
-          <Image
-            src="/images/reinforcement-learning/mdp/mdp-Andrey-Markov.png"
-            alt="Picture of Andrey Markov"
-            width={500}
-            height={300}
-            className="mx-auto"
-          />
-          <figcaption className="text-lg mt-2">Andrey Markov</figcaption>
-        </figure>
         <br />
         The origin of the MDP began at the dawn of the the 20th century in
         Russia and centers around a feud between Andrey Markov and Pavel
