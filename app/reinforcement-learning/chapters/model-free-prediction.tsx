@@ -329,7 +329,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         <BlockMath math="G = 2 + 0.9(-1) + 0.9^2(3) + 0.9^3(5)" />
-        <BlockMath math="\rightarrow G = 2 - 0.9 + 2.43 + 3.645 = 7.175" />
+        <BlockMath math="\Rightarrow G = 2 - 0.9 + 2.43 + 3.645 = 7.175" />
         <br />
         <br />
         So this episode contributes a single return of{" "}
@@ -386,8 +386,8 @@ export default function ModelFreePrediction() {
         <InlineMath math="A" />:
         <br />
         <br />
-        <InlineMath math="7.175" /> and <InlineMath math="7.5" />, so the state
-        will be given the value of the average of these two observed values,{" "}
+        <InlineMath math="7.175" /> and <InlineMath math="7.5" />, so the
+        estimated value for state A would be the average of these two returns,{" "}
         <InlineMath math="7.3375" />.
         <br />
         <br />
@@ -395,7 +395,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         we keep a running total of observed returns and divide by the number of
-        samples, the difference is purely about <em>which samples we count</em>.
+        samples. The difference is purely about <em>which samples we count</em>.
         <br />
         <br />
         Importantly, under standard assumptions, <em>both methods converge</em>.
