@@ -506,6 +506,33 @@ export default function ModelFreePrediction() {
         we are taking the mean of every value we saw of a state for each
         episode), we will use this incremental form instead of storing and
         summing all returns we've ever seen.
+        <br />
+        <br />
+        <strong>Example:</strong>
+        <br />
+        <br />
+        Suppose we've seen 3 returns for a particular state:{" "}
+        <InlineMath math="10, 8, 12" />. The mean is{" "}
+        <InlineMath math="\mu_3 = 10" />.
+        <br />
+        <br />
+        Now a fourth return arrives: <InlineMath math="x_4 = 14" />.
+        <br />
+        <br />
+        Instead of recomputing
+        <br />
+        <br />
+        <BlockMath math="(10+8+12+14)/4 = 11" />
+        <br />
+        <br />
+        we update:
+        <br />
+        <br />
+        <BlockMath math="\mu_4 = \mu_3 + \frac{1}{4}(x_4 - \mu_3)" />
+        <br />
+        <BlockMath math="\Rightarrow 10 + \frac{1}{4}(14 - 10) " />
+        <br />
+        <BlockMath math="\Rightarrow 10 + \frac{4}{4} = 11 " />
       </div>
     </section>
   );
