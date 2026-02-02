@@ -945,6 +945,8 @@ export default function ModelFreePrediction() {
       <h2 id="mfp-td-learning" className="text-2xl font-bold my-12 text-center">
         Temporal Difference Learning
       </h2>
+
+      <div></div>
     </section>
   );
 }
