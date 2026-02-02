@@ -349,7 +349,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         As the number of sampled returns grows, the estimated value{" "}
-        <InlineMath math="V(s)" /> converges to the true value{" "}
+        <InlineMath math="\hat{v}_\pi(s)" /> converges to the true value{" "}
         <InlineMath math="v_\pi(s)" />.
       </div>
     </section>
