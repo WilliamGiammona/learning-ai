@@ -93,6 +93,9 @@ export default function ModelFreePrediction() {
       </figure>
 
       <div className="mb-4">
+        <strong>History of Monte Carlo Learning</strong>
+        <br />
+        <br />
         In the mid-1940s, Polish mathematician Stanislaw Ulam was working at Los
         Alamos as part of the Manhattan Project. He got encephalitis
         (inflammation of the brain), and spent a lot of the time recovering in
