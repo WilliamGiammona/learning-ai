@@ -946,7 +946,118 @@ export default function ModelFreePrediction() {
         Temporal Difference Learning
       </h2>
 
-      <div></div>
+      <h3 className="font-bold">The History of Temporal Difference learning</h3>
+
+      <div className="mt-12 space-y-4">
+        <p>
+          Temporal Difference (TD) learning did not appear fully formed as a
+          standard reinforcement learning algorithm. It emerged from a much more
+          basic question:
+        </p>
+
+        <p>
+          <em>
+            How can an agent learn to make predictions from experience, before
+            the final outcome is known?
+          </em>
+        </p>
+
+        <p>
+          In the late 1980s, reinforcement learning as we know it today did not
+          yet exist as a unified field. There were two dominant ideas for
+          learning predictions:
+        </p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>supervised learning, where targets are given explicitly</li>
+          <li>
+            Monte Carlo methods, where learning waits until the end of an
+            episode
+          </li>
+        </ul>
+
+        <p>
+          Both approaches had serious limitations. Supervised learning assumes a
+          teacher that provides correct answers. Monte Carlo methods require
+          waiting until an entire sequence finishes before any learning can
+          happen.
+        </p>
+
+        <p>Richard Sutton was interested in a different setting.</p>
+
+        <p>
+          He was studying how systems could{" "}
+          <em>learn to predict future signals from ongoing experience</em>, in
+          real time, without waiting for a final outcome and without a
+          supervising teacher.
+        </p>
+
+        <p>
+          This line of thinking led to his 1988 paper,
+          <em>Learning to Predict by the Methods of Temporal Differences</em>.
+        </p>
+
+        <p>
+          In that work, Sutton introduced the core idea behind Temporal
+          Difference learning:
+        </p>
+
+        <p>
+          <em>
+            You do not need to wait for the final outcome to know whether a
+            prediction is wrong. You can compare successive predictions to each
+            other.
+          </em>
+        </p>
+
+        <p>
+          Instead of treating the return at the end of an episode as the only
+          target, Sutton proposed using{" "}
+          <em>later predictions as targets for earlier ones</em>.
+        </p>
+
+        <p>
+          In other words, if your prediction at time <InlineMath math="t" />{" "}
+          differs from your prediction at time <InlineMath math="t+1" />, that
+          difference is already a learning signal.
+        </p>
+
+        <p>This idea was a conceptual bridge between two worlds:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>Monte Carlo methods, which learn from complete returns</li>
+          <li>
+            Dynamic programming, which uses bootstrapped estimates of value
+          </li>
+        </ul>
+
+        <p>Temporal Difference learning combines both:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>like Monte Carlo, it learns directly from experience</li>
+          <li>
+            like dynamic programming, it bootstraps from current value estimates
+          </li>
+        </ul>
+
+        <p>
+          The result was a new class of learning rules that update predictions
+          <em>before</em> the final outcome is known, using the difference
+          between successive predictions as an error signal.
+        </p>
+
+        <p>This simple idea turned out to be extraordinarily powerful.</p>
+
+        <p>
+          It became the foundation for TD(0), TD(λ), Q-learning, SARSA, and much
+          of modern reinforcement learning.
+        </p>
+
+        <p>
+          Next, we’ll make this idea precise and see exactly how Temporal
+          Difference updates are constructed.
+        </p>
+      </div>
     </section>
   );
 }
