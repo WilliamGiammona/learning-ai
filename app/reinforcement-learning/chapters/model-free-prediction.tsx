@@ -513,6 +513,54 @@ export default function ModelFreePrediction() {
         summing all returns we've ever seen.
         <br />
         <br />
+        There is another very important way to read this update.
+        <br />
+        <br />
+        Look closely at the term inside the parentheses:
+        <br />
+        <br />
+        <InlineMath math="x_k - \mu_{k-1}" />
+        <br />
+        <br />
+        This is an <em>error term</em>.
+        <br />
+        <br />
+        It measures how wrong our previous estimate{" "}
+        <InlineMath math="\mu_{k-1}" /> was compared to the new observation{" "}
+        <InlineMath math="x_k" />. If the new data point is larger than our
+        current mean, the error is positive, and the update nudges the mean
+        upward. If the new data point is smaller than our current mean, the
+        error is negative, and the update nudges the mean downward.
+        <br />
+        <br />
+        And if the new data point exactly matches what we already believed,
+        <br />
+        <br />
+        <InlineMath math="x_k = \mu_{k-1}" />,
+        <br />
+        <br />
+        then the error is zero. In that case, no update is needed at all.
+        <br />
+        <br />
+        So this update rule can be read as:
+        <br />
+        <br />
+        <em>
+          Take your old estimate, measure how wrong it was, and move it a small
+          step in the direction of that error.
+        </em>
+        <br />
+        <br />
+        The size of that step is controlled by <InlineMath math="\frac{1}{k}" />
+        .
+        <br />
+        <br />
+        Early on, when we have seen only a few samples, k is small, so each new
+        observation can move the estimate quite a bit. Later, as more data
+        accumulates, k becomes larger, so each new observation makes a smaller
+        and smaller adjustment.
+        <br />
+        <br />
         <strong>Example:</strong>
         <br />
         <br />
