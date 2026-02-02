@@ -163,9 +163,10 @@ export default function ModelFreePrediction() {
         <br />
         <em>
           If you can&apos;t compute the expectation directly, sample the world
-          and estimate it statistically. This is one of the methods used in
-          reinforcement learning to find value functions.
-        </em>
+          and estimate it statistically.
+        </em>{" "}
+        This is one of the methods used in reinforcement learning to find value
+        functions.
       </div>
     </section>
   );
