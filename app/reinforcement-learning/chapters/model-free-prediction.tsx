@@ -946,6 +946,17 @@ export default function ModelFreePrediction() {
         Temporal Difference Learning
       </h2>
 
+      <figure className="text-center my-14">
+        <Image
+          src="/images/reinforcement-learning/model-free-prediction/mfp-sutton.png"
+          alt="Richard Sutton"
+          width={500}
+          height={300}
+          className="mx-auto"
+        />
+        <figcaption className="text-lg mt-2">Richard Sutton</figcaption>
+      </figure>
+
       <h3 className="font-bold">The History of Temporal Difference learning</h3>
 
       <div className="mt-12 space-y-4">
