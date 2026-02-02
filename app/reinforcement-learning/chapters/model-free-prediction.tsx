@@ -168,11 +168,106 @@ export default function ModelFreePrediction() {
           If you can&apos;t compute the expectation directly, sample the world
           and estimate it statistically.
         </em>{" "}
-        This is one of the methods used in reinforcement learning to find value
-        functions.
       </div>
 
-      <div className="mb-4"></div>
+      <div className="mb-4 mt-24">
+        <strong>Monte Carlo Prediction in RL</strong>
+        <br />
+        <br />
+        The Monte Carlo idea carries over to reinforcement learning almost
+        unchanged.
+        <br />
+        <br />
+        We still want to estimate a value function for a fixed policy.
+        <br />
+        <br />
+        But instead of computing expectations using a known model of the
+        environment, we do something much simpler.
+        <br />
+        <br />
+        We just run the policy.
+        <br />
+        <br />
+        Over and over again.
+        <br />
+        <br />
+        Each run produces an <em>entire episode</em>:
+        <br />
+        <br />
+        a sequence of states, rewards, and transitions that starts somewhere and
+        eventually terminates.
+        <br />
+        <br />
+        For every state we encounter along the way, we can compute the return
+        that followed it.
+        <br />
+        <br />
+        That return is just the total reward accumulated from that state until
+        the end of the episode.
+        <br />
+        <br />
+        One episode gives us one noisy sample of what the value of that state
+        might be.
+        <br />
+        <br />
+        Many episodes give us many samples.
+        <br />
+        <br />
+        Monte Carlo prediction simply averages those samples.
+        <br />
+        <br />
+        The estimated value of a state is the average return observed after
+        visiting that state.
+        <br />
+        <br />
+        No bootstrapping.
+        <br />
+        <br />
+        No Bellman equations.
+        <br />
+        <br />
+        Just sample returns and averages.
+        <br />
+        <br />
+        This approach has two important consequences.
+        <br />
+        <br />
+        First, Monte Carlo methods are <strong>model-free</strong>.
+        <br />
+        <br />
+        We never need to know:
+        <br />
+        <br />
+        • the transition probabilities
+        <br />
+        • the reward function
+        <br />
+        • or how the environment works internally
+        <br />
+        <br />
+        All learning comes purely from observed experience.
+        <br />
+        <br />
+        Second, Monte Carlo prediction only works for <strong>episodic</strong>
+        problems.
+        <br />
+        <br />
+        The episode has to end.
+        <br />
+        <br />
+        Otherwise, the return is never fully observed.
+        <br />
+        <br />
+        If the process does not terminate, you would be waiting forever to see
+        how much reward followed a state.
+        <br />
+        <br />
+        That makes Monte Carlo methods conceptually simple and statistically
+        sound — but also limited.
+        <br />
+        <br />
+        They wait until the end of experience to learn from it.
+      </div>
     </section>
   );
 }
