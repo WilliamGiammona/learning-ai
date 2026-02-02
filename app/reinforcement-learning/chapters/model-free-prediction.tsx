@@ -957,9 +957,11 @@ export default function ModelFreePrediction() {
         <figcaption className="text-lg mt-2">Richard Sutton</figcaption>
       </figure>
 
-      <h3 className="font-bold">The History of Temporal Difference learning</h3>
+      <h3 className="font-bold mb-4">
+        The History of Temporal Difference learning
+      </h3>
 
-      <div className="mt-12 space-y-4">
+      <div className="space-y-4">
         <p>
           Temporal Difference (TD) learning did not appear fully formed as a
           standard reinforcement learning algorithm. It emerged from a much more
@@ -1065,21 +1067,22 @@ export default function ModelFreePrediction() {
         </p>
 
         <p>
-          Next, we’ll make this idea precise and see exactly how Temporal
+          Next, we&apos;ll make this idea precise and see exactly how Temporal
           Difference updates are constructed.
         </p>
 
-        <p>
+        <p className="mb-4">
           You can read Sutton&apos;s full 1988 paper on TD Learning here:
-          <Link
-            href="https://link.springer.com/content/pdf/10.1007/BF00115009.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline"
-          >
-            Learning to Predict by the Methods of Temporal Differences
-          </Link>
         </p>
+
+        <Link
+          href="https://link.springer.com/content/pdf/10.1007/BF00115009.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Learning to Predict by the Methods of Temporal Differences
+        </Link>
       </div>
     </section>
   );
