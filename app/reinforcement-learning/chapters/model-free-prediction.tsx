@@ -976,7 +976,7 @@ export default function ModelFreePrediction() {
       </figure>
 
       <h3 className="font-bold mb-4">
-        The History of Temporal Difference learning
+        The History of Temporal Difference Learning
       </h3>
 
       <div className="space-y-4">
