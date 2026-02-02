@@ -593,326 +593,353 @@ export default function ModelFreePrediction() {
         <BlockMath math="\Rightarrow 10 + \frac{4}{4} = 11 " />
       </div>
 
-      <div className="mb-4 mt-24">
+      <div className="mt-24 space-y-4">
         <strong>Incremental Monte Carlo Updates</strong>
-        <br />
-        <br />
-        Now we take the incremental mean idea and apply it to Monte Carlo policy
-        evaluation.
-        <br />
-        <br />
-        The setup is the same as before:
-        <br />
-        <br />
-        • we run an episode under policy <InlineMath math="\pi" />
-        <br />
-        • we compute the return <InlineMath math="G_t" /> for the states we
-        visited
-        <br />• and we want to update our estimate of the value function{" "}
-        <InlineMath math="\hat{v}_\pi(s)" />
-        <br />
-        <br />
-        The key insight is that <InlineMath math="\hat{v}_\pi(s)" /> is just a
-        mean.
-        <br />
-        <br />
-        It&apos;s the mean of all the returns we&apos;ve ever observed after
-        visiting state <InlineMath math="s" />.
-        <br />
-        <br />
-        So instead of storing every return forever and recomputing an average
-        from scratch, we update that mean incrementally:
-        <br />
-        <br />
+
+        <p>
+          Now we take the incremental mean idea and apply it to Monte Carlo
+          policy evaluation.
+        </p>
+
+        <p>The setup is the same as before:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            we run an episode under policy <InlineMath math="\pi" />
+          </li>
+          <li>
+            we compute the return <InlineMath math="G_t" /> for the states we
+            visited
+          </li>
+          <li>
+            we want to update our estimate of the value function{" "}
+            <InlineMath math="\hat{v}_\pi(s)" />
+          </li>
+        </ul>
+
+        <p>
+          The key insight is that <InlineMath math="\hat{v}_\pi(s)" /> is just a
+          mean.
+        </p>
+
+        <p>
+          It&apos;s the mean of all the returns we&apos;ve ever observed after
+          visiting state <InlineMath math="s" />.
+        </p>
+
+        <p>
+          So instead of storing every return forever and recomputing an average
+          from scratch, we update that mean incrementally:
+        </p>
+
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
-        <br />
-        <br />
-        Here <InlineMath math="N(S_t)" /> is just a counter that keeps track of
-        how many times we have visited state <InlineMath math="S_t" /> so far.
-        <br />
-        <br />
-        Each time we see the state again, we increment the counter:
-        <br />
-        <br />
+
+        <p>
+          Here <InlineMath math="N(S_t)" /> is just a counter that keeps track
+          of how many times we have visited state <InlineMath math="S_t" /> so
+          far.
+        </p>
+
+        <p>Each time we see the state again, we increment the counter:</p>
+
         <BlockMath math="N(S_t) \leftarrow N(S_t) + 1" />
-        <br />
-        <br />
-        And then we apply the update.
-        <br />
-        <br />
-        Notice the structure:
-        <br />
-        <br />
-        <InlineMath math="(G_t - \hat{v}_\pi(S_t))" /> is the error, where{" "}
-        <InlineMath math="G_t" /> is the return we just observed for a state on
-        our latest episode, and <InlineMath math="\hat{v}_\pi(S_t)" /> is the
-        average value of all our previous returns for that state (our current
-        estimate).
-        <br />
-        <br />
-        This error term tells us how far off our current estimate was from the
-        new sampled return.
-        <br />
-        <br />
-        The factor <InlineMath math="\frac{1}{N(S_t)}" /> is the step size.
-        <br />
-        <br />
-        Early on, when we have only visited the state a few times, the step size
-        is large, so each new return can move{" "}
-        <InlineMath math="\hat{v}_\pi(S_t)" /> a lot.
-        <br />
-        <br />
-        Later, after many visits, the step size becomes tiny, so the estimate
-        stabilizes.
-        <br />
-        <br />
-        <strong>
-          Why we replace
-        </strong> <InlineMath math="\frac{1}{N(S_t)}" /> <strong>with</strong>{" "}
-        <InlineMath math="\alpha" />
-        <br />
-        <br />
-        Using <InlineMath math="\frac{1}{N(S_t)}" /> makes{" "}
-        <InlineMath math="\hat{v}_\pi(s)" /> a true sample average, but
-        sometimes we don&apos;t actually want an equal-weight average over the
-        entire history because in many real problems, the world can change over
-        time.
-        <br />
-        <br />
-        If the environment is non-stationary, old experience can become less
-        relevant than recent experience. In that case, a constantly shrinking
-        step size is a problem, because it makes the value estimates hard to
-        move later on.
-        <br />
-        <br />
-        Thus, we replace the visit-count step size,{" "}
-        <InlineMath math="\frac{1}{N(S_t)}" />
-        , with a constant learning rate <InlineMath math="\alpha" />:
-        <br />
-        <br />
+
+        <p>And then we apply the update.</p>
+
+        <p>Notice the structure:</p>
+
+        <p>
+          <InlineMath math="(G_t - \hat{v}_\pi(S_t))" /> is the error, where{" "}
+          <InlineMath math="G_t" /> is the return we just observed for a state
+          on our latest episode, and <InlineMath math="\hat{v}_\pi(S_t)" /> is
+          the average value of all our previous returns for that state (our
+          current estimate).
+        </p>
+
+        <p>
+          This error term tells us how far off our current estimate was from the
+          new sampled return.
+        </p>
+
+        <p>
+          The factor <InlineMath math="\frac{1}{N(S_t)}" /> is the step size.
+        </p>
+
+        <p>
+          Early on, when we have only visited the state a few times, the step
+          size is large, so each new return can move{" "}
+          <InlineMath math="\hat{v}_\pi(S_t)" /> a lot.
+        </p>
+
+        <p>
+          Later, after many visits, the step size becomes tiny, so the estimate
+          stabilizes.
+        </p>
+
+        <p>
+          <strong>Why we replace</strong> <InlineMath math="\frac{1}{N(S_t)}" />{" "}
+          <strong>with</strong> <InlineMath math="\alpha" />
+        </p>
+
+        <p>
+          Using <InlineMath math="\frac{1}{N(S_t)}" /> makes{" "}
+          <InlineMath math="\hat{v}_\pi(s)" /> a true sample average, but
+          sometimes we don&apos;t actually want an equal-weight average over the
+          entire history because in many real problems, the world can change
+          over time.
+        </p>
+
+        <p>
+          If the environment is non-stationary, old experience can become less
+          relevant than recent experience. In that case, a constantly shrinking
+          step size is a problem, because it makes the value estimates hard to
+          move later on.
+        </p>
+
+        <p>
+          Thus, we replace the visit-count step size,{" "}
+          <InlineMath math="\frac{1}{N(S_t)}" />, with a constant learning rate{" "}
+          <InlineMath math="\alpha" />:
+        </p>
+
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
-        <br />
-        <br />
-        Why does a constant learning rate, <InlineMath math="\alpha" />, give
-        more weight to recent experience?
-        <br />
-        <br />
-        To see this clearly, we need to rewrite the update rule slightly:
-        <br />
-        <br />
+
+        <p>
+          Why does a constant learning rate, <InlineMath math="\alpha" />, give
+          more weight to recent experience?
+        </p>
+
+        <p>To see this clearly, we need to rewrite the update rule slightly:</p>
+
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow (1-\alpha)\hat{v}_\pi(S_t) + \alpha G_t" />
-        <br />
-        <br />
-        This form makes the behavior explicit.
-        <br />
-        <br />
-        Each update keeps a fraction <InlineMath math="1-\alpha" /> of the old
-        estimate and mixes in a fraction <InlineMath math="\alpha" /> of the new
-        return.
-        <br />
-        <br />
-        Now suppose we observe a sequence of returns{" "}
-        <InlineMath math="G_1, G_2, G_3, \dots" /> for the same state.
-        <br />
-        <br />
-        Let&apos;s see how those returns contribute to the value estimate over
-        time.
-        <br />
-        <br />
-        After the first update:
-        <br />
-        <br />
+
+        <p>This form makes the behavior explicit.</p>
+
+        <p>
+          Each update keeps a fraction <InlineMath math="1-\alpha" /> of the old
+          estimate and mixes in a fraction <InlineMath math="\alpha" /> of the
+          new return.
+        </p>
+
+        <p>
+          Now suppose we observe a sequence of returns{" "}
+          <InlineMath math="G_1, G_2, G_3, \dots" /> for the same state.
+        </p>
+
+        <p>
+          Let&apos;s see how those returns contribute to the value estimate over
+          time.
+        </p>
+
+        <p>After the first update:</p>
+
         <BlockMath math="\hat{v}_1 = \alpha G_1" />
-        <br />
-        <br />
-        After the second update:
-        <br />
-        <br />
+
+        <p>After the second update:</p>
+
         <BlockMath math="\hat{v}_2 = (1-\alpha)\alpha G_1 + \alpha G_2" />
-        <br />
-        <br />
-        After the third update:
-        <br />
-        <br />
+
+        <p>After the third update:</p>
+
         <BlockMath math="\hat{v}_3 = (1-\alpha)^2 \alpha G_1 + (1-\alpha)\alpha G_2 + \alpha G_3" />
-        <br />
-        <br />
-        A clear pattern appears.
-        <br />
-        <br />
-        The most recent return always receives weight{" "}
-        <InlineMath math="\alpha" />.
-        <br />
-        <br />
-        Each earlier return is multiplied by an additional factor of{" "}
-        <InlineMath math="1-\alpha" /> for every update that has happened since
-        it was observed.
-        <br />
-        <br />
-        This means older experience is not discarded, but it is progressively
-        discounted.
-        <br />
-        <br />
-        <strong>Concrete example</strong>
-        <br />
-        <br />
-        Suppose <InlineMath math="\alpha = 0.1" /> and we observe returns:
-        <br />
-        <br />
-        <InlineMath math="G_1, G_2, G_3, G_4" />
-        <br />
-        <br />
-        Their effective weights in the value estimate become:
-        <br />
-        <br />
-        • <InlineMath math="G_4" /> has weight <InlineMath math="0.10" />
-        <br />
-        • <InlineMath math="G_3" /> has weight <InlineMath math="0.09" />
-        <br />
-        • <InlineMath math="G_2" /> has weight <InlineMath math="0.081" />
-        <br />
-        • <InlineMath math="G_1" /> has weight <InlineMath math="0.0729" />
-        <br />
-        <br />
-        Each step back in time multiplies the influence by{" "}
-        <InlineMath math="1-\alpha = 0.9" />.
-        <br />
-        <br />
-        <em>
-          So recent returns matter more because older returns are repeatedly
+
+        <p>A clear pattern appears.</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            The most recent return always receives weight{" "}
+            <InlineMath math="\alpha" />.
+          </li>
+          <li>
+            Each earlier return is multiplied by an additional factor of{" "}
+            <InlineMath math="1-\alpha" /> for every update that has happened
+            since it was observed.
+          </li>
+        </ul>
+
+        <p>
+          This means older experience is not discarded, but it is progressively
           discounted.
-        </em>
-        <br />
-        <br />
-        Now compare this to what happens when we use the visit-count step size{" "}
-        <InlineMath math="\frac{1}{N(S_t)}" />.
-        <br />
-        <br />
-        With this choice, the update rule can be rewritten in the same form as
-        before:
-        <br />
-        <br />
+        </p>
+
+        <p>
+          <strong>Concrete example</strong>
+        </p>
+
+        <p>
+          Suppose <InlineMath math="\alpha = 0.1" /> and we observe returns{" "}
+          <InlineMath math="G_1, G_2, G_3, G_4" />.
+        </p>
+
+        <p>Their effective weights in the value estimate become:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            <InlineMath math="G_4" /> has weight <InlineMath math="0.10" />
+          </li>
+          <li>
+            <InlineMath math="G_3" /> has weight <InlineMath math="0.09" />
+          </li>
+          <li>
+            <InlineMath math="G_2" /> has weight <InlineMath math="0.081" />
+          </li>
+          <li>
+            <InlineMath math="G_1" /> has weight <InlineMath math="0.0729" />
+          </li>
+        </ul>
+
+        <p>
+          Each step back in time multiplies the influence by{" "}
+          <InlineMath math="1-\alpha = 0.9" />.
+        </p>
+
+        <p>
+          <em>
+            So recent returns matter more because older returns are repeatedly
+            discounted.
+          </em>
+        </p>
+
+        <p>
+          Now compare this to what happens when we use the visit-count step size{" "}
+          <InlineMath math="\frac{1}{N(S_t)}" />.
+        </p>
+
+        <p>
+          With this choice, the update rule can be rewritten in the same form as
+          before:
+        </p>
+
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \left(1 - \tfrac{1}{N(S_t)}\right)\hat{v}_\pi(S_t) + \tfrac{1}{N(S_t)}\,G_t" />
-        <br />
-        <br />
-        At first glance, this looks almost identical to the constant{" "}
-        <InlineMath math="\alpha" /> update.
-        <br />
-        <br />
-        In both cases, we are forming a weighted average between:
-        <br />
-        <br />
-        • the old estimate <InlineMath math="\hat{v}_\pi(S_t)" />
-        <br />
-        • the newly observed return <InlineMath math="G_t" />
-        <br />
-        <br />
-        The difference lies entirely in how the weights behave over time.
-        <br />
-        <br />
-        With the visit-count update, the effective step size is:
-        <br />
-        <br />
-        <InlineMath math="\alpha_t = \tfrac{1}{N(S_t)}" />
-        <br />
-        <br />
-        Every time the state is visited again, <InlineMath math="N(S_t)" />{" "}
-        increases, and the weight placed on the new return gets smaller.
-        <br />
-        <br />
-        That means:
-        <br />
-        <br />
-        • early returns cause large updates
-        <br />
-        • later returns cause very small updates
-        <br />
-        <br />
-        As a result, newer returns are <em>not</em> given special importance.
-        <br />
-        <br />
-        Instead, all returns, newer and older, end up contributing equally in
-        the long run.
-        <br />
-        <br />
-        <strong>Concrete comparison (unrolling the weights)</strong>
-        <br />
-        <br />
-        To really see the difference, let&apos;s expand the{" "}
-        <InlineMath math="\frac{1}{N(S_t)}" /> update the same way we expanded
-        the constant <InlineMath math="\alpha" /> update.
-        <br />
-        <br />
-        When the state is visited for the <InlineMath math="n" />
-        -th time, the step size is <InlineMath math="\alpha_n = \frac{1}{n}" />.
-        <br />
-        <br />
-        So the update at visit <InlineMath math="n" /> is:
-        <br />
-        <br />
+
+        <p>
+          At first glance, this looks almost identical to the constant{" "}
+          <InlineMath math="\alpha" /> update.
+        </p>
+
+        <p>In both cases, we are forming a weighted average between:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            the old estimate <InlineMath math="\hat{v}_\pi(S_t)" />
+          </li>
+          <li>
+            the newly observed return <InlineMath math="G_t" />
+          </li>
+        </ul>
+
+        <p>The difference lies entirely in how the weights behave over time.</p>
+
+        <p>
+          With the visit-count update, the effective step size is{" "}
+          <InlineMath math="\alpha_t = \tfrac{1}{N(S_t)}" />.
+        </p>
+
+        <p>
+          Every time the state is visited again, <InlineMath math="N(S_t)" />{" "}
+          increases, and the weight placed on the new return gets smaller.
+        </p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>early returns cause large updates</li>
+          <li>later returns cause very small updates</li>
+        </ul>
+
+        <p>
+          As a result, newer returns are <em>not</em> given special importance.
+        </p>
+
+        <p>
+          Instead, all returns, newer and older, end up contributing equally in
+          the long run.
+        </p>
+
+        <p>
+          <strong>Concrete comparison</strong>
+        </p>
+
+        <p>
+          To really see the difference, let&apos;s expand the{" "}
+          <InlineMath math="\frac{1}{N(S_t)}" /> update the same way we expanded
+          the constant <InlineMath math="\alpha" /> update.
+        </p>
+
+        <p>
+          When the state is visited for the <InlineMath math="n" />
+          -th time, the step size is{" "}
+          <InlineMath math="\alpha_n = \frac{1}{n}" />.
+        </p>
+
+        <p>
+          So the update at visit <InlineMath math="n" /> is:
+        </p>
+
         <BlockMath math="\hat{v}_n = \left(1-\frac{1}{n}\right)\hat{v}_{n-1} + \frac{1}{n}G_n" />
-        <br />
-        <br />
-        Now let&apos;s unroll this for the first few visits.
-        <br />
-        <br />
-        <strong>After 1 visit</strong>
-        <br />
-        <br />
+
+        <p>Now let&apos;s unroll this for the first few visits.</p>
+
+        <p>
+          <strong>After 1 visit</strong>
+        </p>
+
         <BlockMath math="\hat{v}_1 = \frac{1}{1}G_1" />
-        <br />
-        <br />
-        <strong>After 2 visits</strong>
-        <br />
-        <br />
+
+        <p>
+          <strong>After 2 visits</strong>
+        </p>
+
         <BlockMath math="\hat{v}_2 = \left(1-\frac{1}{2}\right)\hat{v}_1 + \frac{1}{2}G_2" />
         <BlockMath math="\frac{1}{2}G_1 + \frac{1}{2}G_2" />
-        <br />
-        <br />
-        <strong>After 3 visits</strong>
-        <br />
-        <br />
+
+        <p>
+          <strong>After 3 visits</strong>
+        </p>
+
         <BlockMath math="\hat{v}_3 = \left(1-\frac{1}{3}\right)\hat{v}_2 + \frac{1}{3}G_3" />
         <BlockMath math="\frac{2}{3}\left(\frac{1}{2}G_1 + \frac{1}{2}G_2\right) + \frac{1}{3}G_3" />
         <BlockMath math="\frac{1}{3}G_1 + \frac{1}{3}G_2 + \frac{1}{3}G_3" />
-        <br />
-        <br />
-        <strong>After 4 visits</strong>
-        <br />
-        <br />
+
+        <p>
+          <strong>After 4 visits</strong>
+        </p>
+
         <BlockMath math="\hat{v}_4 = \left(1-\frac{1}{4}\right)\hat{v}_3 + \frac{1}{4}G_4" />
         <BlockMath math="\frac{3}{4}\left(\frac{1}{3}G_1 + \frac{1}{3}G_2 + \frac{1}{3}G_3\right) + \frac{1}{4}G_4" />
         <BlockMath math="\frac{1}{4}G_1 + \frac{1}{4}G_2 + \frac{1}{4}G_3 + \frac{1}{4}G_4" />
-        <br />
-        <br />
-        Notice what just happened.
-        <br />
-        <br />
-        Even though the step size changes at every visit (
-        <InlineMath math="\frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots" />
-        ), the final result is a true sample average.
-        <br />
-        <br />
-        After <InlineMath math="n" /> visits, each return ends up with weight{" "}
-        <InlineMath math="\frac{1}{n}" />. The weight depends on how many total
-        samples you have.
-        <br />
-        <br />
-        So unlike constant <InlineMath math="\alpha" />, there is no exponential
-        discounting of older returns. The weight does not depend on how old a
-        return is.
-        <br />
-        <br />
-        So the key distinction is:
-        <br />
-        <br />
-        • <InlineMath math="\frac{1}{N(S_t)}" /> produces a{" "}
-        <em>true sample average</em>, where all returns are weighted equally
-        <br />
-        <br />
-        • constant <InlineMath math="\alpha" /> produces an{" "}
-        <em>exponentially weighted average</em>, where recent returns matter
-        more
+
+        <p>Notice what just happened.</p>
+
+        <p>
+          Even though the step size changes at every visit (
+          <InlineMath math="\frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots" />
+          ), the final result is a true sample average.
+        </p>
+
+        <p>
+          After <InlineMath math="n" /> visits, each return ends up with weight{" "}
+          <InlineMath math="\frac{1}{n}" />. The weight depends on how many
+          total samples you have.
+        </p>
+
+        <p>
+          So unlike constant <InlineMath math="\alpha" />, there is no
+          exponential discounting of older returns. The weight does not depend
+          on how old a return is.
+        </p>
+
+        <p>So the key distinction is:</p>
+
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            <InlineMath math="\frac{1}{N(S_t)}" /> produces a{" "}
+            <em>true sample average</em>, where all returns are weighted equally
+          </li>
+          <li>
+            constant <InlineMath math="\alpha" /> produces an{" "}
+            <em>exponentially weighted average</em>, where recent returns matter
+            more
+          </li>
+        </ul>
       </div>
     </section>
   );
