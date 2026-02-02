@@ -940,6 +940,24 @@ export default function ModelFreePrediction() {
             more
           </li>
         </ul>
+
+        <p>
+          As said earlier, the Monte Carlo approach has a fundamental
+          limitation, it requires waiting until the end of an episode to compute
+          the return <InlineMath math="G_t" />. That means learning can only
+          happen <em>after</em> an episode finishes.
+        </p>
+
+        <p>
+          But what if the episode is very long?
+          <br />
+          Or never truly ends?
+        </p>
+
+        <p>
+          A new method called <em>temporal difference learning</em> was
+          introduced to answer exactly this question.
+        </p>
       </div>
 
       <h2 id="mfp-td-learning" className="text-2xl font-bold my-12 text-center">
