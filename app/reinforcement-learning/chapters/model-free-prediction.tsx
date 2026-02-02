@@ -300,7 +300,7 @@ export default function ModelFreePrediction() {
         In first-visit Monte Carlo, we are very strict.
         <br />
         <br />
-        For each episode, we only look at the <em>first timestep,</em>{" "}
+        For each episode, we only look at the <em>first timestep</em>,{" "}
         <InlineMath math="t" />, where state <InlineMath math="s" /> appears.
         <br />
         <br />
@@ -315,6 +315,24 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         So each episode contributes at most one sample return for each state.
+        <br />
+        <br />
+        <em>Example:</em>
+        <br />
+        <br />
+        Suppose an episode looks like:
+        <br />
+        <br />
+        <BlockMath math="A \;\rightarrow\; B \;\rightarrow\; A \;\rightarrow\; C \;\rightarrow\; \text{terminal}" />
+        <br />
+        <br />
+        If we are estimating the value of state <InlineMath math="A" />, we only
+        use the return following the <em>first</em> time <InlineMath math="A" />{" "}
+        appears.
+        <br />
+        <br />
+        The second visit to <InlineMath math="A" /> in the same episode is
+        ignored.
         <br />
         <br />
         <strong>Every-Visit Monte Carlo</strong>
@@ -333,6 +351,26 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         So a single episode can contribute multiple samples for the same state.
+        <br />
+        <br />
+        <em>Example:</em>
+        <br />
+        <br />
+        Using the same episode:
+        <br />
+        <br />
+        <BlockMath math="A \;\rightarrow\; B \;\rightarrow\; A \;\rightarrow\; C \;\rightarrow\; \text{terminal}" />
+        <br />
+        <br />
+        If we are estimating the value of state <InlineMath math="A" />, we use:
+        <br />
+        <br />
+        • the return following the first visit to <InlineMath math="A" />
+        <br />
+        • and the return following the second visit to <InlineMath math="A" />
+        <br />
+        <br />
+        Both returns are included as separate samples.
         <br />
         <br />
         In both cases, the update rule looks the same:
