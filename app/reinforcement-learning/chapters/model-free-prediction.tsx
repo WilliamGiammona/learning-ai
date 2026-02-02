@@ -225,13 +225,10 @@ export default function ModelFreePrediction() {
         All learning comes purely from observed experience.
         <br />
         <br />
-        Second, Monte Carlo prediction only works for <strong>episodic</strong>
-        problems.
-        <br />
-        <br />
-        The episode has to end, otherwise, the return is never fully observed.
-        If the episode never terminated, you would be waiting forever to see how
-        much reward followed a state.
+        Second, Monte Carlo prediction only works for <em>episodic</em>{" "}
+        problems. The episode has to end, otherwise, the return is never fully
+        observed. If the episode never terminated, you would be waiting forever
+        to see how much reward followed a state.
       </div>
     </section>
   );
