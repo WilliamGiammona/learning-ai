@@ -191,13 +191,13 @@ export default function ModelFreePrediction() {
         terminates.
         <br />
         <br />
-        For every episode, the value we give to each state is just the total
-        discounted reward accumulated from that state until the end of the
-        episode (the return).
+        For every episode, the value we give to each state is just the return:
+        the total discounted reward accumulated from that state until the end of
+        the episode.
         <br />
         <br />
-        One episode gives us one noisy sample of what the value of that state
-        might be.
+        Each visit to a state in an episode gives us one noisy sample of that
+        state&apos;s value.
         <br />
         <br />
         Many episodes give us many samples, and Monte Carlo prediction simply
