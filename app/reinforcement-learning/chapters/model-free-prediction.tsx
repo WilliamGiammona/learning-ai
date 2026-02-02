@@ -300,8 +300,8 @@ export default function ModelFreePrediction() {
         In first-visit Monte Carlo, we are very strict.
         <br />
         <br />
-        For each episode, we look at the <em>first time-step</em>{" "}
-        <InlineMath math="t" /> at which state <InlineMath math="s" /> appears.
+        For each episode, we only look at the <em>first timestep,</em>{" "}
+        <InlineMath math="t" />, where state <InlineMath math="s" /> appears.
         <br />
         <br />
         We compute the return <InlineMath math="G_t" /> from that point onward,
@@ -324,7 +324,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         Instead of looking only at the first occurrence of{" "}
-        <InlineMath math="s" />, we look at <em>every time-step</em> in the
+        <InlineMath math="s" />, we look at <em>every timestep</em> in the
         episode where that state is visited.
         <br />
         <br />
@@ -351,12 +351,6 @@ export default function ModelFreePrediction() {
         As the number of sampled returns grows, the estimated value{" "}
         <InlineMath math="V(s)" /> converges to the true value{" "}
         <InlineMath math="v_\pi(s)" />.
-        <br />
-        <br />
-        Same destination.
-        <br />
-        <br />
-        Slightly different paths.
       </div>
     </section>
   );
