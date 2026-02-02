@@ -982,7 +982,7 @@ export default function ModelFreePrediction() {
       <div className="space-y-4">
         <p>
           Temporal Difference (TD) learning did not appear fully formed as a
-          standard reinforcement learning algorithm. It emerged from a much more
+          standard reinforcement learning algorithm, it emerged from a much more
           basic question:
         </p>
 
@@ -1000,7 +1000,7 @@ export default function ModelFreePrediction() {
         </p>
 
         <ul className="list-disc list-inside space-y-1">
-          <li>supervised learning, where targets are given explicitly</li>
+          <li>Supervised Learning, where targets are given explicitly</li>
           <li>
             Monte Carlo methods, where learning waits until the end of an
             episode
