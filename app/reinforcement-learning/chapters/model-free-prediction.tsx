@@ -407,7 +407,12 @@ export default function ModelFreePrediction() {
       </div>
 
       <div className="mb-4 mt-24">
-        <strong>Incremental Means</strong>
+        <strong>Incremental Mean</strong>
+        <br />
+        <br />
+        In reinforcement learning, we estimate state values by averaging
+        returns. But instead of summing all returns and dividing, we use a more
+        efficient approach: the incremental mean. Let's see why.
         <br />
         <br />
         Suppose we observe a sequence of numbers:
