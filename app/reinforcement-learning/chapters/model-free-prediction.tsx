@@ -624,7 +624,7 @@ export default function ModelFreePrediction() {
         from scratch, we update that mean incrementally:
         <br />
         <br />
-        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
         <br />
         <br />
         Here <InlineMath math="N(S_t)" /> is just a counter that keeps track of
@@ -643,19 +643,23 @@ export default function ModelFreePrediction() {
         Notice the structure:
         <br />
         <br />
-        <InlineMath math="(G_t - \hat{v}_\pi(S_t))" /> is the error.
+        <InlineMath math="(G_t - \hat{v}_\pi(S_t))" /> is the error, where{" "}
+        <InlineMath math="G_t" /> is the return we just observed for a state on
+        our latest episode, and <InlineMath math="\hat{v}_\pi(S_t)" /> is the
+        average value of all our previous returns for that state (our current
+        estimate).
         <br />
         <br />
-        It tells us how far off our current estimate was from the new sampled
-        return.
+        This error term tells us how far off our current estimate was from the
+        new sampled return.
         <br />
         <br />
         The factor <InlineMath math="\frac{1}{N(S_t)}" /> is the step size.
         <br />
         <br />
         Early on, when we have only visited the state a few times, the step size
-        is large, so each new return can move <InlineMath math="V(S_t)" /> a
-        lot.
+        is large, so each new return can move{" "}
+        <InlineMath math="\hat{v}_\pi(S_t)" /> a lot.
         <br />
         <br />
         Later, after many visits, the step size becomes tiny, so the estimate
@@ -669,44 +673,23 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         Using <InlineMath math="\frac{1}{N(S_t)}" /> makes{" "}
-        <InlineMath math="V(s)" /> an honest-to-goodness sample average.
-        <br />
-        <br />
-        But sometimes we don&apos;t actually want an equal-weight average over
-        all history.
-        <br />
-        <br />
-        In many real problems, the world can change over time.
+        <InlineMath math="\hat{v}_\pi(s)" /> a true sample average, but
+        sometimes we don&apos;t actually want an equal-weight average over the
+        entire history because in many real problems, the world can change over
+        time.
         <br />
         <br />
         If the environment is non-stationary, old experience can become less
-        relevant than recent experience.
+        relevant than recent experience. In that case, a constantly shrinking
+        step size is a problem, because it makes the value estimates hard to
+        move later on.
         <br />
         <br />
-        In that case, a constantly shrinking step size is a problem, because it
-        makes the value estimates hard to move later on.
+        Thus, we replace the visit-count step size, <InlineMath math="N(S_t)" />
+        , with a constant learning rate <InlineMath math="\alpha" />:
         <br />
         <br />
-        So we replace the visit-count step size with a constant learning rate{" "}
-        <InlineMath math="\alpha" />:
-        <br />
-        <br />
-        <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(G_t - V(S_t)\bigr)" />
-        <br />
-        <br />
-        This changes the behavior in a useful way:
-        <br />
-        <br />
-        • the estimate keeps adapting, even late in training
-        <br />
-        • recent returns effectively matter more than very old ones
-        <br />
-        • and we don&apos;t need to maintain a separate counter for every state
-        <br />
-        <br />
-        So <InlineMath math="\frac{1}{N(S_t)}" /> gives you the true sample
-        mean, while <InlineMath math="\alpha" /> gives you a running mean that
-        can keep up with a moving target.
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
       </div>
     </section>
   );
