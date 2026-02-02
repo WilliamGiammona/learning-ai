@@ -693,16 +693,14 @@ export default function ModelFreePrediction() {
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
         <br />
         <br />
+        Why does a constant learning rate, <InlineMath math="\alpha" />, give
+        more weight to recent experience?
         <br />
         <br />
-        Why does a constant learning rate <InlineMath math="\alpha" /> give more
-        weight to recent experience?
+        To see this clearly, we need to rewrite the update rule slightly:
         <br />
         <br />
-        To see this clearly, rewrite the update rule slightly:
-        <br />
-        <br />
-        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow (1-\alpha)\hat{v}_\pi(S_t) + \alpha G_t" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow (1-\alpha)\hat{v}_\pi(S_t) + \alpha G_t" />
         <br />
         <br />
         This form makes the behavior explicit.
@@ -790,6 +788,100 @@ export default function ModelFreePrediction() {
         <br />
         It allows the value estimate to keep adapting, instead of freezing as
         more data is collected.
+        <br />
+        <br />
+        Now compare this to what happens when we use the visit-count step size{" "}
+        <InlineMath math="\frac{1}{N(S_t)}" />.
+        <br />
+        <br />
+        With this choice, the update rule becomes:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <br />
+        <br />
+        At first glance, this looks similar.
+        <br />
+        <br />
+        But its long-term behavior is very different.
+        <br />
+        <br />
+        With <InlineMath math="\frac{1}{N(S_t)}" />, the step size shrinks every
+        time the state is visited.
+        <br />
+        <br />
+        That means:
+        <br />
+        <br />
+        • early returns cause large updates
+        <br />
+        • later returns cause very small updates
+        <br />
+        <br />
+        As a result, old experience never fades away.
+        <br />
+        <br />
+        Instead, every return that was ever observed ends up contributing{" "}
+        <em>equally</em> to the final estimate.
+        <br />
+        <br />
+        <strong>Concrete comparison</strong>
+        <br />
+        <br />
+        Suppose we observe four returns for the same state:
+        <br />
+        <br />
+        <InlineMath math="G_1, G_2, G_3, G_4" />
+        <br />
+        <br />
+        Using the visit-count update, after four visits the value estimate is
+        exactly:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_4 = \frac{G_1 + G_2 + G_3 + G_4}{4}" />
+        <br />
+        <br />
+        Each return has weight <InlineMath math="\frac{1}{4}" />.
+        <br />
+        <br />
+        No matter when a return was observed — first or last — it contributes
+        the same amount.
+        <br />
+        <br />
+        If we later observe 100 more returns, those original early returns still
+        have weight <InlineMath math="\frac{1}{104}" /> each.
+        <br />
+        <br />
+        They never disappear.
+        <br />
+        <br />
+        This is very different from the constant <InlineMath math="\alpha" />{" "}
+        case, where each new update repeatedly discounts older experience.
+        <br />
+        <br />
+        So the key distinction is:
+        <br />
+        <br />
+        • <InlineMath math="\frac{1}{N(S_t)}" /> produces a{" "}
+        <em>true sample average</em>, where all returns are weighted equally
+        <br />
+        • constant <InlineMath math="\alpha" /> produces an{" "}
+        <em>exponentially weighted average</em>, where recent returns matter
+        more
+        <br />
+        <br />
+        Both are averaging.
+        <br />
+        <br />
+        They just answer different questions:
+        <br />
+        <br />
+        • <InlineMath math="\frac{1}{N(S_t)}" /> asks:
+        <em>What is the average over all experience I have ever seen?</em>
+        <br />
+        <br />
+        • constant <InlineMath math="\alpha" /> asks:
+        <em>What is the average behavior I am seeing right now?</em>
       </div>
     </section>
   );
