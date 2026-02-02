@@ -1014,7 +1014,11 @@ export default function ModelFreePrediction() {
           happen.
         </p>
 
-        <p>Richard Sutton was interested in a different setting.</p>
+        <p>
+          In the late 1980s, Richard Sutton, a Canadian computer scientist and
+          cognitive science researcher studying learning systems, was interested
+          in a different problem.
+        </p>
 
         <p>
           He was studying how systems could{" "}
