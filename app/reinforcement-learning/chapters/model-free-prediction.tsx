@@ -1027,20 +1027,26 @@ export default function ModelFreePrediction() {
           supervising teacher.
         </p>
 
-        <p>
-          This line of thinking led to his 1988 paper,
-          <em>Learning to Predict by the Methods of Temporal Differences</em>.
-        </p>
+        <p className="mb-4">This line of thinking led to his 1988 paper,</p>
 
-        <p>
-          In that work, Sutton introduced the core idea behind Temporal
-          Difference learning:
+        <Link
+          href="https://link.springer.com/content/pdf/10.1007/BF00115009.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Learning to Predict by the Methods of Temporal Differences
+        </Link>
+
+        <p className="mt-4">
+          Here, Sutton introduced the core idea behind Temporal Difference
+          learning:
         </p>
 
         <p>
           <em>
             You do not need to wait for the final outcome to know whether a
-            prediction is wrong. You can compare successive predictions to each
+            prediction is wrong, you can compare successive predictions to each
             other.
           </em>
         </p>
@@ -1092,19 +1098,6 @@ export default function ModelFreePrediction() {
           Next, we&apos;ll make this idea precise and see exactly how Temporal
           Difference updates are constructed.
         </p>
-
-        <p className="mb-4">
-          You can read Sutton&apos;s full 1988 paper on TD Learning here:
-        </p>
-
-        <Link
-          href="https://link.springer.com/content/pdf/10.1007/BF00115009.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          Learning to Predict by the Methods of Temporal Differences
-        </Link>
       </div>
     </section>
   );
