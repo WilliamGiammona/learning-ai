@@ -1053,7 +1053,7 @@ export default function ModelFreePrediction() {
 
         <p>
           Sutton, along with Andrew Barto, would later go on to co-author what
-          is now the standard reference for the field,
+          is now the standard reference for the field,{" "}
           <em>Reinforcement Learning: An Introduction</em>, a book that helped
           define modern reinforcement learning and unify Monte Carlo methods,
           Temporal Difference learning, and dynamic programming under a single
