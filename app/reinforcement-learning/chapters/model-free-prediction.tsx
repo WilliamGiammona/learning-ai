@@ -179,11 +179,16 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         For the prediction problem in RL, we still want to estimate a value
-        function for a fixed policy, but instead of computing expectations using
-        a known model of the environment, we do something much simpler.
+        function, <InlineMath math="v_\pi" />, for a fixed policy{" "}
+        <InlineMath math="\pi" />, but instead of computing expectations using a
+        known model of the environment, we do something much simpler.
         <br />
         <br />
-        We just run the policy over and over again.
+        We just run the policy over and over again, collecting episodes of
+        experience:
+        <br />
+        <br />
+        <BlockMath math="S_0, A_0, R_1, S_1, A_1, R_2, \dots, S_T" />
         <br />
         <br />
         Each run produces an <em>entire episode</em>, which is just a sequence
@@ -191,22 +196,49 @@ export default function ModelFreePrediction() {
         terminates.
         <br />
         <br />
-        For every episode, the value we give to each state is just the return:
-        the total discounted reward accumulated from that state until the end of
-        the episode.
+        Now recall what we mean by the <em>return</em>.
         <br />
         <br />
-        Each visit to a state in an episode gives us one noisy sample of that
+        The return from time <InlineMath math="t" /> is the total discounted
+        reward you collect from that point until the end of the episode:
+        <br />
+        <br />
+        <BlockMath math="G_t = R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{T-t-1} R_T" />
+        <br />
+        <br />
+        And recall what the value function actually is:
+        <br />
+        <br />
+        <em>
+          the expected return, if you start in a state and follow policy{" "}
+          <InlineMath math="\pi" />.
+        </em>
+        <br />
+        <br />
+        <BlockMath math="v_\pi(s) = \mathbb{E}_\pi \left[ G_t \mid S_t = s \right]" />
+        <br />
+        <br />
+        We don&apos;t know how to compute that expectation directly, so we
+        replace it with something we <em>can</em> compute:
+        <br />
+        <br />
+        <strong>the empirical mean of sampled returns</strong>
+        <br />
+        <br />
+        Each time we visit a state <InlineMath math="s" />, we can observe the
+        return that followed it. That return is one noisy sample of that
         state&apos;s value.
         <br />
         <br />
         Many episodes give us many samples, and Monte Carlo prediction simply
-        averages those samples.
+        averages them.
         <br />
         <br />
-        The estimated value of a state is the average return of all the episodes
-        where that state was visited. This approach has two important
-        consequences.
+        In other words, instead of <em>expected return</em>, we use the{" "}
+        <em>average return we actually saw</em>.
+        <br />
+        <br />
+        This approach has two important consequences.
         <br />
         <br />
         First, Monte Carlo methods are <em>model-free</em>.
@@ -226,9 +258,12 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         Second, Monte Carlo prediction only works for <em>episodic</em>{" "}
-        problems. The episode has to end, otherwise, the return is never fully
-        observed. If the episode never terminated, you would be waiting forever
-        to see how much reward followed a state.
+        problems.
+        <br />
+        <br />
+        The episode has to end, otherwise the return is never fully observed. If
+        the episode never terminated, you would be waiting forever to see how
+        much reward followed a state.
       </div>
     </section>
   );
