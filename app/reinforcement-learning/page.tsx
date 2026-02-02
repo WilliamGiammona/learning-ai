@@ -289,6 +289,14 @@ export default function ReinforcementLearningPage() {
                       Monte Carlo Learning
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#mfp-td-learning"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Temporal Difference Learning
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
