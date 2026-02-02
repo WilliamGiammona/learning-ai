@@ -275,14 +275,8 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         Suppose we want to estimate the value of a particular state{" "}
-        <InlineMath math="s" />.
-        <br />
-        <br />
-        During a single episode, that state might appear only once or it might
-        appear multiple times.
-        <br />
-        <br />
-        The question is:
+        <InlineMath math="s" />. During a single episode, that state might
+        appear only once or it might appear multiple times. The question is:
         <br />
         <br />
         <em>
@@ -305,8 +299,6 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         We compute the return <InlineMath math="G_t" /> from that point onward,
-        <br />
-        <br />
         and we use <em>only that one return</em> to update our estimate of{" "}
         <InlineMath math="v_\pi(s)" />.
         <br />
