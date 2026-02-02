@@ -405,6 +405,108 @@ export default function ModelFreePrediction() {
         <InlineMath math="\hat{v}_\pi(s)" /> converges to the true value{" "}
         <InlineMath math="v_\pi(s)" />.
       </div>
+
+      <div className="mb-4 mt-24">
+        <strong>Incremental Means</strong>
+        <br />
+        <br />
+        Suppose we observe a sequence of numbers:
+        <br />
+        <br />
+        <InlineMath math="x_1, x_2, \dots, x_k" />
+        <br />
+        <br />
+        The usual way to compute their mean is to add everything up and divide
+        by how many numbers we have:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_1 + x_2 + \dots + x_k}{k}" />
+        <br />
+        <br />
+        That definition is simple and intuitive.
+        <br />
+        <br />
+        But it hides an inconvenient detail.
+        <br />
+        <br />
+        Every time a new number arrives, we have to remember <em>all</em> the
+        old ones in order to recompute the sum.
+        <br />
+        <br />
+        Now let&apos;s rewrite the same mean in a slightly different way.
+        <br />
+        <br />
+        Split the last term off from the rest:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_k + (x_1 + x_2 + \dots + x_{k-1})}{k}" />
+        <br />
+        <br />
+        But notice something important.
+        <br />
+        <br />
+        The quantity in parentheses is just the previous mean multiplied by{" "}
+        <InlineMath math="k - 1" />:
+        <br />
+        <br />
+        <BlockMath math="x_1 + x_2 + \dots + x_{k-1} = (k - 1)\mu_{k-1}" />
+        <br />
+        <br />
+        Plug that in:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_k + (k - 1)\mu_{k-1}}{k}" />
+        <br />
+        <br />
+        Split the fraction:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_k}{k} + \frac{(k - 1)\mu_{k-1}}{k}" />
+        <br />
+        <br />
+        Rewrite the second term:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_k}{k} + \left(1 - \frac{1}{k}\right)\mu_{k-1}" />
+        <br />
+        <br />
+        Expand:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \frac{x_k}{k} + \mu_{k-1} - \frac{1}{k}\mu_{k-1}" />
+        <br />
+        <br />
+        Group terms:
+        <br />
+        <br />
+        <BlockMath math="\mu_k = \mu_{k-1} + \frac{1}{k}(x_k - \mu_{k-1})" />
+        <br />
+        <br />
+        This formula may look new, but it is doing{" "}
+        <em>exactly the same thing</em> as the original definition of the mean.
+        <br />
+        <br />
+        It takes the old average, nudges it toward the new observation, and
+        scales that adjustment by how many samples we have seen so far.
+        <br />
+        <br />
+        The key point is that this incremental form lets us update the mean
+        using only:
+        <br />
+        <br />
+        • the previous mean
+        <br />
+        • the new data point
+        <br />
+        <br />
+        We never need to store the entire history.
+        <br />
+        <br />
+        This is why, when we start estimating value functions from data (where
+        we are taking the mean of every value we saw of a state for each
+        episode), we will use this incremental form instead of storing and
+        summing all returns we've ever seen.
+      </div>
     </section>
   );
 }
