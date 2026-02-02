@@ -312,15 +312,30 @@ export default function ModelFreePrediction() {
         <em>Example:</em>
         <br />
         <br />
-        Suppose an episode looks like:
+        Consider the following episode, with rewards shown above the arrows:
         <br />
         <br />
-        <BlockMath math="A \;\rightarrow\; B \;\rightarrow\; A \;\rightarrow\; C \;\rightarrow\; \text{terminal}" />
+        <BlockMath math="A \xrightarrow{+2} B \xrightarrow{-1} A \xrightarrow{+3} C \xrightarrow{+5} \text{terminal}" />
         <br />
         <br />
-        If we are estimating the value of state <InlineMath math="A" />, we only
-        use the return following the <em>first</em> time <InlineMath math="A" />{" "}
-        appears.
+        Suppose we are estimating the value of state <InlineMath math="A" />,
+        and assume a discount factor <InlineMath math="\gamma = 0.9" />.
+        <br />
+        <br />
+        <strong>First visit to</strong> <InlineMath math="A" />:
+        <br />
+        <br />
+        The rewards that follow the first visit are:
+        <br />
+        <br />
+        <BlockMath math="G = 2 + 0.9(-1) + 0.9^2(3) + 0.9^3(5)" />
+        <br />
+        <br />
+        <BlockMath math="G = 2 - 0.9 + 2.43 + 3.645 = 7.175" />
+        <br />
+        <br />
+        So this episode contributes a single return of{" "}
+        <InlineMath math="G = 7.175" /> for state <InlineMath math="A" />.
         <br />
         <br />
         The second visit to <InlineMath math="A" /> in the same episode is
@@ -351,18 +366,29 @@ export default function ModelFreePrediction() {
         Using the same episode:
         <br />
         <br />
-        <BlockMath math="A \;\rightarrow\; B \;\rightarrow\; A \;\rightarrow\; C \;\rightarrow\; \text{terminal}" />
+        <BlockMath math="A \xrightarrow{+2} B \xrightarrow{-1} A \xrightarrow{+3} C \xrightarrow{+5} \text{terminal}" />
         <br />
         <br />
-        If we are estimating the value of state <InlineMath math="A" />, we use:
+        Again assuming <InlineMath math="\gamma = 0.9" />:
         <br />
         <br />
-        • the return following the first visit to <InlineMath math="A" />
-        <br />
-        • and the return following the second visit to <InlineMath math="A" />
+        <strong>First visit to</strong> <InlineMath math="A" />:
         <br />
         <br />
-        Both returns are included as separate samples.
+        <BlockMath math="G_1 = 2 + 0.9(-1) + 0.9^2(3) + 0.9^3(5) = 7.175" />
+        <br />
+        <br />
+        <strong>Second visit to</strong> <InlineMath math="A" />:
+        <br />
+        <br />
+        <BlockMath math="G_2 = 3 + 0.9(5) = 7.5" />
+        <br />
+        <br />
+        So this single episode contributes <em>two</em> sample returns for state{" "}
+        <InlineMath math="A" />:
+        <br />
+        <br />
+        <InlineMath math="7.175" /> and <InlineMath math="7.5" />.
         <br />
         <br />
         In both cases, the update rule looks the same:
