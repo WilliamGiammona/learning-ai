@@ -592,6 +592,122 @@ export default function ModelFreePrediction() {
         <br />
         <BlockMath math="\Rightarrow 10 + \frac{4}{4} = 11 " />
       </div>
+
+      <div className="mb-4 mt-24">
+        <strong>Incremental Monte Carlo Updates</strong>
+        <br />
+        <br />
+        Now we take the incremental mean idea and apply it to Monte Carlo policy
+        evaluation.
+        <br />
+        <br />
+        The setup is the same as before:
+        <br />
+        <br />
+        • we run an episode under policy <InlineMath math="\pi" />
+        <br />
+        • we compute the return <InlineMath math="G_t" /> for the states we
+        visited
+        <br />• and we want to update our estimate of the value function{" "}
+        <InlineMath math="\hat{v}_\pi(s)" />
+        <br />
+        <br />
+        The key insight is that <InlineMath math="\hat{v}_\pi(s)" /> is just a
+        mean.
+        <br />
+        <br />
+        It&apos;s the mean of all the returns we&apos;ve ever observed after
+        visiting state <InlineMath math="s" />.
+        <br />
+        <br />
+        So instead of storing every return forever and recomputing an average
+        from scratch, we update that mean incrementally:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <br />
+        <br />
+        Here <InlineMath math="N(S_t)" /> is just a counter that keeps track of
+        how many times we have visited state <InlineMath math="S_t" /> so far.
+        <br />
+        <br />
+        Each time we see the state again, we increment the counter:
+        <br />
+        <br />
+        <BlockMath math="N(S_t) \leftarrow N(S_t) + 1" />
+        <br />
+        <br />
+        And then we apply the update.
+        <br />
+        <br />
+        Notice the structure:
+        <br />
+        <br />
+        <InlineMath math="(G_t - \hat{v}_\pi(S_t))" /> is the error.
+        <br />
+        <br />
+        It tells us how far off our current estimate was from the new sampled
+        return.
+        <br />
+        <br />
+        The factor <InlineMath math="\frac{1}{N(S_t)}" /> is the step size.
+        <br />
+        <br />
+        Early on, when we have only visited the state a few times, the step size
+        is large, so each new return can move <InlineMath math="V(S_t)" /> a
+        lot.
+        <br />
+        <br />
+        Later, after many visits, the step size becomes tiny, so the estimate
+        stabilizes.
+        <br />
+        <br />
+        <strong>
+          Why we replace
+        </strong> <InlineMath math="\frac{1}{N(S_t)}" /> <strong>with</strong>{" "}
+        <InlineMath math="\alpha" />
+        <br />
+        <br />
+        Using <InlineMath math="\frac{1}{N(S_t)}" /> makes{" "}
+        <InlineMath math="V(s)" /> an honest-to-goodness sample average.
+        <br />
+        <br />
+        But sometimes we don&apos;t actually want an equal-weight average over
+        all history.
+        <br />
+        <br />
+        In many real problems, the world can change over time.
+        <br />
+        <br />
+        If the environment is non-stationary, old experience can become less
+        relevant than recent experience.
+        <br />
+        <br />
+        In that case, a constantly shrinking step size is a problem, because it
+        makes the value estimates hard to move later on.
+        <br />
+        <br />
+        So we replace the visit-count step size with a constant learning rate{" "}
+        <InlineMath math="\alpha" />:
+        <br />
+        <br />
+        <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(G_t - V(S_t)\bigr)" />
+        <br />
+        <br />
+        This changes the behavior in a useful way:
+        <br />
+        <br />
+        • the estimate keeps adapting, even late in training
+        <br />
+        • recent returns effectively matter more than very old ones
+        <br />
+        • and we don&apos;t need to maintain a separate counter for every state
+        <br />
+        <br />
+        So <InlineMath math="\frac{1}{N(S_t)}" /> gives you the true sample
+        mean, while <InlineMath math="\alpha" /> gives you a running mean that
+        can keep up with a moving target.
+      </div>
     </section>
   );
 }
