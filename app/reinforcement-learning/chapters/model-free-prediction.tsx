@@ -778,36 +778,46 @@ export default function ModelFreePrediction() {
         <InlineMath math="1-\alpha = 0.9" />.
         <br />
         <br />
-        So recent returns matter more, not because they are treated specially,
-        but because older returns are repeatedly discounted.
-        <br />
-        <br />
-        This is why a constant learning rate produces an{" "}
-        <em>exponentially weighted running average</em>.
-        <br />
-        <br />
-        It allows the value estimate to keep adapting, instead of freezing as
-        more data is collected.
+        <em>
+          So recent returns matter more because older returns are repeatedly
+          discounted.
+        </em>
         <br />
         <br />
         Now compare this to what happens when we use the visit-count step size{" "}
         <InlineMath math="\frac{1}{N(S_t)}" />.
         <br />
         <br />
-        With this choice, the update rule becomes:
+        With this choice, the update rule can be rewritten in the same form as
+        before:
         <br />
         <br />
-        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \frac{1}{N(S_t)}\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \left(1 - \tfrac{1}{N(S_t)}\right)\hat{v}_\pi(S_t) + \tfrac{1}{N(S_t)}\,G_t" />
         <br />
         <br />
-        At first glance, this looks similar.
+        At first glance, this looks almost identical to the constant{" "}
+        <InlineMath math="\alpha" /> update.
         <br />
         <br />
-        But its long-term behavior is very different.
+        In both cases, we are forming a weighted average between:
         <br />
         <br />
-        With <InlineMath math="\frac{1}{N(S_t)}" />, the step size shrinks every
-        time the state is visited.
+        • the old estimate <InlineMath math="\hat{v}_\pi(S_t)" />
+        <br />
+        • the newly observed return <InlineMath math="G_t" />
+        <br />
+        <br />
+        The difference lies entirely in how the weights behave over time.
+        <br />
+        <br />
+        With the visit-count update, the effective step size is:
+        <br />
+        <br />
+        <InlineMath math="\alpha_t = \tfrac{1}{N(S_t)}" />
+        <br />
+        <br />
+        Every time the state is visited again, <InlineMath math="N(S_t)" />{" "}
+        increases, and the weight placed on the new return gets smaller.
         <br />
         <br />
         That means:
@@ -818,45 +828,79 @@ export default function ModelFreePrediction() {
         • later returns cause very small updates
         <br />
         <br />
-        As a result, old experience never fades away.
+        As a result, newer returns are <em>not</em> given special importance.
         <br />
         <br />
-        Instead, every return that was ever observed ends up contributing{" "}
-        <em>equally</em> to the final estimate.
+        Instead, all returns, newer and older, end up contributing equally in
+        the long run.
         <br />
         <br />
-        <strong>Concrete comparison</strong>
+        <strong>Concrete comparison (unrolling the weights)</strong>
         <br />
         <br />
-        Suppose we observe four returns for the same state:
+        To really see the difference, let&apos;s expand the{" "}
+        <InlineMath math="\frac{1}{N(S_t)}" /> update the same way we expanded
+        the constant <InlineMath math="\alpha" /> update.
         <br />
         <br />
-        <InlineMath math="G_1, G_2, G_3, G_4" />
+        When the state is visited for the <InlineMath math="n" />
+        -th time, the step size is <InlineMath math="\alpha_n = \frac{1}{n}" />.
         <br />
         <br />
-        Using the visit-count update, after four visits the value estimate is
-        exactly:
+        So the update at visit <InlineMath math="n" /> is:
         <br />
         <br />
-        <BlockMath math="\hat{v}_4 = \frac{G_1 + G_2 + G_3 + G_4}{4}" />
+        <BlockMath math="\hat{v}_n = \left(1-\frac{1}{n}\right)\hat{v}_{n-1} + \frac{1}{n}G_n" />
         <br />
         <br />
-        Each return has weight <InlineMath math="\frac{1}{4}" />.
+        Now let&apos;s unroll this for the first few visits.
         <br />
         <br />
-        No matter when a return was observed — first or last — it contributes
-        the same amount.
+        <strong>After 1 visit</strong>
         <br />
         <br />
-        If we later observe 100 more returns, those original early returns still
-        have weight <InlineMath math="\frac{1}{104}" /> each.
+        <BlockMath math="\hat{v}_1 = \frac{1}{1}G_1" />
         <br />
         <br />
-        They never disappear.
+        <strong>After 2 visits</strong>
         <br />
         <br />
-        This is very different from the constant <InlineMath math="\alpha" />{" "}
-        case, where each new update repeatedly discounts older experience.
+        <BlockMath math="\hat{v}_2 = \left(1-\frac{1}{2}\right)\hat{v}_1 + \frac{1}{2}G_2" />
+        <BlockMath math="\frac{1}{2}G_1 + \frac{1}{2}G_2" />
+        <br />
+        <br />
+        <strong>After 3 visits</strong>
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_3 = \left(1-\frac{1}{3}\right)\hat{v}_2 + \frac{1}{3}G_3" />
+        <BlockMath math="\frac{2}{3}\left(\frac{1}{2}G_1 + \frac{1}{2}G_2\right) + \frac{1}{3}G_3" />
+        <BlockMath math="\frac{1}{3}G_1 + \frac{1}{3}G_2 + \frac{1}{3}G_3" />
+        <br />
+        <br />
+        <strong>After 4 visits</strong>
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_4 = \left(1-\frac{1}{4}\right)\hat{v}_3 + \frac{1}{4}G_4" />
+        <BlockMath math="\frac{3}{4}\left(\frac{1}{3}G_1 + \frac{1}{3}G_2 + \frac{1}{3}G_3\right) + \frac{1}{4}G_4" />
+        <BlockMath math="\frac{1}{4}G_1 + \frac{1}{4}G_2 + \frac{1}{4}G_3 + \frac{1}{4}G_4" />
+        <br />
+        <br />
+        Notice what just happened.
+        <br />
+        <br />
+        Even though the step size changes at every visit (
+        <InlineMath math="\frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots" />
+        ), the final result is a true sample average.
+        <br />
+        <br />
+        After <InlineMath math="n" /> visits, each return ends up with weight{" "}
+        <InlineMath math="\frac{1}{n}" />. The weight depends on how many total
+        samples you have.
+        <br />
+        <br />
+        So unlike constant <InlineMath math="\alpha" />, there is no exponential
+        discounting of older returns. The weight does not depend on how old a
+        return is.
         <br />
         <br />
         So the key distinction is:
@@ -865,23 +909,10 @@ export default function ModelFreePrediction() {
         • <InlineMath math="\frac{1}{N(S_t)}" /> produces a{" "}
         <em>true sample average</em>, where all returns are weighted equally
         <br />
+        <br />
         • constant <InlineMath math="\alpha" /> produces an{" "}
         <em>exponentially weighted average</em>, where recent returns matter
         more
-        <br />
-        <br />
-        Both are averaging.
-        <br />
-        <br />
-        They just answer different questions:
-        <br />
-        <br />
-        • <InlineMath math="\frac{1}{N(S_t)}" /> asks:
-        <em>What is the average over all experience I have ever seen?</em>
-        <br />
-        <br />
-        • constant <InlineMath math="\alpha" /> asks:
-        <em>What is the average behavior I am seeing right now?</em>
       </div>
     </section>
   );
