@@ -178,61 +178,38 @@ export default function ModelFreePrediction() {
         unchanged.
         <br />
         <br />
-        We still want to estimate a value function for a fixed policy.
+        For the prediction problem in RL, we still want to estimate a value
+        function for a fixed policy, but instead of computing expectations using
+        a known model of the environment, we do something much simpler.
         <br />
         <br />
-        But instead of computing expectations using a known model of the
-        environment, we do something much simpler.
+        We just run the policy over and over again.
         <br />
         <br />
-        We just run the policy.
+        Each run produces an <em>entire episode</em>, which is just a sequence
+        of states, rewards, and transitions that starts somewhere and eventually
+        terminates.
         <br />
         <br />
-        Over and over again.
-        <br />
-        <br />
-        Each run produces an <em>entire episode</em>:
-        <br />
-        <br />
-        a sequence of states, rewards, and transitions that starts somewhere and
-        eventually terminates.
-        <br />
-        <br />
-        For every state we encounter along the way, we can compute the return
-        that followed it.
-        <br />
-        <br />
-        That return is just the total reward accumulated from that state until
-        the end of the episode.
+        For every episode, the value we give to each state is just the total
+        discounted reward accumulated from that state until the end of the
+        episode (the return).
         <br />
         <br />
         One episode gives us one noisy sample of what the value of that state
         might be.
         <br />
         <br />
-        Many episodes give us many samples.
+        Many episodes give us many samples, and Monte Carlo prediction simply
+        averages those samples.
         <br />
         <br />
-        Monte Carlo prediction simply averages those samples.
+        The estimated value of a state is the average return of all the episodes
+        where that state was visited. This approach has two important
+        consequences.
         <br />
         <br />
-        The estimated value of a state is the average return observed after
-        visiting that state.
-        <br />
-        <br />
-        No bootstrapping.
-        <br />
-        <br />
-        No Bellman equations.
-        <br />
-        <br />
-        Just sample returns and averages.
-        <br />
-        <br />
-        This approach has two important consequences.
-        <br />
-        <br />
-        First, Monte Carlo methods are <strong>model-free</strong>.
+        First, Monte Carlo methods are <em>model-free</em>.
         <br />
         <br />
         We never need to know:
@@ -242,7 +219,7 @@ export default function ModelFreePrediction() {
         <br />
         • the reward function
         <br />
-        • or how the environment works internally
+        • how the environment works internally
         <br />
         <br />
         All learning comes purely from observed experience.
@@ -252,21 +229,10 @@ export default function ModelFreePrediction() {
         problems.
         <br />
         <br />
-        The episode has to end.
-        <br />
-        <br />
-        Otherwise, the return is never fully observed.
-        <br />
-        <br />
-        If the process does not terminate, you would be waiting forever to see
-        how much reward followed a state.
-        <br />
-        <br />
-        That makes Monte Carlo methods conceptually simple and statistically
-        sound — but also limited.
-        <br />
-        <br />
-        They wait until the end of experience to learn from it.
+        The episode has to end, otherwise, the return is never fully observed.
+        If the episode never terminated, you would be waiting forever to see how
+        much reward followed a state. This makes Monte Carlo methods
+        conceptually simple and statistically sound, but also limited.
       </div>
     </section>
   );
