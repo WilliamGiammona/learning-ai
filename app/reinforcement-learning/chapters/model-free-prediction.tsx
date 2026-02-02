@@ -685,11 +685,111 @@ export default function ModelFreePrediction() {
         move later on.
         <br />
         <br />
-        Thus, we replace the visit-count step size, <InlineMath math="N(S_t)" />
+        Thus, we replace the visit-count step size,{" "}
+        <InlineMath math="\frac{1}{N(S_t)}" />
         , with a constant learning rate <InlineMath math="\alpha" />:
         <br />
         <br />
         <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <br />
+        <br />
+        <br />
+        <br />
+        Why does a constant learning rate <InlineMath math="\alpha" /> give more
+        weight to recent experience?
+        <br />
+        <br />
+        To see this clearly, rewrite the update rule slightly:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow (1-\alpha)\hat{v}_\pi(S_t) + \alpha G_t" />
+        <br />
+        <br />
+        This form makes the behavior explicit.
+        <br />
+        <br />
+        Each update keeps a fraction <InlineMath math="1-\alpha" /> of the old
+        estimate and mixes in a fraction <InlineMath math="\alpha" /> of the new
+        return.
+        <br />
+        <br />
+        Now suppose we observe a sequence of returns{" "}
+        <InlineMath math="G_1, G_2, G_3, \dots" /> for the same state.
+        <br />
+        <br />
+        Let&apos;s see how those returns contribute to the value estimate over
+        time.
+        <br />
+        <br />
+        After the first update:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_1 = \alpha G_1" />
+        <br />
+        <br />
+        After the second update:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_2 = (1-\alpha)\alpha G_1 + \alpha G_2" />
+        <br />
+        <br />
+        After the third update:
+        <br />
+        <br />
+        <BlockMath math="\hat{v}_3 = (1-\alpha)^2 \alpha G_1 + (1-\alpha)\alpha G_2 + \alpha G_3" />
+        <br />
+        <br />
+        A clear pattern appears.
+        <br />
+        <br />
+        The most recent return always receives weight{" "}
+        <InlineMath math="\alpha" />.
+        <br />
+        <br />
+        Each earlier return is multiplied by an additional factor of{" "}
+        <InlineMath math="1-\alpha" /> for every update that has happened since
+        it was observed.
+        <br />
+        <br />
+        This means older experience is not discarded, but it is progressively
+        discounted.
+        <br />
+        <br />
+        <strong>Concrete example</strong>
+        <br />
+        <br />
+        Suppose <InlineMath math="\alpha = 0.1" /> and we observe returns:
+        <br />
+        <br />
+        <InlineMath math="G_1, G_2, G_3, G_4" />
+        <br />
+        <br />
+        Their effective weights in the value estimate become:
+        <br />
+        <br />
+        • <InlineMath math="G_4" /> has weight <InlineMath math="0.10" />
+        <br />
+        • <InlineMath math="G_3" /> has weight <InlineMath math="0.09" />
+        <br />
+        • <InlineMath math="G_2" /> has weight <InlineMath math="0.081" />
+        <br />
+        • <InlineMath math="G_1" /> has weight <InlineMath math="0.0729" />
+        <br />
+        <br />
+        Each step back in time multiplies the influence by{" "}
+        <InlineMath math="1-\alpha = 0.9" />.
+        <br />
+        <br />
+        So recent returns matter more, not because they are treated specially,
+        but because older returns are repeatedly discounted.
+        <br />
+        <br />
+        This is why a constant learning rate produces an{" "}
+        <em>exponentially weighted running average</em>.
+        <br />
+        <br />
+        It allows the value estimate to keep adapting, instead of freezing as
+        more data is collected.
       </div>
     </section>
   );
