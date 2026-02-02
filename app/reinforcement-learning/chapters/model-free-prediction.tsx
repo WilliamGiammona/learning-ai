@@ -171,6 +171,8 @@ export default function ModelFreePrediction() {
         This is one of the methods used in reinforcement learning to find value
         functions.
       </div>
+
+      <div className="mb-4"></div>
     </section>
   );
 }
