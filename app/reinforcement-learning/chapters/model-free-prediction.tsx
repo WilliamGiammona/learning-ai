@@ -1050,6 +1050,15 @@ export default function ModelFreePrediction() {
             other.
           </em>
         </p>
+
+        <p>
+          Sutton would later go on to co-author what is now the standard
+          reference for the field,
+          <em>Reinforcement Learning: An Introduction</em>, a book that helped
+          define the modern formulation of reinforcement learning and unify
+          Monte Carlo methods, Temporal Difference learning, and dynamic
+          programming under a single framework.
+        </p>
       </div>
     </section>
   );
