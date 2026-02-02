@@ -231,8 +231,7 @@ export default function ModelFreePrediction() {
         <br />
         The episode has to end, otherwise, the return is never fully observed.
         If the episode never terminated, you would be waiting forever to see how
-        much reward followed a state. This makes Monte Carlo methods
-        conceptually simple and statistically sound, but also limited.
+        much reward followed a state.
       </div>
     </section>
   );
