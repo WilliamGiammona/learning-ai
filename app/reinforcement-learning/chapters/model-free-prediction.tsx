@@ -555,10 +555,15 @@ export default function ModelFreePrediction() {
         .
         <br />
         <br />
-        Early on, when we have seen only a few samples, k is small, so each new
-        observation can move the estimate quite a bit. Later, as more data
-        accumulates, k becomes larger, so each new observation makes a smaller
-        and smaller adjustment.
+        Early on, when we have seen only a few samples, <InlineMath math="k" />{" "}
+        is small, so each new observation can move the estimate quite a bit
+        (e.g., when <InlineMath math="k=2" />, the step size is{" "}
+        <InlineMath math="\frac{1}{2}" />
+        ). Later, as more data accumulates, <InlineMath math="k" /> becomes
+        larger, so each new observation makes a smaller and smaller adjustment
+        (e.g., when <InlineMath math="k=100" />, the step size is only{" "}
+        <InlineMath math="\frac{1}{100}" />
+        ).
         <br />
         <br />
         <strong>Example:</strong>
