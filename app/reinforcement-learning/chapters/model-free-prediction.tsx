@@ -566,7 +566,7 @@ export default function ModelFreePrediction() {
         ).
         <br />
         <br />
-        <strong>Example:</strong>
+        <strong>Incremental Mean Example:</strong>
         <br />
         <br />
         Suppose we've seen 3 returns for a particular state:{" "}
