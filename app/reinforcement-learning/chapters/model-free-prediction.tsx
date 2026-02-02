@@ -411,7 +411,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         In reinforcement learning, we estimate state values by averaging
-        returns. But instead of summing all returns and dividing, we use a more
+        returns, but instead of summing all returns and dividing, we use a more
         efficient approach: the incremental mean. Let's see why.
         <br />
         <br />
