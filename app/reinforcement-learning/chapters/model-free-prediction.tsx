@@ -77,7 +77,7 @@ export default function ModelFreePrediction() {
         <InlineMath math="\lambda" />)
       </div>
 
-      <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
+      <h2 id="mfp-monte-carlo" className="text-2xl font-bold mb-6 text-center">
         Monte Carlo Learning
       </h2>
 
