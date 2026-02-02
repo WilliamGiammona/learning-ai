@@ -1068,6 +1068,18 @@ export default function ModelFreePrediction() {
           Next, we’ll make this idea precise and see exactly how Temporal
           Difference updates are constructed.
         </p>
+
+        <p>
+          You can read Sutton&apos;s full 1988 paper on TD Learning here:
+          <Link
+            href="https://link.springer.com/content/pdf/10.1007/BF00115009.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            Learning to Predict by the Methods of Temporal Differences
+          </Link>
+        </p>
       </div>
     </section>
   );
