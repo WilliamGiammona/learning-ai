@@ -265,6 +265,99 @@ export default function ModelFreePrediction() {
         the episode never terminated, you would be waiting forever to see how
         much reward followed a state.
       </div>
+
+      <div className="mb-4 mt-24">
+        <strong>First-Visit vs Every-Visit Monte Carlo</strong>
+        <br />
+        <br />
+        There is one important choice hiding inside Monte Carlo policy
+        evaluation.
+        <br />
+        <br />
+        Suppose we want to estimate the value of a particular state{" "}
+        <InlineMath math="s" />.
+        <br />
+        <br />
+        During a single episode, that state might appear only once or it might
+        appear multiple times.
+        <br />
+        <br />
+        The question is:
+        <br />
+        <br />
+        <em>
+          Which of those visits should we use when updating the value of state{" "}
+          <InlineMath math="s" />?
+        </em>
+        <br />
+        <br />
+        This leads to two standard variants of Monte Carlo policy evaluation.
+        <br />
+        <br />
+        <strong>First-Visit Monte Carlo</strong>
+        <br />
+        <br />
+        In first-visit Monte Carlo, we are very strict.
+        <br />
+        <br />
+        For each episode, we look at the <em>first time-step</em>{" "}
+        <InlineMath math="t" /> at which state <InlineMath math="s" /> appears.
+        <br />
+        <br />
+        We compute the return <InlineMath math="G_t" /> from that point onward,
+        <br />
+        <br />
+        and we use <em>only that one return</em> to update our estimate of{" "}
+        <InlineMath math="v_\pi(s)" />.
+        <br />
+        <br />
+        Any later visits to the same state within the same episode are ignored.
+        <br />
+        <br />
+        So each episode contributes at most one sample return for each state.
+        <br />
+        <br />
+        <strong>Every-Visit Monte Carlo</strong>
+        <br />
+        <br />
+        Every-visit Monte Carlo is more permissive.
+        <br />
+        <br />
+        Instead of looking only at the first occurrence of{" "}
+        <InlineMath math="s" />, we look at <em>every time-step</em> in the
+        episode where that state is visited.
+        <br />
+        <br />
+        Each visit produces its own return, and each return is treated as a
+        separate sample.
+        <br />
+        <br />
+        So a single episode can contribute multiple samples for the same state.
+        <br />
+        <br />
+        In both cases, the update rule looks the same:
+        <br />
+        <br />
+        we keep a running total of observed returns and divide by the number of
+        samples.
+        <br />
+        <br />
+        The difference is purely about <em>which samples we count</em>.
+        <br />
+        <br />
+        Importantly, under standard assumptions, <em>both methods converge</em>.
+        <br />
+        <br />
+        As the number of sampled returns grows, the estimated value{" "}
+        <InlineMath math="V(s)" /> converges to the true value{" "}
+        <InlineMath math="v_\pi(s)" />.
+        <br />
+        <br />
+        Same destination.
+        <br />
+        <br />
+        Slightly different paths.
+      </div>
     </section>
   );
 }
