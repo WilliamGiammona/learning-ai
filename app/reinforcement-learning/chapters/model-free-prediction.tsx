@@ -329,9 +329,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         <BlockMath math="G = 2 + 0.9(-1) + 0.9^2(3) + 0.9^3(5)" />
-        <br />
-        <br />
-        <BlockMath math="G = 2 - 0.9 + 2.43 + 3.645 = 7.175" />
+        <BlockMath math="\rightarrow G = 2 - 0.9 + 2.43 + 3.645 = 7.175" />
         <br />
         <br />
         So this episode contributes a single return of{" "}
@@ -388,7 +386,9 @@ export default function ModelFreePrediction() {
         <InlineMath math="A" />:
         <br />
         <br />
-        <InlineMath math="7.175" /> and <InlineMath math="7.5" />.
+        <InlineMath math="7.175" /> and <InlineMath math="7.5" />, so the state
+        will be given the value of the average of these two observed values,{" "}
+        <InlineMath math="7.3375" />.
         <br />
         <br />
         In both cases, the update rule looks the same:
