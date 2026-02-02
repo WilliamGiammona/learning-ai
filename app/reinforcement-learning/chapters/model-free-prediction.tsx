@@ -395,10 +395,7 @@ export default function ModelFreePrediction() {
         <br />
         <br />
         we keep a running total of observed returns and divide by the number of
-        samples.
-        <br />
-        <br />
-        The difference is purely about <em>which samples we count</em>.
+        samples, the difference is purely about <em>which samples we count</em>.
         <br />
         <br />
         Importantly, under standard assumptions, <em>both methods converge</em>.
