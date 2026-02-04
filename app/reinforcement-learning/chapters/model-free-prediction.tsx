@@ -1074,7 +1074,8 @@ export default function ModelFreePrediction() {
         <p className="mb-4">
           <em>
             Given a fixed policy <InlineMath math="\pi" />, estimate the value
-            function <InlineMath math="v_\pi" /> from experience.
+            function <InlineMath math="v_\pi" /> from experience, but the way TD
+            learning updates its estimates is fundamentally different.
           </em>
         </p>
 
@@ -1095,7 +1096,7 @@ export default function ModelFreePrediction() {
           estimate toward that <em>actual return</em>:
         </p>
 
-        <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(G_t - V(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">
           Monte Carlo learning always waits for the final answer before it
@@ -1105,7 +1106,7 @@ export default function ModelFreePrediction() {
         <p className="mb-6">Temporal Difference learning refuses to wait.</p>
 
         <p className="mb-4">
-          <strong>The core TD idea</strong>
+          <strong>The Core TD idea</strong>
         </p>
 
         <p className="mb-4">
