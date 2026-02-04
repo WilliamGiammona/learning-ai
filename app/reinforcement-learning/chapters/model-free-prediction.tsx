@@ -1062,32 +1062,33 @@ export default function ModelFreePrediction() {
       </div>
 
       <div className="mb-4 mt-12">
-        <strong>
+        <h3 className="mb-8 font-bold text-lg">
           Temporal Difference Learning: Targets, Errors, and Bootstrapping
-        </strong>
+        </h3>
 
-        <p className="mt-4">
+        <p className="mb-4">
           Temporal Difference learning keeps the same high-level goal as Monte
           Carlo prediction:
         </p>
 
-        <p>
+        <p className="mb-4">
           <em>
             Given a fixed policy <InlineMath math="\pi" />, estimate the value
             function <InlineMath math="v_\pi" /> from experience.
           </em>
         </p>
 
-        <p>
+        <p className="mb-4">
           But the way TD learning updates its estimates is fundamentally
           different.
         </p>
 
-        <p>
-          To see why, let’s first remind ourselves what Monte Carlo was doing.
+        <p className="mb-6">
+          To see why, let&apos;s first remind ourselves what Monte Carlo was
+          doing.
         </p>
 
-        <p>
+        <p className="mb-4">
           In incremental Monte Carlo, when we visit a state{" "}
           <InlineMath math="S_t" />, we wait until the episode ends, compute the
           full return <InlineMath math="G_t" />, and then update our value
@@ -1096,54 +1097,56 @@ export default function ModelFreePrediction() {
 
         <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(G_t - V(S_t)\bigr)" />
 
-        <p>
+        <p className="mb-4">
           Monte Carlo learning always waits for the final answer before it
           learns.
         </p>
 
-        <p>Temporal Difference learning refuses to wait.</p>
+        <p className="mb-6">Temporal Difference learning refuses to wait.</p>
 
-        <p className="mt-4">
+        <p className="mb-4">
           <strong>The core TD idea</strong>
         </p>
 
-        <p>
+        <p className="mb-4">
           Instead of waiting until the end of the episode to see the true
           return, Temporal Difference learning updates its estimate{" "}
           <em>one step at a time</em>.
         </p>
 
-        <p>
+        <p className="mb-4">
           When the agent moves from state <InlineMath math="S_t" /> to{" "}
           <InlineMath math="S_{t+1}" /> and observes reward{" "}
           <InlineMath math="R_{t+1}" />, it already has something useful:
         </p>
 
-        <p>its current guess about the value of the next state.</p>
-
-        <p>
-          That leads to the simplest TD algorithm, called <strong>TD(0)</strong>
-          (we’ll explain what the “0” means later).
+        <p className="mb-4">
+          its current guess about the value of the next state.
         </p>
 
-        <p>
-          In TD(0), we update the value of <InlineMath math="S_t" /> toward an
+        <p className="mb-6">
+          That leads to the simplest TD algorithm, called <strong>TD(0)</strong>
+          (we&apos;ll explain what the &quot;0&quot; means later).
+        </p>
+
+        <p className="mb-4">
+          In TD(0), we update the value of <InlineMath math="S_t" /> toward an{" "}
           <em>estimated return</em>:
         </p>
 
         <BlockMath math="R_{t+1} + \gamma V(S_{t+1})" />
 
-        <p>
+        <p className="mb-6">
           This quantity is called the <strong>TD target</strong>.
         </p>
 
-        <p className="mt-4">
+        <p className="mb-4">
           <strong>The TD target</strong>
         </p>
 
-        <p>The TD target combines two things:</p>
+        <p className="mb-4">The TD target combines two things:</p>
 
-        <ul className="list-disc list-inside space-y-1">
+        <ul className="list-disc list-inside mb-6 space-y-1">
           <li>
             the immediate reward <InlineMath math="R_{t+1}" /> we just observed
           </li>
@@ -1153,87 +1156,96 @@ export default function ModelFreePrediction() {
           </li>
         </ul>
 
-        <p>Notice what just happened.</p>
+        <p className="mb-4">Notice what just happened.</p>
 
-        <p>
-          We are using a <em>guess</em> about the future to improve another
+        <p className="mb-4">
+          We are using a <em>guess</em> about the future to improve another{" "}
           <em>guess</em>.
         </p>
 
-        <p>
+        <p className="mb-6">
           This is called <strong>bootstrapping</strong>.
         </p>
 
-        <p className="mt-4">
+        <p className="mb-4">
           <strong>Bootstrapping</strong>
         </p>
 
-        <p>
+        <p className="mb-4">
           Bootstrapping means learning from incomplete information by relying on
           your own current estimates.
         </p>
 
-        <p>TD learning does not wait to see the full return.</p>
+        <p className="mb-4">
+          TD learning does not wait to see the full return.
+        </p>
 
-        <p>It says:</p>
+        <p className="mb-4">It says:</p>
 
-        <p>
+        <p className="mb-6">
           <em>
-            “I don’t yet know the final answer, but I do know what I currently
-            believe about the next step. That’s good enough to start learning.”
+            &quot;I don&apos;t yet know the final answer, but I do know what I
+            currently believe about the next step. That&apos;s good enough to
+            start learning.&quot;
           </em>
         </p>
 
-        <p>
+        <p className="mb-6">
           This allows TD methods to learn <em>online</em>, during the episode,
           one transition at a time.
         </p>
 
-        <p className="mt-4">
+        <p className="mb-4">
           <strong>The TD error</strong>
         </p>
 
-        <p>Once we have a target, the update looks familiar.</p>
+        <p className="mb-4">
+          Once we have a target, the update looks familiar.
+        </p>
 
         <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(\text{target} - V(S_t)\bigr)" />
 
-        <p>Plugging in the TD target gives:</p>
+        <p className="mb-4">Plugging in the TD target gives:</p>
 
         <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(R_{t+1} + \gamma V(S_{t+1}) - V(S_t)\bigr)" />
 
-        <p>
+        <p className="mb-4">
           The quantity inside the parentheses is called the{" "}
           <strong>Temporal Difference error</strong>:
         </p>
 
         <BlockMath math="\delta_t = R_{t+1} + \gamma V(S_{t+1}) - V(S_t)" />
 
-        <p>The TD error measures how surprised we were.</p>
+        <p className="mb-4">The TD error measures how surprised we were.</p>
 
-        <p>
+        <p className="mb-4">
           If the next reward plus the discounted next value is higher than we
           expected, the error is positive and we increase{" "}
           <InlineMath math="V(S_t)" />.
         </p>
 
-        <p>
-          If it’s lower than expected, the error is negative and we decrease{" "}
-          <InlineMath math="V(S_t)" />.
+        <p className="mb-6">
+          If it&apos;s lower than expected, the error is negative and we
+          decrease <InlineMath math="V(S_t)" />.
         </p>
 
-        <p className="mt-4">
+        <p className="mb-4">
           <strong>Monte Carlo vs Temporal Difference</strong>
         </p>
 
-        <p>At a high level, both methods are doing the same thing:</p>
+        <p className="mb-4">
+          At a high level, both methods are doing the same thing:
+        </p>
 
-        <p>they update a value estimate in the direction of an error.</p>
+        <p className="mb-4">
+          they update a value estimate in the direction of an error.
+        </p>
 
-        <p>
+        <p className="mb-4">
           The difference is <em>what error they use</em>.
         </p>
 
-        <ul className="list-disc list-inside space-y-1">
+        <ul className="list-disc list-inside mb-6 space-y-1">
           <li>
             Monte Carlo updates toward the <em>actual return</em>{" "}
             <InlineMath math="G_t" />, after the episode ends
@@ -1244,14 +1256,16 @@ export default function ModelFreePrediction() {
           </li>
         </ul>
 
-        <p>Monte Carlo waits for the future to reveal itself.</p>
+        <p className="mb-4">
+          Monte Carlo waits for the future to reveal itself.
+        </p>
 
-        <p>
+        <p className="mb-4">
           Temporal Difference learning predicts the future using its current
           beliefs, and corrects those beliefs step by step.
         </p>
 
-        <p>
+        <p className="mb-4">
           That single idea — learning by bootstrapping from successive
           predictions — is what makes TD learning fundamentally different.
         </p>
