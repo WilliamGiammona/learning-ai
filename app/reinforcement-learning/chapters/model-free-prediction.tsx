@@ -1074,8 +1074,7 @@ export default function ModelFreePrediction() {
         <p className="mb-4">
           <em>
             Given a fixed policy <InlineMath math="\pi" />, estimate the value
-            function <InlineMath math="v_\pi" /> from experience, but the way TD
-            learning updates its estimates is fundamentally different.
+            function <InlineMath math="v_\pi" /> from experience.
           </em>
         </p>
 
@@ -1090,7 +1089,7 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-4">
-          In incremental Monte Carlo, when we visit a state{" "}
+          In Monte Carlo learning, when we visit a state{" "}
           <InlineMath math="S_t" />, we wait until the episode ends, compute the
           full return <InlineMath math="G_t" />, and then update our value
           estimate toward that <em>actual return</em>:
@@ -1126,8 +1125,8 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-6">
-          That leads to the simplest TD algorithm, called <strong>TD(0)</strong>
-          (we&apos;ll explain what the &quot;0&quot; means later).
+          That leads to the simplest TD algorithm, called <em>TD(0)</em>{" "}
+          (I&apos;ll explain what the &quot;0&quot; means later).
         </p>
 
         <p className="mb-4">
@@ -1135,7 +1134,7 @@ export default function ModelFreePrediction() {
           <em>estimated return</em>:
         </p>
 
-        <BlockMath math="R_{t+1} + \gamma V(S_{t+1})" />
+        <BlockMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
 
         <p className="mb-6">
           This quantity is called the <strong>TD target</strong>.
@@ -1153,7 +1152,7 @@ export default function ModelFreePrediction() {
           </li>
           <li>
             our current guess of the future,{" "}
-            <InlineMath math="\gamma V(S_{t+1})" />
+            <InlineMath math="\gamma \hat{v}_\pi(S_{t+1})" />
           </li>
         </ul>
 
@@ -1165,7 +1164,7 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-6">
-          This is called <strong>bootstrapping</strong>.
+          This is called <em>bootstrapping</em>.
         </p>
 
         <p className="mb-4">
@@ -1204,30 +1203,30 @@ export default function ModelFreePrediction() {
           Once we have a target, the update looks familiar.
         </p>
 
-        <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(\text{target} - V(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(\text{target} - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">Plugging in the TD target gives:</p>
 
-        <BlockMath math="V(S_t) \leftarrow V(S_t) + \alpha\bigl(R_{t+1} + \gamma V(S_{t+1}) - V(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}^{old}_\pi(S_t+1) - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">
           The quantity inside the parentheses is called the{" "}
           <strong>Temporal Difference error</strong>:
         </p>
 
-        <BlockMath math="\delta_t = R_{t+1} + \gamma V(S_{t+1}) - V(S_t)" />
+        <BlockMath math="\delta_t = R_{t+1} + \gamma \hat{v}^{old}_\pi(S_{t+1}) - \hat{v}^{old}_\pi(S_t)" />
 
         <p className="mb-4">The TD error measures how surprised we were.</p>
 
         <p className="mb-4">
           If the next reward plus the discounted next value is higher than we
           expected, the error is positive and we increase{" "}
-          <InlineMath math="V(S_t)" />.
+          <InlineMath math="\hat{v}_\pi(S_t)" />.
         </p>
 
         <p className="mb-6">
           If it&apos;s lower than expected, the error is negative and we
-          decrease <InlineMath math="V(S_t)" />.
+          decrease <InlineMath math="\hat{v}_\pi(S_t)" />.
         </p>
 
         <p className="mb-4">
@@ -1253,7 +1252,8 @@ export default function ModelFreePrediction() {
           </li>
           <li>
             TD(0) updates toward an <em>estimated return</em>{" "}
-            <InlineMath math="R_{t+1} + \gamma V(S_{t+1})" />, immediately
+            <InlineMath math="R_{t+1} + \gamma \hat{v}^{old}_\pi(S_{t+1})" />,
+            immediately
           </li>
         </ul>
 
@@ -1267,8 +1267,8 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-4">
-          That single idea — learning by bootstrapping from successive
-          predictions — is what makes TD learning fundamentally different.
+          That single idea, learning by bootstrapping from successive
+          predictions,is what makes TD learning fundamentally different.
         </p>
       </div>
     </section>
