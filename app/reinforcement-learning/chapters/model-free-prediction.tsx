@@ -1471,6 +1471,122 @@ export default function ModelFreePrediction() {
           than eliminating bias entirely.
         </p>
       </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          A Concrete Example: Monte Carlo vs Temporal Difference
+        </h3>
+
+        <p className="mb-4">
+          Let&apos;s make this more concrete with an example.
+        </p>
+
+        <p className="mb-6">
+          Here&apos;s one example episode with 5 states and 4 state-transition
+          rewards:
+        </p>
+
+        <BlockMath math="S_1 \xrightarrow{+2} S_2 \xrightarrow{+5} S_3 \xrightarrow{+3} S_4 \xrightarrow{+8} \text{terminal}" />
+
+        <p className="mb-6">
+          I&apos;ll use <InlineMath math="\gamma = 0.9" /> and focus on how we
+          update <InlineMath math="\hat{v}_\pi(S_1)" />.
+        </p>
+
+        <p className="mb-4">
+          Let&apos;s assume the agent already has some current guesses (its
+          value estimates <em>before</em> seeing this episode):
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1">
+          <li>
+            <InlineMath math="\hat{v}_\pi(S_1)=4.0" />
+          </li>
+          <li>
+            <InlineMath math="\hat{v}_\pi(S_2)=6.0" />
+          </li>
+          <li>
+            <InlineMath math="\hat{v}_\pi(S_3)=5.0" />
+          </li>
+          <li>
+            <InlineMath math="\hat{v}_\pi(S_4)=7.0" />
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          Let&apos;s also use a learning rate <InlineMath math="\alpha = 0.1" />{" "}
+          just to keep the arithmetic concrete.
+        </p>
+
+        <p className="mb-4">
+          <strong>Monte Carlo Learning</strong>
+        </p>
+
+        <p className="mb-4">
+          Monte Carlo waits until the episode finishes, then computes the full
+          return from <InlineMath math="S_1" />:
+        </p>
+
+        <BlockMath math="G_1 = 2 + 0.9\cdot 5 + 0.9^2\cdot 3 + 0.9^3\cdot 8" />
+        <BlockMath math="\Rightarrow 2 + 4.5 + 2.43 + 5.832 = 14.762" />
+
+        <p className="mb-6">
+          Then it updates toward that <em>actual return</em>:
+        </p>
+
+        <BlockMath math="\hat{v}^{new}_\pi(S_1) \leftarrow \hat{v}^{old}_\pi(S_1) + \alpha\bigl(G_1 - \hat{v}^{old}_\pi(S_1)\bigr)" />
+
+        <p className="mb-4">Plug in the actual numbers:</p>
+
+        <BlockMath math="\hat{v}^{new}_\pi(S_1) = 4.0 + 0.1\bigl(14.762 - 4.0\bigr)" />
+        <BlockMath math="\Rightarrow 4.0 + 0.1(10.762) = 4.0 + 1.0762 = 5.0762" />
+
+        <p className="mb-6">
+          So Monte Carlo moves <InlineMath math="\hat{v}_\pi(S_1)" /> from{" "}
+          <InlineMath math="4.0" /> to <InlineMath math="5.0762" />, but only{" "}
+          <em>after</em> the episode ends.
+        </p>
+
+        <p className="mb-4">
+          <strong>Temporal Difference Learning</strong>
+        </p>
+
+        <p className="mb-4">
+          TD(0) refuses to wait. It updates <em>during</em> the episode.
+        </p>
+
+        <p className="mb-6">
+          Now walk through the episode one transition at a time.
+        </p>
+
+        <p className="mb-4">
+          <strong>Step 1:</strong> <InlineMath math="S_1 \rightarrow S_2" />{" "}
+          with <InlineMath math="R_2 = 2" />
+        </p>
+
+        <p className="mb-4">TD(0) builds an immediate target:</p>
+
+        <BlockMath math="R_2 + \gamma \hat{v}_\pi(S_2)" />
+
+        <p className="mb-6">
+          Then it updates <InlineMath math="\hat{v}_\pi(S_1)" /> toward that
+          target:
+        </p>
+
+        <BlockMath math="\hat{v}^{new}_\pi(S_1) \leftarrow \hat{v}^{old}_\pi(S_1) + \alpha\Bigl(R_2 + \gamma \hat{v}^{old}_\pi(S_2) - \hat{v}^{old}_\pi(S_1)\Bigr)" />
+        <BlockMath math="\Rightarrow 4.0 + 0.1\Bigl(2 + 0.9\cdot 6.0 - 4.0\Bigr)" />
+        <BlockMath math="\Rightarrow 4.0 + 0.1(3.4) = 4.34" />
+
+        <p className="mb-6">
+          TD(0) updates <InlineMath math="\hat{v}_\pi(S_1)" /> from 4 to 4.34
+          <em>immediately</em>, not needing to wait until the episode ends.
+        </p>
+
+        <p className="mb-4">
+          This self-referential process, using your own estimates to improve
+          your own estimates, is called <em>bootstrapping</em>.
+        </p>
+      </div>
     </section>
   );
 }
