@@ -1438,8 +1438,6 @@ export default function ModelFreePrediction() {
 
         <BlockMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
 
-        <p className="mb-6">One action. One transition. One reward.</p>
-
         <p className="mb-6">
           Everything beyond that is summarized by the value estimate.
         </p>
