@@ -1207,7 +1207,7 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">Plugging in the TD target gives:</p>
 
-        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}^{old}_\pi(S_t+1) - \hat{v}^{old}_\pi(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}^{old}_\pi(S_{t+1}) - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">
           The quantity inside the parentheses is called the{" "}
@@ -1268,7 +1268,209 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">
           That single idea, learning by bootstrapping from successive
-          predictions,is what makes TD learning fundamentally different.
+          predictions, is what makes TD learning fundamentally different.
+        </p>
+      </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          Monte Carlo vs Temporal Difference: Advantages, Disadvantages, and
+          Tradeoffs
+        </h3>
+
+        <p className="mb-4">
+          Monte Carlo and Temporal Difference learning are trying to solve the
+          same prediction problem, but they make very different tradeoffs along
+          the way.
+        </p>
+
+        <p className="mb-6">
+          To understand those tradeoffs, it helps to organize the comparison
+          around three ideas:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1">
+          <li>when learning happens (online vs offline)</li>
+          <li>bias</li>
+          <li>variance</li>
+        </ul>
+
+        <p className="mb-8">
+          These differences explain <em>why</em> TD learning exists at all.
+        </p>
+
+        <p className="mb-4">
+          <strong>Online vs offline learning</strong>
+        </p>
+
+        <p className="mb-4">
+          In reinforcement learning, <em>online</em> learning means updating
+          value estimates <em>during</em> an episode, as experience arrives, one
+          transition at a time.
+        </p>
+
+        <p className="mb-6">
+          <em>Offline</em> learning means waiting until an entire episode is
+          finished before making any updates.
+        </p>
+
+        <p className="mb-4">
+          Monte Carlo prediction is fundamentally an <em>offline</em> method.
+        </p>
+
+        <p className="mb-6">
+          It must wait until the episode ends to compute the full return{" "}
+          <InlineMath math="G_t" />, because that return depends on all future
+          rewards.
+        </p>
+
+        <p className="mb-4">
+          Temporal Difference learning is an <em>online</em> method.
+        </p>
+
+        <p className="mb-8">
+          It updates immediately after every transition, using the reward and
+          its current estimate of the next state.
+        </p>
+
+        <p className="mb-4">
+          This single difference already gives TD learning two major advantages:
+        </p>
+
+        <ul className="list-disc list-inside mb-8 space-y-1">
+          <li>TD can learn before the final outcome is known</li>
+          <li>TD can learn in continuing (non-terminating) environments</li>
+        </ul>
+
+        <p className="mb-4">Monte Carlo cannot do either of these.</p>
+
+        <p className="mb-8">
+          If an episode never ends, Monte Carlo never gets a return.
+        </p>
+
+        <p className="mb-4">
+          <strong>Bias: why TD is biased and MC is not</strong>
+        </p>
+
+        <p className="mb-4">Let&apos;s start with Monte Carlo.</p>
+
+        <p className="mb-6">
+          The Monte Carlo return{" "}
+          <InlineMath math="G_t = R_{t+1} + \gamma R_{t+2} + \dots" /> is an
+          unbiased sample of the true value <InlineMath math="v_\pi(S_t)" />.
+        </p>
+
+        <p className="mb-6">
+          If you average enough Monte Carlo returns, the estimate converges to
+          the correct expected value.
+        </p>
+
+        <p className="mb-4">
+          That is why Monte Carlo prediction is said to have <em>zero bias</em>.
+        </p>
+
+        <p className="mb-6">
+          It uses the real outcome of the process, not an approximation.
+        </p>
+
+        <p className="mb-4">Temporal Difference learning is different.</p>
+
+        <p className="mb-6">
+          TD(0) does <em>not</em> update toward the true return. It updates
+          toward an estimate:
+        </p>
+
+        <BlockMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
+
+        <p className="mb-6">
+          That estimate depends on the current value function, which is itself
+          imperfect.
+        </p>
+
+        <p className="mb-6">
+          In other words, TD learning uses its own guesses as part of the
+          target.
+        </p>
+
+        <p className="mb-8">
+          That introduces <em>bias</em>.
+        </p>
+
+        <p className="mb-4">
+          Even if you average many TD updates, the target itself is not an
+          unbiased sample of <InlineMath math="v_\pi(S_t)" /> unless the value
+          estimates are already correct.
+        </p>
+
+        <p className="mb-8">This is the cost of bootstrapping.</p>
+
+        <p className="mb-4">
+          <strong>Variance: why TD is lower variance than MC</strong>
+        </p>
+
+        <p className="mb-4">
+          Although Monte Carlo is unbiased, it suffers from high variance.
+        </p>
+
+        <p className="mb-6">
+          The return <InlineMath math="G_t" /> depends on <em>many</em> random
+          quantities:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1">
+          <li>future actions</li>
+          <li>future state transitions</li>
+          <li>future rewards</li>
+        </ul>
+
+        <p className="mb-6">
+          Small changes early in the episode can drastically change the final
+          return.
+        </p>
+
+        <p className="mb-4">
+          Temporal Difference learning dramatically reduces this variance.
+        </p>
+
+        <p className="mb-6">
+          The TD target depends on only <em>one</em> transition:
+        </p>
+
+        <BlockMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
+
+        <p className="mb-6">One action. One transition. One reward.</p>
+
+        <p className="mb-6">
+          Everything beyond that is summarized by the value estimate.
+        </p>
+
+        <p className="mb-8">
+          This makes TD updates much more stable and less noisy than Monte Carlo
+          updates.
+        </p>
+
+        <p className="mb-4">
+          <strong>Putting it all together</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1">
+          <li>
+            Monte Carlo has <em>zero bias</em> but <em>high variance</em>
+          </li>
+          <li>
+            Temporal Difference has <em>some bias</em> but{" "}
+            <em>lower variance</em>
+          </li>
+          <li>Monte Carlo learns offline from complete episodes</li>
+          <li>TD learns online from incomplete experience</li>
+        </ul>
+
+        <p className="mb-6">Neither method is strictly better.</p>
+
+        <p className="mb-4">
+          TD learning exists because, in many environments, learning early,
+          learning continuously, and learning with lower variance matters more
+          than eliminating bias entirely.
         </p>
       </div>
     </section>
