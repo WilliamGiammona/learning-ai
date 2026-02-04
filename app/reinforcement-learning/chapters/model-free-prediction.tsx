@@ -1061,7 +1061,7 @@ export default function ModelFreePrediction() {
         </p>
       </div>
 
-      <div className="mb-4 mt-24">
+      <div className="mb-4 mt-12">
         <strong>
           Temporal Difference Learning: Targets, Errors, and Bootstrapping
         </strong>
