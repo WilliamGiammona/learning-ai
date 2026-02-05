@@ -1598,16 +1598,19 @@ export default function ModelFreePrediction() {
           <InlineMath math="v_\pi(s)" />.
         </p>
 
-        <p className="mb-6">But here&apos;s the subtle twist:</p>
+        <p className="mb-4">
+          In the tabular case with enough data, they both converge to the true{" "}
+          <InlineMath math="v_\pi" />.
+        </p>
 
         <p className="mb-4">
-          <strong>they converge to different things</strong>, depending on how
-          we represent the value function.
+          However, with function approximation (which will be explained in a
+          later section), they converge to different approximate solutions .
         </p>
 
         <p className="mb-6">
-          And this difference explains why TD learning is often described as
-          being more &quot;MDP-consistent&quot; than Monte Carlo.
+          This difference explains why TD learning is often described as being
+          more &quot;MDP-consistent&quot; than Monte Carlo.
         </p>
 
         <p className="mb-4">
@@ -1621,7 +1624,7 @@ export default function ModelFreePrediction() {
           return <InlineMath math="G_t" />:
         </p>
 
-        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">
           The key point is that <InlineMath math="G_t" /> is a real sample of
@@ -1664,7 +1667,7 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">So the TD(0) update is:</p>
 
-        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}_\pi(S_{t+1}) - \hat{v}_\pi(S_t)\bigr)" />
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}_\pi(S_{t+1}) - \hat{v}^{old}_\pi(S_t)\bigr)" />
 
         <p className="mb-4">
           This update is not trying to match <InlineMath math="G_t" /> directly.
@@ -1720,11 +1723,6 @@ export default function ModelFreePrediction() {
           is essentially the mathematical signature of an MDP.
         </p>
 
-        <p className="mb-6">
-          So TD(0) is not just averaging experience, it is implicitly solving
-          the Bellman system of equations.
-        </p>
-
         <p className="mb-4">Monte Carlo does not do this.</p>
 
         <p className="mb-4">
@@ -1751,23 +1749,120 @@ export default function ModelFreePrediction() {
         <ul className="list-disc list-inside mb-6 space-y-1">
           <li>
             Monte Carlo converges by directly fitting <InlineMath math="G_t" />{" "}
-            (minimizing prediction error)
+            (minimizing prediction error). Monte Carlo is learning by averaging
+            outcomes.
           </li>
           <li>
-            TD(0) converges by enforcing Bellman consistency (solving the MDP)
+            TD(0) converges by enforcing Bellman consistency (solving the MDP).
+            TD(0) is learning by solving a recursive equation about the
+            environment.
           </li>
         </ul>
 
-        <p className="mb-4">Monte Carlo is learning by averaging outcomes.</p>
-
         <p className="mb-4">
-          TD(0) is learning by solving a recursive equation about the
-          environment.
+          <strong>Why This Difference Matters in Practice</strong>
         </p>
 
-        <p className="mb-4">Same goal.</p>
+        <p className="mb-4">Consider a simple chain:</p>
 
-        <p className="mb-4">Very different philosophy.</p>
+        <p className="mb-4">
+          <InlineMath math="A \rightarrow B \rightarrow C \rightarrow \text{Goal (reward 100)}" />
+        </p>
+
+        <p className="mb-4">
+          Suppose you&apos;ve visited{" "}
+          <InlineMath math="C \rightarrow \text{Goal}" /> 1000 times, so{" "}
+          <InlineMath math="\hat{v}_\pi(C) \approx 100" /> is well-estimated.
+        </p>
+
+        <p className="mb-4">
+          But you&apos;ve only visited <InlineMath math="B \rightarrow C" />{" "}
+          once.
+        </p>
+
+        <p className="mb-4">
+          <strong>Monte Carlo approach:</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="\hat{v}_\pi(B)" /> = average of the one return you
+            observed from <InlineMath math="B" />
+          </li>
+          <li>That single sample might be noisy</li>
+          <li>
+            Needs many more visits to <InlineMath math="B" /> to get an accurate
+            estimate
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>TD approach:</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <InlineMath math="\hat{v}_\pi(B) \approx R + \gamma \hat{v}_\pi(C) \approx 0 + 0.9 \times 100 = 90" />
+          </li>
+          <li>
+            <strong>Borrows</strong> the well-estimated{" "}
+            <InlineMath math="\hat{v}_\pi(C)" /> to immediately get a good
+            estimate for <InlineMath math="\hat{v}_\pi(B)" />
+          </li>
+          <li>
+            Uses the Bellman constraint to propagate value information backwards
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          This is the power of bootstrapping: TD doesn&apos;t just learn from
+          data, it <em>exploits the recursive structure</em> encoded in the
+          Bellman equation.
+        </p>
+
+        <p className="mb-6">
+          If that structure is real, meaning the environment actually is Markov,
+          you get faster learning by using it because TD exploits the Markov
+          property. If the environment isn&apos;t Markov, the the Monte Carlo
+          method is usually better because it doesn&apos;t exploit the Markov
+          property.
+        </p>
+
+        <p className="mb-4">
+          <strong>The Tradeoff</strong>
+        </p>
+
+        <p className="mb-4">
+          <strong>When TD wins:</strong> World is actually Markov, Bellman
+          equation is valid
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>TD uses correct structure → faster convergence</li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>When MC might win:</strong> World is not Markov, or function
+          approximation breaks the Bellman structure
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>TD makes wrong assumptions → can diverge or be biased</li>
+          <li>
+            MC just averages data → always converges to something meaningful
+            (the empirical mean)
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          In practice, most RL problems are approximately Markov, so TD&apos;s
+          speed advantage typically outweighs the risk of bias.
+        </p>
+
+        <p className="mb-4">
+          That&apos;s why temporal difference learning has become the foundation
+          of modern reinforcement learning.
+        </p>
       </div>
     </section>
   );
