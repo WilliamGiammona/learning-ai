@@ -1578,7 +1578,7 @@ export default function ModelFreePrediction() {
         <BlockMath math="\Rightarrow 4.0 + 0.1(3.4) = 4.34" />
 
         <p className="mb-6">
-          TD(0) updates <InlineMath math="\hat{v}_\pi(S_1)" /> from 4 to 4.34
+          TD(0) updates <InlineMath math="\hat{v}_\pi(S_1)" /> from 4 to 4.34{" "}
           <em>immediately</em>, not needing to wait until the episode ends.
         </p>
 
@@ -1586,6 +1586,188 @@ export default function ModelFreePrediction() {
           This self-referential process, using your own estimates to improve
           your own estimates, is called <em>bootstrapping</em>.
         </p>
+      </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          What Do Monte Carlo and TD(0) Actually Converge To?
+        </h3>
+
+        <p className="mb-4">
+          Monte Carlo and TD(0) are both trying to estimate the same object:{" "}
+          <InlineMath math="v_\pi(s)" />.
+        </p>
+
+        <p className="mb-6">But here&apos;s the subtle twist:</p>
+
+        <p className="mb-4">
+          <strong>they converge to different things</strong>, depending on how
+          we represent the value function.
+        </p>
+
+        <p className="mb-6">
+          And this difference explains why TD learning is often described as
+          being more &quot;MDP-consistent&quot; than Monte Carlo.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            Monte Carlo converges to a minimum mean squared error solution
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          Monte Carlo policy evaluation updates toward the actual observed
+          return <InlineMath math="G_t" />:
+        </p>
+
+        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(G_t - \hat{v}_\pi(S_t)\bigr)" />
+
+        <p className="mb-4">
+          The key point is that <InlineMath math="G_t" /> is a real sample of
+          the true return distribution under <InlineMath math="\pi" />.
+        </p>
+
+        <p className="mb-4">
+          So Monte Carlo is doing something extremely natural:
+        </p>
+
+        <p className="mb-6">
+          it is simply trying to find the value estimates that best match the
+          observed returns, in a squared-error sense.
+        </p>
+
+        <p className="mb-4">
+          In other words, Monte Carlo converges to the value function{" "}
+          <InlineMath math="\hat{v}" /> that minimizes:
+        </p>
+
+        <BlockMath math="\mathbb{E}_\pi\Bigl[(G_t - \hat{v}(S_t))^2\Bigr]" />
+
+        <p className="mb-6">
+          So Monte Carlo is directly optimizing prediction accuracy on the data
+          it sees.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            TD(0) converges to the solution of the Bellman equation
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          TD(0) does not update toward the full return. Instead, it updates
+          toward the one-step bootstrapped target:
+        </p>
+
+        <BlockMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
+
+        <p className="mb-4">So the TD(0) update is:</p>
+
+        <BlockMath math="\hat{v}_\pi(S_t) \leftarrow \hat{v}_\pi(S_t) + \alpha\bigl(R_{t+1} + \gamma \hat{v}_\pi(S_{t+1}) - \hat{v}_\pi(S_t)\bigr)" />
+
+        <p className="mb-4">
+          This update is not trying to match <InlineMath math="G_t" /> directly.
+        </p>
+
+        <p className="mb-6">
+          Instead, it is trying to force the value estimates to satisfy a
+          self-consistency condition:
+        </p>
+
+        <BlockMath math="\hat{v}_\pi(s) \approx \mathbb{E}_\pi\bigl[R_{t+1} + \gamma \hat{v}_\pi(S_{t+1}) \mid S_t=s\bigr]" />
+
+        <p className="mb-4">
+          But that is exactly the Bellman expectation equation:
+        </p>
+
+        <BlockMath math="v_\pi(s) = \mathbb{E}_\pi\bigl[R_{t+1} + \gamma v_\pi(S_{t+1}) \mid S_t=s\bigr]" />
+
+        <p className="mb-6">
+          So TD(0) converges to the value function that satisfies the Bellman
+          equation, meaning it converges to the solution of the MDP under policy{" "}
+          <InlineMath math="\pi" />.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            Why TD(0) is &quot;MDP-based&quot; but Monte Carlo isn&apos;t
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          The defining feature of an MDP is that it obeys the Markov property:
+        </p>
+
+        <p className="mb-6">
+          the future depends only on the current state, not the entire history.
+        </p>
+
+        <p className="mb-4">
+          TD learning takes advantage of that structure directly.
+        </p>
+
+        <p className="mb-4">
+          It breaks the long-term return into a one-step piece:
+        </p>
+
+        <p className="mb-6">
+          immediate reward + discounted value of the next state.
+        </p>
+
+        <p className="mb-4">
+          That decomposition is the Bellman equation, and the Bellman equation
+          is essentially the mathematical signature of an MDP.
+        </p>
+
+        <p className="mb-6">
+          So TD(0) is not just averaging experience, it is implicitly solving
+          the Bellman system of equations.
+        </p>
+
+        <p className="mb-4">Monte Carlo does not do this.</p>
+
+        <p className="mb-4">
+          Monte Carlo treats the return as a black box target:
+        </p>
+
+        <p className="mb-6">
+          it waits until the end of the episode, observes the total return, and
+          then averages.
+        </p>
+
+        <p className="mb-4">
+          So Monte Carlo converges to the best prediction of observed returns,
+        </p>
+
+        <p className="mb-6">
+          but it does not explicitly enforce Bellman consistency at every step.
+        </p>
+
+        <p className="mb-4">
+          <strong>In short</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1">
+          <li>
+            Monte Carlo converges by directly fitting <InlineMath math="G_t" />{" "}
+            (minimizing prediction error)
+          </li>
+          <li>
+            TD(0) converges by enforcing Bellman consistency (solving the MDP)
+          </li>
+        </ul>
+
+        <p className="mb-4">Monte Carlo is learning by averaging outcomes.</p>
+
+        <p className="mb-4">
+          TD(0) is learning by solving a recursive equation about the
+          environment.
+        </p>
+
+        <p className="mb-4">Same goal.</p>
+
+        <p className="mb-4">Very different philosophy.</p>
       </div>
     </section>
   );
