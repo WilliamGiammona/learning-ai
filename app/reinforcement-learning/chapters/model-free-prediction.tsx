@@ -1864,6 +1864,190 @@ export default function ModelFreePrediction() {
           of modern reinforcement learning.
         </p>
       </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          n-Step TD: A Spectrum Between TD(0) and Monte Carlo
+        </h3>
+
+        <p className="mb-4">
+          So far, we&apos;ve seen two extremes for learning value functions:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <strong>TD(0)</strong> bootstraps after a single step, using{" "}
+            <InlineMath math="R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" /> as its
+            target
+          </li>
+          <li>
+            <strong>Monte Carlo</strong> waits until the episode ends, using the
+            full return <InlineMath math="G_t" /> as its target
+          </li>
+        </ul>
+
+        <p className="mb-4">But here&apos;s a natural question:</p>
+
+        <p className="mb-6">
+          <em>Why do we have to pick one or the other?</em>
+        </p>
+
+        <p className="mb-4">
+          What if we wanted to look <InlineMath math="n" /> steps into the
+          future before bootstrapping?
+        </p>
+
+        <p className="mb-4">
+          Not just one step like TD(0), and not all the way to the end like
+          Monte Carlo, but something in between in order to get a better balance
+          between variance and bias?
+        </p>
+
+        <p className="mb-6">
+          This is the idea behind <strong>n-step TD learning</strong>.
+        </p>
+
+        <p className="mb-4">
+          <strong>The n-step return</strong>
+        </p>
+
+        <p className="mb-4">
+          Instead of bootstrapping immediately after one step, we can define an
+          n-step return that looks <InlineMath math="n" /> steps into the
+          future:
+        </p>
+
+        <BlockMath math="G_t^{(n)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots + \gamma^{n-1}R_{t+n} + \gamma^n \hat{v}_\pi(S_{t+n})" />
+
+        <p className="mb-4">This formula says:</p>
+
+        <p className="mb-6">
+          &quot;Take <InlineMath math="n" /> real steps, collecting actual
+          rewards along the way, and <em>then</em> bootstrap using your value
+          estimate <InlineMath math="\hat{v}_\pi(S_{t+n})" /> at step{" "}
+          <InlineMath math="n" />
+          .&quot;
+        </p>
+
+        <p className="mb-4">
+          <strong>Special cases</strong>
+        </p>
+
+        <p className="mb-4">
+          When <InlineMath math="n = 1" />, we get TD(0):
+        </p>
+
+        <BlockMath math="G_t^{(1)} = R_{t+1} + \gamma \hat{v}_\pi(S_{t+1})" />
+
+        <p className="mb-4">
+          When <InlineMath math="n = 2" />, we look two steps ahead:
+        </p>
+
+        <BlockMath math="G_t^{(2)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 \hat{v}_\pi(S_{t+2})" />
+
+        <p className="mb-4">
+          When <InlineMath math="n = \infty" /> (or really, when{" "}
+          <InlineMath math="n" /> equals the number of steps until the episode
+          ends), we get Monte Carlo:
+        </p>
+
+        <BlockMath math="G_t^{(\infty)} = R_{t+1} + \gamma R_{t+2} + \gamma^3 R_{t+3} + \dots + \gamma^{T-1}R_T" />
+
+        <p className="mb-6">
+          There&apos;s no bootstrapping here because we never use a value
+          estimate, we just sum up all the actual rewards until termination.
+        </p>
+
+        <p className="mb-4">
+          <strong>The n-step TD update</strong>
+        </p>
+
+        <p className="mb-4">
+          Once we have the n-step return, the update rule looks exactly like
+          what we&apos;ve seen before:
+        </p>
+
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(G_t^{(n)} - \hat{v}^{old}_\pi(S_t)\bigr)" />
+
+        <p className="mb-6">
+          The only difference is we&apos;re using{" "}
+          <InlineMath math="G_t^{(n)}" /> instead of{" "}
+          <InlineMath math="G_t^{(1)}" /> or <InlineMath math="G_t" />.
+        </p>
+
+        <p className="mb-4">
+          <strong>The spectrum of TD methods</strong>
+        </p>
+
+        <p className="mb-4">
+          So TD(0) and Monte Carlo aren&apos;t really separate algorithms.
+        </p>
+
+        <p className="mb-4">
+          They&apos;re just the two endpoints of a continuous spectrum, where{" "}
+          <InlineMath math="n" /> controls how far we look before bootstrapping:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            Small <InlineMath math="n" />: More bootstrapping, less real data
+          </li>
+          <li>
+            Large <InlineMath math="n" />: Less bootstrapping, more real data
+          </li>
+          <li>
+            <InlineMath math="n = 1" />: Pure TD(0)
+          </li>
+          <li>
+            <InlineMath math="n = \infty" />: Pure Monte Carlo
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>The tradeoff</strong>
+        </p>
+
+        <p className="mb-4">
+          Increasing <InlineMath math="n" /> has the same effect as moving from
+          TD(0) toward Monte Carlo:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <strong>Higher variance</strong>: More steps means more randomness
+            accumulates in the target
+          </li>
+          <li>
+            <strong>Lower bias</strong>: More real rewards means less reliance
+            on potentially wrong value estimates
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          So the question becomes: what&apos;s the right value of{" "}
+          <InlineMath math="n" />?
+        </p>
+
+        <p className="mb-4">
+          Too small and you&apos;re bootstrapping from estimates that might be
+          wildly wrong.
+        </p>
+
+        <p className="mb-4">
+          Too large and you&apos;re accumulating variance from many random
+          steps.
+        </p>
+
+        <p className="mb-4">
+          The answer depends on the problem, and it&apos;s not always obvious
+          what the best <InlineMath math="n" /> should be.
+        </p>
+
+        <p className="mb-4">
+          Which leads to an even better question:{" "}
+          <em>what if we didn&apos;t have to choose just one value of n?</em>
+        </p>
+      </div>
     </section>
   );
 }
