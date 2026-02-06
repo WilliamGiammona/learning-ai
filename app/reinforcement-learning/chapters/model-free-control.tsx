@@ -14,7 +14,7 @@ export default function ModelFreeControl() {
         Introduction
       </h2>
 
-      <div className="mb-4 mt-24">
+      <div className="mb-4 mt-8">
         <p className="mb-4">
           In the last section, we studied <strong>model-free prediction</strong>
           :
@@ -59,11 +59,11 @@ export default function ModelFreeControl() {
           </li>
           <li>
             <strong>On-Policy Temporal Difference Learning</strong>: Using TD
-            methods (specifically SARSA) for online control
+            methods for online control
           </li>
           <li>
             <strong>Off-Policy Learning</strong>: Learning about one policy
-            while following another (Q-learning)
+            while following another
           </li>
           <li>
             <strong>Summary</strong>: Bringing it all together
