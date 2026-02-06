@@ -121,6 +121,10 @@ export default function ModelFreeControl() {
           foundations in place.
         </p>
       </div>
+
+      <h2 id="mfc-monte-carlo" className="text-2xl font-bold mb-6 text-center">
+        Monte Carlo Control
+      </h2>
     </section>
   );
 }
