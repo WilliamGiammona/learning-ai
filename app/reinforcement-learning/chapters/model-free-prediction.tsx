@@ -1865,6 +1865,11 @@ export default function ModelFreePrediction() {
         </p>
       </div>
 
+      <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
+        TD(
+        <InlineMath math="\lambda" />)
+      </h2>
+
       <div className="mb-4 mt-12">
         <h3 className="mb-8 font-bold text-lg">
           n-Step TD: A Spectrum Between TD(0) and Monte Carlo
