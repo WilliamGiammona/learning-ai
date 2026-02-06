@@ -8,6 +8,7 @@ import RlIntro from "./chapters/rl-intro";
 import MarkovDecisionProcess from "./chapters/markov-decision-processes";
 import DynamicProgramming from "./chapters/dynamic-programming";
 import ModelFreePrediction from "./chapters/model-free-prediction";
+import ModelFreeControl from "./chapters/model-free-control";
 
 export default function ReinforcementLearningPage() {
   return (
@@ -23,7 +24,7 @@ export default function ReinforcementLearningPage() {
                   href="#ch-one-reinforcement-learning-problem"
                   className="text-blue-600 hover:text-blue-800 underline block font-medium"
                 >
-                  Introduction
+                  Introduction to RL
                 </a>
 
                 {/* Subsections */}
@@ -339,6 +340,7 @@ export default function ReinforcementLearningPage() {
           <MarkovDecisionProcess />
           <DynamicProgramming />
           <ModelFreePrediction />
+          <ModelFreeControl />
         </main>
       </div>
     </div>
