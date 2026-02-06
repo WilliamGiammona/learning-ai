@@ -1904,8 +1904,8 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">
           Not just one step like TD(0) (which has low variance but high bias),
-          and not all the way to the end like Monte Carlo (which has low bias
-          but high variance), but something in between in order to get a better
+          and not all the way to the end like Monte Carlo (which has no bias but
+          high variance), but something in between in order to get a better
           balance between variance and bias?
         </p>
 
@@ -1957,7 +1957,7 @@ export default function ModelFreePrediction() {
           ends), we get Monte Carlo:
         </p>
 
-        <BlockMath math="G_t^{(\infty)} = R_{t+1} + \gamma R_{t+2} + \gamma^3 R_{t+3} + \dots + \gamma^{T-1}R_T" />
+        <BlockMath math="G_t^{(\infty)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots + \gamma^{T-1}R_T" />
 
         <p className="mb-6">
           There&apos;s no bootstrapping here because we never use a value
@@ -1978,7 +1978,7 @@ export default function ModelFreePrediction() {
         <p className="mb-6">
           The only difference is we&apos;re using{" "}
           <InlineMath math="G_t^{(n)}" /> instead of{" "}
-          <InlineMath math="G_t^{(1)}" /> or <InlineMath math="G_t" />.
+          <InlineMath math="G_t^{(1)}" />.
         </p>
 
         <p className="mb-4">
