@@ -328,6 +328,14 @@ export default function ReinforcementLearningPage() {
                       Introduction
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="#mfc-monte-carlo"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Monte Carlo Control
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
