@@ -308,6 +308,27 @@ export default function ReinforcementLearningPage() {
                   </li>
                 </ul>
               </li>
+
+              <li>
+                <a
+                  href="#ch-five-model-free-control"
+                  className="text-blue-600 hover:text-blue-800 underline block font-medium"
+                >
+                  Model Fre Control
+                </a>
+
+                {/* Subsections */}
+                <ul className="mt-2 ml-4 space-y-1">
+                  <li>
+                    <a
+                      href="#mfc-intro"
+                      className="text-blue-600 hover:text-blue-800 underline block"
+                    >
+                      Introduction
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </nav>
         </aside>
