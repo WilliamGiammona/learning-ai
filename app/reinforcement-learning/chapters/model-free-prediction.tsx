@@ -2054,6 +2054,686 @@ export default function ModelFreePrediction() {
           <em>what if we didn&apos;t have to choose just one value of n?</em>
         </p>
       </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          TD(λ): Combining All n-Step Returns at Once
+        </h3>
+
+        <p className="mb-4">
+          We just saw that n-step TD methods let us choose any value of{" "}
+          <InlineMath math="n" /> to balance bias and variance.
+        </p>
+
+        <p className="mb-4">
+          But we still have to pick <em>one specific</em> value of{" "}
+          <InlineMath math="n" />.
+        </p>
+
+        <p className="mb-6">
+          What if we could use <em>all</em> of them at once?
+        </p>
+
+        <p className="mb-4">
+          Instead of choosing between the 1-step return, the 2-step return, the
+          3-step return, and so on, what if we just averaged them together?
+        </p>
+
+        <p className="mb-6">
+          This is exactly what <strong>TD(λ)</strong> does.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            The λ-return: A weighted average of all n-step returns
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          TD(λ) creates a new target called the <strong>λ-return</strong>, which
+          is a weighted combination of all possible n-step returns:
+        </p>
+
+        <BlockMath math="G_t^\lambda = (1-\lambda)\,G_t^{(1)} + (1-\lambda)\lambda\,G_t^{(2)} + (1-\lambda)\lambda^2\,G_t^{(3)} + (1-\lambda)\lambda^3\,G_t^{(4)} + \dots" />
+
+        <p className="mb-4">Or more compactly, using summation notation:</p>
+
+        <BlockMath math="G_t^\lambda = (1-\lambda)\sum_{n=1}^{\infty} \lambda^{n-1} G_t^{(n)}" />
+
+        <p className="mb-6">
+          Here, <InlineMath math="\lambda" /> (lambda) is a parameter between 0
+          and 1 that controls how much weight we give to longer returns.
+        </p>
+
+        <p className="mb-4">
+          <strong>Understanding the weights</strong>
+        </p>
+
+        <p className="mb-4">
+          Let&apos;s break down the weights in that formula:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            The 1-step return <InlineMath math="G_t^{(1)}" /> gets weight{" "}
+            <InlineMath math="(1-\lambda)" />
+          </li>
+          <li>
+            The 2-step return <InlineMath math="G_t^{(2)}" /> gets weight{" "}
+            <InlineMath math="(1-\lambda)\lambda" />
+          </li>
+          <li>
+            The 3-step return <InlineMath math="G_t^{(3)}" /> gets weight{" "}
+            <InlineMath math="(1-\lambda)\lambda^2" />
+          </li>
+          <li>
+            The n-step return <InlineMath math="G_t^{(n)}" /> gets weight{" "}
+            <InlineMath math="(1-\lambda)\lambda^{n-1}" />
+          </li>
+        </ul>
+
+        <p className="mb-4">Notice two things about these weights:</p>
+
+        <p className="mb-4">
+          First, they <strong>decay exponentially</strong>. Each time we
+          increase <InlineMath math="n" /> by 1, the weight is multiplied by{" "}
+          <InlineMath math="\lambda" />.
+        </p>
+
+        <p className="mb-6">
+          Second, the <InlineMath math="(1-\lambda)" /> factor at the front
+          ensures all the weights sum to 1, so this is a proper weighted
+          average.
+        </p>
+
+        <p className="mb-4">
+          <strong>What λ controls</strong>
+        </p>
+
+        <p className="mb-4">
+          The parameter <InlineMath math="\lambda" /> controls how quickly the
+          weights decay, where <InlineMath math="\lambda \in [0, 1)" />{" "}
+          (strictly less than 1):
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            When <InlineMath math="\lambda = 0" />: All weight goes to{" "}
+            <InlineMath math="G_t^{(1)}" />, giving us pure TD(0)
+          </li>
+          <li>
+            When <InlineMath math="\lambda" /> is small (like 0.3): Weights
+            decay quickly, so we mostly use short-horizon returns
+          </li>
+          <li>
+            When <InlineMath math="\lambda" /> is large (like 0.9): Weights
+            decay slowly, so we use many different horizons more equally
+          </li>
+          <li>
+            As <InlineMath math="\lambda \to 1" />: We approach Monte Carlo
+            behavior
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>Example: Computing the λ-return</strong>
+        </p>
+
+        <p className="mb-4">
+          Suppose we have an episode where we visit state{" "}
+          <InlineMath math="S_t" /> and the subsequent returns are:
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            1-step return: <InlineMath math="G_t^{(1)} = 10" />
+          </li>
+          <li>
+            2-step return: <InlineMath math="G_t^{(2)} = 12" />
+          </li>
+          <li>
+            3-step return: <InlineMath math="G_t^{(3)} = 15" />
+          </li>
+          <li>
+            4-step return (full episode): <InlineMath math="G_t^{(4)} = 20" />
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          Let&apos;s set <InlineMath math="\lambda = 0.5" />.
+        </p>
+
+        <p className="mb-4">The weights for each return are:</p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="G_t^{(1)}" />: weight ={" "}
+            <InlineMath math="(1-0.5) = 0.5" />
+          </li>
+          <li>
+            <InlineMath math="G_t^{(2)}" />: weight ={" "}
+            <InlineMath math="(1-0.5)(0.5) = 0.25" />
+          </li>
+          <li>
+            <InlineMath math="G_t^{(3)}" />: weight ={" "}
+            <InlineMath math="(1-0.5)(0.5)^2 = 0.125" />
+          </li>
+          <li>
+            <InlineMath math="G_t^{(4)}" />: weight ={" "}
+            <InlineMath math="(1-0.5)(0.5)^3 = 0.0625" />
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          (Note: Since this is the terminal state, the remaining weight 0.0625
+          also goes to <InlineMath math="G_t^{(4)}" />, making its total weight
+          0.125)
+        </p>
+
+        <p className="mb-4">So the λ-return is:</p>
+
+        <BlockMath math="G_t^\lambda = 0.5 \times 10 + 0.25 \times 12 + 0.125 \times 15 + 0.125 \times 20" />
+        <BlockMath math="= 5 + 3 + 1.875 + 2.5 = 12.375" />
+
+        <p className="mb-6">
+          This value blends information from all the different time horizons,
+          giving us a target that balances short-term and long-term information.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            Why exponential weighting? Why not just average them equally?
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          You might wonder: why use exponentially decaying weights instead of
+          just averaging all the n-step returns equally?
+        </p>
+
+        <p className="mb-4">
+          Let&apos;s see what would happen with equal weights:
+        </p>
+
+        <BlockMath math="G_t^{\text{equal}} = \frac{1}{4}(10 + 12 + 15 + 20) = 14.25" />
+
+        <p className="mb-4">
+          The problem is this treats all horizons as equally reliable.
+        </p>
+
+        <p className="mb-4">
+          But longer returns accumulate <em>more variance</em> because they
+          depend on more random transitions.
+        </p>
+
+        <p className="mb-4">
+          The exponential weighting <InlineMath math="\lambda^{n-1}" />{" "}
+          automatically downweights longer, noisier returns.
+        </p>
+
+        <p className="mb-6">
+          This gives us a principled way to balance the bias-variance tradeoff
+          across all time horizons simultaneously.
+        </p>
+
+        <p className="mb-4">
+          <strong>The TD(λ) update</strong>
+        </p>
+
+        <p className="mb-4">
+          Once we have the λ-return, the update is exactly what we&apos;ve seen
+          before:
+        </p>
+
+        <BlockMath math="\hat{v}^{new}_\pi(S_t) \leftarrow \hat{v}^{old}_\pi(S_t) + \alpha\bigl(G_t^\lambda - \hat{v}^{old}_\pi(S_t)\bigr)" />
+
+        <p className="mb-6">
+          We&apos;re just using <InlineMath math="G_t^\lambda" /> instead of a
+          single n-step return.
+        </p>
+
+        <p className="mb-4">
+          <strong>The major problem: We still need complete episodes</strong>
+        </p>
+
+        <p className="mb-4">
+          This view of TD(λ), called the <strong>forward view</strong>, has the
+          same fundamental limitation as Monte Carlo:
+        </p>
+
+        <p className="mb-6">
+          we have to wait until the episode ends before we can compute{" "}
+          <InlineMath math="G_t^\lambda" />.
+        </p>
+
+        <p className="mb-4">Why?</p>
+
+        <p className="mb-4">
+          Because computing <InlineMath math="G_t^\lambda" /> requires knowing
+          all the n-step returns, including ones that look arbitrarily far into
+          the future.
+        </p>
+
+        <p className="mb-4">
+          We can&apos;t compute <InlineMath math="G_t^{(10)}" /> until
+          we&apos;ve taken at least 10 steps.
+        </p>
+
+        <p className="mb-6">
+          So even though TD(λ) combines information from all horizons, we
+          can&apos;t actually <em>use</em> it online during the episode.
+        </p>
+
+        <p className="mb-4">
+          This seems like a dealbreaker. We introduced TD learning specifically
+          because it could learn online, one step at a time.
+        </p>
+
+        <p className="mb-4">
+          If TD(λ) requires waiting for episode completion, haven&apos;t we lost
+          that advantage?
+        </p>
+
+        <p className="mb-4">
+          Fortunately, there&apos;s a clever solution: the{" "}
+          <strong>backward view</strong> of TD(λ), which uses something called{" "}
+          <strong>eligibility traces</strong>.
+        </p>
+
+        <p className="mb-4">
+          The backward view gives us a way to compute <em>exactly the same</em>{" "}
+          updates as the forward view, but incrementally, without waiting for
+          the episode to end.
+        </p>
+
+        <p className="mb-4">That&apos;s what we&apos;ll explore next.</p>
+      </div>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          Backward View: Eligibility Traces
+        </h3>
+
+        <p className="mb-4">
+          The forward view of TD(λ) gave us a beautiful theoretical result: we
+          can combine all n-step returns into a single weighted average.
+        </p>
+
+        <p className="mb-4">
+          But it had a fatal flaw: we need to wait until the episode ends to
+          compute it.
+        </p>
+
+        <p className="mb-6">
+          The <strong>backward view</strong> solves this problem using{" "}
+          <strong>eligibility traces</strong>, a mechanism that lets us achieve
+          the exact same result while updating online, one step at a time.
+        </p>
+
+        <p className="mb-4">
+          <strong>The credit assignment problem</strong>
+        </p>
+
+        <p className="mb-4">
+          Imagine you&apos;re learning to play a game. You visit many states,
+          take many actions, and eventually receive a reward (or penalty).
+        </p>
+
+        <p className="mb-6">
+          The question is:{" "}
+          <em>which states were responsible for that outcome?</em>
+        </p>
+
+        <p className="mb-4">There are two intuitive principles:</p>
+
+        <p className="mb-4">
+          <strong>1. Frequency heuristic:</strong> States you visited{" "}
+          <em>more often</em> should receive more credit
+        </p>
+
+        <p className="mb-4">
+          If you visited state A ten times and state B once, and then received a
+          reward, state A probably had more influence on the outcome.
+        </p>
+
+        <p className="mb-4">
+          <strong>2. Recency heuristic:</strong> States you visited{" "}
+          <em>more recently</em> should receive more credit
+        </p>
+
+        <p className="mb-6">
+          If you visited state A five steps ago and state B one step ago, state
+          B is probably more responsible for the immediate reward you just
+          received.
+        </p>
+
+        <p className="mb-4">
+          Eligibility traces combine both of these principles into a single
+          mechanism.
+        </p>
+
+        <p className="mb-4">
+          <strong>What is an eligibility trace?</strong>
+        </p>
+
+        <p className="mb-4">
+          An eligibility trace is a short-term memory that tracks how{" "}
+          <em>eligible</em> each state is for receiving credit.
+        </p>
+
+        <p className="mb-4">
+          We maintain a trace value <InlineMath math="E_t(s)" /> for every state{" "}
+          <InlineMath math="s" />.
+        </p>
+
+        <p className="mb-6">
+          The trace increases when we visit a state, and decays over time when
+          we don&apos;t.
+        </p>
+
+        <p className="mb-4">The update rule for eligibility traces is:</p>
+
+        <BlockMath math="E_t(s) = \gamma\lambda E_{t-1}(s) + \mathbf{1}(S_t = s)" />
+
+        <p className="mb-4">Where:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_0(s) = 0" /> for all states (traces start at
+            zero)
+          </li>
+          <li>
+            <InlineMath math="\mathbf{1}(S_t = s)" /> is an indicator function:
+            1 if we&apos;re in state <InlineMath math="s" /> at time{" "}
+            <InlineMath math="t" />, otherwise 0
+          </li>
+          <li>
+            <InlineMath math="\gamma\lambda" /> is the decay rate
+          </li>
+        </ul>
+
+        <p className="mb-4">This simple rule gives us both heuristics:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <strong>Frequency:</strong> Each time we visit{" "}
+            <InlineMath math="s" />, we add 1 to <InlineMath math="E_t(s)" />
+          </li>
+          <li>
+            <strong>Recency:</strong> Between visits,{" "}
+            <InlineMath math="E_t(s)" /> decays by{" "}
+            <InlineMath math="\gamma\lambda" /> each step
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>The backward view TD(λ) algorithm</strong>
+        </p>
+
+        <p className="mb-4">At each time step, we:</p>
+
+        <p className="mb-4">1. Compute the TD error (same as TD(0)):</p>
+
+        <BlockMath math="\delta_t = R_{t+1} + \gamma V(S_{t+1}) - V(S_t)" />
+
+        <p className="mb-4">2. Update eligibility traces for all states:</p>
+
+        <BlockMath math="E_t(s) = \gamma\lambda E_{t-1}(s) + \mathbf{1}(S_t = s)" />
+
+        <p className="mb-4">
+          3. Update the value of <em>every state</em> in proportion to its
+          trace:
+        </p>
+
+        <BlockMath math="V(s) \leftarrow V(s) + \alpha \delta_t E_t(s)" />
+
+        <p className="mb-6">
+          This last step is the key: we update all states at once, but the size
+          of each update depends on how eligible that state is.
+        </p>
+
+        <p className="mb-4">
+          <strong>Example: Walking through a sequence</strong>
+        </p>
+
+        <p className="mb-4">
+          Suppose we have three states: A, B, C. Let{" "}
+          <InlineMath math="\gamma = 0.9" />,{" "}
+          <InlineMath math="\lambda = 0.8" />, and{" "}
+          <InlineMath math="\alpha = 0.1" />.
+        </p>
+
+        <p className="mb-4">
+          We follow the sequence: A → B → C → B → C (terminal, reward = 10)
+        </p>
+
+        <p className="mb-4">
+          For simplicity, assume all value estimates start at 0 and all
+          intermediate rewards are 0.
+        </p>
+
+        <p className="mb-4">
+          <strong>Step 1: Visit A</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_1(A) = 0.9 \times 0.8 \times 0 + 1 = 1" />
+          </li>
+          <li>
+            <InlineMath math="E_1(B) = 0.72 \times 0 + 0 = 0" />
+          </li>
+          <li>
+            <InlineMath math="E_1(C) = 0.72 \times 0 + 0 = 0" />
+          </li>
+          <li>
+            <InlineMath math="\delta_1 = 0 + 0.9 \times 0 - 0 = 0" />
+          </li>
+          <li>No updates since δ₁ = 0</li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>Step 2: Visit B</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_2(A) = 0.72 \times 1 + 0 = 0.72" />
+          </li>
+          <li>
+            <InlineMath math="E_2(B) = 0.72 \times 0 + 1 = 1" />
+          </li>
+          <li>
+            <InlineMath math="E_2(C) = 0.72 \times 0 + 0 = 0" />
+          </li>
+          <li>
+            <InlineMath math="\delta_2 = 0 + 0.9 \times 0 - 0 = 0" />
+          </li>
+          <li>No updates since δ₂ = 0</li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>Step 3: Visit C</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_3(A) = 0.72 \times 0.72 = 0.518" />
+          </li>
+          <li>
+            <InlineMath math="E_3(B) = 0.72 \times 1 = 0.72" />
+          </li>
+          <li>
+            <InlineMath math="E_3(C) = 0.72 \times 0 + 1 = 1" />
+          </li>
+          <li>
+            <InlineMath math="\delta_3 = 0 + 0.9 \times 0 - 0 = 0" />
+          </li>
+          <li>No updates since δ₃ = 0</li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>Step 4: Visit B again</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_4(A) = 0.72 \times 0.518 = 0.373" />
+          </li>
+          <li>
+            <InlineMath math="E_4(B) = 0.72 \times 0.72 + 1 = 1.518" />{" "}
+            (frequency!)
+          </li>
+          <li>
+            <InlineMath math="E_4(C) = 0.72 \times 1 = 0.72" />
+          </li>
+          <li>
+            <InlineMath math="\delta_4 = 0 + 0.9 \times 0 - 0 = 0" />
+          </li>
+          <li>No updates since δ₄ = 0</li>
+        </ul>
+
+        <p className="mb-4">
+          <strong>Step 5: Visit C (terminal, reward = 10)</strong>
+        </p>
+
+        <ul className="list-disc list-inside mb-4 space-y-1 ml-4">
+          <li>
+            <InlineMath math="E_5(A) = 0.72 \times 0.373 = 0.269" />
+          </li>
+          <li>
+            <InlineMath math="E_5(B) = 0.72 \times 1.518 = 1.093" />
+          </li>
+          <li>
+            <InlineMath math="E_5(C) = 0.72 \times 0.72 + 1 = 1.518" />{" "}
+            (frequency!)
+          </li>
+          <li>
+            <InlineMath math="\delta_5 = 10 + 0.9 \times 0 - 0 = 10" />
+          </li>
+        </ul>
+
+        <p className="mb-4">Now we update all states:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <InlineMath math="V(A) \leftarrow 0 + 0.1 \times 10 \times 0.269 = 0.269" />
+          </li>
+          <li>
+            <InlineMath math="V(B) \leftarrow 0 + 0.1 \times 10 \times 1.093 = 1.093" />
+          </li>
+          <li>
+            <InlineMath math="V(C) \leftarrow 0 + 0.1 \times 10 \times 1.518 = 1.518" />
+          </li>
+        </ul>
+
+        <p className="mb-4">Notice what happened:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            State C received the largest update (1.518) because it was most
+            recent <em>and</em> visited twice
+          </li>
+          <li>
+            State B received a large update (1.093) because it was visited
+            twice, though less recently
+          </li>
+          <li>
+            State A received a smaller update (0.269) because it was visited
+            once and earliest
+          </li>
+        </ul>
+
+        <p className="mb-6">
+          The eligibility traces automatically distributed credit based on both
+          frequency and recency.
+        </p>
+
+        <p className="mb-4">
+          <strong>Why λ = 0 gives us TD(0)</strong>
+        </p>
+
+        <p className="mb-4">
+          When <InlineMath math="\lambda = 0" />, the eligibility trace update
+          becomes:
+        </p>
+
+        <BlockMath math="E_t(s) = \gamma \times 0 \times E_{t-1}(s) + \mathbf{1}(S_t = s) = \mathbf{1}(S_t = s)" />
+
+        <p className="mb-4">
+          This means <InlineMath math="E_t(s) = 1" /> if we&apos;re currently in
+          state <InlineMath math="s" />, and 0 otherwise.
+        </p>
+
+        <p className="mb-4">There&apos;s no decay, no memory of past states.</p>
+
+        <p className="mb-4">So the update becomes:</p>
+
+        <BlockMath math="V(s) \leftarrow V(s) + \alpha \delta_t \mathbf{1}(S_t = s)" />
+
+        <p className="mb-6">
+          This only updates the current state <InlineMath math="S_t" />, which
+          is exactly TD(0)!
+        </p>
+
+        <p className="mb-4">
+          <strong>Equivalence: Forward and backward views</strong>
+        </p>
+
+        <p className="mb-4">
+          Here&apos;s the remarkable fact: if you run an entire episode and sum
+          up all the updates, the forward view and backward view produce{" "}
+          <em>identical</em> total changes to the value function.
+        </p>
+
+        <p className="mb-4">Mathematically:</p>
+
+        <BlockMath math="\sum_{t=1}^{T} \alpha \delta_t E_t(s) = \sum_{t=1}^{T} \alpha \left(G_t^\lambda - V(S_t)\right) \mathbf{1}(S_t = s)" />
+
+        <p className="mb-4">
+          The left side is the backward view (sum of eligibility trace updates).
+        </p>
+
+        <p className="mb-4">
+          The right side is the forward view (sum of λ-return updates).
+        </p>
+
+        <p className="mb-6">They&apos;re exactly equal.</p>
+
+        <p className="mb-4">This is a beautiful theoretical result:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            The forward view is conceptually clear: we&apos;re averaging all
+            n-step returns
+          </li>
+          <li>
+            The backward view is computationally efficient: we update online
+            every step
+          </li>
+          <li>
+            They produce the same answer when done offline (after the episode)
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          So we get the best of both worlds: the forward view helps us{" "}
+          <em>understand</em> what TD(λ) is doing, while the backward view with
+          eligibility traces gives us a practical way to <em>implement</em> it.
+        </p>
+
+        <p className="mb-4">
+          And because the backward view updates incrementally, we can use it in
+          online learning, continuing tasks, and situations where episodes might
+          never end.
+        </p>
+
+        <p className="mb-4">
+          That&apos;s the power of eligibility traces: they turn the
+          theoretically beautiful but impractical forward view into a practical,
+          online algorithm.
+        </p>
+      </div>
     </section>
   );
 }
