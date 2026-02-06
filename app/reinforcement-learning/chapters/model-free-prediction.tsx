@@ -1865,7 +1865,7 @@ export default function ModelFreePrediction() {
         </p>
       </div>
 
-      <h2 id="mfp-intro" className="text-2xl font-bold mb-6 text-center">
+      <h2 id="mfp-lambda" className="text-2xl font-bold mb-6 text-center">
         TD(
         <InlineMath math="\lambda" />)
       </h2>
