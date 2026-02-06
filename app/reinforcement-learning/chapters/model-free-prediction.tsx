@@ -1903,9 +1903,10 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-4">
-          Not just one step like TD(0), and not all the way to the end like
-          Monte Carlo, but something in between in order to get a better balance
-          between variance and bias?
+          Not just one step like TD(0) (which has low variance but high bias),
+          and not all the way to the end like Monte Carlo (which has low bias
+          but high variance), but something in between in order to get a better
+          balance between variance and bias?
         </p>
 
         <p className="mb-6">
