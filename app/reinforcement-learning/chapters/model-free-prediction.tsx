@@ -2472,9 +2472,22 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">At each time step, we:</p>
 
-        <p className="mb-4">1. Compute the TD error (same as TD(0)):</p>
+        <p className="mb-4">
+          1. Compute the <strong>one-step TD error</strong>:
+        </p>
 
-        <BlockMath math="\delta_t = R_{t+1} + \gamma V(S_{t+1}) - V(S_t)" />
+        <BlockMath math="\delta_t = R_{t+1} + \gamma \hat{v}_\pi(S_{t+1}) - \hat{v}_\pi(S_t)" />
+
+        <p className="mb-4">
+          This is exactly the same TD error we used in TD(0). We&apos;re still
+          looking just one step ahead and bootstrapping from the next
+          state&apos;s value. We use a one-step error because we want to update{" "}
+          <em>immediately</em>, without waiting for future rewards.
+        </p>
+
+        <p className="mb-6">
+          The key difference is <em>what we do with this error</em>.
+        </p>
 
         <p className="mb-4">2. Update eligibility traces for all states:</p>
 
@@ -2485,11 +2498,23 @@ export default function ModelFreePrediction() {
           trace:
         </p>
 
-        <BlockMath math="V(s) \leftarrow V(s) + \alpha \delta_t E_t(s)" />
+        <BlockMath math="\hat{v}^{new}_\pi(s) \leftarrow \hat{v}^{old}_\pi(s) + \alpha \delta_t E_t(s)" />
+
+        <p className="mb-4">
+          Here&apos;s the key part: even though we only computed a{" "}
+          <em>one-step bootstrap error</em> at the current state, we use that
+          same error to update <em>all previously visited states</em>.
+        </p>
+
+        <p className="mb-4">
+          The eligibility traces tell us how much credit each past state
+          deserves for this current TD error.
+        </p>
 
         <p className="mb-6">
-          This last step is the key: we update all states at once, but the size
-          of each update depends on how eligible that state is.
+          This is why TD(λ) can achieve the effect of looking multiple steps
+          ahead (like the forward view) while only computing a one-step error at
+          each timestep.
         </p>
 
         <p className="mb-4">
@@ -2582,7 +2607,7 @@ export default function ModelFreePrediction() {
           </li>
           <li>
             <InlineMath math="E_4(B) = 0.72 \times 0.72 + 1 = 1.518" />{" "}
-            (frequency!)
+            (frequency heuristic!)
           </li>
           <li>
             <InlineMath math="E_4(C) = 0.72 \times 1 = 0.72" />
@@ -2617,13 +2642,13 @@ export default function ModelFreePrediction() {
 
         <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
           <li>
-            <InlineMath math="V(A) \leftarrow 0 + 0.1 \times 10 \times 0.269 = 0.269" />
+            <InlineMath math="\hat{v}_\pi(A) \leftarrow 0 + 0.1 \times 10 \times 0.269 = 0.269" />
           </li>
           <li>
-            <InlineMath math="V(B) \leftarrow 0 + 0.1 \times 10 \times 1.093 = 1.093" />
+            <InlineMath math="\hat{v}_\pi(B) \leftarrow 0 + 0.1 \times 10 \times 1.093 = 1.093" />
           </li>
           <li>
-            <InlineMath math="V(C) \leftarrow 0 + 0.1 \times 10 \times 1.518 = 1.518" />
+            <InlineMath math="\hat{v}_\pi(C) \leftarrow 0 + 0.1 \times 10 \times 1.518 = 1.518" />
           </li>
         </ul>
 
@@ -2669,7 +2694,7 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">So the update becomes:</p>
 
-        <BlockMath math="V(s) \leftarrow V(s) + \alpha \delta_t \mathbf{1}(S_t = s)" />
+        <BlockMath math="\hat{v}^{new}_\pi(s) \leftarrow \hat{v}^{old}_\pi(s) + \alpha \delta_t \mathbf{1}(S_t = s)" />
 
         <p className="mb-6">
           This only updates the current state <InlineMath math="S_t" />, which
@@ -2677,7 +2702,7 @@ export default function ModelFreePrediction() {
         </p>
 
         <p className="mb-4">
-          <strong>Equivalence: Forward and backward views</strong>
+          <strong>Equivalence: Forward and Backward Views</strong>
         </p>
 
         <p className="mb-4">
@@ -2688,7 +2713,7 @@ export default function ModelFreePrediction() {
 
         <p className="mb-4">Mathematically:</p>
 
-        <BlockMath math="\sum_{t=1}^{T} \alpha \delta_t E_t(s) = \sum_{t=1}^{T} \alpha \left(G_t^\lambda - V(S_t)\right) \mathbf{1}(S_t = s)" />
+        <BlockMath math="\sum_{t=1}^{T} \alpha \delta_t E_t(s) = \sum_{t=1}^{T} \alpha \left(G_t^\lambda - \hat{v}_\pi(S_t)\right) \mathbf{1}(S_t = s)" />
 
         <p className="mb-4">
           The left side is the backward view (sum of eligibility trace updates).
@@ -2726,12 +2751,6 @@ export default function ModelFreePrediction() {
           And because the backward view updates incrementally, we can use it in
           online learning, continuing tasks, and situations where episodes might
           never end.
-        </p>
-
-        <p className="mb-4">
-          That&apos;s the power of eligibility traces: they turn the
-          theoretically beautiful but impractical forward view into a practical,
-          online algorithm.
         </p>
       </div>
     </section>
