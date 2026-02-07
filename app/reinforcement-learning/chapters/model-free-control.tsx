@@ -173,7 +173,7 @@ export default function ModelFreeControl() {
           step was:
         </p>
 
-        <BlockMath math="\pi'(s) = \arg\max_a \left[R(s,a) + \gamma \sum_{s'} P(s'|s,a)\, v_\pi(s')\right]" />
+        <BlockMath math="\pi'(s) = \arg\max_a \left[R(s,a) + P(s'|s,a)\, v_\pi(s')\right]" />
 
         <p className="mb-4">
           This requires looking one step ahead: for each action{" "}
@@ -186,16 +186,11 @@ export default function ModelFreeControl() {
 
         <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
           <li>
-            The reward function <InlineMath math="R(s,a)" />
-          </li>
-          <li>
             The transition probabilities <InlineMath math="P(s'|s,a)" />
           </li>
         </ul>
 
-        <p className="mb-6">
-          In model-free learning, we don&apos;t have either of these.
-        </p>
+        <p className="mb-6">In model-free learning, we don&apos;t have that.</p>
 
         <p className="mb-4">
           <strong>The solution: Use action-value functions instead</strong>
@@ -242,60 +237,6 @@ export default function ModelFreeControl() {
         <p className="mb-6">
           But if you always act greedily (always picking the action that looks
           best so far), you might never try actions that turn out to be better.
-        </p>
-
-        <p className="mb-4">
-          <strong>Example: The greedy trap in a grid world</strong>
-        </p>
-
-        <p className="mb-4">
-          Imagine a grid world with two goals: a small reward (+1) that&apos;s
-          nearby, and a large reward (+10) that&apos;s far away.
-        </p>
-
-        <p className="mb-4">
-          Your agent starts exploring randomly and happens to reach the small
-          reward first.
-        </p>
-
-        <p className="mb-4">
-          Now, if you switch to a purely greedy policy, the agent will always
-          move toward the +1 reward because that&apos;s the best option it knows
-          about.
-        </p>
-
-        <p className="mb-6">
-          It will never explore the path to the +10 reward because going in that
-          direction initially looks worse (no reward yet, more steps away from
-          the known +1).
-        </p>
-
-        <p className="mb-4">
-          The agent gets stuck in a local optimum, never discovering the
-          globally optimal policy.
-        </p>
-
-        <p className="mb-4">
-          <strong>Example: The multi-armed bandit</strong>
-        </p>
-
-        <p className="mb-4">
-          Consider a simpler scenario: you have three slot machines (actions),
-          and you don&apos;t know which one pays out the most.
-        </p>
-
-        <p className="mb-4">
-          You try the first machine and win $5. You try the second and lose $2.
-        </p>
-
-        <p className="mb-4">
-          If you now act greedily, you&apos;ll play machine 1 forever because
-          it&apos;s the best you&apos;ve seen so far.
-        </p>
-
-        <p className="mb-6">
-          But what if machine 3 pays out $100 on average? You&apos;ll never
-          know, because you never tried it.
         </p>
 
         <p className="mb-4">
