@@ -125,6 +125,219 @@ export default function ModelFreeControl() {
       <h2 id="mfc-monte-carlo" className="text-2xl font-bold mb-6 text-center">
         Monte Carlo Control
       </h2>
+
+      <div className="mb-4 mt-12">
+        <h3 className="mb-8 font-bold text-lg">
+          On-Policy Monte Carlo Control
+        </h3>
+
+        <p className="mb-4">
+          If you remember the policy iteration algorithm from the Dynamic
+          Programming section, you might think the solution to finding the
+          optimal value function and optimal policy is obvious:
+        </p>
+
+        <p className="mb-6">
+          Just replace the dynamic programming policy evaluation step with Monte
+          Carlo evaluation, then improve the policy the same way we did before.
+        </p>
+
+        <p className="mb-4">That would look like:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <strong>Evaluation:</strong> Use Monte Carlo to estimate{" "}
+            <InlineMath math="v_\pi(s)" /> for the current policy{" "}
+            <InlineMath math="\pi" />
+          </li>
+          <li>
+            <strong>Improvement:</strong> Make the policy greedy with respect to{" "}
+            <InlineMath math="v_\pi" />
+          </li>
+          <li>Repeat until convergence</li>
+        </ul>
+
+        <p className="mb-4">Unfortunately, this doesn&apos;t work.</p>
+
+        <p className="mb-6">There are two fundamental problems.</p>
+
+        <p className="mb-4">
+          <strong>
+            Problem 1: You can&apos;t be greedy with respect to state values
+            without a model
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          In policy iteration with Dynamic Programming, the policy improvement
+          step was:
+        </p>
+
+        <BlockMath math="\pi'(s) = \arg\max_a \left[R(s,a) + \gamma \sum_{s'} P(s'|s,a)\, v_\pi(s')\right]" />
+
+        <p className="mb-4">
+          This requires looking one step ahead: for each action{" "}
+          <InlineMath math="a" />, you compute the immediate reward{" "}
+          <InlineMath math="R(s,a)" /> plus the expected discounted value of
+          landing in the next state.
+        </p>
+
+        <p className="mb-4">But to do that lookahead, you need:</p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            The reward function <InlineMath math="R(s,a)" />
+          </li>
+          <li>
+            The transition probabilities <InlineMath math="P(s'|s,a)" />
+          </li>
+        </ul>
+
+        <p className="mb-6">
+          In model-free learning, we don&apos;t have either of these.
+        </p>
+
+        <p className="mb-4">
+          <strong>The solution: Use action-value functions instead</strong>
+        </p>
+
+        <p className="mb-4">
+          Instead of estimating <InlineMath math="v_\pi(s)" /> (the value of
+          being in state <InlineMath math="s" />
+          ), we estimate <InlineMath math="q_\pi(s, a)" /> (the value of taking
+          action <InlineMath math="a" /> in state <InlineMath math="s" />
+          ).
+        </p>
+
+        <p className="mb-4">
+          With action values, policy improvement becomes trivial:
+        </p>
+
+        <BlockMath math="\pi'(s) = \arg\max_a\, q_\pi(s, a)" />
+
+        <p className="mb-6">
+          We just pick the action with the highest Q-value. No model required.
+        </p>
+
+        <p className="mb-4">
+          <strong>
+            Problem 2: You need to continuously explore, or you&apos;ll get
+            stuck
+          </strong>
+        </p>
+
+        <p className="mb-4">
+          The second problem is more subtle but equally important.
+        </p>
+
+        <p className="mb-4">
+          Without a model, you don&apos;t know what rewards different actions
+          will give you, or where those actions will lead.
+        </p>
+
+        <p className="mb-4">
+          The only way to find out is to <em>try them</em>.
+        </p>
+
+        <p className="mb-6">
+          But if you always act greedily (always picking the action that looks
+          best so far), you might never try actions that turn out to be better.
+        </p>
+
+        <p className="mb-4">
+          <strong>Example: The greedy trap in a grid world</strong>
+        </p>
+
+        <p className="mb-4">
+          Imagine a grid world with two goals: a small reward (+1) that&apos;s
+          nearby, and a large reward (+10) that&apos;s far away.
+        </p>
+
+        <p className="mb-4">
+          Your agent starts exploring randomly and happens to reach the small
+          reward first.
+        </p>
+
+        <p className="mb-4">
+          Now, if you switch to a purely greedy policy, the agent will always
+          move toward the +1 reward because that&apos;s the best option it knows
+          about.
+        </p>
+
+        <p className="mb-6">
+          It will never explore the path to the +10 reward because going in that
+          direction initially looks worse (no reward yet, more steps away from
+          the known +1).
+        </p>
+
+        <p className="mb-4">
+          The agent gets stuck in a local optimum, never discovering the
+          globally optimal policy.
+        </p>
+
+        <p className="mb-4">
+          <strong>Example: The multi-armed bandit</strong>
+        </p>
+
+        <p className="mb-4">
+          Consider a simpler scenario: you have three slot machines (actions),
+          and you don&apos;t know which one pays out the most.
+        </p>
+
+        <p className="mb-4">
+          You try the first machine and win $5. You try the second and lose $2.
+        </p>
+
+        <p className="mb-4">
+          If you now act greedily, you&apos;ll play machine 1 forever because
+          it&apos;s the best you&apos;ve seen so far.
+        </p>
+
+        <p className="mb-6">
+          But what if machine 3 pays out $100 on average? You&apos;ll never
+          know, because you never tried it.
+        </p>
+
+        <p className="mb-4">
+          <strong>The solution: Balance exploration and exploitation</strong>
+        </p>
+
+        <p className="mb-4">
+          To avoid getting stuck, you need to keep exploring even as you&apos;re
+          learning.
+        </p>
+
+        <p className="mb-4">
+          This creates a fundamental tradeoff in reinforcement learning:
+        </p>
+
+        <ul className="list-disc list-inside mb-6 space-y-1 ml-4">
+          <li>
+            <strong>Exploitation:</strong> Use what you&apos;ve learned to get
+            the best reward you know about
+          </li>
+          <li>
+            <strong>Exploration:</strong> Try new things to potentially discover
+            better options
+          </li>
+        </ul>
+
+        <p className="mb-4">
+          Pure exploitation means you might miss better opportunities.
+        </p>
+
+        <p className="mb-4">
+          Pure exploration means you never benefit from what you&apos;ve
+          learned.
+        </p>
+
+        <p className="mb-4">The key is to balance both throughout learning.</p>
+
+        <p className="mb-4">
+          In Monte Carlo control, we&apos;ll use a simple but effective approach
+          called <strong>ε-greedy exploration</strong> to maintain this balance.
+        </p>
+      </div>
     </section>
   );
 }
